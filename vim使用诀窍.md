@@ -271,9 +271,9 @@ nnoremap <c-l> <c-w>l
 
 ### 多窗口管理
 #### 分屏启动vim
-大写的On 垂直分屏  小写的水平
-`vim -on file1 file2 file3` 
-`vim -On file1 file2 file3`
+大写的On 垂直分屏  小写的水平  
+    vim -on file1 file2 file3  
+    vim -On file1 file2 file3
 #### 移动光标
  先按ctrl + w 然后就是利用h,j,k,l移动光标了
  ctrl + w 按两次也可以
@@ -283,7 +283,7 @@ nnoremap <c-l> <c-w>l
 : + split  filename 水平分割
 : + vsplit filename 垂直分割
 #### 打开多个文件
-`vi file1 file2 file3`
+`vi file1 file2 file3`  
 用: n file2 跳转到指定的第二个文件
 
 
