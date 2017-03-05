@@ -268,37 +268,33 @@ nnoremap <c-l> <c-w>l
 :w /tmp/foo
 ```
 
-## 插件
 
-- [Markdown语法高亮](https://github.com/plasticboy/vim-markdown)
+### 多窗口管理
+#### 分屏启动vim
+大写的On 垂直分屏  小写的水平
+`vim -on file1 file2 file3` 
+`vim -On file1 file2 file3`
+#### 移动光标
+ 先按ctrl + w 然后就是利用h,j,k,l移动光标了
+ ctrl + w 按两次也可以
+#### 移动分屏
+ 先按ctrl + w 然后是H，J，K，L移动屏幕(H向左，L向右，J向下，K向上)
+#### 分割
+: + split  filename 水平分割
+: + vsplit filename 垂直分割
+#### 打开多个文件
+`vi file1 file2 file3`
+用: n file2 跳转到指定的第二个文件
 
-### dmw多窗口管理
 
-网址：http://www.vim.org/scripts/script.php?script_id=4186
 
-窗口按下面方式组织。
 
-```
-================= 
-|      |     S1 | 
-|      |==========
-|  M   |     S2 | 
-|      |========== 
-|      |     S3 | 
-================= 
-```
 
-操作
-- CTRL-N 在[M]区域创建一个新窗口，将以前的窗口都堆在[S]区域
-- CTRL-C 关闭当前窗口
-- CTRL-J 跳到下一个窗口（顺时针方向）
-- CTRL-K 跳到前一个窗口（逆时针方向）
-- CTRL-F 将当前窗口放入[M]区域，并将其他窗口放在[S]区域
 
-## 提示行操作
 
-- :w: write your changes to the file
-- :q!: get out of vim (quit), but without saving your changes (!)
-- :wq: write your changes and exit vim
-- :saveas ~/some/path/: save your file to that locationvim
-- ZZ: a faster way to do :wq
+
+
+
+
+
+
