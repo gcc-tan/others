@@ -271,7 +271,8 @@ nnoremap <c-l> <c-w>l
 
 ### 多窗口管理
 #### 分屏启动vim
-大写的On 垂直分屏  小写的水平  
+大写的On 垂直分屏  小写的水平 
+
     vim -on file1 file2 file3  
     vim -On file1 file2 file3
 #### 移动光标
