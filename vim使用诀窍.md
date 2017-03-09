@@ -1,4 +1,7 @@
 # Vim操作
+## 对齐文本
++ 全部对齐 gg=G
++ visual模式下选中文本加上=
 
 ## 命令格式
 
@@ -35,7 +38,7 @@ Motion表示操作的上下文。
 - `H` – 当前屏幕的顶部行
 - `L` – 当前屏幕的最后一行
 
-Count是可选的，表示command和motion的重复次数。
+Count是可选的，表示command和motion的重复次数
 
 - i - inside
 - a - around
