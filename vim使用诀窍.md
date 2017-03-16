@@ -1,4 +1,6 @@
 # Vim操作
+## 配色
+ubuntu首先的配色好像能看清，然后不记得装了什么之后配色注释成蓝色了完全看不清楚，然胡其实在/usr/share/vim/vim74/colors/目录下面有多种配色方案，首先是default，在.vimrc里面加入你的选择`colorscheme desert`就行
 ## 对齐文本
 + 全部对齐 gg=G
 + visual模式下选中文本加上=
@@ -59,6 +61,10 @@ Count是可选的，表示command和motion的重复次数
 - u 撤销上个命令
 - g+ 回到上一个新的版本(是加号)
 - g- 回到上一个老的版本
+## 翻页
+
++ 整页翻ctrl + f,ctrl + b  f就是forward，b就是backword
++ 半页翻就是ctrl + d，ctrl + u d就是down，u就是up 
 
 ## 移动光标
 - h – Left
@@ -212,7 +218,7 @@ $ gvim -v
 - `"+2yy` – 复制两行
 - `{Visual}"+y` - copy the selected text into the system clipboard
 - `"+y{motion}` - copy the text specified by {motion} into the system clipboard
-- `:[range]yank +` - copy the text specified by `[range]` into the system clipboard
+- `:[range] y +` - copy the text specified by `[range]` into the system clipboard
 
 剪切到系统剪贴板
 - `"+dd` – 剪切一行
