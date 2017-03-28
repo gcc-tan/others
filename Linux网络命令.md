@@ -43,3 +43,8 @@ netstat的输出
 
 另一个是Active UNIX domain sockets，称为有源Unix域套接口(和网络套接字一样，但是只能用于本机通信，性能可以提高一倍)。
 Proto显示连接使用的协议,RefCnt表示连接到本套接口上的进程号,Types显示套接口的类型,State显示套接口当前的状态,Path表示连接到套接口的其它进程使用的路径名。
+
+###重启网络
+ubuntu的环境下sudo service network-manager restart，因为ubuntu使用了network-manager代替了传统的linux的网络模型，或者用ifup/down
+
+###route
