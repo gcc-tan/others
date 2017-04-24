@@ -111,9 +111,52 @@ open打开字符设备/dev/net/tun，然后ioctl可以执行指定的命令取�
 
 
 
+###bridge
+桥接也是实现vpn的一种重要的手段，bridge是虚拟设备，必须要把一个或者几个真是的设备绑定（ensalve）到网桥设备上，否则它就无法接收或者传输任何东西
 
+下面这张图片很形象地描述了数据传输的问题
+![ ](img/bridge.png  "网桥数据流")
 
+图中的br0就是一个网桥，网桥其实可以看成交换，它和交换机一样，判断包的类别（广播/单点），查找内部 MAC 端口映射表，定位目标端口号，将数据转发到目标端口或丢弃，自动更新内部 MAC 端口映射表以自我学习，还有就是当网卡被绑定到网桥上的时候网卡的ip地址就失效了，它不会再使用那个IP在第三层接收数据，不过你可以把网卡的ip指定到网桥上。
 
+[tun,tap,bridge三种设备比较](https://community.openvpn.net/openvpn/wiki/BridgingAndRouting)
+这是链接中的部分内容
+And you want to bridge if:
+
++ You want your LAN and VPN clients to be in the same broadcast domain
++ You want your LAN DHCP server to provide DHCP addresses to your VPN client
++ You have Windows server(s) you want to access and require network neighbourhood discovery to work via VPN and WINS is not an option to implement. If you have WINS, you don't want bridging. Really. 
+
+It might be a few more reasons, but these are the most typical ones. And as you see, TAP is a requirement for bridging. TUN devices cannot be used for bridges and non-IP traffic.
+
+Bridging looks easier at first glance, but it brings a completely different can of worms. Make no mistake: There are no shortcuts in making networking easier - except learning how to do it properly.
+
+Now lets see benefits and drawbacks of TAP vs TUN.
+
+TAP benefits:
+
++ behaves like a real network adapter (except it is a virtual network adapter)
++ can transport any network protocols (IPv4, IPv6, Netalk, IPX, etc, etc)
++  Works in layer 2, meaning Ethernet frames are passed over the VPN tunnel
++ Can be used in bridges 
+
+TAP drawbacks
+
++ causes much more broadcast overhead on the VPN tunnel
++ adds the overhead of Ethernet headers on all packets transported over the VPN tunnel
++ scales poorly
++ can not be used with Android or iOS devices 
+
+TUN benefits:
+
++ A lower traffic overhead, transports only traffic which is destined for the VPN client
++ Transports only layer 3 IP packets 
+
+TUN drawbacks:
+
++ Broadcast traffic is not normally transported
++ Can only transport IPv4 (OpenVPN 2.3 adds IPv6)
++ Cannot be used in bridges 
 
 
 
