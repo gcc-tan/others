@@ -159,7 +159,7 @@ TUN drawbacks:
 + Cannot be used in bridges 
 
 
-
+现在有一个问题，为什么不能就是从tun0获取了数据，然后处理后tun1写出，感觉应该可以啊
 
 
 
