@@ -72,5 +72,44 @@ $4 = {1, 2, 3, 4, 5}
 + show args：查看设置好的参数
 + info program： 来查看程序的是否在运行，进程号，被暂停的原因。
 
-#### 调试正在运行的程序
+#### 调试信号
+在使用gdb调试程序时，缺省情况下信号会被gdb截获，导致要调试的程序无法接收到信号，我们可以使用info handle来查看信号的缺省处理方式，同样info signals可以查看接受到的信号。要想在调试的程序中使用信号，我们需要使用gdb中handle这个命令，具体用法如这个形式   ：`handle  signal keywords`。keywords的取值如下：
+ 
+|keywords 	|说明 	|keywords 	|说明
+-------------------|------------|------------------|-----
+stop 	|当GDB收到signal，停止被调试程序的执行 	|nostop| 	当GDB收到指定的信号，不会应用停止程序的执行，只会打印出一条收到信号的消息
+print 	|如果收到signal，打印出一条信息 	|noprint 	|不会打印信息
+pass 	|如果收到signal，把该信号通知给被调试程序 	|nopass 	|不会告知被调试程序收到signal
+ignore |	同nopass 	|noignore |	同pass
 
+今天就是因为一个类似这样的代码，浪费了很久的时间，在gdb调试阻塞在select处，这是后发送一个SIGINT信号，gdb有一行的输出说收到了一个信号但是next，没有反映，还是阻塞在select，我居然无知的以为这是select被信号中断后自动重启，试了好久不自动重启的方法都不行，根本原因原来是gdb阻塞了被调试程序的信号接收......，这里特别感谢“gdb信号”链接的作者
+```
+#include<sys/select.h>
+#include<signal.h>
+#include<stdio.h>
+#include<string.h>
+static void sig_int(int sig)
+{
+	printf("signo:%d\n",sig);
+}
+int main()
+{
+	struct sigaction sa;
+	fd_set rset;
+
+	memset(&sa,0,sizeof(sa));
+	sa.sa_handler = sig_int;
+	sigaction(SIGINT,&sa,0);
+
+	
+	select(1,&rset,0,0,0);
+	return 0;
+
+}
+
+```
+#### gdb调试core dump
+
+内容出自:
+[gdb信号](http://www.cnblogs.com/ittinybird/p/4845394.html)
+[gdb core文件的调试](http://www.cnblogs.com/hazir/p/linxu_core_dump.html)

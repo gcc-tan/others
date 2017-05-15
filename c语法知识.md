@@ -112,3 +112,21 @@ _是一个gettext库中的函数用来国际化的。这个函数的作用是根
 
 ### 头文件的作用
 先总结第一点c语言中函数假如写了一个通用的add函数，其他文件想要调用这个函数有两种方式，在调用前声明，这样假如调用比较多，然就要维护很多生命，然后如果把声明写入头文件中，只要用#include一次就够了，避免函数出现改动的时候要改动很多地方
+
+
+### void *指针转换
+intptr_t （无符号版本写成 uintptr_t）这个类型可以被安全的在 void * 和 整数间转换，对于写跨 64 位平台的程序非常重要。也就是说，当你需要把指针作为一个整数来运算时，转换成 intptr_t 才是安全的，可以在运算完毕安全的转回指针类型。
+```
+#include<stdio.h>
+#include<stdint.h>
+int main(int argc,char **argv)
+{
+    void *s = (void *)5;
+    int p = (intptr_t)s;
+    int d = (long)s;
+    printf("%d\n",p);
+    printf("%d\n",d);
+    return 0;
+}
+
+```
