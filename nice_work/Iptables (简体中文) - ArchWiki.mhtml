@@ -1,0 +1,2514 @@
+From: <Saved by Blink>
+Subject: Iptables (????) - ArchWiki
+Date: Thu, 31 May 2017 13:52:15 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--KJUSunOZNAdNbQXxdCkSzBh30Zlcb1fxiuRsFPPR0b----"
+
+------MultipartBoundary--KJUSunOZNAdNbQXxdCkSzBh30Zlcb1fxiuRsFPPR0b----
+Content-Type: text/html
+Content-ID: <frame-12-20794a4e-27f1-4d3f-ad73-193b9491df48@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://wiki.archlinux.org/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
+
+<!DOCTYPE html><html class=3D"client-js" lang=3D"en" dir=3D"ltr"><head><met=
+a http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+
+<title>Iptables (=E7=AE=80=E4=BD=93=E4=B8=AD=E6=96=87) - ArchWiki</title>
+
+
+<link rel=3D"stylesheet" href=3D"https://wiki.archlinux.org/load.php?debug=
+=3Dfalse&amp;lang=3Den&amp;modules=3Dmediawiki.legacy.commonPrint%2Cshared%=
+7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.content.externallinks%7Cmedi=
+awiki.skinning.interface%7Cskins.archlinux.styles&amp;only=3Dstyles&amp;ski=
+n=3Darchlinux">
+
+<!--[if IE 6]><link rel=3D"stylesheet" href=3D"/skins/ArchLinux/IE60Fixes.c=
+ss?303" media=3D"screen"/><![endif]--><!--[if IE 7]><link rel=3D"stylesheet=
+" href=3D"/skins/ArchLinux/IE70Fixes.css?303" media=3D"screen"/><![endif]--=
+>
+<style>
+@media screen {
+	.tochidden,.toctoggle{-moz-user-select:none;-webkit-user-select:none;-ms-u=
+ser-select:none;user-select:none}.toctoggle{font-size:94%}}
+@media print {
+	#toc.tochidden,.toctoggle{display:none}}
+.postedit-container{margin:0 auto;position:fixed;top:0;height:0;left:50%;z-=
+index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedi=
+t{position:relative;top:0.6em;left:-50%;padding:.6em 3.6em .6em 1.1em;line-=
+height:1.5625em;color:#626465;background-color:#f4f4f4;border:1px solid #dc=
+d9d9;text-shadow:0 0.0625em 0 rgba( 255,255,255,0.5 );border-radius:5px;box=
+-shadow:0 2px 5px 0 #ccc;-webkit-transition:all 0.25s ease-in-out;-moz-tran=
+sition:all 0.25s ease-in-out;-ms-transition:all 0.25s ease-in-out;-o-transi=
+tion:all 0.25s ease-in-out;transition:all 0.25s ease-in-out}.skin-monobook =
+.postedit{top:6em !important}.postedit-faded{opacity:0}.postedit-icon{paddi=
+ng-left:41px;  line-height:25px;background-repeat:no-repeat;background-posi=
+tion:8px 50%}.postedit-icon-checkmark{background-image:url(data:image/png;b=
+ase64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB9ElEQVR4AZWRA3AYURQAr=
+xrVHtW2bdu2bdu2zdi2bdu2bWxs7zeehZaw4f70kbs+zI3e/nWK+RWx3aOFlrL56Sy5SxrruG69=
+hlv6OyK+mz+8KDSXdXembj0ispT7tjs4ZTIbpYBvxGSGKzZTeFrb7W/meN002swFs0U8ttpHTkF=
+2BvCqWQrW35929bTsKm5Zb+SEwWwcY8wAngB9m7Z+d+rIPZ/npdy12M5p47n8dXsCYAf0qPy06e=
+GMdktuDu9Qf+JmKl3SWM91qzVcN9tAbEYkwMaq0tyb1m/To5kP170el/BK8/qa6sJr70ydf+T/U=
+u5ab+Oo/lS0AkUBpIFWlZ9WPhxpse/PHO7YbOOczjL0vZV2lNxPPtG73dYXM+xvm2znrOl83tid=
+oqCwMBgYXsPFB0on5S6pr+eK5TKuW67lgvaKvF8mL1dtfTL32FHxRdyx3cQpg7m4x9sCXKkTIzA=
+4LDH44zWdzaUf71hv5rTG4uyzcusybxSX7aThbMQ8XgCYAp3rzTTQOiIh9PNlzY3FSuZxrzjme1=
+Y7uGS6kjsWO4jPjM4FVjRZsvD4kO9XtTZzQn82NyzWc0B7AmZh6gA/hOYSGhfw9YbOVnarj+S78=
+00AL2BIsxUAbWNToj7bhBuQmZcOsFdoKUC74rGheCwXmqAIQTc9jQcrADIAAAAASUVORK5CYII=
+=3D);background-image:url(/resources/src/mediawiki.action/images/green-chec=
+kmark.png?d94f1)!ie;background-position:left}.postedit-close{position:absol=
+ute;padding:0 .8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-hei=
+ght:2.3em;color:#000;text-shadow:0 0.0625em 0 #fff;text-decoration:none;opa=
+city:0.2;filter:alpha( opacity=3D20 )}.postedit-close:hover{color:#000;text=
+-decoration:none;opacity:0.4;filter:alpha( opacity=3D40 )}
+.mw-collapsible-toggle{float:right;-moz-user-select:none;-webkit-user-selec=
+t:none;-ms-user-select:none;user-select:none}  .mw-content-ltr .mw-collapsi=
+ble-toggle,.mw-content-rtl .mw-content-ltr .mw-collapsible-toggle{float:rig=
+ht} .mw-content-rtl .mw-collapsible-toggle,.mw-content-ltr .mw-content-rtl =
+.mw-collapsible-toggle{float:left}.mw-customtoggle,.mw-collapsible-toggle{c=
+ursor:pointer} caption .mw-collapsible-toggle,.mw-content-ltr caption .mw-c=
+ollapsible-toggle,.mw-content-rtl caption .mw-collapsible-toggle,.mw-conten=
+t-rtl .mw-content-ltr caption .mw-collapsible-toggle,.mw-content-ltr .mw-co=
+ntent-rtl caption .mw-collapsible-toggle{float:none} li .mw-collapsible-tog=
+gle,.mw-content-ltr li .mw-collapsible-toggle,.mw-content-rtl li .mw-collap=
+sible-toggle,.mw-content-rtl .mw-content-ltr li .mw-collapsible-toggle,.mw-=
+content-ltr .mw-content-rtl li .mw-collapsible-toggle{float:none} .mw-colla=
+psible-toggle-li{list-style:none}
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:=
+none;z-index:1099;padding:0;margin:-1px 0 0 0}.suggestions-special{position=
+:relative;background-color:#fff;cursor:pointer;border:solid 1px #aaa;paddin=
+g:0;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height=
+:1.25em}.suggestions-results{background-color:#fff;cursor:pointer;border:so=
+lid 1px #aaa;padding:0;margin:0}.suggestions-result{color:#000;margin:0;lin=
+e-height:1.5em;padding:0.01em 0.25em;text-align:left; overflow:hidden;-o-te=
+xt-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}.suggestion=
+s-result-current{background-color:#4c59a6;color:#fff}.suggestions-special .=
+special-label{color:#808080;text-align:left}.suggestions-special .special-q=
+uery{color:#000;font-style:italic;text-align:left}.suggestions-special .spe=
+cial-hover{background-color:#c0c0c0}.suggestions-result-current .special-la=
+bel,.suggestions-result-current .special-query{color:#fff}.highlight{font-w=
+eight:bold}</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:h=
+over,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSu=
+ggest-link:focus{color:#000;text-decoration:none}.suggestions-result-curren=
+t a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-li=
+nk:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.sugges=
+tions-result-current a.mw-searchSuggest-link:focus{color:#fff}.suggestions =
+a.mw-searchSuggest-link .special-query{ overflow:hidden;-o-text-overflow:el=
+lipsis; text-overflow:ellipsis;white-space:nowrap}</style><meta name=3D"Res=
+ourceLoaderDynamicStyles" content=3D"">
+<link rel=3D"stylesheet" href=3D"https://wiki.archlinux.org/load.php?debug=
+=3Dfalse&amp;lang=3Den&amp;modules=3Dsite.styles&amp;only=3Dstyles&amp;skin=
+=3Darchlinux">
+<style></style>
+<meta name=3D"generator" content=3D"MediaWiki 1.28.2">
+<link rel=3D"shortcut icon" href=3D"https://wiki.archlinux.org/favicon.ico"=
+>
+<link rel=3D"search" type=3D"application/opensearchdescription+xml" href=3D=
+"https://wiki.archlinux.org/opensearch_desc.php" title=3D"ArchWiki (en)">
+<link rel=3D"EditURI" type=3D"application/rsd+xml" href=3D"https://wiki.arc=
+hlinux.org/api.php?action=3Drsd">
+<link rel=3D"copyright" href=3D"http://www.gnu.org/copyleft/fdl.html">
+<link rel=3D"alternate" type=3D"application/atom+xml" title=3D"ArchWiki Ato=
+m feed" href=3D"https://wiki.archlinux.org/index.php?title=3DSpecial:Recent=
+Changes&amp;feed=3Datom">
+</head>
+<body class=3D"mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject =
+page-Iptables_=E7=AE=80=E4=BD=93=E4=B8=AD=E6=96=87 rootpage-Iptables_=E7=AE=
+=80=E4=BD=93=E4=B8=AD=E6=96=87 skin-archlinux action-view feature-footer-v2=
+">
+		<div id=3D"archnavbar"><!-- Arch Linux global navigation bar -->
+			<div id=3D"archnavbarlogo">
+				<p><a id=3D"logo" href=3D"https://www.archlinux.org/"></a></p>
+			</div>
+			<div id=3D"archnavbarmenu">
+				<ul id=3D"archnavbarlist">
+					<li id=3D"anb-home"><a href=3D"https://www.archlinux.org/">Home</a></l=
+i><li id=3D"anb-packages"><a href=3D"https://www.archlinux.org/packages/">P=
+ackages</a></li><li id=3D"anb-forums"><a href=3D"https://bbs.archlinux.org/=
+">Forums</a></li><li id=3D"anb-wiki" class=3D"anb-selected"><a href=3D"http=
+s://wiki.archlinux.org/">Wiki</a></li><li id=3D"anb-bugs"><a href=3D"https:=
+//bugs.archlinux.org/">Bugs</a></li><li id=3D"anb-security"><a href=3D"http=
+s://security.archlinux.org/">Security</a></li><li id=3D"anb-aur"><a href=3D=
+"https://aur.archlinux.org/">AUR</a></li><li id=3D"anb-download"><a href=3D=
+"https://www.archlinux.org/download/">Download</a></li>				</ul>
+			</div>
+		</div><!-- #archnavbar -->
+
+		<div id=3D"globalWrapper">
+		<div id=3D"column-content">
+			<div id=3D"content" class=3D"mw-body" role=3D"main">
+				<a id=3D"top"></a>
+			=09
+				<div class=3D"mw-indicators">
+</div>
+				<h1 id=3D"firstHeading" class=3D"firstHeading" lang=3D"en">Iptables (=
+=E7=AE=80=E4=BD=93=E4=B8=AD=E6=96=87)</h1>
+			=09
+				<div id=3D"bodyContent" class=3D"mw-body-content">
+				=09
+					<div id=3D"contentSub"></div>
+										<div id=3D"jump-to-nav" class=3D"mw-jump">Jump to: <a href=3D"htt=
+ps://wiki.archlinux.org/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%=
+96%87)#column-one">navigation</a>, <a href=3D"https://wiki.archlinux.org/in=
+dex.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#searchInput">search=
+</a></div>
+
+					<!-- start content -->
+					<div id=3D"mw-content-text" lang=3D"en" dir=3D"ltr" class=3D"mw-conten=
+t-ltr"><div style=3D"float:right; clear:right; width:25%; margin: 0 0 0.5em=
+ 0.5em;"><p style=3D"background:#333; color:white; padding:0.2em; border-bo=
+ttom:5px #08c solid; margin:0; text-align:center; font-weight:bold;">=E7=9B=
+=B8=E5=85=B3=E6=96=87=E7=AB=A0</p><ul style=3D"list-style-type:none; margin=
+:0; padding:0.3em;">
+<li style=3D"padding:0.4em 0; line-height:1;"><a href=3D"https://wiki.archl=
+inux.org/index.php/Firewalls" title=3D"Firewalls">Firewalls</a></li>
+<li style=3D"padding:0.4em 0; line-height:1;"><a href=3D"https://wiki.archl=
+inux.org/index.php/Sysctl#TCP.2FIP_stack_hardening" title=3D"Sysctl">Sysctl=
+#TCP/IP stack hardening</a></li>
+</ul></div>
+<div style=3D"padding: 5px; margin: 0.50em 0; background-color: #DDDDFF; bo=
+rder: thin solid #BBBBDD; overflow: hidden;"><strong> =E7=BF=BB=E8=AF=91=E7=
+=8A=B6=E6=80=81=EF=BC=9A </strong>=E6=9C=AC=E6=96=87=E6=98=AF=E8=8B=B1=E6=
+=96=87=E9=A1=B5=E9=9D=A2 <a href=3D"https://wiki.archlinux.org/index.php/Ip=
+tables" title=3D"Iptables">Iptables</a> =E7=9A=84<a href=3D"https://wiki.ar=
+chlinux.org/index.php/ArchWiki_Translation_Team_(%E7%AE%80%E4%BD%93%E4%B8%A=
+D%E6%96%87)" title=3D"ArchWiki Translation Team (=E7=AE=80=E4=BD=93=E4=B8=
+=AD=E6=96=87)">=E7=BF=BB=E8=AF=91</a>=EF=BC=8C=E6=9C=80=E5=90=8E=E7=BF=BB=
+=E8=AF=91=E6=97=B6=E9=97=B4=EF=BC=9A2015-10-17=EF=BC=8C=E7=82=B9=E5=87=BB<a=
+ rel=3D"nofollow" class=3D"external text" href=3D"https://wiki.archlinux.or=
+g/index.php?title=3DIptables&amp;diff=3D0&amp;oldid=3D266924">=E8=BF=99=E9=
+=87=8C</a>=E5=8F=AF=E4=BB=A5=E6=9F=A5=E7=9C=8B=E7=BF=BB=E8=AF=91=E5=90=8E=
+=E8=8B=B1=E6=96=87=E9=A1=B5=E9=9D=A2=E7=9A=84=E6=94=B9=E5=8A=A8=E3=80=82</d=
+iv>
+<p><i>iptables</i> =E6=98=AF=E4=B8=80=E4=B8=AA=E9=85=8D=E7=BD=AE Linux =E5=
+=86=85=E6=A0=B8 <a href=3D"https://wiki.archlinux.org/index.php/Firewall" c=
+lass=3D"mw-redirect" title=3D"Firewall">=E9=98=B2=E7=81=AB=E5=A2=99</a> =E7=
+=9A=84=E5=91=BD=E4=BB=A4=E8=A1=8C=E5=B7=A5=E5=85=B7=EF=BC=8C=E6=98=AF <a hr=
+ef=3D"https://en.wikipedia.org/wiki/Netfilter" class=3D"extiw" title=3D"wik=
+ipedia:Netfilter">netfilter</a> =E9=A1=B9=E7=9B=AE=E7=9A=84=E4=B8=80=E9=83=
+=A8=E5=88=86=E3=80=82=E6=9C=AF=E8=AF=AD <i>iptables</i> =E4=B9=9F=E7=BB=8F=
+=E5=B8=B8=E4=BB=A3=E6=8C=87=E8=AF=A5=E5=86=85=E6=A0=B8=E7=BA=A7=E9=98=B2=E7=
+=81=AB=E5=A2=99=E3=80=82iptables =E5=8F=AF=E4=BB=A5=E7=9B=B4=E6=8E=A5=E9=85=
+=8D=E7=BD=AE=EF=BC=8C=E4=B9=9F=E5=8F=AF=E4=BB=A5=E9=80=9A=E8=BF=87=E8=AE=B8=
+=E5=A4=9A <a href=3D"https://wiki.archlinux.org/index.php/Firewalls#iptable=
+s_front-ends" title=3D"Firewalls">=E5=89=8D=E7=AB=AF</a><sup>[<a href=3D"ht=
+tps://wiki.archlinux.org/index.php/ArchWiki:Requests#Broken_section_links" =
+title=3D"ArchWiki:Requests">broken link</a>: invalid section]</sup> =E5=92=
+=8C <a href=3D"https://wiki.archlinux.org/index.php/Firewall#iptables_GUIs"=
+ class=3D"mw-redirect" title=3D"Firewall">=E5=9B=BE=E5=BD=A2=E7=95=8C=E9=9D=
+=A2</a><sup>[<a href=3D"https://wiki.archlinux.org/index.php/ArchWiki:Reque=
+sts#Broken_section_links" title=3D"ArchWiki:Requests">broken link</a>: inva=
+lid section]</sup> =E9=85=8D=E7=BD=AE=E3=80=82iptables =E7=94=A8=E4=BA=8E <=
+a href=3D"https://en.wikipedia.org/wiki/Ipv4" class=3D"extiw" title=3D"wiki=
+pedia:Ipv4">ipv4</a>=EF=BC=8C<i>ip6tables</i> =E7=94=A8=E4=BA=8E <a href=3D=
+"https://en.wikipedia.org/wiki/Ipv6" class=3D"extiw" title=3D"wikipedia:Ipv=
+6">ipv6</a>=E3=80=82
+</p><p><a href=3D"https://wiki.archlinux.org/index.php/Nftables" title=3D"N=
+ftables">nftables</a> =E5=B7=B2=E7=BB=8F=E5=8C=85=E5=90=AB=E5=9C=A8 <a rel=
+=3D"nofollow" class=3D"external text" href=3D"http://www.phoronix.com/scan.=
+php?page=3Dnews_item&amp;px=3DMTQ5MDU">Linux kernel 3.13</a> =E4=B8=AD=EF=
+=BC=8C=E4=BB=A5=E5=90=8E=E4=BC=9A=E5=8F=96=E4=BB=A3 iptables =E6=88=90=E4=
+=B8=BA=E4=B8=BB=E8=A6=81=E7=9A=84 Linux =E9=98=B2=E7=81=AB=E5=A2=99=E5=B7=
+=A5=E5=85=B7=E3=80=82
+</p>
+<div id=3D"toc" class=3D"toc"><div id=3D"toctitle"><h2>Contents</h2><span c=
+lass=3D"toctoggle">&nbsp;[<a role=3D"button" tabindex=3D"0" id=3D"togglelin=
+k">hide</a>]&nbsp;</span></div>
+<ul>
+<li class=3D"toclevel-1 tocsection-1"><a href=3D"https://wiki.archlinux.org=
+/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E5.AE.89.E8.A3.=
+85"><span class=3D"tocnumber">1</span> <span class=3D"toctext">=E5=AE=89=E8=
+=A3=85</span></a></li>
+<li class=3D"toclevel-1 tocsection-2"><a href=3D"https://wiki.archlinux.org=
+/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E5.9F.BA.E6.9C.=
+AC.E6.A6.82.E5.BF.B5"><span class=3D"tocnumber">2</span> <span class=3D"toc=
+text">=E5=9F=BA=E6=9C=AC=E6=A6=82=E5=BF=B5</span></a>
+<ul>
+<li class=3D"toclevel-2 tocsection-3"><a href=3D"https://wiki.archlinux.org=
+/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E8.A1.A8.EF.BC.=
+88Tables.EF.BC.89"><span class=3D"tocnumber">2.1</span> <span class=3D"toct=
+ext">=E8=A1=A8=EF=BC=88Tables=EF=BC=89</span></a></li>
+<li class=3D"toclevel-2 tocsection-4"><a href=3D"https://wiki.archlinux.org=
+/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E9.93.BE_.EF.BC=
+.88Chains.EF.BC.89"><span class=3D"tocnumber">2.2</span> <span class=3D"toc=
+text">=E9=93=BE =EF=BC=88Chains=EF=BC=89</span></a></li>
+<li class=3D"toclevel-2 tocsection-5"><a href=3D"https://wiki.archlinux.org=
+/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E8.A7.84.E5.88.=
+99_.EF.BC.88Rules.EF.BC.89"><span class=3D"tocnumber">2.3</span> <span clas=
+s=3D"toctext">=E8=A7=84=E5=88=99 =EF=BC=88Rules=EF=BC=89</span></a></li>
+<li class=3D"toclevel-2 tocsection-6"><a href=3D"https://wiki.archlinux.org=
+/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E9.81.8D.E5.8E.=
+86.E9.93.BE_.EF.BC.88Traversing_Chains.EF.BC.89"><span class=3D"tocnumber">=
+2.4</span> <span class=3D"toctext">=E9=81=8D=E5=8E=86=E9=93=BE =EF=BC=88Tra=
+versing Chains=EF=BC=89</span></a></li>
+<li class=3D"toclevel-2 tocsection-7"><a href=3D"https://wiki.archlinux.org=
+/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E6.A8.A1.E5.9D.=
+97_.EF.BC.88Modules.EF.BC.89"><span class=3D"tocnumber">2.5</span> <span cl=
+ass=3D"toctext">=E6=A8=A1=E5=9D=97 =EF=BC=88Modules=EF=BC=89</span></a></li=
+>
+</ul>
+</li>
+<li class=3D"toclevel-1 tocsection-8"><a href=3D"https://wiki.archlinux.org=
+/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E9.85.8D.E7.BD.=
+AE.E5.B9.B6.E8.BF.90.E8.A1.8C_iptables"><span class=3D"tocnumber">3</span> =
+<span class=3D"toctext">=E9=85=8D=E7=BD=AE=E5=B9=B6=E8=BF=90=E8=A1=8C iptab=
+les</span></a>
+<ul>
+<li class=3D"toclevel-2 tocsection-9"><a href=3D"https://wiki.archlinux.org=
+/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BB.8E.E5.91.=
+BD.E4.BB.A4.E8.A1.8C"><span class=3D"tocnumber">3.1</span> <span class=3D"t=
+octext">=E4=BB=8E=E5=91=BD=E4=BB=A4=E8=A1=8C</span></a>
+<ul>
+<li class=3D"toclevel-3 tocsection-10"><a href=3D"https://wiki.archlinux.or=
+g/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E6.98.BE.E7.A4=
+.BA.E5.BD.93.E5.89.8D.E8.A7.84.E5.88.99"><span class=3D"tocnumber">3.1.1</s=
+pan> <span class=3D"toctext">=E6=98=BE=E7=A4=BA=E5=BD=93=E5=89=8D=E8=A7=84=
+=E5=88=99</span></a></li>
+<li class=3D"toclevel-3 tocsection-11"><a href=3D"https://wiki.archlinux.or=
+g/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E9.87.8D.E7.BD=
+.AE.E8.A7.84.E5.88.99"><span class=3D"tocnumber">3.1.2</span> <span class=
+=3D"toctext">=E9=87=8D=E7=BD=AE=E8=A7=84=E5=88=99</span></a></li>
+<li class=3D"toclevel-3 tocsection-12"><a href=3D"https://wiki.archlinux.or=
+g/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E7.BC.96.E8.BE=
+.91.E8.A7.84.E5.88.99"><span class=3D"tocnumber">3.1.3</span> <span class=
+=3D"toctext">=E7=BC=96=E8=BE=91=E8=A7=84=E5=88=99</span></a></li>
+</ul>
+</li>
+<li class=3D"toclevel-2 tocsection-13"><a href=3D"https://wiki.archlinux.or=
+g/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E9.85.8D.E7.BD=
+.AE.E6.96.87.E4.BB.B6"><span class=3D"tocnumber">3.2</span> <span class=3D"=
+toctext">=E9=85=8D=E7=BD=AE=E6=96=87=E4=BB=B6</span></a></li>
+<li class=3D"toclevel-2 tocsection-14"><a href=3D"https://wiki.archlinux.or=
+g/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E6.8C.87.E5.8D=
+.97"><span class=3D"tocnumber">3.3</span> <span class=3D"toctext">=E6=8C=87=
+=E5=8D=97</span></a></li>
+</ul>
+</li>
+<li class=3D"toclevel-1 tocsection-15"><a href=3D"https://wiki.archlinux.or=
+g/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E6.97.A5.E5.BF=
+.97"><span class=3D"tocnumber">4</span> <span class=3D"toctext">=E6=97=A5=
+=E5=BF=97</span></a>
+<ul>
+<li class=3D"toclevel-2 tocsection-16"><a href=3D"https://wiki.archlinux.or=
+g/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E9.99.90.E5.88=
+.B6.E6.97.A5.E5.BF.97.E7.BA.A7.E5.88.AB"><span class=3D"tocnumber">4.1</spa=
+n> <span class=3D"toctext">=E9=99=90=E5=88=B6=E6=97=A5=E5=BF=97=E7=BA=A7=E5=
+=88=AB</span></a></li>
+<li class=3D"toclevel-2 tocsection-17"><a href=3D"https://wiki.archlinux.or=
+g/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E6.9F.A5.E7.9C=
+.8B.E8.AE.B0.E5.BD.95.E7.9A.84.E6.95.B0.E6.8D.AE.E5.8C.85"><span class=3D"t=
+ocnumber">4.2</span> <span class=3D"toctext">=E6=9F=A5=E7=9C=8B=E8=AE=B0=E5=
+=BD=95=E7=9A=84=E6=95=B0=E6=8D=AE=E5=8C=85</span></a></li>
+<li class=3D"toclevel-2 tocsection-18"><a href=3D"https://wiki.archlinux.or=
+g/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94=
+.A8_syslog-ng"><span class=3D"tocnumber">4.3</span> <span class=3D"toctext"=
+>=E4=BD=BF=E7=94=A8 syslog-ng</span></a></li>
+<li class=3D"toclevel-2 tocsection-19"><a href=3D"https://wiki.archlinux.or=
+g/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94=
+.A8_ulogd"><span class=3D"tocnumber">4.4</span> <span class=3D"toctext">=E4=
+=BD=BF=E7=94=A8 ulogd</span></a></li>
+</ul>
+</li>
+<li class=3D"toclevel-1 tocsection-20"><a href=3D"https://wiki.archlinux.or=
+g/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E5.8F.82.E8.A7=
+.81"><span class=3D"tocnumber">5</span> <span class=3D"toctext">=E5=8F=82=
+=E8=A7=81</span></a></li>
+</ul>
+</div>
+
+<h2><span class=3D"mw-headline" id=3D".E5.AE.89.E8.A3.85">=E5=AE=89=E8=A3=
+=85</span></h2>
+<p>Arch Linux =E5=86=85=E6=A0=B8=E5=B7=B2=E7=BB=8F=E7=BC=96=E8=AF=91=E4=BA=
+=86 iptables =E6=94=AF=E6=8C=81=E3=80=82=E5=8F=AA=E9=9C=80=E8=A6=81<a href=
+=3D"https://wiki.archlinux.org/index.php/Pacman" title=3D"Pacman">=E5=AE=89=
+=E8=A3=85</a>=E5=9C=A8 <a href=3D"https://wiki.archlinux.org/index.php/Offi=
+cial_repositories" title=3D"Official repositories">official repositories</a=
+> =E4=B8=AD=E6=8F=90=E4=BE=9B=E7=9A=84=E7=94=A8=E6=88=B7=E5=B1=82=E5=B7=A5=
+=E5=85=B7 <span class=3D"plainlinks archwiki-template-pkg"><a rel=3D"nofoll=
+ow" class=3D"external text" href=3D"https://www.archlinux.org/packages/?nam=
+e=3Diptables">iptables</a></span> =E5=8C=85=E3=80=82=EF=BC=88<span class=3D=
+"plainlinks archwiki-template-pkg"><a rel=3D"nofollow" class=3D"external te=
+xt" href=3D"https://www.archlinux.org/groups/x86_64/base/">base</a></span> =
+=E7=BB=84=E4=B8=AD=E7=9A=84 <span class=3D"plainlinks archwiki-template-pkg=
+"><a rel=3D"nofollow" class=3D"external text" href=3D"https://www.archlinux=
+.org/packages/?name=3Diproute2">iproute2</a></span> =E5=8C=85=E4=BE=9D=E8=
+=B5=96 iptables=EF=BC=8C=E5=9B=A0=E6=AD=A4=E7=B3=BB=E7=BB=9F=E4=B8=AD=E5=B7=
+=B2=E7=BB=8F=E9=BB=98=E8=AE=A4=E5=AE=89=E8=A3=85=E4=BA=86 iptables =E5=8C=
+=85=E3=80=82=EF=BC=89
+</p>
+<h2><span class=3D"mw-headline" id=3D".E5.9F.BA.E6.9C.AC.E6.A6.82.E5.BF.B5"=
+>=E5=9F=BA=E6=9C=AC=E6=A6=82=E5=BF=B5</span></h2>
+<p>iptables =E5=8F=AF=E4=BB=A5=E6=A3=80=E6=B5=8B=E3=80=81=E4=BF=AE=E6=94=B9=
+=E3=80=81=E8=BD=AC=E5=8F=91=E3=80=81=E9=87=8D=E5=AE=9A=E5=90=91=E5=92=8C=E4=
+=B8=A2=E5=BC=83 IPv4 =E6=95=B0=E6=8D=AE=E5=8C=85=E3=80=82=E8=BF=87=E6=BB=A4=
+ IPv4 =E6=95=B0=E6=8D=AE=E5=8C=85=E7=9A=84=E4=BB=A3=E7=A0=81=E5=B7=B2=E7=BB=
+=8F=E5=86=85=E7=BD=AE=E4=BA=8E=E5=86=85=E6=A0=B8=E4=B8=AD=EF=BC=8C=E5=B9=B6=
+=E4=B8=94=E6=8C=89=E7=85=A7=E4=B8=8D=E5=90=8C=E7=9A=84=E7=9B=AE=E7=9A=84=E8=
+=A2=AB=E7=BB=84=E7=BB=87=E6=88=90 <b>=E8=A1=A8</b> =E7=9A=84=E9=9B=86=E5=90=
+=88=E3=80=82<b>=E8=A1=A8</b> =E7=94=B1=E4=B8=80=E7=BB=84=E9=A2=84=E5=85=88=
+=E5=AE=9A=E4=B9=89=E7=9A=84 <b>=E9=93=BE</b> =E7=BB=84=E6=88=90=EF=BC=8C<b>=
+=E9=93=BE</b> =E5=8C=85=E5=90=AB=E9=81=8D=E5=8E=86=E9=A1=BA=E5=BA=8F=E8=A7=
+=84=E5=88=99=E3=80=82=E6=AF=8F=E4=B8=80=E6=9D=A1=E8=A7=84=E5=88=99=E5=8C=85=
+=E5=90=AB=E4=B8=80=E4=B8=AA=E8=B0=93=E8=AF=8D=E7=9A=84=E6=BD=9C=E5=9C=A8=E5=
+=8C=B9=E9=85=8D=E5=92=8C=E7=9B=B8=E5=BA=94=E7=9A=84=E5=8A=A8=E4=BD=9C=EF=BC=
+=88=E7=A7=B0=E4=B8=BA <b>=E7=9B=AE=E6=A0=87</b>=EF=BC=89=EF=BC=8C=E5=A6=82=
+=E6=9E=9C=E8=B0=93=E8=AF=8D=E4=B8=BA=E7=9C=9F=EF=BC=8C=E8=AF=A5=E5=8A=A8=E4=
+=BD=9C=E4=BC=9A=E8=A2=AB=E6=89=A7=E8=A1=8C=E3=80=82=E4=B9=9F=E5=B0=B1=E6=98=
+=AF=E8=AF=B4=E6=9D=A1=E4=BB=B6=E5=8C=B9=E9=85=8D=E3=80=82iptables =E6=98=AF=
+=E7=94=A8=E6=88=B7=E5=B7=A5=E5=85=B7=EF=BC=8C=E5=85=81=E8=AE=B8=E7=94=A8=E6=
+=88=B7=E4=BD=BF=E7=94=A8 <b>=E9=93=BE</b> =E5=92=8C <b>=E8=A7=84=E5=88=99</=
+b>=E3=80=82=E5=BE=88=E5=A4=9A=E6=96=B0=E6=89=8B=E9=9D=A2=E5=AF=B9=E5=A4=8D=
+=E6=9D=82=E7=9A=84 linux IP =E8=B7=AF=E7=94=B1=E6=97=B6=E6=80=BB=E6=98=AF=
+=E6=84=9F=E5=88=B0=E6=B0=94=E9=A6=81=EF=BC=8C=E4=BD=86=E6=98=AF=EF=BC=8C=E5=
+=AE=9E=E9=99=85=E4=B8=8A=E6=9C=80=E5=B8=B8=E7=94=A8=E7=9A=84=E4=B8=80=E4=BA=
+=9B=E5=BA=94=E7=94=A8=E6=A1=88=E4=BE=8B=EF=BC=88NAT =E6=88=96=E8=80=85=E5=
+=9F=BA=E6=9C=AC=E7=9A=84=E7=BD=91=E7=BB=9C=E9=98=B2=E7=81=AB=E5=A2=99=EF=BC=
+=89=E5=B9=B6=E4=B8=8D=E6=98=AF=E5=BE=88=E5=A4=8D=E6=9D=82=E3=80=82
+</p><p>=E7=90=86=E8=A7=A3 iptables =E5=A6=82=E4=BD=95=E5=B7=A5=E4=BD=9C=E7=
+=9A=84=E5=85=B3=E9=94=AE=E6=98=AF=E8=BF=99=E5=BC=A0<a rel=3D"nofollow" clas=
+s=3D"external text" href=3D"http://www.frozentux.net/iptables-tutorial/imag=
+es/tables_traverse.jpg">=E5=9B=BE</a>=E3=80=82=E5=9B=BE=E4=B8=AD=E5=9C=A8=
+=E4=B8=8A=E9=9D=A2=E7=9A=84=E5=B0=8F=E5=86=99=E5=AD=97=E6=AF=8D=E4=BB=A3=E8=
+=A1=A8 <b>=E8=A1=A8</b>=EF=BC=8C=E5=9C=A8=E4=B8=8B=E9=9D=A2=E7=9A=84=E5=A4=
+=A7=E5=86=99=E5=AD=97=E6=AF=8D=E4=BB=A3=E8=A1=A8 <b>=E9=93=BE</b>=E3=80=82<=
+b>=E4=BB=8E=E4=BB=BB=E4=BD=95=E7=BD=91=E7=BB=9C=E7=AB=AF=E5=8F=A3</b> =E8=
+=BF=9B=E6=9D=A5=E7=9A=84=E6=AF=8F=E4=B8=80=E4=B8=AA IP =E6=95=B0=E6=8D=AE=
+=E5=8C=85=E9=83=BD=E8=A6=81=E4=BB=8E=E4=B8=8A=E5=88=B0=E4=B8=8B=E7=9A=84=E7=
+=A9=BF=E8=BF=87=E8=BF=99=E5=BC=A0=E5=9B=BE=E3=80=82=E4=B8=80=E7=A7=8D=E5=B8=
+=B8=E8=A7=81=E7=9A=84=E5=9B=B0=E6=89=B0=E6=98=AF=E8=AE=A4=E4=B8=BA iptables=
+ =E5=AF=B9=E4=BB=8E=E5=86=85=E9=83=A8=E7=AB=AF=E5=8F=A3=E8=BF=9B=E5=85=A5=
+=E7=9A=84=E6=95=B0=E6=8D=AE=E5=8C=85=E5=92=8C=E4=BB=8E=E9=9D=A2=E5=90=91=E4=
+=BA=92=E8=81=94=E7=BD=91=E7=AB=AF=E5=8F=A3=E8=BF=9B=E5=85=A5=E7=9A=84=E6=95=
+=B0=E6=8D=AE=E5=8C=85=E9=87=87=E5=8F=96=E4=B8=8D=E5=90=8C=E7=9A=84=E5=A4=84=
+=E7=90=86=E6=96=B9=E5=BC=8F=EF=BC=8C=E7=9B=B8=E5=8F=8D=EF=BC=8Ciptabales =
+=E5=AF=B9=E4=BB=8E=E4=BB=BB=E4=BD=95=E7=AB=AF=E5=8F=A3=E8=BF=9B=E5=85=A5=E7=
+=9A=84=E6=95=B0=E6=8D=AE=E5=8C=85=E9=83=BD=E4=BC=9A=E9=87=87=E5=8F=96=E7=9B=
+=B8=E5=90=8C=E7=9A=84=E5=A4=84=E7=90=86=E6=96=B9=E5=BC=8F=E3=80=82=E5=8F=AF=
+=E4=BB=A5=E5=AE=9A=E4=B9=89=E8=A7=84=E5=88=99=E4=BD=BF iptables =E9=87=87=
+=E5=8F=96=E4=B8=8D=E5=90=8C=E7=9A=84=E6=96=B9=E5=BC=8F=E5=AF=B9=E5=BE=85=E4=
+=BB=8E=E4=B8=8D=E5=90=8C=E7=AB=AF=E5=8F=A3=E8=BF=9B=E5=85=A5=E7=9A=84=E6=95=
+=B0=E6=8D=AE=E5=8C=85=E3=80=82=E5=BD=93=E7=84=B6=E4=B8=80=E4=BA=9B=E6=95=B0=
+=E6=8D=AE=E5=8C=85=E6=98=AF=E7=94=A8=E4=BA=8E=E6=9C=AC=E5=9C=B0=E8=BF=9B=E7=
+=A8=8B=E7=9A=84=EF=BC=8C=E5=9B=A0=E6=AD=A4=E5=9C=A8=E5=9B=BE=E4=B8=AD=E8=A1=
+=A8=E7=8E=B0=E4=B8=BA=E4=BB=8E=E9=A1=B6=E7=AB=AF=E8=BF=9B=E5=85=A5=EF=BC=8C=
+=E5=88=B0 &lt;Local Process&gt; =E5=81=9C=E6=AD=A2=EF=BC=8C=E8=80=8C=E5=8F=
+=A6=E4=B8=80=E4=BA=9B=E6=95=B0=E6=8D=AE=E5=8C=85=E6=98=AF=E7=94=B1=E6=9C=AC=
+=E5=9C=B0=E8=BF=9B=E7=A8=8B=E7=94=9F=E6=88=90=E7=9A=84=EF=BC=8C=E5=9B=A0=E6=
+=AD=A4=E5=9C=A8=E5=9B=BE=E4=B8=AD=E8=A1=A8=E7=8E=B0=E4=B8=BA=E4=BB=8E &lt;L=
+ocal Process&gt; =E5=8F=91=E5=87=BA=EF=BC=8C=E4=B8=80=E7=9B=B4=E5=90=91=E4=
+=B8=8B=E7=A9=BF=E8=BF=87=E8=AF=A5=E6=B5=81=E7=A8=8B=E5=9B=BE=E3=80=82=E4=B8=
+=80=E4=BB=BD=E5=85=B3=E4=BA=8E=E8=AF=A5=E6=B5=81=E7=A8=8B=E5=9B=BE=E5=A6=82=
+=E4=BD=95=E5=B7=A5=E4=BD=9C=E7=9A=84=E8=AF=A6=E7=BB=86=E8=A7=A3=E9=87=8A=E8=
+=AF=B7=E5=8F=82=E8=80=83<a rel=3D"nofollow" class=3D"external text" href=3D=
+"http://www.frozentux.net/iptables-tutorial/iptables-tutorial.html#TRAVERSI=
+NGOFTABLES">=E8=BF=99=E9=87=8C</a>=E3=80=82
+</p><p>=E5=9C=A8=E5=A4=A7=E5=A4=9A=E6=95=B0=E4=BD=BF=E7=94=A8=E6=83=85=E5=
+=86=B5=E4=B8=8B=E9=83=BD=E4=B8=8D=E4=BC=9A=E7=94=A8=E5=88=B0 <b>raw</b>=EF=
+=BC=8C<b>mangle</b> =E5=92=8C <b>security</b> =E8=A1=A8=E3=80=82=E4=B8=8B=
+=E5=9B=BE=E7=AE=80=E8=A6=81=E6=8F=8F=E8=BF=B0=E4=BA=86=E7=BD=91=E7=BB=9C=E6=
+=95=B0=E6=8D=AE=E5=8C=85=E9=80=9A=E8=BF=87 <b>iptables</b> =E7=9A=84=E8=BF=
+=87=E7=A8=8B=EF=BC=9A
+</p>
+<pre>                               XXXXXXXXXXXXXXXXXX
+                             XXX     Network    XXX
+                               XXXXXXXXXXXXXXXXXX
+                                       +
+                                       |
+                                       v
+ +-------------+              +------------------+
+ |table: filter| &lt;---+        | table: nat       |
+ |chain: INPUT |     |        | chain: PREROUTING|
+ +-----+-------+     |        +--------+---------+
+       |             |                 |
+       v             |                 v
+ [local process]     |           ****************          +--------------+
+       |             +---------+ Routing decision +------&gt; |table: filte=
+r |
+       v                         ****************          |chain: FORWARD|
+****************                                           +------+-------+
+Routing decision                                                  |
+****************                                                  |
+       |                                                          |
+       v                        ****************                  |
++-------------+       +------&gt;  Routing decision  &lt;---------------+
+|table: nat   |       |         ****************
+|chain: OUTPUT|       |               +
++-----+-------+       |               |
+      |               |               v
+      v               |      +-------------------+
++--------------+      |      | table: nat        |
+|table: filter | +----+      | chain: POSTROUTING|
+|chain: OUTPUT |             +--------+----------+
++--------------+                      |
+                                      v
+                               XXXXXXXXXXXXXXXXXX
+                             XXX    Network     XXX
+                               XXXXXXXXXXXXXXXXXX
+</pre>
+<h3><span class=3D"mw-headline" id=3D".E8.A1.A8.EF.BC.88Tables.EF.BC.89">=
+=E8=A1=A8=EF=BC=88Tables=EF=BC=89</span></h3>
+<p>iptables =E5=8C=85=E5=90=AB 5 =E5=BC=A0=E8=A1=A8=EF=BC=88tables=EF=BC=89=
+:
+</p>
+<ol><li> <code>raw</code> =E7=94=A8=E4=BA=8E=E9=85=8D=E7=BD=AE=E6=95=B0=E6=
+=8D=AE=E5=8C=85=EF=BC=8C<code>raw</code> =E4=B8=AD=E7=9A=84=E6=95=B0=E6=8D=
+=AE=E5=8C=85=E4=B8=8D=E4=BC=9A=E8=A2=AB=E7=B3=BB=E7=BB=9F=E8=B7=9F=E8=B8=AA=
+=E3=80=82</li>
+<li> <code>filter</code> =E6=98=AF=E7=94=A8=E4=BA=8E=E5=AD=98=E6=94=BE=E6=
+=89=80=E6=9C=89=E4=B8=8E=E9=98=B2=E7=81=AB=E5=A2=99=E7=9B=B8=E5=85=B3=E6=93=
+=8D=E4=BD=9C=E7=9A=84=E9=BB=98=E8=AE=A4=E8=A1=A8=E3=80=82</li>
+<li> <code>nat</code> =E7=94=A8=E4=BA=8E <a href=3D"https://en.wikipedia.or=
+g/wiki/Network_address_translation" class=3D"extiw" title=3D"wikipedia:Netw=
+ork address translation">=E7=BD=91=E7=BB=9C=E5=9C=B0=E5=9D=80=E8=BD=AC=E6=
+=8D=A2</a>=EF=BC=88=E4=BE=8B=E5=A6=82=EF=BC=9A=E7=AB=AF=E5=8F=A3=E8=BD=AC=
+=E5=8F=91=EF=BC=89=E3=80=82</li>
+<li> <code>mangle</code> =E7=94=A8=E4=BA=8E=E5=AF=B9=E7=89=B9=E5=AE=9A=E6=
+=95=B0=E6=8D=AE=E5=8C=85=E7=9A=84=E4=BF=AE=E6=94=B9=EF=BC=88=E5=8F=82=E8=80=
+=83 <a href=3D"https://en.wikipedia.org/wiki/Mangled_packet" class=3D"extiw=
+" title=3D"wikipedia:Mangled packet">=E6=8D=9F=E5=9D=8F=E6=95=B0=E6=8D=AE=
+=E5=8C=85</a>=EF=BC=89=E3=80=82</li>
+<li> <code>security</code> =E7=94=A8=E4=BA=8E <a href=3D"https://wiki.archl=
+inux.org/index.php/Security#Mandatory_access_control" title=3D"Security">=
+=E5=BC=BA=E5=88=B6=E8=AE=BF=E9=97=AE=E6=8E=A7=E5=88=B6</a> =E7=BD=91=E7=BB=
+=9C=E8=A7=84=E5=88=99=EF=BC=88=E4=BE=8B=E5=A6=82=EF=BC=9A SELinux -- =E8=AF=
+=A6=E7=BB=86=E4=BF=A1=E6=81=AF=E5=8F=82=E8=80=83 <a rel=3D"nofollow" class=
+=3D"external text" href=3D"http://lwn.net/Articles/267140/">=E8=AF=A5=E6=96=
+=87=E7=AB=A0</a>=EF=BC=89=E3=80=82</li></ol>
+<p>=E5=A4=A7=E9=83=A8=E5=88=86=E6=83=85=E5=86=B5=E4=BB=85=E9=9C=80=E8=A6=81=
+=E4=BD=BF=E7=94=A8 <b>filter</b> =E5=92=8C <b>nat</b>=E3=80=82=E5=85=B6=E4=
+=BB=96=E8=A1=A8=E7=94=A8=E4=BA=8E=E6=9B=B4=E5=A4=8D=E6=9D=82=E7=9A=84=E6=83=
+=85=E5=86=B5=E2=80=94=E2=80=94=E5=8C=85=E6=8B=AC=E5=A4=9A=E8=B7=AF=E7=94=B1=
+=E5=92=8C=E8=B7=AF=E7=94=B1=E5=88=A4=E5=AE=9A=E2=80=94=E2=80=94=E5=B7=B2=E7=
+=BB=8F=E8=B6=85=E5=87=BA=E4=BA=86=E6=9C=AC=E6=96=87=E4=BB=8B=E7=BB=8D=E7=9A=
+=84=E8=8C=83=E5=9B=B4=E3=80=82
+</p>
+<h3><span class=3D"mw-headline" id=3D".E9.93.BE_.EF.BC.88Chains.EF.BC.89">=
+=E9=93=BE =EF=BC=88Chains=EF=BC=89</span></h3>
+<p>=E8=A1=A8=E7=94=B1=E9=93=BE=E7=BB=84=E6=88=90=EF=BC=8C=E9=93=BE=E6=98=AF=
+=E4=B8=80=E4=BA=9B=E6=8C=89=E9=A1=BA=E5=BA=8F=E6=8E=92=E5=88=97=E7=9A=84=E8=
+=A7=84=E5=88=99=E7=9A=84=E5=88=97=E8=A1=A8=E3=80=82=E9=BB=98=E8=AE=A4=E7=9A=
+=84 <code>filter</code> =E8=A1=A8=E5=8C=85=E5=90=AB <code>INPUT</code>=EF=
+=BC=8C <code>OUTPUT</code> =E5=92=8C <code>FORWARD</code> 3=E6=9D=A1=E5=86=
+=85=E5=BB=BA=E7=9A=84=E9=93=BE=EF=BC=8C=E8=BF=993=E6=9D=A1=E9=93=BE=E4=BD=
+=9C=E7=94=A8=E4=BA=8E=E6=95=B0=E6=8D=AE=E5=8C=85=E8=BF=87=E6=BB=A4=E8=BF=87=
+=E7=A8=8B=E4=B8=AD=E7=9A=84=E4=B8=8D=E5=90=8C=E6=97=B6=E9=97=B4=E7=82=B9=EF=
+=BC=8C=E5=A6=82=E8=AF=A5<a rel=3D"nofollow" class=3D"external text" href=3D=
+"http://www.frozentux.net/iptables-tutorial/chunkyhtml/images/tables_traver=
+se.jpg">=E6=B5=81=E7=A8=8B=E5=9B=BE</a>=E6=89=80=E7=A4=BA=E3=80=82<code>nat=
+</code> =E8=A1=A8=E5=8C=85=E5=90=AB<code>PREROUTING</code>=EF=BC=8C <code>P=
+OSTROUTING</code> =E5=92=8C <code>OUTPUT</code> =E9=93=BE=E3=80=82
+</p><p>=E4=BD=BF=E7=94=A8 <code>man 8 iptables</code> =E6=9F=A5=E7=9C=8B=E5=
+=85=B6=E4=BB=96=E8=A1=A8=E4=B8=AD=E5=86=85=E5=BB=BA=E9=93=BE=E7=9A=84=E6=8F=
+=8F=E8=BF=B0=E3=80=82
+</p><p>=E9=BB=98=E8=AE=A4=E6=83=85=E5=86=B5=E4=B8=8B=EF=BC=8C=E4=BB=BB=E4=
+=BD=95=E9=93=BE=E4=B8=AD=E9=83=BD=E6=B2=A1=E6=9C=89=E8=A7=84=E5=88=99=E3=80=
+=82=E5=8F=AF=E4=BB=A5=E5=90=91=E9=93=BE=E4=B8=AD=E6=B7=BB=E5=8A=A0=E8=87=AA=
+=E5=B7=B1=E6=83=B3=E7=94=A8=E7=9A=84=E8=A7=84=E5=88=99=E3=80=82=E9=93=BE=E7=
+=9A=84=E9=BB=98=E8=AE=A4=E8=A7=84=E5=88=99=E9=80=9A=E5=B8=B8=E8=AE=BE=E7=BD=
+=AE=E4=B8=BA <code>ACCEPT</code>=EF=BC=8C=E5=A6=82=E6=9E=9C=E6=83=B3=E7=A1=
+=AE=E4=BF=9D=E4=BB=BB=E4=BD=95=E5=8C=85=E9=83=BD=E4=B8=8D=E8=83=BD=E9=80=9A=
+=E8=BF=87=E8=A7=84=E5=88=99=E9=9B=86=EF=BC=8C=E9=82=A3=E4=B9=88=E5=8F=AF=E4=
+=BB=A5=E9=87=8D=E7=BD=AE=E4=B8=BA <code>DROP</code>=E3=80=82=E9=BB=98=E8=AE=
+=A4=E7=9A=84=E8=A7=84=E5=88=99=E6=80=BB=E6=98=AF=E5=9C=A8=E4=B8=80=E6=9D=A1=
+=E9=93=BE=E7=9A=84=E6=9C=80=E5=90=8E=E7=94=9F=E6=95=88=EF=BC=8C=E6=89=80=E4=
+=BB=A5=E5=9C=A8=E9=BB=98=E8=AE=A4=E8=A7=84=E5=88=99=E7=94=9F=E6=95=88=E5=89=
+=8D=E6=95=B0=E6=8D=AE=E5=8C=85=E9=9C=80=E8=A6=81=E9=80=9A=E8=BF=87=E6=89=80=
+=E6=9C=89=E5=AD=98=E5=9C=A8=E7=9A=84=E8=A7=84=E5=88=99=E3=80=82
+</p><p>=E7=94=A8=E6=88=B7=E5=8F=AF=E4=BB=A5=E5=8A=A0=E5=85=A5=E8=87=AA=E5=
+=B7=B1=E5=AE=9A=E4=B9=89=E7=9A=84=E9=93=BE=EF=BC=8C=E4=BB=8E=E8=80=8C=E4=BD=
+=BF=E8=A7=84=E5=88=99=E9=9B=86=E6=9B=B4=E6=9C=89=E6=95=88=E5=B9=B6=E4=B8=94=
+=E6=98=93=E4=BA=8E=E4=BF=AE=E6=94=B9=E3=80=82=E5=A6=82=E4=BD=95=E4=BD=BF=E7=
+=94=A8=E8=87=AA=E5=AE=9A=E4=B9=89=E9=93=BE=E8=AF=B7=E5=8F=82=E8=80=83 <a hr=
+ef=3D"https://wiki.archlinux.org/index.php/Simple_stateful_firewall" title=
+=3D"Simple stateful firewall">Simple stateful firewall</a>=E3=80=82
+</p>
+<h3><span class=3D"mw-headline" id=3D".E8.A7.84.E5.88.99_.EF.BC.88Rules.EF.=
+BC.89">=E8=A7=84=E5=88=99 =EF=BC=88Rules=EF=BC=89</span></h3>
+<p>=E6=95=B0=E6=8D=AE=E5=8C=85=E7=9A=84=E8=BF=87=E6=BB=A4=E5=9F=BA=E4=BA=8E=
+ <b>=E8=A7=84=E5=88=99</b>=E3=80=82<b>=E8=A7=84=E5=88=99</b>=E7=94=B1=E4=B8=
+=80=E4=B8=AA<i>=E7=9B=AE=E6=A0=87</i>=EF=BC=88=E6=95=B0=E6=8D=AE=E5=8C=85=
+=E5=8C=85=E5=8C=B9=E9=85=8D=E6=89=80=E6=9C=89=E6=9D=A1=E4=BB=B6=E5=90=8E=E7=
+=9A=84=E5=8A=A8=E4=BD=9C=EF=BC=89=E5=92=8C=E5=BE=88=E5=A4=9A<i>=E5=8C=B9=E9=
+=85=8D</i>=EF=BC=88=E5=AF=BC=E8=87=B4=E8=AF=A5=E8=A7=84=E5=88=99=E5=8F=AF=
+=E4=BB=A5=E5=BA=94=E7=94=A8=E7=9A=84=E6=95=B0=E6=8D=AE=E5=8C=85=E6=89=80=E6=
+=BB=A1=E8=B6=B3=E7=9A=84=E6=9D=A1=E4=BB=B6=EF=BC=89=E6=8C=87=E5=AE=9A=E3=80=
+=82=E4=B8=80=E4=B8=AA=E8=A7=84=E5=88=99=E7=9A=84=E5=85=B8=E5=9E=8B=E5=8C=B9=
+=E9=85=8D=E4=BA=8B=E9=A1=B9=E6=98=AF=E6=95=B0=E6=8D=AE=E5=8C=85=E8=BF=9B=E5=
+=85=A5=E7=9A=84=E7=AB=AF=E5=8F=A3=EF=BC=88=E4=BE=8B=E5=A6=82=EF=BC=9Aeth0 =
+=E6=88=96=E8=80=85 eth1=EF=BC=89=E3=80=81=E6=95=B0=E6=8D=AE=E5=8C=85=E7=9A=
+=84=E7=B1=BB=E5=9E=8B=EF=BC=88ICMP, TCP, =E6=88=96=E8=80=85 UDP=EF=BC=89=E5=
+=92=8C=E6=95=B0=E6=8D=AE=E5=8C=85=E7=9A=84=E7=9B=AE=E7=9A=84=E7=AB=AF=E5=8F=
+=A3=E3=80=82
+</p><p>=E7=9B=AE=E6=A0=87=E4=BD=BF=E7=94=A8 <code>-j</code> =E6=88=96=E8=80=
+=85 <code>--jump</code> =E9=80=89=E9=A1=B9=E6=8C=87=E5=AE=9A=E3=80=82=E7=9B=
+=AE=E6=A0=87=E5=8F=AF=E4=BB=A5=E6=98=AF=E7=94=A8=E6=88=B7=E5=AE=9A=E4=B9=89=
+=E7=9A=84=E9=93=BE=EF=BC=88=E4=BE=8B=E5=A6=82=EF=BC=8C=E5=A6=82=E6=9E=9C=E6=
+=9D=A1=E4=BB=B6=E5=8C=B9=E9=85=8D=EF=BC=8C=E8=B7=B3=E8=BD=AC=E5=88=B0=E4=B9=
+=8B=E5=90=8E=E7=9A=84=E7=94=A8=E6=88=B7=E5=AE=9A=E4=B9=89=E7=9A=84=E9=93=BE=
+=EF=BC=8C=E7=BB=A7=E7=BB=AD=E5=A4=84=E7=90=86=EF=BC=89=E3=80=81=E4=B8=80=E4=
+=B8=AA=E5=86=85=E7=BD=AE=E7=9A=84=E7=89=B9=E5=AE=9A=E7=9B=AE=E6=A0=87=E6=88=
+=96=E8=80=85=E6=98=AF=E4=B8=80=E4=B8=AA=E7=9B=AE=E6=A0=87=E6=89=A9=E5=B1=95=
+=E3=80=82=E5=86=85=E7=BD=AE=E7=9B=AE=E6=A0=87=E6=98=AF <code>ACCEPT</code>=
+=EF=BC=8C <code>DROP</code>=EF=BC=8C <code>QUEUE</code> =E5=92=8C <code>RET=
+URN</code>=EF=BC=8C=E7=9B=AE=E6=A0=87=E6=89=A9=E5=B1=95=E6=98=AF <code>REJE=
+CT</code> and <code>LOG</code>=E3=80=82=E5=A6=82=E6=9E=9C=E7=9B=AE=E6=A0=87=
+=E6=98=AF=E5=86=85=E7=BD=AE=E7=9B=AE=E6=A0=87=EF=BC=8C=E6=95=B0=E6=8D=AE=E5=
+=8C=85=E7=9A=84=E5=91=BD=E8=BF=90=E4=BC=9A=E7=AB=8B=E5=88=BB=E8=A2=AB=E5=86=
+=B3=E5=AE=9A=E5=B9=B6=E4=B8=94=E5=9C=A8=E5=BD=93=E5=89=8D=E8=A1=A8=E7=9A=84=
+=E6=95=B0=E6=8D=AE=E5=8C=85=E7=9A=84=E5=A4=84=E7=90=86=E8=BF=87=E7=A8=8B=E4=
+=BC=9A=E5=81=9C=E6=AD=A2=E3=80=82=E5=A6=82=E6=9E=9C=E7=9B=AE=E6=A0=87=E6=98=
+=AF=E7=94=A8=E6=88=B7=E5=AE=9A=E4=B9=89=E7=9A=84=E9=93=BE=EF=BC=8C=E5=B9=B6=
+=E4=B8=94=E6=95=B0=E6=8D=AE=E5=8C=85=E6=88=90=E5=8A=9F=E7=A9=BF=E8=BF=87=E7=
+=AC=AC=E4=BA=8C=E6=9D=A1=E9=93=BE=EF=BC=8C=E7=9B=AE=E6=A0=87=E5=B0=86=E7=A7=
+=BB=E5=8A=A8=E5=88=B0=E5=8E=9F=E5=A7=8B=E9=93=BE=E4=B8=AD=E7=9A=84=E4=B8=8B=
+=E4=B8=80=E4=B8=AA=E8=A7=84=E5=88=99=E3=80=82=E7=9B=AE=E6=A0=87=E6=89=A9=E5=
+=B1=95=E5=8F=AF=E4=BB=A5=E8=A2=AB<i>=E7=BB=88=E6=AD=A2</i>=EF=BC=88=E5=83=
+=8F=E5=86=85=E7=BD=AE=E7=9B=AE=E6=A0=87=E4=B8=80=E6=A0=B7=EF=BC=89=E6=88=96=
+=E8=80=85<i>=E4=B8=8D=E7=BB=88=E6=AD=A2</i>=EF=BC=88=E5=83=8F=E7=94=A8=E6=
+=88=B7=E5=AE=9A=E4=B9=89=E9=93=BE=E4=B8=80=E6=A0=B7=EF=BC=89=E3=80=82=E8=AF=
+=A6=E7=BB=86=E4=BF=A1=E6=81=AF=E5=8F=82=E9=98=85 <code>man 8 iptables-exten=
+sions</code>=E3=80=82
+</p>
+<h3><span class=3D"mw-headline" id=3D".E9.81.8D.E5.8E.86.E9.93.BE_.EF.BC.88=
+Traversing_Chains.EF.BC.89">=E9=81=8D=E5=8E=86=E9=93=BE =EF=BC=88Traversing=
+ Chains=EF=BC=89</span></h3>
+<p>=E8=AF=A5<a rel=3D"nofollow" class=3D"external text" href=3D"http://www.=
+frozentux.net/iptables-tutorial/chunkyhtml/images/tables_traverse.jpg">=E6=
+=B5=81=E7=A8=8B=E5=9B=BE</a>=E6=8F=8F=E8=BF=B0=E9=93=BE=E4=BA=86=E5=9C=A8=
+=E4=BB=BB=E4=BD=95=E6=8E=A5=E5=8F=A3=E4=B8=8A=E6=94=B6=E5=88=B0=E7=9A=84=E7=
+=BD=91=E7=BB=9C=E6=95=B0=E6=8D=AE=E5=8C=85=E6=98=AF=E6=8C=89=E7=85=A7=E6=80=
+=8E=E6=A0=B7=E7=9A=84=E9=A1=BA=E5=BA=8F=E7=A9=BF=E8=BF=87=E8=A1=A8=E7=9A=84=
+=E4=BA=A4=E9=80=9A=E7=AE=A1=E5=88=B6=E9=93=BE=E3=80=82=E7=AC=AC=E4=B8=80=E4=
+=B8=AA=E8=B7=AF=E7=94=B1=E7=AD=96=E7=95=A5=E5=8C=85=E6=8B=AC=E5=86=B3=E5=AE=
+=9A=E6=95=B0=E6=8D=AE=E5=8C=85=E7=9A=84=E7=9B=AE=E7=9A=84=E5=9C=B0=E6=98=AF=
+=E6=9C=AC=E5=9C=B0=E4=B8=BB=E6=9C=BA=EF=BC=88=E8=BF=99=E7=A7=8D=E6=83=85=E5=
+=86=B5=E4=B8=8B=EF=BC=8C=E6=95=B0=E6=8D=AE=E5=8C=85=E7=A9=BF=E8=BF=87 <code=
+>INPUT</code> =E9=93=BE=EF=BC=89=EF=BC=8C=E8=BF=98=E6=98=AF=E5=85=B6=E4=BB=
+=96=E4=B8=BB=E6=9C=BA=EF=BC=88=E6=95=B0=E6=8D=AE=E5=8C=85=E7=A9=BF=E8=BF=87=
+ <code>FORWARD</code> =E9=93=BE=EF=BC=89=EF=BC=9B=E4=B8=AD=E9=97=B4=E7=9A=
+=84=E8=B7=AF=E7=94=B1=E7=AD=96=E7=95=A5=E5=8C=85=E6=8B=AC=E5=86=B3=E5=AE=9A=
+=E7=BB=99=E4=BC=A0=E5=87=BA=E7=9A=84=E6=95=B0=E6=8D=AE=E5=8C=85=E4=BD=BF=E7=
+=94=A8=E9=82=A3=E4=B8=AA=E6=BA=90=E5=9C=B0=E5=9D=80=E3=80=81=E5=88=86=E9=85=
+=8D=E5=93=AA=E4=B8=AA=E6=8E=A5=E5=8F=A3=EF=BC=9B=E6=9C=80=E5=90=8E=E4=B8=80=
+=E4=B8=AA=E8=B7=AF=E7=94=B1=E7=AD=96=E7=95=A5=E5=AD=98=E5=9C=A8=E6=98=AF=E5=
+=9B=A0=E4=B8=BA=E5=85=88=E5=89=8D=E7=9A=84 mangle =E4=B8=8E nat =E9=93=BE=
+=E5=8F=AF=E8=83=BD=E4=BC=9A=E6=94=B9=E5=8F=98=E6=95=B0=E6=8D=AE=E5=8C=85=E7=
+=9A=84=E8=B7=AF=E7=94=B1=E4=BF=A1=E6=81=AF=E3=80=82=E6=95=B0=E6=8D=AE=E5=8C=
+=85=E9=80=9A=E8=BF=87=E8=B7=AF=E5=BE=84=E4=B8=8A=E7=9A=84=E6=AF=8F=E4=B8=80=
+=E6=9D=A1=E9=93=BE=E6=97=B6=EF=BC=8C=E9=93=BE=E4=B8=AD=E7=9A=84=E6=AF=8F=E4=
+=B8=80=E6=9D=A1=E8=A7=84=E5=88=99=E6=8C=89=E9=A1=BA=E5=BA=8F=E5=8C=B9=E9=85=
+=8D=EF=BC=9B=E6=97=A0=E8=AE=BA=E4=BD=95=E6=97=B6=E5=8C=B9=E9=85=8D=E4=BA=86=
+=E4=B8=80=E6=9D=A1=E8=A7=84=E5=88=99=EF=BC=8C=E7=9B=B8=E5=BA=94=E7=9A=84 ta=
+rget/jump =E5=8A=A8=E4=BD=9C=E5=B0=86=E4=BC=9A=E6=89=A7=E8=A1=8C=E3=80=82=
+=E6=9C=80=E5=B8=B8=E7=94=A8=E7=9A=843=E4=B8=AA target =E6=98=AF <code>ACCEP=
+T</code>, <code>DROP</code> ,=E6=88=96=E8=80=85 jump =E5=88=B0=E7=94=A8=E6=
+=88=B7=E8=87=AA=E5=AE=9A=E4=B9=89=E7=9A=84=E9=93=BE=E3=80=82=E5=86=85=E7=BD=
+=AE=E7=9A=84=E9=93=BE=E6=9C=89=E9=BB=98=E8=AE=A4=E7=9A=84=E7=AD=96=E7=95=A5=
+=EF=BC=8C=E4=BD=86=E6=98=AF=E7=94=A8=E6=88=B7=E8=87=AA=E5=AE=9A=E4=B9=89=E7=
+=9A=84=E9=93=BE=E6=B2=A1=E6=9C=89=E9=BB=98=E8=AE=A4=E7=9A=84=E7=AD=96=E7=95=
+=A5=E3=80=82=E5=9C=A8 jump =E5=88=B0=E7=9A=84=E9=93=BE=E4=B8=AD=EF=BC=8C=E8=
+=8B=A5=E6=AF=8F=E4=B8=80=E6=9D=A1=E8=A7=84=E5=88=99=E9=83=BD=E4=B8=8D=E8=83=
+=BD=E6=8F=90=E4=BE=9B=E5=AE=8C=E5=85=A8=E5=8C=B9=E9=85=8D=EF=BC=8C=E9=82=A3=
+=E4=B9=88=E6=95=B0=E6=8D=AE=E5=8C=85=E5=83=8F<a rel=3D"nofollow" class=3D"e=
+xternal text" href=3D"http://www.frozentux.net/iptables-tutorial/images/tab=
+le_subtraverse.jpg">=E8=BF=99=E5=BC=A0=E5=9B=BE=E7=89=87</a>=E6=8F=8F=E8=BF=
+=B0=E7=9A=84=E4=B8=80=E6=A0=B7=E8=BF=94=E5=9B=9E=E5=88=B0=E8=B0=83=E7=94=A8=
+=E9=93=BE=E3=80=82=E5=9C=A8=E4=BB=BB=E4=BD=95=E6=97=B6=E5=80=99=EF=BC=8C=E8=
+=8B=A5 <code>DROP</code> target =E7=9A=84=E8=A7=84=E5=88=99=E5=AE=9E=E7=8E=
+=B0=E5=AE=8C=E5=85=A8=E5=8C=B9=E9=85=8D=EF=BC=8C=E9=82=A3=E4=B9=88=E8=A2=AB=
+=E5=8C=B9=E9=85=8D=E7=9A=84=E6=95=B0=E6=8D=AE=E5=8C=85=E4=BC=9A=E8=A2=AB=E4=
+=B8=A2=E5=BC=83=EF=BC=8C=E4=B8=8D=E4=BC=9A=E8=BF=9B=E8=A1=8C=E8=BF=9B=E4=B8=
+=80=E6=AD=A5=E5=A4=84=E7=90=86=E3=80=82=E5=A6=82=E6=9E=9C=E4=B8=80=E4=B8=AA=
+=E6=95=B0=E6=8D=AE=E5=8C=85=E5=9C=A8=E9=93=BE=E4=B8=AD=E8=A2=AB <code>ACCEP=
+T</code>=EF=BC=8C=E9=82=A3=E4=B9=88=E5=AE=83=E4=B9=9F=E4=BC=9A=E8=A2=AB=E6=
+=89=80=E6=9C=89=E7=9A=84=E7=88=B6=E9=93=BE <code>ACCEPT</code>=EF=BC=8C=E5=
+=B9=B6=E4=B8=94=E4=B8=8D=E5=86=8D=E9=81=8D=E5=8E=86=E5=85=B6=E4=BB=96=E7=88=
+=B6=E9=93=BE=E3=80=82=E7=84=B6=E8=80=8C=EF=BC=8C=E8=A6=81=E6=B3=A8=E6=84=8F=
+=E7=9A=84=E6=98=AF=EF=BC=8C=E6=95=B0=E6=8D=AE=E5=8C=85=E8=BF=98=E4=BC=9A=E4=
+=BB=A5=E6=AD=A3=E5=B8=B8=E7=9A=84=E6=96=B9=E5=BC=8F=E7=BB=A7=E7=BB=AD=E9=81=
+=8D=E5=8E=86=E5=85=B6=E4=BB=96=E8=A1=A8=E4=B8=AD=E7=9A=84=E5=85=B6=E4=BB=96=
+=E9=93=BE=E3=80=82
+</p>
+<h3><span class=3D"mw-headline" id=3D".E6.A8.A1.E5.9D.97_.EF.BC.88Modules.E=
+F.BC.89">=E6=A8=A1=E5=9D=97 =EF=BC=88Modules=EF=BC=89</span></h3>
+<p>=E6=9C=89=E8=AE=B8=E5=A4=9A=E6=A8=A1=E5=9D=97=E5=8F=AF=E4=BB=A5=E7=94=A8=
+=E6=9D=A5=E6=89=A9=E5=B1=95 iptables=EF=BC=8C=E4=BE=8B=E5=A6=82 connlimit, =
+conntrack, limit =E5=92=8C recent=E3=80=82=E8=BF=99=E4=BA=9B=E6=A8=A1=E5=9D=
+=97=E5=A2=9E=E6=B7=BB=E4=BA=86=E5=8A=9F=E8=83=BD=EF=BC=8C=E5=8F=AF=E4=BB=A5=
+=E8=BF=9B=E8=A1=8C=E6=9B=B4=E5=A4=8D=E6=9D=82=E7=9A=84=E8=BF=87=E6=BB=A4=E3=
+=80=82
+</p>
+<h2><span class=3D"mw-headline" id=3D".E9.85.8D.E7.BD.AE.E5.B9.B6.E8.BF.90.=
+E8.A1.8C_iptables">=E9=85=8D=E7=BD=AE=E5=B9=B6=E8=BF=90=E8=A1=8C iptables</=
+span></h2>
+<p>iptables =E6=98=AF=E4=B8=80=E4=B8=AA <a href=3D"https://wiki.archlinux.o=
+rg/index.php/Systemd" title=3D"Systemd">Systemd</a> =E6=9C=8D=E5=8A=A1=EF=
+=BC=8C=E5=9B=A0=E6=AD=A4=E5=8F=AF=E4=BB=A5=E8=BF=99=E6=A0=B7=E5=90=AF=E5=8A=
+=A8=EF=BC=9A
+</p>
+<pre># systemctl start iptables
+</pre>
+<p>=E4=BD=86=E6=98=AF=EF=BC=8C=E9=99=A4=E9=9D=9E=E6=9C=89 <code>/etc/iptabl=
+es/iptables.rules</code> =E6=96=87=E4=BB=B6=EF=BC=8C=E5=90=A6=E5=88=99=E6=
+=9C=8D=E5=8A=A1=E4=B8=8D=E4=BC=9A=E5=90=AF=E5=8A=A8=EF=BC=8CArch <span clas=
+s=3D"plainlinks archwiki-template-pkg"><a rel=3D"nofollow" class=3D"externa=
+l text" href=3D"https://www.archlinux.org/packages/?name=3Diptables">iptabl=
+es</a></span> =E5=8C=85=E4=B8=8D=E5=8C=85=E5=90=AB=E9=BB=98=E8=AE=A4=E7=9A=
+=84 <code>iptables.rules</code> =E6=96=87=E4=BB=B6=E3=80=82=E5=9B=A0=E6=AD=
+=A4=EF=BC=8C=E7=AC=AC=E4=B8=80=E6=AC=A1=E5=90=AF=E5=8A=A8=E6=9C=8D=E5=8A=A1=
+=E6=97=B6=E4=BD=BF=E7=94=A8=E4=BB=A5=E4=B8=8B=E5=91=BD=E4=BB=A4=EF=BC=9A
+</p>
+<pre># touch /etc/iptables/iptables.rules
+# systemctl start iptables
+</pre>
+<p>=E6=88=96=E8=80=85
+</p>
+<pre># cp /etc/iptables/empty.rules /etc/iptables/iptables.rules
+# systemctl start iptables
+</pre>
+<p>=E5=92=8C=E5=85=B6=E4=BB=96=E6=9C=8D=E5=8A=A1=E4=B8=80=E6=A0=B7=EF=BC=8C=
+=E5=A6=82=E6=9E=9C=E5=B8=8C=E6=9C=9B=E5=90=AF=E5=8A=A8=E6=97=B6=E8=87=AA=E5=
+=8A=A8=E5=8A=A0=E8=BD=BD iptables=EF=BC=8C=E5=BF=85=E9=A1=BB=E5=90=AF=E7=94=
+=A8=E8=AF=A5=E6=9C=8D=E5=8A=A1=EF=BC=9A
+</p>
+<pre># systemctl enable iptables
+</pre>
+<h3><span class=3D"mw-headline" id=3D".E4.BB.8E.E5.91.BD.E4.BB.A4.E8.A1.8C"=
+>=E4=BB=8E=E5=91=BD=E4=BB=A4=E8=A1=8C</span></h3>
+<h4><span class=3D"mw-headline" id=3D".E6.98.BE.E7.A4.BA.E5.BD.93.E5.89.8D.=
+E8.A7.84.E5.88.99">=E6=98=BE=E7=A4=BA=E5=BD=93=E5=89=8D=E8=A7=84=E5=88=99</=
+span></h4>
+<p>=E4=BD=BF=E7=94=A8=E4=BB=A5=E4=B8=8B=E5=91=BD=E4=BB=A4=E6=9F=A5=E7=9C=8B=
+=E5=BD=93=E5=89=8D=E8=A7=84=E5=88=99=E5=92=8C=E5=8C=B9=E9=85=8D=E6=95=B0=EF=
+=BC=9A
+</p>
+<pre style=3D"margin-bottom: 0; border-bottom:none; padding-bottom:0.8em;">=
+# iptables -nvL</pre>
+<pre style=3D"margin-top: 0; border-top-style:dashed; padding-top: 0.8em;">=
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destina=
+tion  =20
+    =20
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destina=
+tion   =20
+   =20
+Chain OUTPUT (policy ACCEPT 0K packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destina=
+tion</pre>
+<p>=E4=B8=8A=E9=9D=A2=E7=9A=84=E7=BB=93=E6=9E=9C=E8=A1=A8=E6=98=8E=E8=BF=98=
+=E6=B2=A1=E6=9C=89=E9=85=8D=E7=BD=AE=E8=A7=84=E5=88=99=E3=80=82=E6=B2=A1=E6=
+=9C=89=E6=95=B0=E6=8D=AE=E5=8C=85=E8=A2=AB=E9=98=BB=E6=AD=A2=E3=80=82
+</p><p>=E5=9C=A8=E8=BE=93=E5=85=A5=E4=B8=AD=E6=B7=BB=E5=8A=A0 <code>--line-=
+numbers</code> =E9=80=89=E9=A1=B9=EF=BC=8C=E5=8F=AF=E4=BB=A5=E5=9C=A8=E5=88=
+=97=E5=87=BA=E8=A7=84=E5=88=99=E7=9A=84=E6=97=B6=E5=80=99=E6=98=BE=E7=A4=BA=
+=E8=A1=8C=E5=8F=B7=E3=80=82=E8=BF=99=E5=9C=A8=E6=B7=BB=E5=8A=A0=E5=8D=95=E7=
+=8B=AC=E7=9A=84=E8=A7=84=E5=88=99=E7=9A=84=E6=97=B6=E5=80=99=E5=BE=88=E6=9C=
+=89=E7=94=A8=E3=80=82
+</p>
+<h4><span class=3D"mw-headline" id=3D".E9.87.8D.E7.BD.AE.E8.A7.84.E5.88.99"=
+>=E9=87=8D=E7=BD=AE=E8=A7=84=E5=88=99</span></h4>
+<p>=E4=BD=BF=E7=94=A8=E8=BF=99=E4=BA=9B=E5=91=BD=E4=BB=A4=E5=88=B7=E6=96=B0=
+=E5=92=8C=E9=87=8D=E7=BD=AE iptables =E5=88=B0=E9=BB=98=E8=AE=A4=E7=8A=B6=
+=E6=80=81=EF=BC=9A
+</p>
+<pre># iptables -F
+# iptables -X
+# iptables -t nat -F
+# iptables -t nat -X
+# iptables -t mangle -F
+# iptables -t mangle -X
+# iptables -t raw -F
+# iptables -t raw -X
+# iptables -t security -F
+# iptables -t security -X
+# iptables -P INPUT ACCEPT
+# iptables -P FORWARD ACCEPT
+# iptables -P OUTPUT ACCEPT
+</pre>
+<p>=E6=B2=A1=E6=9C=89=E4=BB=BB=E4=BD=95=E5=8F=82=E6=95=B0=E7=9A=84 <code>-F=
+</code> =E5=91=BD=E4=BB=A4=E5=9C=A8=E5=BD=93=E5=89=8D=E8=A1=A8=E4=B8=AD=E5=
+=88=B7=E6=96=B0=E6=89=80=E6=9C=89=E9=93=BE=E3=80=82=E5=90=8C=E6=A0=B7=E7=9A=
+=84=EF=BC=8C <code>-X</code> =E5=91=BD=E4=BB=A4=E5=88=A0=E9=99=A4=E8=A1=A8=
+=E4=B8=AD=E6=89=80=E6=9C=89=E9=9D=9E=E9=BB=98=E8=AE=A4=E9=93=BE=E3=80=82
+</p><p>=E7=94=A8=E4=B8=8B=E9=9D=A2=E7=9A=84=E5=B8=A6 <code>[chain]</code> =
+=E5=8F=82=E6=95=B0=E7=9A=84 <code>-F</code> =E5=92=8C <code>-X</code> =E5=
+=91=BD=E4=BB=A4=E5=88=B7=E6=96=B0=E6=88=96=E5=88=A0=E9=99=A4=E5=8D=95=E7=8B=
+=AC=E7=9A=84=E9=93=BE=E3=80=82
+</p>
+<h4><span class=3D"mw-headline" id=3D".E7.BC.96.E8.BE.91.E8.A7.84.E5.88.99"=
+>=E7=BC=96=E8=BE=91=E8=A7=84=E5=88=99</span></h4>
+<p>=E6=9C=89=E4=B8=A4=E7=A7=8D=E6=96=B9=E5=BC=8F=E6=B7=BB=E5=8A=A0=E8=A7=84=
+=E5=88=99=EF=BC=8C=E4=B8=80=E7=A7=8D=E6=98=AF=E5=9C=A8=E9=93=BE=E4=B8=8A=E9=
+=99=84=E5=8A=A0=E8=A7=84=E5=88=99=EF=BC=8C=E5=8F=A6=E4=B8=80=E7=A7=8D=E6=98=
+=AF=E5=B0=86=E8=A7=84=E5=88=99=E6=8F=92=E5=85=A5=E5=88=B0=E9=93=BE=E4=B8=8A=
+=E6=9F=90=E4=B8=AA=E7=89=B9=E5=AE=9A=E4=BD=8D=E7=BD=AE=E3=80=82=E8=BF=99=E9=
+=87=8C=E5=B0=86=E8=AE=B2=E8=A7=A3=E8=BF=99=E4=B8=A4=E7=A7=8D=E6=96=B9=E5=BC=
+=8F=E3=80=82
+</p><p>=E9=A6=96=E5=85=88=EF=BC=8C=E7=94=B1=E4=BA=8E=E7=94=B5=E8=84=91=E4=
+=B8=8D=E6=98=AF=E8=B7=AF=E7=94=B1=E5=99=A8(unless, of course, it <a href=3D=
+"https://wiki.archlinux.org/index.php/Router" title=3D"Router">is a router<=
+/a>)=EF=BC=8C=E5=9B=A0=E6=AD=A4=E5=B0=86 <code>FORWARD</code> =E9=93=BE=E9=
+=BB=98=E8=AE=A4=E7=9A=84=E8=A7=84=E5=88=99=E7=94=B1 <code>ACCEPT</code> =E6=
+=94=B9=E6=88=90 <code>DROP</code>=E3=80=82
+</p>
+<pre># iptables -P FORWARD DROP
+</pre>
+<div style=3D"padding: 5px; margin: 0.50em 0; background-color: #FFDDDD; bo=
+rder: thin solid #DDBBBB; overflow: hidden;"><strong> =E8=AD=A6=E5=91=8A: <=
+/strong>=E6=9C=AC=E7=AB=A0=E8=8A=82=E5=85=B6=E4=BD=99=E9=83=A8=E5=88=86=E4=
+=B8=BB=E8=A6=81=E8=AE=B2=E8=A7=A3 iptables =E8=A7=84=E5=88=99=E7=9A=84=E8=
+=AF=AD=E6=B3=95=E5=92=8C=E5=85=B6=E8=83=8C=E5=90=8E=E7=9A=84=E6=80=9D=E6=83=
+=B3=EF=BC=8C=E8=80=8C=E4=B8=8D=E6=98=AF=E4=BD=9C=E4=B8=BA=E4=B8=80=E7=A7=8D=
+=E4=BF=9D=E6=8A=A4=E6=9C=8D=E5=8A=A1=E5=99=A8=E7=9A=84=E6=89=8B=E6=AE=B5=EF=
+=BC=8C=E5=A6=82=E6=9E=9C=E6=83=B3=E8=A6=81=E6=8F=90=E9=AB=98=E7=B3=BB=E7=BB=
+=9F=E7=9A=84=E5=AE=89=E5=85=A8=E6=80=A7=EF=BC=8C=E5=8F=82=E8=80=83 <a href=
+=3D"https://wiki.archlinux.org/index.php/Simple_stateful_firewall" title=3D=
+"Simple stateful firewall">Simple stateful firewall</a> =E6=9D=A5=E8=8E=B7=
+=E5=BE=97=E4=B8=80=E4=B8=AA=E6=9C=80=E4=BD=8E=E9=99=90=E5=BA=A6=E7=9A=84 ip=
+tables =E5=AE=89=E5=85=A8=E9=85=8D=E7=BD=AE=EF=BC=8C=E5=8F=82=E8=80=83 <a h=
+ref=3D"https://wiki.archlinux.org/index.php/Security" title=3D"Security">Se=
+curity</a> =E6=9D=A5=E6=8F=90=E9=AB=98 Arch Linux =E7=9A=84=E5=AE=89=E5=85=
+=A8=E6=80=A7=E3=80=82</div>
+<p><a href=3D"https://en.wikipedia.org/wiki/Dropbox_(service)" class=3D"ext=
+iw" title=3D"wikipedia:Dropbox (service)">Dropbox</a> =E7=9A=84=E5=B1=80=E5=
+=9F=9F=E7=BD=91=E5=90=8C=E6=AD=A5=E7=89=B9=E6=80=A7 =E2=80=94 <a rel=3D"nof=
+ollow" class=3D"external text" href=3D"https://isc.sans.edu/port.html?port=
+=3D17500">=E6=AF=8F30=E7=A7=92=E5=B9=BF=E6=92=AD=E6=95=B0=E6=8D=AE=E5=8C=85=
+</a>=E5=88=B0=E6=89=80=E6=9C=89=E5=8F=AF=E8=A7=86=E7=9A=84=E8=AE=A1=E7=AE=
+=97=E6=9C=BA=EF=BC=8C=E5=A6=82=E6=9E=9C=E6=88=91=E4=BB=AC=E7=A2=B0=E5=B7=A7=
+=E5=9C=A8=E4=B8=80=E4=B8=AA=E6=8B=A5=E6=9C=89 Dropbox =E5=AE=A2=E6=88=B7=E7=
+=AB=AF=E7=9A=84=E5=B1=80=E5=9F=9F=E7=BD=91=E4=B8=AD=EF=BC=8C=E4=BD=86=E6=98=
+=AF=E6=88=91=E4=BB=AC=E4=B8=8D=E6=83=B3=E4=BD=BF=E7=94=A8=E8=BF=99=E4=B8=AA=
+=E7=89=B9=E6=80=A7=EF=BC=8C=E9=82=A3=E4=B9=88=E6=88=91=E4=BB=AC=E5=B8=8C=E6=
+=9C=9B=E6=8B=92=E7=BB=9D=E8=BF=99=E4=BA=9B=E6=95=B0=E6=8D=AE=E5=8C=85=E3=80=
+=82
+</p>
+<pre># iptables -A INPUT -p tcp --dport 17500 -j REJECT --reject-with icmp-=
+port-unreachable
+</pre>
+<pre style=3D"margin-bottom: 0; border-bottom:none; padding-bottom:0.8em;">=
+# iptables -nvL --line-numbers
+</pre>
+<pre style=3D"margin-top: 0; border-top-style:dashed; padding-top: 0.8em;">=
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               de=
+stination
+1        0     0 REJECT     tcp  --  *      *       0.0.0.0/0            0.=
+0.0.0/0            tcp dpt:17500 reject-with icmp-port-unreachable
+
+Chain FORWARD (policy DROP 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               de=
+stination
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               de=
+stination
+
+</pre>
+<div style=3D"padding: 5px; margin: 0.50em 0; background-color: #DDDDFF; bo=
+rder: thin solid #BBBBDD; overflow: hidden;"><strong> =E6=B3=A8=E6=84=8F: <=
+/strong>=E8=BF=99=E9=87=8C=E4=BD=BF=E7=94=A8 <code>REJECT</code> =E8=80=8C=
+=E4=B8=8D=E6=98=AF <code>DROP</code>=EF=BC=8C=E5=9B=A0=E4=B8=BA <a rel=3D"n=
+ofollow" class=3D"external text" href=3D"https://tools.ietf.org/html/rfc112=
+2#page-69">RFC 1122 3.3.8</a> =E8=A6=81=E6=B1=82=E4=B8=BB=E6=9C=BA=E5=B0=BD=
+=E5=8F=AF=E8=83=BD=E8=BF=94=E5=9B=9E ICMP =E9=94=99=E8=AF=AF=E8=80=8C=E4=B8=
+=8D=E6=98=AF=E4=B8=A2=E5=BC=83=E6=95=B0=E6=8D=AE=E5=8C=85=E3=80=82<a rel=3D=
+"nofollow" class=3D"external text" href=3D"http://www.chiark.greenend.org.u=
+k/~peterb/network/drop-vs-reject">=E8=BF=99=E9=87=8C</a> =E4=BB=8B=E7=BB=8D=
+=E4=BA=86=E4=B8=BA=E4=BB=80=E4=B9=88=E5=80=BE=E5=90=91=E4=BA=8E REJECT =E8=
+=80=8C=E4=B8=8D=E6=98=AF DROP =E6=95=B0=E6=8D=AE=E5=8C=85=E3=80=82</div>=20
+<p>=E7=8E=B0=E5=9C=A8=EF=BC=8C=E6=88=91=E4=BB=AC=E6=94=B9=E5=8F=98=E5=AF=B9=
+ Dropbox =E7=9A=84=E7=9C=8B=E6=B3=95=EF=BC=8C=E5=B9=B6=E4=B8=94=E5=86=B3=E5=
+=AE=9A=E5=AE=89=E8=A3=85=E5=85=B6=E5=88=B0=E6=88=91=E4=BB=AC=E7=9A=84=E8=AE=
+=A1=E7=AE=97=E6=9C=BA=EF=BC=8C=E6=88=91=E4=BB=AC=E4=B9=9F=E5=B8=8C=E6=9C=9B=
+=E5=B1=80=E5=9F=9F=E7=BD=91=E5=90=8C=E6=AD=A5=EF=BC=8C=E4=BD=86=E6=98=AF=E6=
+=88=91=E4=BB=AC=E7=9A=84=E7=BD=91=E7=BB=9C=E5=8F=AA=E6=9C=89=E4=B8=80=E4=B8=
+=AA=E7=89=B9=E5=AE=9A=E7=9A=84 IP =E5=9C=B0=E5=9D=80=EF=BC=8C=E5=9B=A0=E6=
+=AD=A4=E9=9C=80=E8=A6=81=E4=BD=BF=E7=94=A8 <code>-R</code> =E5=8F=82=E6=95=
+=B0=E6=9D=A5=E6=9B=BF=E6=8D=A2=E6=97=A7=E8=A7=84=E5=88=99=EF=BC=8C<code>10.=
+0.0.85</code> =E6=98=AF=E6=88=91=E4=BB=AC=E7=9A=84=E5=8F=A6=E4=B8=80=E4=B8=
+=AA IP =E5=9C=B0=E5=9D=80=E3=80=82
+</p>
+<pre># iptables -R INPUT 1 -p tcp --dport 17500&nbsp;! -s 10.0.0.85 -j REJE=
+CT --reject-with icmp-port-unreachable
+</pre>
+<pre style=3D"margin-bottom: 0; border-bottom:none; padding-bottom:0.8em;">=
+# iptables -nvL --line-numbers
+</pre>
+<pre style=3D"margin-top: 0; border-top-style:dashed; padding-top: 0.8em;">=
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               de=
+stination
+1        0     0 REJECT     tcp  --  *      *     &nbsp;!10.0.0.85         =
+   0.0.0.0/0            tcp dpt:17500 reject-with icmp-port-unreachable
+
+Chain FORWARD (policy DROP 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               de=
+stination
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               de=
+stination
+</pre>
+<p>=E7=8E=B0=E5=9C=A8=E6=88=91=E4=BB=AC=E6=9B=BF=E6=8D=A2=E4=BA=86=E5=8E=9F=
+=E6=9D=A5=E7=9A=84=E8=A7=84=E5=88=99=EF=BC=8C=E4=BD=BF <code>10.0.0.85</cod=
+e> =E5=8F=AF=E4=BB=A5=E8=AE=BF=E9=97=AE=E8=AE=A1=E7=AE=97=E6=9C=BA <code>17=
+500</code> =E7=AB=AF=E5=8F=A3=E3=80=82=E4=BD=86=E6=98=AF=E6=88=91=E4=BB=AC=
+=E6=84=8F=E8=AF=86=E5=88=B0=E8=BF=99=E6=9D=A1=E8=A7=84=E5=88=99=E6=98=AF=E4=
+=B8=8D=E5=8F=AF=E5=8D=87=E7=BA=A7=E7=9A=84=E3=80=82=E5=A6=82=E6=9E=9C=E5=8F=
+=8B=E5=A5=BD=E7=9A=84 Dropbox =E7=94=A8=E6=88=B7=E6=83=B3=E8=A6=81=E8=AE=BF=
+=E9=97=AE=E8=AE=BE=E5=A4=87=E4=B8=8A=E7=9A=84 <code>17500</code> =E7=AB=AF=
+=E5=8F=A3=E3=80=82=E6=88=91=E4=BB=AC=E5=BA=94=E8=AF=A5=E9=A9=AC=E4=B8=8A=E5=
+=85=81=E8=AE=B8=EF=BC=8C=E8=80=8C=E4=B8=8D=E6=98=AF=E5=9C=A8=E6=B5=8B=E8=AF=
+=95=E8=BF=87=E6=89=80=E6=9C=89=E9=98=B2=E7=81=AB=E5=A2=99=E8=A7=84=E5=88=99=
+=E5=90=8E=E5=86=8D=E5=85=81=E8=AE=B8=E3=80=82
+</p><p>=E5=9B=A0=E6=AD=A4=E6=88=91=E4=BB=AC=E5=86=99=E4=B8=80=E6=9D=A1=E6=
+=96=B0=E8=A7=84=E5=88=99=E6=9D=A5=E7=AB=8B=E5=8D=B3=E5=85=81=E8=AE=B8=E5=8F=
+=97=E4=BF=A1=E4=BB=BB=E7=9A=84=E7=94=A8=E6=88=B7=E3=80=82=E4=BD=BF=E7=94=A8=
+ <code>-I</code> =E5=8F=82=E6=95=B0=E6=9D=A5=E5=9C=A8=E6=97=A7=E8=A7=84=E5=
+=88=99=E5=89=8D=E6=8F=92=E5=85=A5=E4=B8=80=E6=9D=A1=E6=96=B0=E8=A7=84=E5=88=
+=99=EF=BC=9A
+</p>
+<pre># iptables -I INPUT -p tcp --dport 17500 -s 10.0.0.85 -j ACCEPT -m com=
+ment --comment "Friendly Dropbox"
+</pre>
+<pre style=3D"margin-bottom: 0; border-bottom:none; padding-bottom:0.8em;">=
+# iptables -nvL --line-numbers
+</pre>
+<pre style=3D"margin-top: 0; border-top-style:dashed; padding-top: 0.8em;">=
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               de=
+stination
+1        0     0 ACCEPT     tcp  --  *      *       10.0.0.85            0.=
+0.0.0/0            tcp dpt:17500 /* Friendly Dropbox */
+2        0     0 REJECT     tcp  --  *      *     &nbsp;!10.0.0.85         =
+   0.0.0.0/0            tcp dpt:17500 reject-with icmp-port-unreachable
+
+Chain FORWARD (policy DROP 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               de=
+stination
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               de=
+stination
+</pre>
+<p>=E6=9B=B4=E6=94=B9=E7=AC=AC=E4=BA=8C=E6=9D=A1=E8=A7=84=E5=88=99=EF=BC=8C=
+=E4=BD=BF=E5=85=B6=E6=8B=92=E7=BB=9D <code>17500</code> =E7=AB=AF=E5=8F=A3=
+=E7=9A=84=E4=BB=BB=E4=BD=95=E6=95=B0=E6=8D=AE=E5=8C=85=EF=BC=9A
+</p>
+<pre># iptables -R INPUT 2 -p tcp --dport 17500 -j REJECT --reject-with icm=
+p-port-unreachable
+</pre>
+<p>=E6=88=91=E4=BB=AC=E7=9A=84=E6=9C=80=E7=BB=88=E8=A7=84=E5=88=99=E5=A6=82=
+=E4=B8=8B=EF=BC=9A
+</p>
+<pre style=3D"margin-bottom: 0; border-bottom:none; padding-bottom:0.8em;">=
+# iptables -nvL --line-numbers
+</pre>
+<pre style=3D"margin-top: 0; border-top-style:dashed; padding-top: 0.8em;">=
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               de=
+stination
+1        0     0 ACCEPT     tcp  --  *      *       10.0.0.85            0.=
+0.0.0/0            tcp dpt:17500 /* Friendly Dropbox */
+2        0     0 REJECT     tcp  --  *      *       0.0.0.0/0            0.=
+0.0.0/0            tcp dpt:17500 reject-with icmp-port-unreachable
+
+Chain FORWARD (policy DROP 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               de=
+stination
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               de=
+stination
+</pre>
+<h3><span class=3D"mw-headline" id=3D".E9.85.8D.E7.BD.AE.E6.96.87.E4.BB.B6"=
+>=E9=85=8D=E7=BD=AE=E6=96=87=E4=BB=B6</span></h3>
+<p>=E5=9C=A8 Arch Linux =E4=B8=AD=EF=BC=8C Iptables =E8=A7=84=E5=88=99=E9=
+=BB=98=E8=AE=A4=E5=AD=98=E6=94=BE=E5=9C=A8 <code>/etc/iptables/iptables.rul=
+es</code> =E6=96=87=E4=BB=B6=E4=B8=AD=EF=BC=8C=E5=AE=83=E4=BB=AC=E4=B8=8D=
+=E4=BC=9A=E8=A2=AB=E8=87=AA=E5=8A=A8=E5=8A=A0=E8=BD=BD=EF=BC=8C=E5=9B=A0=E6=
+=AD=A4=E9=9C=80=E8=A6=81=E5=90=AF=E7=94=A8 <code>iptables.service</code>=EF=
+=BC=8C=E6=9C=8D=E5=8A=A1=E4=BC=9A=E5=9C=A8=E5=90=AF=E5=8A=A8=E6=97=B6=E8=AF=
+=BB=E5=8F=96=E6=96=87=E4=BB=B6=E5=B9=B6=E4=B8=94=E5=8A=A0=E8=BD=BD=E8=A7=84=
+=E5=88=99=EF=BC=8C=E6=88=96=E8=80=85=E7=9B=B4=E6=8E=A5=E5=90=AF=E5=8A=A8=E6=
+=9C=8D=E5=8A=A1=EF=BC=9A
+</p>
+<pre># systemctl enable iptables.service
+# systemctl start iptables.service
+</pre>
+<p>ipv6 =E8=A7=84=E5=88=99=E9=BB=98=E8=AE=A4=E4=BF=9D=E5=AD=98=E5=9C=A8 <co=
+de>/etc/iptables/ip6tables.rules</code>,<code>ip6tables.service</code> =E6=
+=9C=8D=E5=8A=A1=E4=BC=9A=E4=BD=BF=E7=94=A8=E8=BF=99=E4=B8=AA=E8=A7=84=E5=88=
+=99=EF=BC=8C=E5=8F=AF=E4=BB=A5=E7=94=A8=E7=B1=BB=E4=BC=BC=E7=9A=84=E6=96=B9=
+=E5=BC=8F=E5=90=AF=E5=8A=A8=E6=9C=8D=E5=8A=A1=E3=80=82
+</p>
+<div style=3D"padding: 5px; margin: 0.50em 0; background-color: #DDDDFF; bo=
+rder: thin solid #BBBBDD; overflow: hidden;"><strong> =E6=B3=A8=E6=84=8F: <=
+/strong>iptables 1.4.21-1 =E5=8C=85=E4=B8=AD=E7=9A=84 <code>iptables.servic=
+e</code> =E5=92=8C <code>ip6tables.service</code> =E6=96=87=E4=BB=B6=E5=B7=
+=B2=E7=BB=8F=E8=BF=87=E6=9C=9F=E4=BA=86=E3=80=82=E5=9B=A0=E4=B8=BA=E5=AE=89=
+=E5=85=A8=E5=8E=9F=E5=9B=A0=EF=BC=8C=E8=87=AA systemd 214 =E8=B5=B7=E6=8E=
+=A8=E8=8D=90=E9=98=B2=E7=81=AB=E5=A2=99=E5=9C=A8 <code>network-pre.target</=
+code> =E7=9B=AE=E6=A0=87=E4=B9=8B=E5=89=8D=E5=90=AF=E5=8A=A8=EF=BC=8C=E8=BF=
+=99=E6=A0=B7=E9=98=B2=E7=81=AB=E5=A2=99=E5=B0=B1=E5=8F=AF=E4=BB=A5=E5=9C=A8=
+=E4=BB=BB=E4=BD=95=E7=BD=91=E7=BB=9C=E9=85=8D=E7=BD=AE=E4=B9=8B=E5=89=8D=E8=
+=BF=90=E8=A1=8C=E3=80=82=E7=AD=89=E5=BE=85 iptables =E6=95=B0=E6=8D=AE=E5=
+=8C=85=E6=9B=B4=E6=96=B0=EF=BC=8C=E5=88=9B=E5=BB=BA=E6=B7=B1=E5=B1=82=E7=9B=
+=AE=E5=BD=95 <code>/etc/systemd/system/iptables.service.d</code>=EF=BC=8C=
+=E5=88=9B=E5=BB=BA <code>00-pre-network.conf</code> =E6=96=87=E4=BB=B6=EF=
+=BC=8C=E6=B7=BB=E5=8A=A0=E5=A6=82=E4=B8=8B=E7=89=87=E6=AE=B5=EF=BC=9A
+<pre>[Unit]
+Before=3Dnetwork-pre.target
+[Install]
+RequiredBy=3Dnetwork-pre.target
+</pre>
+=E5=A6=82=E6=9E=9C=E7=B3=BB=E7=BB=9F=E4=BD=BF=E7=94=A8 <code>ip6tables.serv=
+ice</code>=EF=BC=8C=E9=82=A3=E4=B9=88=E5=9C=A8 <code>/etc/systemd/system/ip=
+6tables.service.d</code> =E7=9B=AE=E5=BD=95=E4=B8=AD=E5=81=9A=E5=90=8C=E6=
+=A0=B7=E7=9A=84=E9=85=8D=E7=BD=AE=E3=80=82=E6=9B=B4=E5=A4=9A=E7=BB=86=E8=8A=
+=82=E5=8F=82=E8=80=83 <a rel=3D"nofollow" class=3D"external text" href=3D"h=
+ttps://bugs.freedesktop.org/show_bug.cgi?id=3D79600">systemd bug report</a>=
+=EF=BC=8C<a rel=3D"nofollow" class=3D"external text" href=3D"http://lists.f=
+reedesktop.org/archives/systemd-devel/2014-June/019925.html">systemd releas=
+e announcement</a> =E5=92=8C <a rel=3D"nofollow" class=3D"external text" hr=
+ef=3D"https://bugs.archlinux.org/task/33478">FS#33478</a></div>
+<p>=E9=80=9A=E8=BF=87=E5=91=BD=E4=BB=A4=E8=A1=8C=E6=B7=BB=E5=8A=A0=E8=A7=84=
+=E5=88=99=EF=BC=8C=E9=85=8D=E7=BD=AE=E6=96=87=E4=BB=B6=E4=B8=8D=E4=BC=9A=E8=
+=87=AA=E5=8A=A8=E6=94=B9=E5=8F=98=EF=BC=8C=E6=89=80=E4=BB=A5=E5=BF=85=E9=A1=
+=BB=E6=89=8B=E5=8A=A8=E4=BF=9D=E5=AD=98=EF=BC=9A
+</p>
+<pre># iptables-save &gt; /etc/iptables/iptables.rules
+</pre>
+<p>=E4=BF=AE=E6=94=B9=E9=85=8D=E7=BD=AE=E6=96=87=E4=BB=B6=E5=90=8E=EF=BC=8C=
+=E9=9C=80=E8=A6=81=E9=87=8D=E6=96=B0=E5=8A=A0=E8=BD=BD=E6=9C=8D=E5=8A=A1=EF=
+=BC=9A
+</p>
+<pre># systemctl reload iptables
+</pre>
+<p>=E6=88=96=E8=80=85=E9=80=9A=E8=BF=87 iptables =E7=9B=B4=E6=8E=A5=E5=8A=
+=A0=E8=BD=BD=EF=BC=9A
+</p>
+<pre># iptables-restore &lt; /etc/iptables/iptables.rules
+</pre>
+<h3><span class=3D"mw-headline" id=3D".E6.8C.87.E5.8D.97">=E6=8C=87=E5=8D=
+=97</span></h3>
+<ul><li><a href=3D"https://wiki.archlinux.org/index.php/Simple_stateful_fir=
+ewall" title=3D"Simple stateful firewall">Simple stateful firewall</a></li>
+<li><a href=3D"https://wiki.archlinux.org/index.php/Router" title=3D"Router=
+">Router</a></li></ul>
+<h2><span class=3D"mw-headline" id=3D".E6.97.A5.E5.BF.97">=E6=97=A5=E5=BF=
+=97</span></h2>
+<p>LOG =E7=9B=AE=E6=A0=87=E5=8F=AF=E4=BB=A5=E7=94=A8=E6=9D=A5=E8=AE=B0=E5=
+=BD=95=E5=8C=B9=E9=85=8D=E6=9F=90=E4=B8=AA=E8=A7=84=E5=88=99=E7=9A=84=E6=95=
+=B0=E6=8D=AE=E5=8C=85=E3=80=82=E5=92=8C ACCEPT =E6=88=96 DROP =E8=A7=84=E5=
+=88=99=E4=B8=8D=E5=90=8C=EF=BC=8C=E8=BF=9B=E5=85=A5 LOG =E7=9B=AE=E6=A0=87=
+=E4=B9=8B=E5=90=8E=E6=95=B0=E6=8D=AE=E5=8C=85=E4=BC=9A=E7=BB=A7=E7=BB=AD=E6=
+=B2=BF=E7=9D=80=E9=93=BE=E5=90=91=E4=B8=8B=E8=B5=B0=E3=80=82=E6=89=80=E4=BB=
+=A5=E8=A6=81=E8=AE=B0=E5=BD=95=E6=89=80=E6=9C=89=E4=B8=A2=E5=BC=83=E7=9A=84=
+=E6=95=B0=E6=8D=AE=E5=8C=85=EF=BC=8C=E5=8F=AA=E9=9C=80=E8=A6=81=E5=9C=A8 DR=
+OP =E8=A7=84=E5=88=99=E5=89=8D=E5=8A=A0=E4=B8=8A=E7=9B=B8=E5=BA=94=E7=9A=84=
+ LOG =E8=A7=84=E5=88=99=E3=80=82=E4=BD=86=E6=98=AF=E8=BF=99=E6=A0=B7=E4=BC=
+=9A=E6=AF=94=E8=BE=83=E5=A4=8D=E6=9D=82=EF=BC=8C=E5=BD=B1=E5=93=8D=E6=95=88=
+=E7=8E=87=EF=BC=8C=E6=89=80=E4=BB=A5=E5=BA=94=E8=AF=A5=E5=88=9B=E5=BB=BA=E4=
+=B8=80=E4=B8=AA<code>logdrop</code>=E9=93=BE=E3=80=82
+</p><p>=E5=88=9B=E5=BB=BA logdrop =E9=93=BE=EF=BC=9A
+</p>
+<pre># iptables -N logdrop
+</pre>
+<p>=E5=AE=9A=E4=B9=89=E8=A7=84=E5=88=99=EF=BC=9A
+</p>
+<pre># iptables -A logdrop -m limit --limit 5/m --limit-burst 10 -j LOG
+# iptables -A logdrop -j DROP
+</pre>
+<p><a href=3D"https://wiki.archlinux.org/index.php/Iptables_(%E7%AE%80%E4%B=
+D%93%E4%B8%AD%E6%96%87)#.E9.99.90.E5.88.B6.E6.97.A5.E5.BF.97.E7.BA.A7.E5.88=
+.AB">=E4=B8=8B=E6=96=87</a>=E4=BC=9A=E7=BB=99=E5=87=BA <code>limit</code> =
+=E5=92=8C <code>limit-burst</code> =E9=80=89=E9=A1=B9=E7=9A=84=E8=A7=A3=E9=
+=87=8A=E3=80=82
+</p><p>=E7=8E=B0=E5=9C=A8=E4=BB=BB=E4=BD=95=E6=97=B6=E5=80=99=E6=83=B3=E8=
+=A6=81=E4=B8=A2=E5=BC=83=E6=95=B0=E6=8D=AE=E5=8C=85=E5=B9=B6=E4=B8=94=E8=AE=
+=B0=E5=BD=95=E8=AF=A5=E4=BA=8B=E4=BB=B6=EF=BC=8C=E5=8F=AA=E8=A6=81=E8=B7=B3=
+=E8=BD=AC=E5=88=B0 <code>logdrop</code> =E9=93=BE=EF=BC=8C=E4=BE=8B=E5=A6=
+=82=EF=BC=9A
+</p>
+<pre># iptables -A INPUT -m conntrack --ctstate INVALID -j logdrop
+</pre>
+<h3><span class=3D"mw-headline" id=3D".E9.99.90.E5.88.B6.E6.97.A5.E5.BF.97.=
+E7.BA.A7.E5.88.AB">=E9=99=90=E5=88=B6=E6=97=A5=E5=BF=97=E7=BA=A7=E5=88=AB</=
+span></h3>
+<p>=E4=B8=8A=E8=BF=B0 <code>logdrop</code> =E9=93=BE=E4=BD=BF=E7=94=A8=E9=
+=99=90=E5=88=B6=EF=BC=88limit=EF=BC=89=E6=A8=A1=E5=BC=8F=E6=9D=A5=E9=98=B2=
+=E6=AD=A2 <i>iptables</i> =E6=97=A5=E5=BF=97=E6=9D=A5=E8=BF=87=E5=A4=A7=E6=
+=88=96=E8=80=85=E9=80=A0=E6=88=90=E4=B8=8D=E5=BF=85=E8=A6=81=E7=9A=84=E7=A1=
+=AC=E7=9B=98=E8=AF=BB=E5=86=99=E3=80=82=E6=B2=A1=E6=9C=89=E9=99=90=E5=88=B6=
+=E7=9A=84=E8=AF=9D=EF=BC=8C=E4=B8=80=E4=B8=AA=E8=AF=95=E5=9B=BE=E9=93=BE=E6=
+=8E=A5=E7=9A=84=E9=94=99=E8=AF=AF=E9=85=8D=E7=BD=AE=E6=9C=8D=E5=8A=A1=E3=80=
+=81=E6=88=96=E8=80=85=E4=B8=80=E4=B8=AA=E6=94=BB=E5=87=BB=E8=80=85=EF=BC=8C=
+=E9=83=BD=E4=BC=9A=E4=BD=BF iptables =E6=97=A5=E5=BF=97=E5=86=99=E6=BB=A1=
+=E6=95=B4=E4=B8=AA=E7=A1=AC=E7=9B=98=EF=BC=88=E6=88=96=E8=80=85=E8=87=B3=E5=
+=B0=91=E6=98=AF <code>/var</code> =E5=88=86=E5=8C=BA=EF=BC=89=E3=80=82
+</p><p>=E9=99=90=E5=88=B6=E6=A8=A1=E5=BC=8F=E4=BD=BF=E7=94=A8 <code>-m limi=
+t</code>=EF=BC=8C=E5=8F=AF=E4=BB=A5=E4=BD=BF=E7=94=A8 <code>--limit</code> =
+=E6=9D=A5=E8=AE=BE=E7=BD=AE=E5=B9=B3=E5=9D=87=E9=80=9F=E7=8E=87=E6=88=96=E8=
+=80=85=E4=BD=BF=E7=94=A8 <code>--limit-burst</code> =E6=9D=A5=E8=AE=BE=E7=
+=BD=AE=E8=B5=B7=E5=A7=8B=E8=A7=A6=E5=8F=91=E9=80=9F=E7=8E=87=E3=80=82=E5=9C=
+=A8=E4=B8=8A=E8=BF=B0 <code>logdrop</code> =E4=BE=8B=E5=AD=90=E4=B8=AD=EF=
+=BC=9A
+</p>
+<pre>iptables -A logdrop -m limit --limit 5/m --limit-burst 10 -j LOG
+</pre>
+<p>appends a rule which will log all packets that pass through it. The firs=
+t 10 consecutive packets will be logged, and from then on only 5 packets pe=
+r minute will be logged. The "limit burst" count is reset every time the "l=
+imit rate" is not broken, i.e. logging activity returns to normal automatic=
+ally.
+</p><p>=E6=B7=BB=E5=8A=A0=E4=B8=80=E6=9D=A1=E8=AE=B0=E5=BD=95=E6=89=80=E6=
+=9C=89=E9=80=9A=E8=BF=87=E5=85=B6=E7=9A=84=E6=95=B0=E6=8D=AE=E5=8C=85=E7=9A=
+=84=E8=A7=84=E5=88=99=E3=80=82=E5=BC=80=E5=A7=8B=E7=9A=84=E8=BF=9E=E7=BB=AD=
+10=E4=B8=AA=E6=95=B0=E6=8D=AE=E5=8C=85=E5=B0=86=E4=BC=9A=E8=A2=AB=E8=AE=B0=
+=E5=BD=95=EF=BC=8C=E4=B9=8B=E5=90=8E=E6=AF=8F=E5=88=86=E9=92=9F=E5=8F=AA=E4=
+=BC=9A=E8=AE=B0=E5=BD=955=E4=B8=AA=E6=95=B0=E6=8D=AE=E5=8C=85=E3=80=82The "=
+limit burst" count is reset every time the "limit rate" is not broken=EF=BC=
+=8C=E4=BE=8B=E5=A6=82=EF=BC=8C=E6=97=A5=E5=BF=97=E8=AE=B0=E5=BD=95=E6=B4=BB=
+=E5=8A=A8=E8=87=AA=E5=8A=A8=E6=81=A2=E5=A4=8D=E5=88=B0=E6=AD=A3=E5=B8=B8=E3=
+=80=82
+</p>
+<h3><span class=3D"mw-headline" id=3D".E6.9F.A5.E7.9C.8B.E8.AE.B0.E5.BD.95.=
+E7.9A.84.E6.95.B0.E6.8D.AE.E5.8C.85">=E6=9F=A5=E7=9C=8B=E8=AE=B0=E5=BD=95=
+=E7=9A=84=E6=95=B0=E6=8D=AE=E5=8C=85</span></h3>
+<p>=E8=AE=B0=E5=BD=95=E7=9A=84=E6=95=B0=E6=8D=AE=E5=8C=85=E4=BD=9C=E4=B8=BA=
+=E5=86=85=E6=A0=B8=E4=BF=A1=E6=81=AF=EF=BC=8C=E5=8F=AF=E4=BB=A5=E5=9C=A8 <a=
+ href=3D"https://wiki.archlinux.org/index.php/Systemd#Journal" title=3D"Sys=
+temd">systemd journal</a> =E7=9C=8B=E5=88=B0=E3=80=82
+</p><p>=E4=BD=BF=E7=94=A8=E4=BB=A5=E4=B8=8B=E5=91=BD=E4=BB=A4=E6=9F=A5=E7=
+=9C=8B=E6=89=80=E6=9C=89=E6=9C=80=E8=BF=91=E4=B8=80=E6=AC=A1=E5=90=AF=E5=8A=
+=A8=E5=90=8E=E6=89=80=E8=AE=B0=E5=BD=95=E7=9A=84=E6=95=B0=E6=8D=AE=E5=8C=85=
+=EF=BC=9A
+</p>
+<pre># journalctl -k | grep "IN=3D.*OUT=3D.*" | less
+</pre>
+<h3><span class=3D"mw-headline" id=3D".E4.BD.BF.E7.94.A8_syslog-ng">=E4=BD=
+=BF=E7=94=A8 syslog-ng</span></h3>
+<p>=E4=BD=BF=E7=94=A8 Arch =E9=BB=98=E8=AE=A4=E7=9A=84 <a href=3D"https://w=
+iki.archlinux.org/index.php/Syslog-ng" title=3D"Syslog-ng">syslog-ng</a> =
+=E5=8F=AF=E4=BB=A5=E6=8E=A7=E5=88=B6 iptables =E6=97=A5=E5=BF=97=E7=9A=84=
+=E8=BE=93=E5=87=BA=E6=96=87=E4=BB=B6=EF=BC=9A
+</p>
+<pre>filter f_everything { level(debug..emerg) and not facility(auth, authp=
+riv); };
+</pre>
+<p>=E4=BF=AE=E6=94=B9=E4=B8=BA
+</p>
+<pre>filter f_everything { level(debug..emerg) and not facility(auth, authp=
+riv) and not filter(f_iptables); };
+</pre>
+<p>iptables =E7=9A=84=E6=97=A5=E5=BF=97=E5=B0=B1=E4=B8=8D=E4=BC=9A=E8=BE=93=
+=E5=87=BA=E5=88=B0 <code>/var/log/everything.log</code>=E3=80=82
+</p><p>iptables =E4=B9=9F=E5=8F=AF=E4=BB=A5=E4=B8=8D=E8=BE=93=E5=87=BA=E5=
+=88=B0 <code>/var/log/iptables.log</code>=EF=BC=8C=E5=8F=AA=E9=9C=80=E8=AE=
+=BE=E7=BD=AE<code>syslog-ng.conf</code> =E4=B8=AD=E7=9A=84 d_iptables =E4=
+=B8=BA=E9=9C=80=E8=A6=81=E7=9A=84=E6=97=A5=E5=BF=97=E6=96=87=E4=BB=B6=E3=80=
+=82
+</p>
+<pre>destination d_iptables { file("/var/log/iptables.log"); };
+</pre>
+<h3><span class=3D"mw-headline" id=3D".E4.BD.BF.E7.94.A8_ulogd">=E4=BD=BF=
+=E7=94=A8 ulogd</span></h3>
+<p><a rel=3D"nofollow" class=3D"external text" href=3D"http://www.netfilter=
+.org/projects/ulogd/index.html">ulogd</a> =E6=98=AF=E4=B8=93=E9=97=A8=E7=94=
+=A8=E4=BA=8E netfilter =E7=9A=84=E6=97=A5=E5=BF=97=E5=B7=A5=E5=85=B7=EF=BC=
+=8C=E5=8F=AF=E4=BB=A5=E4=BB=A3=E6=9B=BF=E9=BB=98=E8=AE=A4=E7=9A=84 LOG =E7=
+=9B=AE=E6=A0=87=E3=80=82=E8=BD=AF=E4=BB=B6=E5=8C=85 <span class=3D"plainlin=
+ks archwiki-template-pkg"><a rel=3D"nofollow" class=3D"external text" href=
+=3D"https://www.archlinux.org/packages/?name=3Dulogd">ulogd</a></span> =E4=
+=BD=8D=E4=BA=8E <code>[community]</code> =E6=BA=90=E3=80=82
+</p>
+<h2><span class=3D"mw-headline" id=3D".E5.8F.82.E8.A7.81">=E5=8F=82=E8=A7=
+=81</span></h2>
+<p><a href=3D"https://en.wikipedia.org/wiki/iptables" class=3D"extiw" title=
+=3D"wikipedia:iptables">Wikipedia:iptables</a>
+</p>
+<ul><li> <a href=3D"https://wiki.archlinux.org/index.php/Simple_stateful_fi=
+rewall" title=3D"Simple stateful firewall">Simple stateful firewall</a></li=
+>
+<li> <a rel=3D"nofollow" class=3D"external text" href=3D"http://www.netfilt=
+er.org/projects/iptables/index.html">=E5=AE=98=E6=96=B9=E7=BD=91=E7=AB=99</=
+a></li>
+<li> <a rel=3D"nofollow" class=3D"external text" href=3D"http://www.frozent=
+ux.net/iptables-tutorial/iptables-tutorial.html">Iptables =E6=95=99=E7=A8=
+=8B 1.2.2</a></li></ul>
+
+<!--=20
+NewPP limit report
+Cached time: 20170531043243
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.047 seconds
+Real time usage: 0.048 seconds
+Preprocessor visited node count: 900/1000000
+Preprocessor generated node count: 2581/1000000
+Post=E2=80=90expand include size: 15109/2097152 bytes
+Template argument size: 9684/2097152 bytes
+Highest expansion depth: 7/40
+Expensive parser function count: 0/100
+-->
+
+<!--=20
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   28.056      1 - -total
+ 31.71%    8.896     78 - Template:Ic
+ 14.83%    4.161      3 - Template:META_Box_Blue
+ 14.08%    3.951      2 - Template:=E6=B3=A8=E6=84=8F
+ 13.51%    3.789      4 - Template:META_Box
+  5.27%    1.480      1 - Template:TranslationStatus_(=E7=AE=80=E4=BD=93=E4=
+=B8=AD=E6=96=87)
+  4.60%    1.290      1 - Template:=E8=AD=A6=E5=91=8A
+  4.54%    1.273      5 - Template:Hc
+  3.45%    0.968      5 - Template:Bc
+  3.28%    0.921      4 - Template:Pkg
+-->
+
+<!-- Saved in parser cache with key archwiki:pcache:idhash:13060-0!*!0!!en!=
+*!* and timestamp 20170531043242 and revision id 445236
+ -->
+</div>
+					<div id=3D"catlinks" class=3D"catlinks" data-mw=3D"interface"><div id=
+=3D"mw-normal-catlinks" class=3D"mw-normal-catlinks"><a href=3D"https://wik=
+i.archlinux.org/index.php/Special:Categories" title=3D"Special:Categories">=
+Categories</a>: <ul><li><a href=3D"https://wiki.archlinux.org/index.php/Cat=
+egory:%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" title=3D"Category:=E7=AE=80=E4=
+=BD=93=E4=B8=AD=E6=96=87">=E7=AE=80=E4=BD=93=E4=B8=AD=E6=96=87</a></li><li>=
+<a href=3D"https://wiki.archlinux.org/index.php/Category:Firewalls_(%E7%AE%=
+80%E4%BD%93%E4%B8%AD%E6%96%87)" title=3D"Category:Firewalls (=E7=AE=80=E4=
+=BD=93=E4=B8=AD=E6=96=87)">Firewalls (=E7=AE=80=E4=BD=93=E4=B8=AD=E6=96=87)=
+</a></li></ul></div></div>					<!-- end content -->
+										<div class=3D"visualClear"></div>
+				</div>
+			</div>
+		</div>
+		<div id=3D"column-one">
+			<h2>Navigation menu</h2>
+					<div id=3D"p-cactions" class=3D"portlet" role=3D"navigation">
+		=09
+
+			<div class=3D"pBody">
+				<ul>
+				<li id=3D"ca-nstab-main" class=3D"selected"><a href=3D"https://wiki.arc=
+hlinux.org/index.php/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" title=
+=3D"View the content page [alt-shift-c]" accesskey=3D"c">Page</a></li>
+				<li id=3D"ca-talk" class=3D"new"><a href=3D"https://wiki.archlinux.org/=
+index.php?title=3DTalk:Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)&amp;=
+action=3Dedit&amp;redlink=3D1" rel=3D"discussion" title=3D"Discussion about=
+ the content page [alt-shift-t]" accesskey=3D"t">Discussion</a></li>
+				<li id=3D"ca-viewsource"><a href=3D"https://wiki.archlinux.org/index.ph=
+p?title=3DIptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)&amp;action=3Dedit=
+" title=3D"This page is protected.
+You can view its source [alt-shift-e]" accesskey=3D"e">View source</a></li>
+				<li id=3D"ca-history"><a href=3D"https://wiki.archlinux.org/index.php?t=
+itle=3DIptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)&amp;action=3Dhistory=
+" title=3D"Past revisions of this page [alt-shift-h]" accesskey=3D"h">Histo=
+ry</a></li>
+				</ul>
+							</div>
+		</div>
+				<div class=3D"portlet" id=3D"p-personal" role=3D"navigation">
+			=09
+
+				<div class=3D"pBody">
+					<ul>
+													<li id=3D"pt-createaccount"><a href=3D"https://wiki.archlinux.=
+org/index.php?title=3DSpecial:CreateAccount&amp;returnto=3DIptables+%28%E7%=
+AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" title=3D"You are encouraged to create =
+an account and log in; however, it is not mandatory">Create account</a></li=
+>
+													<li id=3D"pt-login"><a href=3D"https://wiki.archlinux.org/inde=
+x.php?title=3DSpecial:UserLogin&amp;returnto=3DIptables+%28%E7%AE%80%E4%BD%=
+93%E4%B8%AD%E6%96%87%29" title=3D"You are encouraged to log in; however, it=
+ is not mandatory [alt-shift-o]" accesskey=3D"o">Log in</a></li>
+											</ul>
+				</div>
+			</div>
+		=09
+				<div class=3D"generated-sidebar portlet" id=3D"p-navigation" role=3D"na=
+vigation">
+		<h3>Navigation</h3>
+		<div class=3D"pBody">
+							<ul>
+											<li id=3D"n-mainpage-description"><a href=3D"https://wiki.archli=
+nux.org/index.php/Main_page" title=3D"Visit the main page [alt-shift-z]" ac=
+cesskey=3D"z">Main page</a></li>
+											<li id=3D"n-categories"><a href=3D"https://wiki.archlinux.org/in=
+dex.php/Table_of_contents">Categories</a></li>
+											<li id=3D"n-portal"><a href=3D"https://wiki.archlinux.org/index.=
+php/Getting_involved" title=3D"Various ways Archers can contribute to the c=
+ommunity">Getting involved</a></li>
+											<li id=3D"n-currentevents"><a href=3D"https://wiki.archlinux.org=
+/index.php/ArchWiki:News" title=3D"The latest lowdown on the wiki">Wiki new=
+s</a></li>
+											<li id=3D"n-randompage"><a href=3D"https://wiki.archlinux.org/in=
+dex.php/Special:Random" title=3D"Load a random page [alt-shift-x]" accesske=
+y=3D"x">Random page</a></li>
+									</ul>
+					</div>
+		</div>
+			<div id=3D"p-search" class=3D"portlet" role=3D"search">
+			<h3><label for=3D"searchInput">Search</label></h3>
+
+			<div id=3D"searchBody" class=3D"pBody">
+				<form action=3D"https://wiki.archlinux.org/index.php" id=3D"searchform"=
+>
+				=09
+					<input type=3D"search" name=3D"search" placeholder=3D"Search ArchWiki"=
+ title=3D"Search ArchWiki [alt-shift-f]" accesskey=3D"f" id=3D"searchInput"=
+ autocomplete=3D"off" disabled=3D"">
+					<input type=3D"submit" name=3D"go" value=3D"Go" title=3D"Go to a page =
+with this exact name if it exists" id=3D"searchGoButton" class=3D"searchBut=
+ton" disabled=3D"">&nbsp;
+						<input type=3D"submit" name=3D"fulltext" value=3D"Search" title=3D"Se=
+arch the pages for this text" id=3D"mw-searchButton" class=3D"searchButton"=
+ disabled=3D"">
+				</form>
+
+							</div>
+		</div>
+		<div class=3D"generated-sidebar portlet" id=3D"p-interaction" role=3D"nav=
+igation">
+		<h3>interaction</h3>
+		<div class=3D"pBody">
+							<ul>
+											<li id=3D"n-help"><a href=3D"https://wiki.archlinux.org/index.ph=
+p/Category:Help" title=3D"Wiki navigation, reading, and editing help">Help<=
+/a></li>
+											<li id=3D"n-Contributing"><a href=3D"https://wiki.archlinux.org/=
+index.php/ArchWiki:Contributing">Contributing</a></li>
+											<li id=3D"n-recentchanges"><a href=3D"https://wiki.archlinux.org=
+/index.php/Special:RecentChanges" title=3D"A list of recent changes in the =
+wiki [alt-shift-r]" accesskey=3D"r">Recent changes</a></li>
+											<li id=3D"n-Recent-talks"><a href=3D"https://wiki.archlinux.org/=
+index.php/Special:RecentChanges?namespace=3D0&amp;invert=3D1" rel=3D"nofoll=
+ow">Recent talks</a></li>
+											<li id=3D"n-newpages"><a href=3D"https://wiki.archlinux.org/inde=
+x.php/Special:NewPages">New pages</a></li>
+											<li id=3D"n-Statistics"><a href=3D"https://wiki.archlinux.org/in=
+dex.php/ArchWiki:Statistics">Statistics</a></li>
+											<li id=3D"n-Reports"><a href=3D"https://wiki.archlinux.org/index=
+.php/ArchWiki:Reports">Reports</a></li>
+											<li id=3D"n-Requests"><a href=3D"https://wiki.archlinux.org/inde=
+x.php/ArchWiki:Requests">Requests</a></li>
+									</ul>
+					</div>
+		</div>
+			<div class=3D"portlet" id=3D"p-tb" role=3D"navigation">
+			<h3>Tools</h3>
+
+			<div class=3D"pBody">
+				<ul>
+											<li id=3D"t-whatlinkshere"><a href=3D"https://wiki.archlinux.org=
+/index.php/Special:WhatLinksHere/Iptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%9=
+6%87)" title=3D"A list of all wiki pages that link here [alt-shift-j]" acce=
+sskey=3D"j">What links here</a></li>
+											<li id=3D"t-recentchangeslinked"><a href=3D"https://wiki.archlin=
+ux.org/index.php/Special:RecentChangesLinked/Iptables_(%E7%AE%80%E4%BD%93%E=
+4%B8%AD%E6%96%87)" rel=3D"nofollow" title=3D"Recent changes in pages linked=
+ from this page [alt-shift-k]" accesskey=3D"k">Related changes</a></li>
+											<li id=3D"t-specialpages"><a href=3D"https://wiki.archlinux.org/=
+index.php/Special:SpecialPages" title=3D"A list of all special pages [alt-s=
+hift-q]" accesskey=3D"q">Special pages</a></li>
+											<li id=3D"t-print"><a href=3D"https://wiki.archlinux.org/index.p=
+hp?title=3DIptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)&amp;printable=3D=
+yes" rel=3D"alternate" title=3D"Printable version of this page [alt-shift-p=
+]" accesskey=3D"p">Printable version</a></li>
+											<li id=3D"t-permalink"><a href=3D"https://wiki.archlinux.org/ind=
+ex.php?title=3DIptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)&amp;oldid=3D=
+445236" title=3D"Permanent link to this revision of the page">Permanent lin=
+k</a></li>
+											<li id=3D"t-info"><a href=3D"https://wiki.archlinux.org/index.ph=
+p?title=3DIptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)&amp;action=3Dinfo=
+" title=3D"More information about this page">Page information</a></li>
+									</ul>
+							</div>
+		</div>
+				<div id=3D"p-lang" class=3D"portlet" role=3D"navigation">
+				<h3>In other languages</h3>
+
+				<div class=3D"pBody">
+					<ul>
+													<li class=3D"interlanguage-link interwiki-de"><a href=3D"https=
+://wiki.archlinux.de/title/Iptables" title=3D"Iptables =E2=80=93 Deutsch" l=
+ang=3D"de" hreflang=3D"de" class=3D"interlanguage-link-target">Deutsch</a><=
+/li>
+													<li class=3D"interlanguage-link interwiki-el"><a href=3D"https=
+://wiki.archlinux.org/index.php/Iptables_(%CE%95%CE%BB%CE%BB%CE%B7%CE%BD%CE=
+%B9%CE%BA%CE%AC)" title=3D"Iptables =E2=80=93 =CE=95=CE=BB=CE=BB=CE=B7=CE=
+=BD=CE=B9=CE=BA=CE=AC" lang=3D"el" hreflang=3D"el" class=3D"interlanguage-l=
+ink-target">=CE=95=CE=BB=CE=BB=CE=B7=CE=BD=CE=B9=CE=BA=CE=AC</a></li>
+													<li class=3D"interlanguage-link interwiki-en"><a href=3D"https=
+://wiki.archlinux.org/index.php/Iptables" title=3D"Iptables =E2=80=93 Engli=
+sh" lang=3D"en" hreflang=3D"en" class=3D"interlanguage-link-target">English=
+</a></li>
+													<li class=3D"interlanguage-link interwiki-es"><a href=3D"https=
+://wiki.archlinux.org/index.php/Iptables_(Espa%C3%B1ol)" title=3D"Iptables =
+=E2=80=93 espa=C3=B1ol" lang=3D"es" hreflang=3D"es" class=3D"interlanguage-=
+link-target">Espa=C3=B1ol</a></li>
+													<li class=3D"interlanguage-link interwiki-fr"><a href=3D"http:=
+//wiki.archlinux.fr/Iptables" title=3D"Iptables =E2=80=93 fran=C3=A7ais" la=
+ng=3D"fr" hreflang=3D"fr" class=3D"interlanguage-link-target">Fran=C3=A7ais=
+</a></li>
+													<li class=3D"interlanguage-link interwiki-it"><a href=3D"https=
+://wiki.archlinux.org/index.php/Iptables_(Italiano)" title=3D"Iptables =E2=
+=80=93 italiano" lang=3D"it" hreflang=3D"it" class=3D"interlanguage-link-ta=
+rget">Italiano</a></li>
+													<li class=3D"interlanguage-link interwiki-ja"><a href=3D"https=
+://wiki.archlinuxjp.org/index.php/Iptables" title=3D"Iptables =E2=80=93 =E6=
+=97=A5=E6=9C=AC=E8=AA=9E" lang=3D"ja" hreflang=3D"ja" class=3D"interlanguag=
+e-link-target">=E6=97=A5=E6=9C=AC=E8=AA=9E</a></li>
+													<li class=3D"interlanguage-link interwiki-ru"><a href=3D"https=
+://wiki.archlinux.org/index.php/Iptables_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0=
+%B8%D0%B9)" title=3D"Iptables =E2=80=93 =D1=80=D1=83=D1=81=D1=81=D0=BA=D0=
+=B8=D0=B9" lang=3D"ru" hreflang=3D"ru" class=3D"interlanguage-link-target">=
+=D0=A0=D1=83=D1=81=D1=81=D0=BA=D0=B8=D0=B9</a></li>
+													<li class=3D"interlanguage-link interwiki-sr"><a href=3D"https=
+://wiki.archlinux.org/index.php/Iptables_(%D0%A1%D1%80%D0%BF%D1%81%D0%BA%D0=
+%B8)" title=3D"Iptables =E2=80=93 =D1=81=D1=80=D0=BF=D1=81=D0=BA=D0=B8 / sr=
+pski" lang=3D"sr" hreflang=3D"sr" class=3D"interlanguage-link-target">=D0=
+=A1=D1=80=D0=BF=D1=81=D0=BA=D0=B8 / srpski</a></li>
+											</ul>
+
+									</div>
+			</div>
+				</div><!-- end of the left (by default at least) column -->
+		<div class=3D"visualClear"></div>
+					<div id=3D"footer" role=3D"contentinfo">
+						<ul id=3D"f-list">
+									<li id=3D"lastmod"> This page was last modified on 7 August 2016, =
+at 09:57.</li>
+									<li id=3D"copyright">Content is available under <a class=3D"extern=
+al" rel=3D"nofollow" href=3D"http://www.gnu.org/copyleft/fdl.html">GNU Free=
+ Documentation License 1.3 or later</a> unless otherwise noted.</li>
+									<li id=3D"privacy"><a href=3D"https://wiki.archlinux.org/index.php=
+/ArchWiki:Privacy_policy" class=3D"mw-redirect" title=3D"ArchWiki:Privacy p=
+olicy">Privacy policy</a></li>
+									<li id=3D"about"><a href=3D"https://wiki.archlinux.org/index.php/A=
+rchWiki:About" title=3D"ArchWiki:About">About ArchWiki</a></li>
+									<li id=3D"disclaimer"><a href=3D"https://wiki.archlinux.org/index.=
+php/ArchWiki:General_disclaimer" title=3D"ArchWiki:General disclaimer">Disc=
+laimers</a></li>
+									<li id=3D"mobileview"><a href=3D"https://wiki.archlinux.org/index.=
+php?title=3DIptables_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)&amp;mobileactio=
+n=3Dtoggle_view_mobile" class=3D"noprint stopMobileRedirectToggle">Mobile v=
+iew</a></li>
+							</ul>
+		</div>
+		</div>
+	=09
+
+</body><!-- Cached/compressed 20170531043243 --></html>
+------MultipartBoundary--KJUSunOZNAdNbQXxdCkSzBh30Zlcb1fxiuRsFPPR0b----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://wiki.archlinux.org/load.php?debug=false&lang=en&modules=mediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.content.externallinks%7Cmediawiki.skinning.interface%7Cskins.archlinux.styles&only=styles&skin=archlinux
+
+@charset "utf-8";
+
+@media print {
+  .noprint, #jump-to-nav, .mw-jump, #column-one, .mw-editsection, .mw-edits=
+ection-like, #footer-places, .mw-hidden-catlinks, .usermessage, .patrollink=
+, .ns-0 .mw-redirectedfrom, .magnify, #mw-navigation, #siteNotice, #f-power=
+edbyico, #f-copyrightico, li#about, li#disclaimer, li#mobileview, li#privac=
+y { display: none; }
+  body { background: rgb(255, 255, 255); color: rgb(0, 0, 0); margin: 0px; =
+padding: 0px; }
+  h1, h2, h3, h4, h5, h6 { font-weight: bold; break-after: avoid; }
+  dt { font-weight: bold; }
+  ul { list-style-type: square; }
+  p { margin: 1em 0px; line-height: 1.2em; orphans: 3; widows: 3; }
+  pre, .mw-code { background: rgb(255, 255, 255); color: rgb(0, 0, 0); bord=
+er: 1pt dashed rgb(0, 0, 0); padding: 1em 0px; font-size: 8pt; white-space:=
+ pre; word-wrap: break-word; overflow: auto; }
+  img, figure, .wikitable, .thumb { break-inside: avoid; }
+  img { border: 0px; vertical-align: middle; }
+  #globalWrapper { width: 100% !important; min-width: 0px !important; }
+  .mw-body { background: rgb(255, 255, 255); color: rgb(0, 0, 0); direction=
+: ltr; border: 0px !important; padding: 0px !important; margin: 0px !import=
+ant; }
+  #column-content { margin: 0px !important; }
+  #column-content .mw-body { padding: 1em; margin: 0px !important; }
+  #toc { background-color: rgb(249, 249, 249); border: 1pt solid rgb(170, 1=
+70, 170); padding: 5px; display: table; }
+  .tocnumber, .toctext { display: table-cell; }
+  .tocnumber { padding-left: 0px; padding-right: 0.5em; }
+  .mw-content-ltr .tocnumber { padding-left: 0px; padding-right: 0.5em; }
+  .mw-content-rtl .tocnumber { padding-left: 0.5em; padding-right: 0px; }
+  #footer { background: rgb(255, 255, 255); color: rgb(0, 0, 0); margin-top=
+: 1em; border-top: 1pt solid rgb(170, 170, 170); direction: ltr; }
+  a { background: none !important; padding: 0px !important; }
+  .mw-body a.external.text::after, .mw-body a.external.autonumber::after { =
+content: " (" attr(href) ")"; word-break: break-all; word-wrap: break-word;=
+ }
+  .mw-body a.external.text[href^=3D"//"]::after, .mw-body a.external.autonu=
+mber[href^=3D"//"]::after { content: " (https:" attr(href) ")"; }
+  a, a.external, a.new, a.stub { color: rgb(0, 0, 0) !important; text-decor=
+ation: none !important; }
+  a, a.external, a.new, a.stub { color: inherit !important; text-decoration=
+: inherit !important; }
+  div.floatright { float: right; clear: right; position: relative; margin: =
+0.5em 0px 0.8em 1.4em; }
+  div.floatright p { font-style: italic; }
+  div.floatleft { float: left; clear: left; position: relative; margin: 0.5=
+em 1.4em 0.8em 0px; }
+  div.floatleft p { font-style: italic; }
+  .center { text-align: center; }
+  div.thumb { background-color: transparent; border: 0px; width: auto; marg=
+in-top: 0.5em; margin-bottom: 0.8em; }
+  div.thumbinner { background-color: rgb(255, 255, 255); border: 1pt solid =
+rgb(204, 204, 204); padding: 3px; font-size: 94%; text-align: center; overf=
+low: hidden; }
+  html .thumbimage { border: 1pt solid rgb(204, 204, 204); }
+  html .thumbcaption { border: none; text-align: left; line-height: 1.4em; =
+padding: 3px; font-size: 94%; }
+  div.tright { float: right; clear: right; margin: 0.5em 0px 0.8em 1.4em; }
+  div.tleft { float: left; clear: left; margin: 0.5em 1.4em 0.8em 0px; }
+  img.thumbborder { border: 1pt solid rgb(221, 221, 221); }
+  table.wikitable, table.mw_metadata { background: rgb(255, 255, 255); marg=
+in: 1em 0px; border: 1pt solid rgb(170, 170, 170); border-collapse: collaps=
+e; }
+  table.wikitable > tr > th, table.wikitable > tr > td, table.wikitable > *=
+ > tr > th, table.wikitable > * > tr > td, .mw_metadata th, .mw_metadata td=
+ { border: 1pt solid rgb(170, 170, 170); padding: 0.2em; }
+  table.wikitable > tr > th, table.wikitable > * > tr > th, .mw_metadata th=
+ { background: rgb(255, 255, 255); font-weight: bold; text-align: center; }
+  table.wikitable > caption, .mw_metadata caption { font-weight: bold; }
+  table.listing, table.listing td { border: 1pt solid rgb(0, 0, 0); border-=
+collapse: collapse; }
+  .catlinks ul { display: inline; padding: 0px; list-style: none none; }
+  .catlinks li { display: inline-block; line-height: 1.15em; padding: 0px 0=
+.4em; border-left: 1pt solid rgb(170, 170, 170); margin: 0.1em 0px; }
+  .catlinks li:first-child { padding-left: 0.2em; border-left: 0px; }
+  .printfooter { padding: 1em 0px; }
+}
+
+@media screen {
+  .mw-content-ltr { direction: ltr; }
+  .mw-content-rtl { direction: rtl; }
+  .sitedir-ltr textarea, .sitedir-ltr input { direction: ltr; }
+  .sitedir-rtl textarea, .sitedir-rtl input { direction: rtl; }
+  .mw-userlink { unicode-bidi: embed; }
+  mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+  wbr { display: inline-block; }
+  input[type=3D"submit"], input[type=3D"button"], input[type=3D"reset"], in=
+put[type=3D"file"] { direction: ltr; }
+  textarea[dir=3D"ltr"], input[dir=3D"ltr"] { direction: ltr; }
+  textarea[dir=3D"rtl"], input[dir=3D"rtl"] { direction: rtl; }
+  abbr[title], .explain[title] { border-bottom: 1px dotted; cursor: help; }
+  @supports (text-decoration:underline dotted) {
+  abbr[title], .explain[title] { border-bottom: none; text-decoration: unde=
+rline dotted; }
+}
+  span.comment { font-style: italic; unicode-bidi: isolate; }
+  #editform, #toolbar, #wpTextbox1 { clear: both; }
+  .mw-editfont-default:not(textarea) { font-family: monospace; }
+  .mw-editfont-monospace { font-family: monospace; }
+  .mw-editfont-sans-serif { font-family: sans-serif; }
+  .mw-editfont-serif { font-family: serif; }
+  li span.deleted, span.history-deleted { text-decoration: line-through; co=
+lor: rgb(136, 136, 136); font-style: italic; }
+  .not-patrolled { background-color: rgb(255, 255, 170); }
+  .unpatrolled { font-weight: bold; color: rgb(255, 0, 0); }
+  div.patrollink { font-size: 75%; text-align: right; }
+  td.mw-label { text-align: right; }
+  td.mw-input { text-align: left; }
+  td.mw-submit { text-align: left; }
+  td.mw-label { vertical-align: middle; }
+  td.mw-submit { white-space: nowrap; }
+  input#wpSummary { width: 80%; margin-bottom: 1em; }
+  .mw-input-with-label { white-space: nowrap; display: inline-block; }
+  .mw-content-ltr .thumbcaption { text-align: left; }
+  .mw-content-ltr .magnify { float: right; }
+  .mw-content-rtl .thumbcaption { text-align: right; }
+  .mw-content-rtl .magnify { float: left; }
+  #catlinks { text-align: left; }
+  .catlinks ul { display: inline; margin: 0px; padding: 0px; list-style: no=
+ne none; }
+  .catlinks li { display: inline-block; line-height: 1.25em; border-left: 1=
+px solid rgb(170, 170, 170); margin: 0.125em 0px; padding: 0px 0.5em; zoom:=
+ 1; }
+  .catlinks li:first-child { padding-left: 0.25em; border-left: none; }
+  .catlinks li a.mw-redirect { font-style: italic; }
+  .mw-hidden-cats-hidden { display: none; }
+  .catlinks-allhidden { display: none; }
+  p.mw-protect-editreasons, p.mw-filedelete-editreasons, p.mw-delete-editre=
+asons { font-size: 90%; text-align: right; }
+  .autocomment { color: rgb(128, 128, 128); }
+  .newpage, .minoredit, .botedit { font-weight: bold; }
+  div.mw-warning-with-logexcerpt { padding: 3px; margin-bottom: 3px; border=
+: 2px solid rgb(47, 111, 171); clear: both; }
+  div.mw-warning-with-logexcerpt ul li { font-size: 90%; }
+  span.mw-revdelundel-link, strong.mw-revdelundel-link { font-size: 90%; }
+  span.mw-revdelundel-hidden, input.mw-revdelundel-hidden { visibility: hid=
+den; }
+  td.mw-revdel-checkbox, th.mw-revdel-checkbox { padding-right: 10px; text-=
+align: center; }
+  a.new { color: rgb(186, 0, 0); }
+  .plainlinks a.external { background: none !important; padding: 0px !impor=
+tant; }
+  .rtl a.external.free, .rtl a.external.autonumber { direction: ltr; unicod=
+e-bidi: embed; }
+  table.wikitable { margin: 1em 0px; background-color: rgb(249, 249, 249); =
+border: 1px solid rgb(170, 170, 170); border-collapse: collapse; color: rgb=
+(0, 0, 0); }
+  table.wikitable > tr > th, table.wikitable > tr > td, table.wikitable > *=
+ > tr > th, table.wikitable > * > tr > td { border: 1px solid rgb(170, 170,=
+ 170); padding: 0.2em 0.4em; }
+  table.wikitable > tr > th, table.wikitable > * > tr > th { background-col=
+or: rgb(242, 242, 242); text-align: center; }
+  table.wikitable > caption { font-weight: bold; }
+  .error, .warning, .success { font-size: larger; }
+  .error { color: rgb(204, 0, 0); }
+  .warning { color: rgb(112, 80, 0); }
+  .success { color: rgb(0, 144, 0); }
+  .errorbox, .warningbox, .successbox { border: 1px solid; padding: 0.5em 1=
+em; margin-bottom: 1em; display: inline-block; zoom: 1; }
+  .errorbox h2, .warningbox h2, .successbox h2 { font-size: 1em; color: inh=
+erit; font-weight: bold; display: inline; margin: 0px 0.5em 0px 0px; border=
+: none; }
+  .errorbox { color: rgb(204, 0, 0); border-color: rgb(250, 197, 197); back=
+ground-color: rgb(250, 227, 227); }
+  .warningbox { color: rgb(112, 80, 0); border-color: rgb(253, 226, 155); b=
+ackground-color: rgb(253, 241, 209); }
+  .successbox { color: rgb(0, 128, 0); border-color: rgb(183, 253, 181); ba=
+ckground-color: rgb(225, 253, 223); }
+  .mw-infobox { border: 2px solid rgb(255, 127, 0); margin: 0.5em; clear: l=
+eft; overflow: hidden; }
+  .mw-infobox-left { margin: 7px; float: left; width: 35px; }
+  .mw-infobox-right { margin: 0.5em 0.5em 0.5em 49px; }
+  .previewnote { color: rgb(204, 0, 0); margin-bottom: 1em; }
+  .previewnote p { text-indent: 3em; margin: 0.8em 0px; }
+  .visualClear { clear: both; }
+  .mw-datatable { border-collapse: collapse; }
+  .mw-datatable, .mw-datatable td, .mw-datatable th { border: 1px solid rgb=
+(170, 170, 170); padding: 0px 0.15em; }
+  .mw-datatable th { background-color: rgb(221, 221, 255); }
+  .mw-datatable td { background-color: rgb(255, 255, 255); }
+  .mw-datatable tr:hover td { background-color: rgb(238, 238, 255); }
+  .mw-content-ltr ul, .mw-content-rtl .mw-content-ltr ul { margin: 0.3em 0p=
+x 0px 1.6em; padding: 0px; }
+  .mw-content-rtl ul, .mw-content-ltr .mw-content-rtl ul { margin: 0.3em 1.=
+6em 0px 0px; padding: 0px; }
+  .mw-content-ltr ol, .mw-content-rtl .mw-content-ltr ol { margin: 0.3em 0p=
+x 0px 3.2em; padding: 0px; }
+  .mw-content-rtl ol, .mw-content-ltr .mw-content-rtl ol { margin: 0.3em 3.=
+2em 0px 0px; padding: 0px; }
+  .mw-content-ltr dd, .mw-content-rtl .mw-content-ltr dd { margin-left: 1.6=
+em; margin-right: 0px; }
+  .mw-content-rtl dd, .mw-content-ltr .mw-content-rtl dd { margin-right: 1.=
+6em; margin-left: 0px; }
+  .mw-ajax-loader { background-image: url("/resources/src/mediawiki.legacy/=
+images/ajax-loader.gif?57f34"); background-position: center center; backgro=
+und-repeat: no-repeat; padding: 16px; position: relative; top: -16px; }
+  .mw-small-spinner { margin-right: 0.6em; background-image: url("/resource=
+s/src/mediawiki.legacy/images/spinner.gif?ca65b"); background-position: cen=
+ter center; background-repeat: no-repeat; padding: 10px !important; }
+  h1:lang(anp), h1:lang(as), h1:lang(bh), h1:lang(bho), h1:lang(bn), h1:lan=
+g(gu), h1:lang(hi), h1:lang(kn), h1:lang(ks), h1:lang(ml), h1:lang(mr), h1:=
+lang(my), h1:lang(mai), h1:lang(ne), h1:lang(new), h1:lang(or), h1:lang(pa)=
+, h1:lang(pi), h1:lang(sa), h1:lang(ta), h1:lang(te) { line-height: 1.6em !=
+important; }
+  h2:lang(anp), h3:lang(anp), h4:lang(anp), h5:lang(anp), h6:lang(anp), h2:=
+lang(as), h3:lang(as), h4:lang(as), h5:lang(as), h6:lang(as), h2:lang(bho),=
+ h3:lang(bho), h4:lang(bho), h5:lang(bho), h6:lang(bho), h2:lang(bh), h3:la=
+ng(bh), h4:lang(bh), h5:lang(bh), h6:lang(bh), h2:lang(bn), h3:lang(bn), h4=
+:lang(bn), h5:lang(bn), h6:lang(bn), h2:lang(gu), h3:lang(gu), h4:lang(gu),=
+ h5:lang(gu), h6:lang(gu), h2:lang(hi), h3:lang(hi), h4:lang(hi), h5:lang(h=
+i), h6:lang(hi), h2:lang(kn), h3:lang(kn), h4:lang(kn), h5:lang(kn), h6:lan=
+g(kn), h2:lang(ks), h3:lang(ks), h4:lang(ks), h5:lang(ks), h6:lang(ks), h2:=
+lang(ml), h3:lang(ml), h4:lang(ml), h5:lang(ml), h6:lang(ml), h2:lang(mr), =
+h3:lang(mr), h4:lang(mr), h5:lang(mr), h6:lang(mr), h2:lang(my), h3:lang(my=
+), h4:lang(my), h5:lang(my), h6:lang(my), h2:lang(mai), h3:lang(mai), h4:la=
+ng(mai), h5:lang(mai), h6:lang(mai), h2:lang(ne), h3:lang(ne), h4:lang(ne),=
+ h5:lang(ne), h6:lang(ne), h2:lang(new), h3:lang(new), h4:lang(new), h5:lan=
+g(new), h6:lang(new), h2:lang(or), h3:lang(or), h4:lang(or), h5:lang(or), h=
+6:lang(or), h2:lang(pa), h3:lang(pa), h4:lang(pa), h5:lang(pa), h6:lang(pa)=
+, h2:lang(pi), h3:lang(pi), h4:lang(pi), h5:lang(pi), h6:lang(pi), h2:lang(=
+sa), h3:lang(sa), h4:lang(sa), h5:lang(sa), h6:lang(sa), h2:lang(ta), h3:la=
+ng(ta), h4:lang(ta), h5:lang(ta), h6:lang(ta), h2:lang(te), h3:lang(te), h4=
+:lang(te), h5:lang(te), h6:lang(te) { line-height: 1.2em; }
+  ol:lang(azb) li, ol:lang(bcc) li, ol:lang(bgn) li, ol:lang(bqi) li, ol:la=
+ng(fa) li, ol:lang(glk) li, ol:lang(kk-arab) li, ol:lang(lrc) li, ol:lang(l=
+uz) li, ol:lang(mzn) li { list-style-type: persian; }
+  ol:lang(ckb) li, ol:lang(sdh) li { list-style-type: arabic-indic; }
+  ol:lang(hi) li, ol:lang(mr) li { list-style-type: devanagari; }
+  ol:lang(as) li, ol:lang(bn) li { list-style-type: bengali; }
+  ol:lang(or) li { list-style-type: oriya; }
+  #toc ul, .toc ul { margin: 0.3em 0px; }
+  .mw-content-ltr .toc ul, .mw-content-ltr #toc ul, .mw-content-rtl .mw-con=
+tent-ltr .toc ul, .mw-content-rtl .mw-content-ltr #toc ul { text-align: lef=
+t; }
+  .mw-content-rtl .toc ul, .mw-content-rtl #toc ul, .mw-content-ltr .mw-con=
+tent-rtl .toc ul, .mw-content-ltr .mw-content-rtl #toc ul { text-align: rig=
+ht; }
+  .mw-content-ltr .toc ul ul, .mw-content-ltr #toc ul ul, .mw-content-rtl .=
+mw-content-ltr .toc ul ul, .mw-content-rtl .mw-content-ltr #toc ul ul { mar=
+gin: 0px 0px 0px 2em; }
+  .mw-content-rtl .toc ul ul, .mw-content-rtl #toc ul ul, .mw-content-ltr .=
+mw-content-rtl .toc ul ul, .mw-content-ltr .mw-content-rtl #toc ul ul { mar=
+gin: 0px 2em 0px 0px; }
+  #toc #toctitle, .toc #toctitle, #toc .toctitle, .toc .toctitle { directio=
+n: ltr; }
+  #mw-clearyourcache, #mw-sitecsspreview, #mw-sitejspreview, #mw-usercsspre=
+view, #mw-userjspreview { direction: ltr; unicode-bidi: embed; }
+  #mw-revision-info, #mw-revision-info-current, #mw-revision-nav { directio=
+n: ltr; }
+  div.tright, div.floatright, table.floatright { clear: right; float: right=
+; }
+  div.tleft, div.floatleft, table.floatleft { float: left; clear: left; }
+  div.floatright, table.floatright, div.floatleft, table.floatleft { positi=
+on: relative; }
+  #mw-credits a { unicode-bidi: embed; }
+  .mw-jump, #jump-to-nav { overflow: hidden; height: 0px; zoom: 1; }
+  .printfooter { display: none; }
+  .xdebug-error { position: absolute; z-index: 99; }
+  .mw-editsection, #jump-to-nav { user-select: none; }
+  .mw-editsection, .mw-editsection-like { font-size: small; font-weight: no=
+rmal; margin-left: 1em; vertical-align: baseline; line-height: 1em; display=
+: inline-block; }
+  .mw-content-ltr .mw-editsection, .mw-content-rtl .mw-content-ltr .mw-edit=
+section { margin-left: 1em; }
+  .mw-content-rtl .mw-editsection, .mw-content-ltr .mw-content-rtl .mw-edit=
+section { margin-right: 1em; }
+  sup, sub { line-height: 1; }
+}
+
+.mw-headline-anchor { display: none; }
+
+@media screen {
+  .mw-body a.external, .link-https { background: linear-gradient(transparen=
+t, transparent) right center no-repeat, url("data:image/svg+xml,%3C%3Fxml%2=
+0version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E=
+%0A%3Csvg%20xmlns%3Ardf%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-s=
+yntax-ns%23%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20heigh=
+t%3D%2213%22%20width%3D%2213%22%20version%3D%221.1%22%20xmlns%3Acc%3D%22htt=
+p%3A%2F%2Fcreativecommons.org%2Fns%23%22%20xmlns%3Adc%3D%22http%3A%2F%2Fpur=
+l.org%2Fdc%2Felements%2F1.1%2F%22%3E%0A%3Cg%20transform%3D%22translate%28-3=
+6.467808%2C-258.39005%29%22%3E%0A%3Cpath%20style%3D%22opacity%3A1%3Bfill%3A=
+%233366bb%3B%22%20d%3D%22m41.47%2C259.4%2C7%2C0%2C0%2C7-2-2-3%2C2%2C0-1%2C3=
+-2.25%2C1%2C1%2C0-3.75-3.75%2C0%2C1%2C1-2.25%2C3-1%2C0%2C2-3z%22%2F%3E%0A%3=
+Cpath%20style%3D%22opacity%3A1%3Bfill%3A%233366bb%3B%22%20d%3D%22m43.47%2C2=
+61.4-5%2C0%2C0%2C8%2C8%2C0%2C0-5-1%2C0%2C0%2C4-6%2C0%2C0-6%2C4%2C0z%22%2F%3=
+E%0A%3Cpath%20style%3D%22opacity%3A1%3Bfill%3A%2315a5ea%3B%22%20d%3D%22m40.=
+55%2C263.9c0-0.6213%2C0.6213-0.6213%2C0.6213-0.6213%2C1.864%2C0.6213%2C3.10=
+7%2C1.864%2C3.728%2C3.728%2C0%2C0%2C0%2C0.6213-0.6213%2C0.6213-1.243-1.864-=
+1.864-2.485-3.728-3.728z%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A"); padding=
+-right: 15px; }
+  .mw-body a.external[href^=3D"mailto:"], .link-mailto { background: linear=
+-gradient(transparent, transparent) right center no-repeat, url("data:image=
+/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standal=
+one%3D%22no%22%3F%3E%0A%3Csvg%20xmlns%3Ardf%3D%22http%3A%2F%2Fwww.w3.org%2F=
+1999%2F02%2F22-rdf-syntax-ns%23%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2=
+000%2Fsvg%22%20height%3D%2213%22%20width%3D%2213%22%20version%3D%221.1%22%2=
+0xmlns%3Acc%3D%22http%3A%2F%2Fcreativecommons.org%2Fns%23%22%20xmlns%3Adc%3=
+D%22http%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1.1%2F%22%3E%0A%3Cg%20transform=
+%3D%22translate%28-36.47%2C-257.4%29%22%3E%0A%3Cpath%20style%3D%22fill%3A%2=
+315a5ea%3B%22%20d%3D%22m38.31%2C261.4%2C4.66%2C4.349%2C4.66-4.349-0.6213-0.=
+6213-1.243%2C0.6216-2.796%2C2.485-2.796-2.485-1.243-0.6216z%22%2F%3E%0A%3Cp=
+ath%20style%3D%22fill%3A%233366bb%3B%22%20d%3D%22m37.47%2C260.4%2C0%2C8%2C1=
+1%2C0%2C0-8zm1%2C1%2C9%2C0%2C0%2C6-9%2C0z%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg=
+%3E%0A"); padding-right: 15px; }
+  .mw-body a.external[href^=3D"ftp://"], .link-ftp { background: linear-gra=
+dient(transparent, transparent) right center no-repeat, url("data:image/svg=
++xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%=
+3D%22no%22%3F%3E%0A%3Csvg%20xmlns%3Ardf%3D%22http%3A%2F%2Fwww.w3.org%2F1999=
+%2F02%2F22-rdf-syntax-ns%23%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%=
+2Fsvg%22%20height%3D%2213%22%20width%3D%2213%22%20version%3D%221.1%22%20xml=
+ns%3Acc%3D%22http%3A%2F%2Fcreativecommons.org%2Fns%23%22%20xmlns%3Adc%3D%22=
+http%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1.1%2F%22%3E%0A%3Cg%20transform%3D%=
+22translate%28-136.35715%2C-374.43362%29%22%3E%0A%3Cpath%20style%3D%22opaci=
+ty%3A1%3Bfill%3A%233465ba%3B%22%20d%3D%22m137.4%2C376.9%2C0%2C7.5%2C1-0.987=
+2%2C0-6.013%2C2%2C0%2C2%2C1%2C4-0.0002%2C0%2C2%2C1%2C0%2C0-2.5-0.5-0.5002-4=
+.5%2C0.0002-2-1-2.5%2C0z%22%2F%3E%0A%3Cpath%20style%3D%22opacity%3A1%3Bfill=
+%3A%2316a4e8%3B%22%20d%3D%22m142.4%2C379.4-1-0.0001-2.5%2C0-0.5%2C0.5-1%2C4=
+.5%2C10-0.0001%2C0-4.5-0.5-0.5zm0%2C1%2C4-0.0001%2C0%2C3-7.75-0.0001%2C0.75=
+-3%2C2%2C0z%22%2F%3E%0A%3Cpath%20style%3D%22opacity%3A1%3Bfill%3A%233465ba%=
+3B%22%20d%3D%22m138.4%2C385.4%2C0%2C1%2C8%2C0%2C0-1z%22%2F%3E%0A%3Cpath%20s=
+tyle%3D%22opacity%3A1%3Bfill%3A%233465ba%3B%22%20d%3D%22m141.4%2C383.9%2C0%=
+2C2%2C2%2C0%2C0-2c0-0.5-2-0.5-2%2C0z%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E%0=
+A"); padding-right: 15px; }
+  .mw-body a.external[href^=3D"irc://"], .mw-body a.external[href^=3D"ircs:=
+//"], .link-irc { background: linear-gradient(transparent, transparent) rig=
+ht center no-repeat, url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%2=
+2%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20xmlns%3=
+Ardf%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%22%20xm=
+lns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%2213%22%20widt=
+h%3D%2213%22%20version%3D%221.1%22%20xmlns%3Acc%3D%22http%3A%2F%2Fcreativec=
+ommons.org%2Fns%23%22%20xmlns%3Adc%3D%22http%3A%2F%2Fpurl.org%2Fdc%2Felemen=
+ts%2F1.1%2F%22%3E%0A%3Cg%20transform%3D%22translate%28-36.467808%2C-258.390=
+05%29%22%3E%0A%3Cpath%20style%3D%22opacity%3A1%3Bfill%3A%233366bb%3B%22%20d=
+%3D%22m38.09%2C260.4-0.6213%2C0.6213%2C0%2C5.757%2C0.6213%2C0.6213%2C1.689%=
+2C0-0.6213%2C2.728%2C4.311-2.728%2C4.379%2C0%2C0.6213-0.6213%2C0-5.757-0.62=
+13-0.6213zm0.3787%2C1%2C9%2C0%2C0%2C5-4%2C0-2.902%2C1.897%2C0.9021-1.897-3%=
+2C0z%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A"); padding-right: 15px; }
+  .mw-body a.external[href$=3D".ogg"], .mw-body a.external[href$=3D".OGG"],=
+ .mw-body a.external[href$=3D".mid"], .mw-body a.external[href$=3D".MID"], =
+.mw-body a.external[href$=3D".midi"], .mw-body a.external[href$=3D".MIDI"],=
+ .mw-body a.external[href$=3D".mp3"], .mw-body a.external[href$=3D".MP3"], =
+.mw-body a.external[href$=3D".wav"], .mw-body a.external[href$=3D".WAV"], .=
+mw-body a.external[href$=3D".wma"], .mw-body a.external[href$=3D".WMA"], .l=
+ink-audio { background: linear-gradient(transparent, transparent) right cen=
+ter no-repeat, url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20en=
+coding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20xmlns%3Ardf%3=
+D%22http%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%22%20xmlns%3D=
+%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%2213%22%20width%3D%2=
+213%22%20version%3D%221.1%22%20xmlns%3Acc%3D%22http%3A%2F%2Fcreativecommons=
+.org%2Fns%23%22%20xmlns%3Adc%3D%22http%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1=
+.1%2F%22%3E%0A%3Cg%20transform%3D%22translate%28-36.467808%2C-258.39005%29%=
+22%3E%0A%3Cpath%20style%3D%22opacity%3A1%3Bfill%3A%233366bb%3B%22%20d%3D%22=
+m43.47%2C259.4-3%2C3-3%2C0%2C0%2C4%2C3%2C0%2C3%2C3zm-1%2C2.5%2C0%2C5-1.5-1.=
+5-2.5%2C0%2C0-2%2C2.5%2C0z%22%2F%3E%0A%3Cpath%20style%3D%22opacity%3A1%3Bfi=
+ll%3A%2315a5ea%3B%22%20d%3D%22m43.9%2C262.5c0-0.6213%2C0.6213-1.243%2C1.243=
+-0.6213%2C0%2C0%2C0.6213%2C0.6213%2C0.6213%2C2.485s-0.6213%2C2.485-0.6213%2=
+C2.485c-0.6213%2C0.6213-1.243%2C0-1.243-0.6213%2C0%2C0%2C0.6213-0.6213%2C0.=
+6213-1.864s-0.6213-1.864-0.6213-1.864z%22%2F%3E%0A%3Cpath%20style%3D%22opac=
+ity%3A1%3Bfill%3A%2315a5ea%3B%22%20d%3D%22m45.76%2C261.2c0-0.6213%2C0.6213-=
+1.243%2C1.243-0.6213%2C0%2C0%2C1.243%2C1.243%2C1.243%2C3.728s-1.243%2C3.728=
+-1.243%2C3.728c-0.6213%2C0.6213-1.243%2C0-1.243-0.6213%2C0%2C0%2C1.243-1.24=
+3%2C1.243-3.107s-1.243-3.107-1.243-3.107z%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg=
+%3E%0A"); padding-right: 15px; }
+  .mw-body a.external[href$=3D".ogm"], .mw-body a.external[href$=3D".OGM"],=
+ .mw-body a.external[href$=3D".avi"], .mw-body a.external[href$=3D".AVI"], =
+.mw-body a.external[href$=3D".mpeg"], .mw-body a.external[href$=3D".MPEG"],=
+ .mw-body a.external[href$=3D".mpg"], .mw-body a.external[href$=3D".MPG"], =
+.link-video { background: linear-gradient(transparent, transparent) right c=
+enter no-repeat, url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20=
+encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20xmlns%3Ardf=
+%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%22%20xmlns%=
+3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%2213%22%20width%3D=
+%2213%22%20version%3D%221.1%22%20xmlns%3Acc%3D%22http%3A%2F%2Fcreativecommo=
+ns.org%2Fns%23%22%20xmlns%3Adc%3D%22http%3A%2F%2Fpurl.org%2Fdc%2Felements%2=
+F1.1%2F%22%3E%0A%3Cg%20transform%3D%22translate%28-36.4678%2C-258.39%29%22%=
+3E%0A%3Cpath%20style%3D%22opacity%3A1%3Bfill-opacity%3A1%3Bfill%3A%2315a5ea=
+%3B%22%20d%3D%22m38.96%2C260.4%2C0%2C0.6213%2C8.098%2C0%2C0-0.6213z%22%2F%3=
+E%0A%3Cpath%20style%3D%22opacity%3A1%3Bfill-opacity%3A1%3Bfill%3A%2315a5ea%=
+3B%22%20d%3D%22m38.96%2C268.4%2C8.098%2C0%2C0-0.6213-8.098%2C0z%22%2F%3E%0A=
+%3Cpath%20style%3D%22opacity%3A1%3Bfill-opacity%3A1%3Bfill%3A%2315a5ea%3B%2=
+2%20d%3D%22m38.96%2C262.3%2C0%2C0.6213%2C1.869%2C0%2C0-0.6213zm6.229%2C0%2C=
+0%2C0.6213%2C1.869%2C0%2C0-0.6213z%22%2F%3E%0A%3Cpath%20style%3D%22opacity%=
+3A1%3Bfill-opacity%3A1%3Bfill%3A%2315a5ea%3B%22%20d%3D%22m38.96%2C266%2C0%2=
+C0.6213%2C1.869%2C0%2C0-0.6213zm6.229%2C0%2C0%2C0.6213%2C1.869%2C0%2C0-0.62=
+13z%22%2F%3E%0A%3Cpath%20style%3D%22opacity%3A1%3Bfill-opacity%3A1%3Bfill%3=
+A%2315a5ea%3B%22%20d%3D%22m38.96%2C264.8%2C8.098%2C0%2C0-0.6213-8.098%2C0z%=
+22%2F%3E%0A%3Cpath%20style%3D%22opacity%3A1%3Bfill%3A%2315a5ea%3B%22%20d%3D=
+%22m40.83%2C263.9%2C0%2C1.243%2C4.36%2C0%2C0-1.243z%22%2F%3E%0A%3Cpath%20st=
+yle%3D%22opacity%3A1%3Bfill%3A%233366bb%3B%22%20d%3D%22m40.47%2C260.4%2C0%2=
+C8%2C5%2C0%2C0-8zm1%2C1%2C3%2C0%2C0%2C6-3%2C0z%22%2F%3E%0A%3Cpath%20style%3=
+D%22opacity%3A1%3Bfill%3A%233366bb%3B%22%20d%3D%22m38.47%2C259.4%2C1%2C0%2C=
+0%2C10-1%2C0z%22%2F%3E%0A%3Cpath%20style%3D%22opacity%3A1%3Bfill%3A%233366b=
+b%3B%22%20d%3D%22m46.47%2C259.4%2C1%2C0%2C0%2C10-1%2C0z%22%2F%3E%0A%3C%2Fg%=
+3E%0A%3C%2Fsvg%3E%0A"); padding-right: 15px; }
+  .mw-body a.external[href$=3D".pdf"], .mw-body a.external[href$=3D".PDF"],=
+ .mw-body a.external[href*=3D".pdf#"], .mw-body a.external[href*=3D".PDF#"]=
+, .mw-body a.external[href*=3D".pdf?"], .mw-body a.external[href*=3D".PDF?"=
+], .link-document { background: linear-gradient(transparent, transparent) r=
+ight center no-repeat, url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0=
+%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20xmlns=
+%3Ardf%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%22%20=
+xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%2213%22%20wi=
+dth%3D%2213%22%20version%3D%221.1%22%20xmlns%3Acc%3D%22http%3A%2F%2Fcreativ=
+ecommons.org%2Fns%23%22%20xmlns%3Adc%3D%22http%3A%2F%2Fpurl.org%2Fdc%2Felem=
+ents%2F1.1%2F%22%3E%0A%3Cpath%20style%3D%22opacity%3A1%3Bfill%3A%2315a5ea%3=
+B%22%20d%3D%22m7.5%2C2%2C0%2C3%2C2.5%2C0%2C1-1-2.5%2C0%2C0-3z%22%2F%3E%0A%3=
+Cpath%20style%3D%22opacity%3A1%3Bfill%3A%233366bb%3B%22%20d%3D%22m3%2C1%2C0=
+%2C10%2C8%2C0%2C0-7-2.5-3zm1%2C1%2C4%2C0%2C2%2C2.5%2C0%2C5.5-6%2C0z%22%2F%3=
+E%0A%3C%2Fsvg%3E%0A"); padding-right: 15px; }
+  .mw-body a.extiw, .mw-body a.extiw:active { color: rgb(51, 102, 187); }
+  .mw-body a.external { color: rgb(51, 102, 187); }
+}
+
+@media screen {
+  a { text-decoration: none; color: rgb(6, 69, 173); background: none; }
+  a:not([href]) { cursor: pointer; }
+  a:visited { color: rgb(11, 0, 128); }
+  a:active { color: rgb(250, 167, 0); }
+  a:hover, a:focus { text-decoration: underline; }
+  a:lang(ar), a:lang(kk-arab), a:lang(mzn), a:lang(ps), a:lang(ur) { text-d=
+ecoration: none; }
+  a.stub { color: rgb(119, 34, 51); }
+  a.new, #p-personal a.new { color: rgb(186, 0, 0); }
+  a.new:visited, #p-personal a.new:visited { color: rgb(165, 88, 88); }
+  .mw-body a.extiw, .mw-body a.extiw:active { color: rgb(51, 102, 187); }
+  .mw-body a.extiw:visited { color: rgb(102, 51, 102); }
+  .mw-body a.extiw:active { color: rgb(187, 102, 51); }
+  .mw-body a.external { color: rgb(51, 102, 187); }
+  .mw-body a.external:visited { color: rgb(102, 51, 102); }
+  .mw-body a.external:active { color: rgb(187, 102, 51); }
+  .mw-body a.external.free { word-wrap: break-word; }
+  img { border: none; vertical-align: middle; }
+  hr { height: 1px; color: rgb(170, 170, 170); background-color: rgb(170, 1=
+70, 170); border: 0px; margin: 0.2em 0px; }
+  h1, h2, h3, h4, h5, h6 { color: rgb(0, 0, 0); background: none; font-weig=
+ht: normal; margin: 0px; overflow: hidden; padding-top: 0.5em; padding-bott=
+om: 0.17em; border-bottom: 1px solid rgb(170, 170, 170); }
+  h1 { font-size: 188%; }
+  h2 { font-size: 150%; }
+  h3, h4, h5, h6 { border-bottom: none; font-weight: bold; }
+  h3 { font-size: 128%; }
+  h4 { font-size: 116%; }
+  h5 { font-size: 108%; }
+  h6 { font-size: 100%; }
+  h1, h2 { margin-bottom: 0.6em; }
+  h3, h4, h5 { margin-bottom: 0.3em; }
+  p { margin: 0.4em 0px 0.5em; }
+  p img { margin: 0px; }
+  ul { list-style-type: square; margin: 0.3em 0px 0px 1.6em; padding: 0px; =
+}
+  ol { margin: 0.3em 0px 0px 3.2em; padding: 0px; list-style-image: none; }
+  li { margin-bottom: 0.1em; }
+  dt { font-weight: bold; margin-bottom: 0.1em; }
+  dl { margin-top: 0.2em; margin-bottom: 0.5em; }
+  dd { margin-left: 1.6em; margin-bottom: 0.1em; }
+  pre, code, tt, kbd, samp, .mw-code { font-family: monospace, Courier; }
+  code { color: rgb(0, 0, 0); background-color: rgb(249, 249, 249); border:=
+ 1px solid rgb(221, 221, 221); border-radius: 2px; padding: 1px 4px; }
+  pre, .mw-code { color: rgb(0, 0, 0); background-color: rgb(249, 249, 249)=
+; border: 1px solid rgb(221, 221, 221); padding: 1em; white-space: pre-wrap=
+; }
+  table { font-size: 100%; }
+  fieldset { border: 1px solid rgb(47, 111, 171); margin: 1em 0px; padding:=
+ 0px 1em 1em; }
+  fieldset.nested { margin: 0px 0px 0.5em; padding: 0px 0.5em 0.5em; }
+  legend { padding: 0.5em; font-size: 95%; }
+  form { border: none; margin: 0px; }
+  textarea { width: 100%; padding: 0.1em; display: block; box-sizing: borde=
+r-box; }
+  .center { width: 100%; text-align: center; }
+  .center * { margin-left: auto; margin-right: auto; }
+  .small { font-size: 94%; }
+  table.small { font-size: 100%; }
+  #toc, .toc, .mw-warning, .toccolours { border: 1px solid rgb(170, 170, 17=
+0); background-color: rgb(249, 249, 249); padding: 5px; font-size: 95%; }
+  #toc, .toc { display: table; zoom: 1; padding: 7px; }
+  table#toc, table.toc { border-collapse: collapse; }
+  table#toc td, table.toc td { padding: 0px; }
+  #toc h2, .toc h2 { display: inline; border: none; padding: 0px; font-size=
+: 100%; font-weight: bold; }
+  #toc #toctitle, .toc #toctitle, #toc .toctitle, .toc .toctitle { text-ali=
+gn: center; }
+  #toc ul, .toc ul { list-style-type: none; list-style-image: none; margin-=
+left: 0px; padding: 0px; text-align: left; }
+  #toc ul ul, .toc ul ul { margin: 0px 0px 0px 2em; }
+  .tocnumber, .toctext { display: table-cell; text-decoration: inherit; }
+  .tocnumber { padding-left: 0px; padding-right: 0.5em; }
+  .mw-content-ltr .tocnumber { padding-left: 0px; padding-right: 0.5em; }
+  .mw-content-rtl .tocnumber { padding-left: 0.5em; padding-right: 0px; }
+  .mw-warning { margin-left: 50px; margin-right: 50px; text-align: center; =
+}
+  div.floatright, table.floatright { margin: 0px 0px 0.5em 0.5em; border: 0=
+px; }
+  div.floatright p { font-style: italic; }
+  div.floatleft, table.floatleft { margin: 0px 0.5em 0.5em 0px; border: 0px=
+; }
+  div.floatleft p { font-style: italic; }
+  div.thumb { margin-bottom: 0.5em; width: auto; background-color: transpar=
+ent; }
+  div.thumbinner { border: 1px solid rgb(204, 204, 204); padding: 3px; back=
+ground-color: rgb(249, 249, 249); font-size: 94%; text-align: center; overf=
+low: hidden; }
+  html .thumbimage { border: 1px solid rgb(204, 204, 204); }
+  html .thumbcaption { border: none; line-height: 1.4em; padding: 3px; font=
+-size: 94%; text-align: left; }
+  div.magnify { float: right; margin-left: 3px; }
+  div.magnify a { display: block; text-indent: 15px; white-space: nowrap; o=
+verflow: hidden; width: 15px; height: 11px; background-image: linear-gradie=
+nt(transparent, transparent), url("data:image/svg+xml,%3C%3Fxml%20version%3=
+D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%=
+20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2=
+011%2015%22%20width%3D%2215%22%20height%3D%2211%22%3E%0A%20%20%20%20%3Cg%20=
+id%3D%22magnify-clip%22%20fill%3D%22%23fff%22%20stroke%3D%22%23000%22%3E%0A=
+%20%20%20%20%20%20%20%20%3Cpath%20id%3D%22bigbox%22%20d%3D%22M1.509%201.865=
+h10.99v7.919h-10.99z%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20id%3D%22s=
+mallbox%22%20d%3D%22M-1.499%206.868h5.943v4.904h-5.943z%22%2F%3E%0A%20%20%2=
+0%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A"); user-select: none; }
+  img.thumbborder { border: 1px solid rgb(221, 221, 221); }
+  .mw-content-ltr .thumbcaption { text-align: left; }
+  .mw-content-ltr .magnify { float: right; margin-left: 3px; margin-right: =
+0px; }
+  .mw-content-ltr div.magnify a { background-image: linear-gradient(transpa=
+rent, transparent), url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22=
+%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20xmlns%3D=
+%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2011%2015%2=
+2%20width%3D%2215%22%20height%3D%2211%22%3E%0A%20%20%20%20%3Cg%20id%3D%22ma=
+gnify-clip%22%20fill%3D%22%23fff%22%20stroke%3D%22%23000%22%3E%0A%20%20%20%=
+20%20%20%20%20%3Cpath%20id%3D%22bigbox%22%20d%3D%22M1.509%201.865h10.99v7.9=
+19h-10.99z%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20id%3D%22smallbox%22=
+%20d%3D%22M-1.499%206.868h5.943v4.904h-5.943z%22%2F%3E%0A%20%20%20%20%3C%2F=
+g%3E%0A%3C%2Fsvg%3E%0A"); }
+  .mw-content-rtl .thumbcaption { text-align: right; }
+  .mw-content-rtl .magnify { float: left; margin-left: 0px; margin-right: 3=
+px; }
+  .mw-content-rtl div.magnify a { background-image: linear-gradient(transpa=
+rent, transparent), url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22=
+%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20xmlns%3D=
+%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2011%2015%2=
+2%20width%3D%2215%22%20height%3D%2211%22%3E%0A%20%20%20%20%3Cg%20id%3D%22ma=
+gnify-clip%22%20fill%3D%22%23fff%22%20stroke%3D%22%23000%22%3E%0A%20%20%20%=
+20%20%20%20%20%3Cpath%20id%3D%22bigbox%22%20d%3D%22M9.491%201.865h-10.99v7.=
+919h10.99z%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20id%3D%22smallbox%22=
+%20d%3D%22M12.499%206.868h-5.943v4.904h5.943z%22%2F%3E%0A%20%20%20%20%3C%2F=
+g%3E%0A%3C%2Fsvg%3E%0A"); }
+  div.tright { margin: 0.5em 0px 1.3em 1.4em; }
+  div.tleft { margin: 0.5em 1.4em 1.3em 0px; }
+  body.mw-hide-empty-elt .mw-empty-elt { display: none; }
+  .catlinks { border: 1px solid rgb(170, 170, 170); background-color: rgb(2=
+49, 249, 249); padding: 5px; margin-top: 1em; clear: both; }
+  textarea { border: 1px solid rgb(192, 192, 192); }
+  .editOptions { background-color: rgb(240, 240, 240); border-right: 1px so=
+lid rgb(192, 192, 192); border-bottom: 1px solid rgb(192, 192, 192); border=
+-left: 1px solid rgb(192, 192, 192); border-image: initial; border-top: non=
+e; padding: 1em 1em 1.5em; margin-bottom: 2em; }
+  .usermessage { background-color: rgb(255, 206, 123); border: 1px solid rg=
+b(255, 165, 0); color: rgb(0, 0, 0); font-weight: bold; margin: 2em 0px 1em=
+; padding: 0.5em 1em; vertical-align: middle; }
+  #siteNotice { position: relative; text-align: center; margin: 0px; }
+  #localNotice { margin-bottom: 0.9em; }
+  .firstHeading { margin-bottom: 0.1em; line-height: 1.2em; padding-bottom:=
+ 0px; }
+  #siteSub { display: none; }
+  #jump-to-nav { margin-top: -1.4em; margin-bottom: 1.4em; }
+  #contentSub, #contentSub2 { font-size: 84%; line-height: 1.2em; margin: 0=
+px 0px 1.4em 1em; color: rgb(84, 84, 84); width: auto; }
+  span.subpages { display: block; }
+}
+
+.mw-wiki-logo { background-image: url("/skins/archlinux/archlogo.png?"); }
+
+@media screen {
+  div#column-content { width: 100%; float: right; margin: 0px 0px 0.6em -12=
+.2em; padding: 0px; }
+  .mw-body { margin: 2.8em 0px 0px 12.2em; padding: 1em; position: relative=
+; z-index: 2; background: white; color: black; border-top: 1px solid rgb(17=
+0, 170, 170); border-bottom: 1px solid rgb(170, 170, 170); border-left: 1px=
+ solid rgb(170, 170, 170); border-image: initial; border-right: none; line-=
+height: 1.5em; }
+  div#column-one { padding-top: 160px; }
+  #column-one h2 { position: absolute; top: -9999px; }
+  body { font-style: normal; font-variant: normal; font-weight: normal; fon=
+t-stretch: normal; font-size: x-small; line-height: normal; font-family: sa=
+ns-serif; background: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAtAC0A=
+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") 0px 0px no-rep=
+eat rgb(249, 249, 249); color: black; margin: 0px; padding: 0px; direction:=
+ ltr; unicode-bidi: embed; }
+  div#globalWrapper { font-size: 127%; width: 100%; margin: 0px; padding: 0=
+px; position: relative; z-index: 0; }
+  a { color: rgb(0, 43, 184); }
+  a:visited { color: rgb(90, 54, 150); }
+  a.new, #p-personal a.new { color: rgb(204, 34, 0); }
+  ul { list-style-type: square; list-style-image: url("data:image/gif;base6=
+4,R0lGODlhBQANAIAAAGOMnP///yH5BAEAAAEALAAAAAAFAA0AAAIJjI+pu+APo4SpADs=3D");=
+ }
+  pre, .mw-code { line-height: 1.1em; }
+  #firstHeading { padding-top: 0px; overflow: visible; }
+  .mw-indicators { float: right; line-height: 1.5em; font-size: 95%; }
+  .mw-indicator { display: inline-block; zoom: 1; }
+  #siteNotice { font-size: 95%; padding: 0px 0.9em; }
+  #localNotice { margin: 0px; }
+  #siteNotice p { margin: 0px; padding: 0px; }
+  table.rimage { float: right; position: relative; margin-left: 1em; margin=
+-bottom: 1em; text-align: center; }
+  .special li { line-height: 1.4em; margin: 0px; padding: 0px; }
+  .portlet { border: none; margin: 0px 0px 0.5em; padding: 0px; float: none=
+; width: 11.6em; overflow: hidden; }
+  .portlet h3 { background: transparent; padding: 0px 1em 0px 0.5em; displa=
+y: inline; height: 1em; text-transform: lowercase; font-size: 91%; font-wei=
+ght: normal; white-space: nowrap; }
+  .pBody { font-size: 95%; background-color: white; color: black; border-co=
+llapse: collapse; border: 1px solid rgb(170, 170, 170); padding: 0px 0.8em =
+0.3em 0.5em; }
+  .pBody::after { content: ""; clear: both; display: block; }
+  .portlet ul { line-height: 1.5em; font-size: 95%; }
+  .portlet li { padding: 0px; margin: 0px; }
+  #p-logo { top: 0px; left: 0px; position: absolute; z-index: 3; height: 15=
+5px; width: 12em; overflow: visible; }
+  #p-logo h3 { display: none; }
+  #p-logo a, #p-logo a:hover { display: block; height: 155px; width: 12.2em=
+; background-repeat: no-repeat; text-decoration: none; background-position:=
+ 35% 50% !important; }
+  #p-search { position: relative; z-index: 3; }
+  input.searchButton { margin-top: 1px; font-size: 95%; }
+  #searchGoButton { padding-left: 0.5em; padding-right: 0.5em; font-weight:=
+ bold; }
+  #searchInput { width: 10.9em; margin: 0px; font-size: 95%; }
+  #p-search .pBody { padding: 0.5em 0.4em 0.4em; text-align: center; }
+  #p-search #searchform div div { margin-top: 0.4em; font-size: 95%; }
+  #p-personal { position: absolute; left: 0px; top: 0px; z-index: 3; }
+  #p-personal { width: 100%; white-space: nowrap; padding: 0px; margin: 0px=
+; border: none; background: none; overflow: visible; line-height: 1.2em; }
+  #p-personal h3 { display: none; }
+  #p-personal .portlet, #p-personal .pBody { z-index: 0; padding: 0px; marg=
+in: 0px; border: none; overflow: visible; background: none; }
+  #p-personal ul { border: none; line-height: 1.4em; color: rgb(47, 111, 17=
+1); padding: 0px 2em 0px 14em; margin: 0px; text-align: right; list-style-t=
+ype: none; list-style-image: none; z-index: 0; background: none; cursor: de=
+fault; }
+  #p-personal li { z-index: 0; border: none; padding: 0px; display: inline;=
+ color: rgb(47, 111, 171); margin-left: 1em; line-height: 1.2em; background=
+: none; }
+  #p-personal li a { text-decoration: none; color: rgb(0, 88, 150); padding=
+-bottom: 0.2em; }
+  #p-personal li a:hover { background-color: white; text-decoration: none; =
+}
+  #p-personal li.active a:hover { background-color: transparent; }
+  li#pt-userpage, li#pt-anonuserpage, li#pt-login { background: url("data:i=
+mage/gif;base64,R0lGODlhEAAQAKU5AFtJMlpJNFxIMU5OTm2XH3aIVJNkK5FmMJZnPbt6NIZ=
+zXId0XpVwQZRzR5p7VI1+baZ3Tdl+Kt1/LIO2JYe5K4q8M4idYZKBbJK/QLqddZfDR5rFTZ/HVq=
+fMZanNacKVWuKVQ+ejVuelVu21bPC/e5+XjKOjo7rXhr3aiM+1kNi4icffm8rio83jqNHmrtXot=
+OPEl/HDg/LKjvfaq/ngut3Z1Nvrwd/tx/vqz////////////////////////////yH5BAEAAD8A=
+LAAAAAAQABAAAAZiwJ9wSCwafxfF5VhUNBgHAVO4cKRgHwNg+sjQZrFEYFpSyUihyGD6M4lAEgR=
+bCKnPTaYRjjRYH00vLAUkFhoVfkQmNy4rJxYcGBQTiEImNi0TKB0bHgSTRX2hon1zpaanP0EAOw=
+=3D=3D") left top no-repeat; padding-left: 20px; }
+  #p-personal ul { text-transform: lowercase; }
+  li#pt-userpage { text-transform: none; }
+  li#pt-anonuserpage { color: rgb(112, 112, 112); }
+  #p-personal li.active { font-weight: bold; }
+  #p-cactions { position: absolute; top: 1.3em; left: 11.5em; margin: 0px; =
+white-space: nowrap; width: 76%; line-height: 1.1em; overflow: visible; bac=
+kground: none; border-collapse: collapse; padding-left: 1em; font-size: 95%=
+; }
+  #p-cactions ul { list-style-type: none; list-style-image: none; }
+  #p-cactions li { display: inline; border-top: 1px solid rgb(170, 170, 170=
+); border-right: 1px solid rgb(170, 170, 170); border-left: 1px solid rgb(1=
+70, 170, 170); border-image: initial; border-bottom: none; padding: 0px 0px=
+ 1em; margin: 0px 0.3em 0px 0px; overflow: visible; background: white; }
+  #p-cactions li.selected { border-color: rgb(250, 189, 35); font-weight: b=
+old; }
+  #p-cactions li a { background-color: rgb(251, 251, 251); color: rgb(0, 43=
+, 184); border: none; padding: 0px 0.8em 0.3em; position: relative; z-index=
+: 0; margin: 0px; text-decoration: none; }
+  #p-cactions li.selected a { z-index: 3; background-color: white; }
+  #p-cactions .new a { color: rgb(186, 0, 0); }
+  #p-cactions li a:hover { z-index: 3; text-decoration: none; background-co=
+lor: white; }
+  #p-cactions h3 { display: none; }
+  #p-cactions li.istalk { margin-right: 0px; }
+  #p-cactions li.istalk a { padding-right: 0.5em; }
+  #p-cactions #ca-addsection a { padding-left: 0.4em; padding-right: 0.4em;=
+ }
+  li#ca-talk { margin-right: 1.6em; }
+  li#ca-watch, li#ca-unwatch, li#ca-varlang-0, li#ca-print { margin-left: 1=
+.6em; }
+  #p-cactions .pBody { font-size: 1em; background-color: transparent; color=
+: inherit; border-collapse: inherit; border: 0px; padding: 0px; }
+  #p-cactions li a { text-transform: lowercase; }
+  #p-lang { position: relative; z-index: 3; }
+  .capitalize-all-nouns .portlet h3, .capitalize-all-nouns #p-personal ul, =
+.capitalize-all-nouns #p-cactions ul li a { text-transform: none; }
+  #t-ispermalink, #t-iscite { color: rgb(153, 153, 153); }
+  div#footer { background-color: white; border-top: 1px solid rgb(250, 189,=
+ 35); border-bottom: 1px solid rgb(250, 189, 35); margin: 0.6em 0px 1em; ov=
+erflow: hidden; padding: 0.4em 0px 0.3em; text-align: center; font-size: 90=
+%; }
+  div#footer li { display: inline; margin: 0px 1.3em; }
+  #f-poweredbyico, #f-copyrightico { margin: 0px 8px; position: relative; t=
+op: -2px; }
+  #f-poweredbyico { float: right; height: 1%; }
+  #f-copyrightico { float: left; height: 1%; }
+  #userloginprompt, #languagelinks { font-size: 85%; }
+  #login-sectiontip { font-size: 85%; line-height: 1.2; padding-top: 2em; }
+  #pagehistory li.selected { position: relative; }
+  .redirectText { font-size: 150%; margin: 5px; }
+  div.patrollink { clear: both; }
+  .sharedUploadNotice { font-style: italic; }
+  .editExternally { border: 1px solid gray; background-color: rgb(255, 255,=
+ 255); padding: 3px; margin-top: 0.5em; float: left; font-size: small; text=
+-align: center; }
+  .editExternallyHelp { font-style: italic; color: gray; }
+  .toggle { margin-left: 2em; text-indent: -2em; }
+  input#wpSave, input#wpDiff { margin-right: 0.33em; }
+  #wpSave { font-weight: bold; }
+  div.noarticletext { border: 1px solid rgb(204, 204, 204); background: rgb=
+(255, 255, 255); padding: 0.2em 1em; color: rgb(0, 0, 0); }
+  div#searchTargetContainer { left: 10px; top: 10px; width: 90%; background=
+: white; }
+  div#searchTarget { padding: 3px; margin: 5px; background: rgb(240, 240, 2=
+40); border: 1px solid blue; }
+  div#searchTarget ul li { list-style-type: none; list-style-image: none; }
+  div#searchTarget ul li::before { color: orange; content: "=C2=BB "; }
+  div#searchTargetHide { float: right; border: 1px solid black; background:=
+ rgb(220, 220, 220); padding: 2px; }
+  #powersearch p { margin-top: 0px; }
+  div.multipageimagenavbox { border: 1px solid silver; padding: 4px; margin=
+: 1em; background: rgb(240, 240, 240); }
+  div.multipageimagenavbox div.thumb { border: none; margin-left: 2em; marg=
+in-right: 2em; }
+  div.multipageimagenavbox hr { margin: 6px; }
+  table.multipageimage td { text-align: center; }
+  .templatesUsed { margin-top: 1.5em; }
+  .mw-summary-preview { margin: 0.1em 0px; }
+  div.mw-lag-warn-normal, div.mw-lag-warn-high { padding: 3px; text-align: =
+center; margin: 3px auto; }
+  div.mw-lag-warn-normal { border: 1px solid rgb(255, 204, 102); background=
+-color: rgb(255, 255, 204); }
+  div.mw-lag-warn-high { font-weight: bold; border: 2px solid rgb(255, 0, 5=
+1); background-color: rgb(255, 204, 204); }
+  .MediaTransformError { background-color: rgb(204, 204, 204); padding: 0.1=
+em; }
+  .MediaTransformError td { text-align: center; vertical-align: middle; fon=
+t-size: 90%; }
+  .no-text-transform { text-transform: none; }
+  .tipsy { font-size: 127%; }
+  .skin-monobook .mw-notification { box-shadow: rgba(0, 0, 0, 0.125) 0px 2p=
+x 5px 0px; }
+  #archnavbar { height: 40px !important; padding: 10px 15px !important; bac=
+kground: rgb(51, 51, 51) !important; border-bottom: 5px solid rgb(0, 136, 2=
+04) !important; }
+  #archnavbarlogo { float: left !important; margin: 0px !important; padding=
+: 0px !important; height: 40px !important; width: 190px !important; backgro=
+und: url("/skins/ArchLinux/archlogo.png?89991") no-repeat !important; }
+  #archnavbarlogo p { margin: 0px !important; padding: 0px !important; text=
+-indent: -9999px !important; }
+  #archnavbarlogo h1 { margin: 0px !important; padding: 0px !important; tex=
+t-indent: -9999px !important; }
+  #archnavbarlogo a { display: block !important; height: 40px !important; w=
+idth: 190px !important; }
+  #archnavbar ul { display: inline !important; float: right !important; lis=
+t-style: none !important; margin: 0px !important; padding: 0px !important; =
+}
+  #archnavbar ul li { float: left !important; font-size: 14px !important; f=
+ont-family: sans-serif !important; line-height: 45px !important; padding-ri=
+ght: 15px !important; padding-left: 15px !important; }
+  #archnavbar ul#archnavbarlist li a { color: rgb(153, 153, 153); font-weig=
+ht: bold !important; text-decoration: none !important; }
+  #archnavbar ul li a:hover { color: white !important; text-decoration: und=
+erline !important; }
+  body { background: rgb(246, 249, 252); }
+  body, #content, table, h1, h2, h3, h4, h5, pre, code, tt { color: rgb(34,=
+ 34, 34); }
+  h1 { font-weight: bold; }
+  pre, code, tt { background-color: rgb(235, 241, 245); font-family: monosp=
+ace; }
+  pre { border: 1px solid rgb(187, 204, 221); overflow: auto; }
+  code, tt { display: inline-block; padding: 0px 0.3em; border-width: 0px; =
+border-radius: 0px; }
+  ul, .portlet ul { list-style-image: none; }
+  #bodyContent table { border-collapse: collapse; padding: 2px; }
+  #bodyContent td { padding: 2px; }
+  #bodyContent > div.mw-content-ltr a, #bodyContent > div.mw-content-rtl a,=
+ #wikiPreview > div.mw-content-ltr a, #wikiPreview > div.mw-content-rtl a {=
+ font-weight: bold; }
+  #bodyContent #toc a, #bodyContent .special li > a, #bodyContent .special =
+li span a, #bodyContent #pagehistory a { font-weight: normal; }
+  a:link, #toc a, #p-cactions li a, #p-personal li a, #p-cactions li a:visi=
+ted, #p-personal li a:visited, #bodyContent a.external, #bodyContent a.exti=
+w { text-decoration: none; outline: none; color: rgb(0, 119, 187); }
+  a:visited, #bodyContent a:visited.external { color: rgb(102, 102, 102); }
+  a:hover, #p-personal li a:hover, #bodyContent #toc a:hover, #bodyContent =
+a:hover.external { text-decoration: underline; background-color: transparen=
+t; color: rgb(153, 153, 153); }
+  a:focus, a:active, #toc a:focus, #toc a:active, #p-cactions li a:focus, #=
+p-cactions li a:active, #p-personal li a:focus, #p-personal li a:active, #b=
+odyContent a:focus.external, #bodyContent a:active.external, #bodyContent a=
+:focus.extiw, #bodyContent a:active.extiw { color: rgb(238, 153, 0) !import=
+ant; }
+  a.new, #p-cactions .new a, #p-personal a.new { color: rgb(187, 0, 0) !imp=
+ortant; }
+  #p-personal { top: 5px; }
+  #p-cactions { top: 27px; }
+  #content { top: 10px; }
+  div#globalWrapper { width: 99%; }
+  #toc, .toc, .mw-warning { background-color: rgb(249, 250, 255); border: 1=
+px solid rgb(215, 223, 227); }
+  .pBody { border: 1px solid rgb(221, 221, 221); }
+  div#content { border: 1px solid rgb(204, 204, 204); }
+  #p-logo { display: none !important; }
+  div#column-one { padding-top: 36px; }
+  #f-poweredbyico, #f-copyrightico { display: none; }
+  div#footer { color: rgb(136, 136, 136); background-color: transparent; bo=
+rder-top: none; border-bottom: none; }
+  #footer ul { margin-left: 170px; }
+  #archnavbar ul li.anb-selected a { color: white !important; }
+}
+
+@media print {
+  #archnavbar { display: none; }
+}
+------MultipartBoundary--KJUSunOZNAdNbQXxdCkSzBh30Zlcb1fxiuRsFPPR0b----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: https://wiki.archlinux.org/skins/ArchLinux/archlogo.png?89991
+
+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
+RK5CYII=
+------MultipartBoundary--KJUSunOZNAdNbQXxdCkSzBh30Zlcb1fxiuRsFPPR0b----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://wiki.archlinux.org/load.php?debug=false&lang=en&modules=site.styles&only=styles&skin=archlinux
+
+@charset "utf-8";
+
+pre, .mw-code { white-space: pre; }
+
+span.archwiki-template-pkg, span.archwiki-template-man { font-family: monos=
+pace; }
+
+div.archwiki-template-message { position: relative; overflow: hidden; min-h=
+eight: 4.6em; margin-bottom: 1em; background-color: rgb(249, 250, 255); bor=
+der: 1px solid rgb(215, 223, 227); padding: 0px 100px; text-align: center; =
+}
+
+div.archwiki-template-message > p > a { display: block; position: absolute;=
+ top: 5px; }
+
+div.archwiki-template-message > p > a:first-of-type { left: 26px; }
+
+div.archwiki-template-message > p > a:last-of-type { right: 26px; }
+
+div.archwiki-template-message > div { font-size: 90%; }
+
+div.archwiki-template-message ul, div.archwiki-template-message ol { text-a=
+lign: left; }
+
+.mw-search-results { float: none; }
+
+#bodyContent a.external[href], #bodyContent a.extiw, .link-https { backgrou=
+nd: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0i=
+VVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9=
+yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMj=
+AwMC9zdmciIGhlaWdodD0iMTMiIHdpZHRoPSIxMyIgdmVyc2lvbj0iMS4xIiB4bWxuczpjYz0ia=
+HR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3Jn=
+L2RjL2VsZW1lbnRzLzEuMS8iPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzYuNDY3ODA4LC0=
+yNTguMzkwMDUpIj4KPHBhdGggc3R5bGU9Im9wYWNpdHk6MTtmaWxsOiMzMzY2YmI7IiBkPSJtND=
+EuNDcsMjU5LjQsNywwLDAsNy0yLTItMywyLDAtMSwzLTIuMjUsMSwxLDAtMy43NS0zLjc1LDAsM=
+SwxLTIuMjUsMy0xLDAsMi0zeiIvPgo8cGF0aCBzdHlsZT0ib3BhY2l0eToxO2ZpbGw6IzMzNjZi=
+YjsiIGQ9Im00My40NywyNjEuNC01LDAsMCw4LDgsMCwwLTUtMSwwLDAsNC02LDAsMC02LDQsMHo=
+iLz4KPHBhdGggc3R5bGU9Im9wYWNpdHk6MTtmaWxsOiMxNWE1ZWE7IiBkPSJtNDAuNTUsMjYzLj=
+ljMC0wLjYyMTMsMC42MjEzLTAuNjIxMywwLjYyMTMtMC42MjEzLDEuODY0LDAuNjIxMywzLjEwN=
+ywxLjg2NCwzLjcyOCwzLjcyOCwwLDAsMCwwLjYyMTMtMC42MjEzLDAuNjIxMy0xLjI0My0xLjg2=
+NC0xLjg2NC0yLjQ4NS0zLjcyOC0zLjcyOHoiLz4KPC9nPgo8L3N2Zz4K") right center no-=
+repeat; padding-right: 13px; }
+
+#bodyContent a.external[href^=3D"http://wiki.archlinux.org"], #bodyContent =
+a.external[href^=3D"https://wiki.archlinux.org"] { background: none; paddin=
+g-right: 0px; }
+
+a:link, #toc a, #bodyContent #toc a, #p-cactions li a, #p-personal li a, #p=
+-cactions li a:visited, #p-personal li a:visited, #bodyContent a.external, =
+#bodyContent a.extiw { color: rgb(0, 119, 187); }
+
+a:hover, #toc a:hover, #bodyContent #toc a:hover, #p-cactions li a:hover, #=
+p-personal li a:hover, #p-cactions li a:visited:hover, #p-personal li a:vis=
+ited:hover, #bodyContent a:hover.external, #bodyContent a:hover.extiw { col=
+or: rgb(0, 119, 187); text-decoration: underline; }
+
+a:visited, #toc a:visited, #bodyContent #toc a:visited, #bodyContent a:visi=
+ted.external, #bodyContent a:visited.extiw { color: rgb(51, 85, 119); }
+
+a:visited:hover, #toc a:visited:hover, #bodyContent #toc a:visited:hover, #=
+bodyContent a:visited:hover.external, #bodyContent a:visited:hover.extiw { =
+color: rgb(51, 85, 119); text-decoration: underline; }
+
+a:focus, a:active, #toc a:focus, #toc a:active, #bodyContent #toc a:focus, =
+#bodyContent #toc a:active, #p-cactions li a:focus, #p-cactions li a:active=
+, #p-personal li a:focus, #p-personal li a:active, #bodyContent a:focus.ext=
+ernal, #bodyContent a:active.external, #bodyContent a:focus.extiw, #bodyCon=
+tent a:active.extiw { color: rgb(238, 153, 0) !important; }
+
+a.new, #p-cactions .new a, #p-personal a.new { color: rgb(187, 0, 0) !impor=
+tant; }
+
+code, tt { display: inline; white-space: pre; padding: 0.3em; }
+------MultipartBoundary--KJUSunOZNAdNbQXxdCkSzBh30Zlcb1fxiuRsFPPR0b------

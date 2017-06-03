@@ -27,7 +27,7 @@ pthread_t pthread_self(void);
 /*
 * 成功返回0,错误返回错误编号
 * tidp是指向子线程的id的指针
-* attr是要创建线程的属性
+* attr是要创建线程的属性,可以设置线程的分离，栈大小，警戒区大小等
 * start_rtn是函数指针,线程从这个函数开始执行
 * arg是start_rtn的参数
 */
@@ -107,6 +107,14 @@ abort    |  pthread_cancel
 条件变量(Condition Variable) | 条件变量(Condtion Variable)是在多线程程序中用来实现“等待->唤醒”逻辑常用的方法。举个简单的例子，应用程序A中包含两个线程t1和t2。t1需要在bool变量test_cond为true时才能继续执行，而test_cond的值是由t2来改变的。这种情况下，有两种实现方法，可以采用一直论询的方式，不过这样太消耗cpu时间。另一种是用条件变量，不满足条件的话就在条件变量的等待列表里等待。满足条件之后再被唤醒。
 自旋锁(spin lock) | 自旋锁和互斥量类似不过它不是通过休眠使进程阻塞，而是在获取锁之前一直处于忙等的状态，自旋锁用于锁被持有的时间短，线程并不希望在重新调度上花太多时间
 屏障(barrier) | 是协调多个线程并行工作的同步机制，屏障要求每个线程等待，知道所有合作线程都到达某一点，然后从该点继续执行,之前的pthread_join就是一个屏障的例子
+
+POSIX.1定义了4种类型来控制互斥量的锁定特性
+
+PTHREAD_MUTEX_NORMAL | 同一线程调用两次会阻塞
+-----------------------------------|----------------------------
+PTHREAD_MUTEX_ERRORCHECK | 检错锁，如果同一个线程请求同一个锁，则返回EDEADLK
+PHREAD_MUTEX_RECURSIVE | 嵌套锁，允许同一个线程对同一个锁成功获得多次，并通过多次unlock解锁
+PTHREAD_MUTEX_DEFAULT | 默认行为
 
 
 这里再补充说明一下条件变量，先看一个例子
@@ -200,7 +208,71 @@ int pthread_barrier_wait(pthread_barrier_t *barrier);
 + 改变资源的申请方式，如果获取锁失败那就释放所有的锁
 + 大家按照统一的方式申请，如果要同时申请A，B两把锁，那么就都按照先申请A，后申请B的方式。
 
+### 线程特定数据(thread-specific data)
+线程特定数据，又叫做线程私有数据(thread-private data)，不过我感觉这两个名字都不怎么清晰，叫“线程全局数据”比较贴切。在单线程程序中，我们经常要用到"全局变量"以实现多个函数间共享数据。在多线程环境下，由于数据空间是共享的，因此全局变量也为所有线程所共有。但有时应用程序设计中有必要提供线程私有的全局变量，仅在某个线程中有效，但却可以跨多个函数访问。比如程序可能需要每个线程维护一个链表，而使用相同的函数操作，最简单的办法就是使用同名而不同变量地址的线程相关数据结构。
+```
+/*
+*创建的键存储在keyp指向的内存单元中，这个键可以被进程中的所有线程使用，但每个线程把这个键与不同线程特定数据地址进行关联
+*/
+int pthread_key_create(pthread_key_t *keyp,void (*destructor)(void *));
+int pthread_key_delete(pthread_key_t key);
+void *pthread_getspecific(pthread_key_t key);//获取线程特定数据地址
+int pthread_setspecific(pthread_key_t key,const void *value);//关联键与线程特定数据地址
+```
+底下是apue上一个多线程安全的getenv的例子，使用线程特定数据来维护每个线程的缓冲区副本。
+```
+#include<limits.h>
+#include<string.h>
+#include<pthread.h>
+#include<stdlib.h>
+#include<stdio.h>
 
+#define MAXSTRINGSZ 4096
+
+static pthread_key_t key;
+static pthread_once_t init_done = PTHREAD_ONCE_INIT;
+pthread_mutex_t env_mutex = PTHREAD_MUTEX_INITIALIZER;
+
+extern char **environ;
+
+static void thread_init(void)
+{
+	pthread_key_create(&key,free);
+}
+
+char *getenv(char *name)
+{
+	int i,len;
+	char *envbuf;
+
+	pthread_once(&init_done,thread_init);//多个线程调用保证执行一次
+	pthread_mutex_lock(&env_mutex);
+	envbuf = (char *)pthread_getspecific(key);
+	if(envbuf == NULL)
+	{
+		envbuf = malloc(MAXSTRINGSZ);
+		if(envbuf == NULL)
+		{
+			pthread_mutex_unlock(&env_mutex);
+			return NULL;
+		}
+		pthread_setspecific(key,envbuf);
+	}
+	len = strlen(name);
+	for(i = 0;environ[i] != NULL;++i)
+	{
+		if(strncmp(name,environ[i],len) == 0 && environ[i][len] == '=')
+		{
+			strncpy(envbuf,&environ[i][len + 1],MAXSTRINGSZ - 1);
+			pthread_mutex_unlock(&env_mutex);
+			return envbuf;
+		}
+	}
+	pthread_mutex_unlock(&env_mutex);
+	return NULL;
+}
+
+```
 
 
 

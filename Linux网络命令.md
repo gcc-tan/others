@@ -47,4 +47,53 @@ Proto显示连接使用的协议,RefCnt表示连接到本套接口上的进程�
 ###重启网络
 ubuntu的环境下sudo service network-manager restart，因为ubuntu使用了network-manager代替了传统的linux的网络模型，或者用ifup/down
 
-###route
+###iptables
+iptable是配置防火墙使用的。这个命令主要是由table，chain，rule构成：
+
++ rule是规则，是数据包满足什么条件，执行什么动作。
++ chain中包含一系列的规则，chain的本质其实是内核实现的5个钩子函数，表示数据包在内核中经过的所有流程，所有的数据包的流经这些chain的一个或者多个，分别作用在不同的位置。PREROUTING，INPUT，FORWARD，OUTPUT，POSTROUTING。
++ table包括了一个或者多个chain。命令中定义的表有filter,nat,mangle,raw,security。table的作用其实是定义了一组功能的集合。它表示完成这个功能一般经由的chain，nat(PREROUTING,POSTROUTING,OUTPUT)。很明显表之间是有优先级的，不同的表包含了相同的chain的时候，优先级高的表的那个chain定义的规则先执行。
+
+这里有个很好的图表示链之间的关系
+![chain和table的对应图](img/tables_traverse.jpg)
+
+这里给出几个简单的例子，具体的参数意思可以查，这里就不罗嗦了。
+```
+root@tan:~# iptables -traw  -nL
+Chain PREROUTING (policy ACCEPT)
+target     prot opt source               destination
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination
+```
+-t是指定了table的名字，-nL n参数是为了防止长时间的方向dns查找，L是显示指定的链的信息，没有就是默认全部。target就是满足规则后采取的动作这个target有很多常见的有ACCEPT,DROP,DNAT,SNAT,MASQUERADE,REJECT,RETURN，policy就是默认的动作，这个是修改某个表中某个链的默认动组
+```
+root@tan:~# iptables -F//清除当前表中所有chain中的规则
+root@tan:~# iptables -X//清楚当前表中用户自定义的链
+```
+
+
+**DNAT,SNAT,MASQUERADE三种target**
+dnat是改写数据包的目的地址。应用的场景是：你的Web服务器在LAN内部，而且没有可在Internet上使用的真实IP地址，那就可以使用这个dnat让防火墙把所有到它自己HTTP端口的包转发给LAN内部真正的Web服务器。
+
+snat是改写数据包的源地址。应用的场景就是普通的网络地址转换，能够让内部的机器访问外部的服务器。
+
+masquerade和snat类似，只是不用指定具体的ip，可以指定使用某个网络接口的ip
+```
+//将源地址为172.16.93.0/24的数据包的源地址改写为10.0.0.1
+iptables -t nat -A POSTROUTING -s 172.16.93.0/24  -j SNAT --to-source 10.0.0.1
+//将源地址为172.16.93.0/24的数据包指定外出接口为eth0,源地址改写为eth0的ip地址
+ptables -t nat -A POSTROUTING -s 172.16.93.0/24 -o eth1 -j MASQUEREADE
+//将目的地址为10.0.0.1的数据包地址改写为172.16.93.1
+iptables -t nat -A PREROUTING -d 10.0.0.1 -j DNAT –-to-destination 172.16.93.1
+```
+
+
+
+
+
+
+
+
+
+

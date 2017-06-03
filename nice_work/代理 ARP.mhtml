@@ -1,0 +1,1200 @@
+From: <Saved by Blink>
+Subject: ?? ARP
+Date: Sat, 2 Jun 2017 02:54:50 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--PwehY3f3IFMc25UqdIOpwvVIn5m10x5JGXOATRoAk5----"
+
+------MultipartBoundary--PwehY3f3IFMc25UqdIOpwvVIn5m10x5JGXOATRoAk5----
+Content-Type: text/html
+Content-ID: <frame-22-6fc66318-5e68-4e74-8acf-fb2754b9ea11@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.cisco.com/support/zh/105/5.shtml
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3DGBK">
+<meta name=3D"Repository" content=3D"CCEWP">
+<meta name=3D"author" content=3D"ewpadmin">
+<meta name=3D"SearchPublicationDate" content=3D"Wed, 08 Oct 2003 19:44:25 G=
+MT">
+<meta name=3D"FileOwner" content=3D"ewpadmin">
+<meta name=3D"FileName" content=3D"5.shtml">
+<meta name=3D"Folder" content=3D"/kobayashi/technotes/MT/zh/warp/customer/1=
+05">
+<meta name=3D"Object_ID" content=3D"15148811">
+<meta name=3D"Chronicle ID" content=3D"12214863">
+<meta name=3D"Revision" content=3D"/main/CCO-NEW/7">
+<meta name=3D"CCOCategoryType" content=3D"">
+<meta name=3D"PubDate" content=3D"Tue, 21 Sep 2004 03:55:40 GMT">
+<meta name=3D"PushDate" content=3D"Tue, 21 Sep 2004 04:03:49 GMT">
+<meta name=3D"ParentTree" content=3D"/kobayashi/technotes/MT/zh/warp/custom=
+er/105">
+<meta name=3D"Parents" content=3D"/kobayashi/technotes/MT/zh/warp/customer/=
+105">
+<meta name=3D"EncodeDesc" content=3D"">
+<meta name=3D"Language" content=3D"CN_zh">
+<meta name=3D"country" content=3D"CN">
+<meta name=3D"language" content=3D"zh">
+<meta name=3D"date" content=3D"Mon Sep 20 21:04:10 PDT 2004">
+
+
+
+
+<meta name=3D"iaPath" content=3D"cisco.com#MT#CN#TAC">
+<meta name=3D"accessLevel" content=3D"Guest">
+<meta name=3D"accessLevel" content=3D"Customer">
+<meta name=3D"accessLevel" content=3D"Partner">
+<meta name=3D"accessLevel" content=3D"Employee">
+<meta name=3D"audience" content=3D"support">
+<meta name=3D"contributors" content=3D"rvigil,vbaveja">
+<meta name=3D"coverage" content=3D"US">
+<meta name=3D"creator" content=3D"mburns">
+<meta name=3D"date.created" content=3D"12-10-2001">
+<meta name=3D"date.expires" content=3D"09-15-2006">
+<meta name=3D"date.modified" content=3D"09-15-2004">
+<meta name=3D"identifier" content=3D"http://www.cisco.com/kobayashi/technot=
+es/MT/zh/warp/customer/105/5.shtml">
+<meta name=3D"maintainers" content=3D"CCO-Techtips">
+<meta name=3D"reviewers" content=3D"mlluis,mmohanas,rvigil,vbaveja,">
+<meta name=3D"publishers" content=3D"cpiver,eshore,hingst,kwarvel,">
+<meta name=3D"security" content=3D"External">
+<meta name=3D"size" content=3D"33062">
+<meta name=3D"subject.primary" content=3D"Technologies:IP Addressing and Ap=
+plication Services:IP Addressing Services:Dynamic Address Allocation and Re=
+solution">
+<meta name=3D"title" content=3D"Proxy ARP">
+<meta name=3D"type.information" content=3D"Technology Tech Note">
+<meta name=3D"type.problem" content=3D"Information">
+<meta name=3D"roadMap" content=3D"IP Routing">
+<meta name=3D"document.id" content=3D"13718">
+
+<title>=B4=FA=C0=ED ARP</title>=20
+<!--source by
+mburns-->
+<!--reviewed by unknown-->
+<!--posted to CCO by unknown on 04/28/1997-->
+<!--updated per ribruce by aspaugh on 08/20/2001-->
+<!--updated per vbaveja by eshore on 04/10/2002-->
+<!--updated per rvigil,mmohanas by cpiver on
+09/06/2002-->
+<!--updated per vbaveja by hingst on
+07/03/2003-->
+<!--updated per mlluis by hingst on
+09/15/2004-->
+</head><!-- CDCHeader1 template starts --><body bgcolor=3D"#ffffff" leftmar=
+gin=3D"0" topmargin=3D"0" marginwidth=3D"0" marginheight=3D"0"><!--LOCATION=
+ H3: Head Script-->[an error occurred while processing this directive]<!--E=
+ND LOCATION H3--><!--Begin Banner--> <!--If needed, this framework_banner_p=
+ublic include is ONLY for visual development purposes only, please use the =
+#exec cmd non_migrated_banners.plfor production--> <!--//#include virtual=
+=3D"/global/CN/includes/non_option/framework_banner_public.html"--><!--BEGI=
+N BANNER--><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%"><!--Spacing Row-->  <tbody><tr>    <td nowrap=3D"" width=3D"110"><im=
+g alt=3D"" border=3D"0" height=3D"1" src=3D"http://www.cisco.com/global/CN/=
+images/spacer.gif" width=3D"160"></td>    <td nowrap=3D"" width=3D"9"><img =
+alt=3D"" border=3D"0" height=3D"1" src=3D"http://www.cisco.com/global/CN/im=
+ages/spacer.gif" width=3D"9"></td>    <td nowrap=3D"" width=3D"100%"><img a=
+lt=3D"" border=3D"0" height=3D"1" src=3D"http://www.cisco.com/global/CN/ima=
+ges/spacer.gif" width=3D"280"></td>    <td nowrap=3D"" width=3D"7"><img alt=
+=3D"" border=3D"0" height=3D"1" src=3D"http://www.cisco.com/global/CN/image=
+s/spacer.gif" width=3D"7"></td>    <td nowrap=3D"" width=3D"295"><img alt=
+=3D"" border=3D"0" height=3D"1" src=3D"http://www.cisco.com/global/CN/image=
+s/spacer.gif" width=3D"314"></td></tr>  <tr>    <td nowrap=3D"" rowspan=3D"=
+4"><img alt=3D"" border=3D"0" height=3D"1" src=3D"http://www.cisco.com/glob=
+al/CN/images/spacer.gif" width=3D"25"><a href=3D"http://www.cisco.com/"><im=
+g alt=3D"" border=3D"0" height=3D"43" src=3D"http://www.cisco.com/global/CN=
+/images/cisco.gif" width=3D"85"></a><img alt=3D"" border=3D"0" height=3D"1"=
+ src=3D"http://www.cisco.com/global/CN/images/spacer.gif" width=3D"25"></td=
+>    <td width=3D"9"><img alt=3D"" border=3D"0" height=3D"23" src=3D"http:/=
+/www.cisco.com/global/CN/images/spacer.gif" width=3D"9"></td>    <td width=
+=3D"99%"><img alt=3D"" border=3D"0" height=3D"23" src=3D"http://www.cisco.c=
+om/global/CN/images/spacer.gif" width=3D"1"></td>    <td width=3D"7"><img a=
+lt=3D"" border=3D"0" height=3D"23" src=3D"http://www.cisco.com/global/CN/im=
+ages/spacer.gif" width=3D"7"></td><!--Secondary Site Nav-->    <td align=3D=
+"right" nowrap=3D"" rowspan=3D"2"> <!--LOCATION B2: Secondary Nav--> <span =
+class=3D"secondarynav">&nbsp;&nbsp;<a class=3D"secondarynav" href=3D"http:/=
+/www.cisco.com.cn/">=CA=D7=D2=B3</a><img alt=3D"" height=3D"1" src=3D"http:=
+//www.cisco.com/global/CN/images/spacer.gif" width=3D"7">|<img alt=3D"" hei=
+ght=3D"1" src=3D"http://www.cisco.com/global/CN/images/spacer.gif" width=3D=
+"7"><a class=3D"secondarynav" href=3D"http://www.cisco.com/cgi-bin/login/">=
+=B5=C7=C2=BC</a><img alt=3D"" height=3D"1" src=3D"http://www.cisco.com/glob=
+al/CN/images/spacer.gif" width=3D"7">|<img alt=3D"" height=3D"1" src=3D"htt=
+p://www.cisco.com/global/CN/images/spacer.gif" width=3D"8"><a class=3D"seco=
+ndarynav" href=3D"http://www.cisco.com/register/">=D7=A2=B2=E1</a><img alt=
+=3D"" height=3D"1" src=3D"http://www.cisco.com/global/CN/images/spacer.gif"=
+ width=3D"7">|<img alt=3D"" height=3D"1" src=3D"http://www.cisco.com/global=
+/CN/images/spacer.gif" width=3D"8"><a class=3D"secondarynav">=BD=BB=C1=F7=
+=B7=B4=C0=A1</a><img alt=3D"" height=3D"1" src=3D"http://www.cisco.com/glob=
+al/CN/images/spacer.gif" width=3D"7">|<img alt=3D"" height=3D"1" src=3D"htt=
+p://www.cisco.com/global/CN/images/spacer.gif" width=3D"8"><a class=3D"seco=
+ndarynav">=B0=EF=D6=FA</a></span>&nbsp;&nbsp;       <!--END LOCATION B2--><=
+/td>    <!--End Secondary Site Nav-->  </tr>  <tr>    <td align=3D"right"><=
+img alt=3D"" height=3D"8" src=3D"http://www.cisco.com/global/CN/images/vert=
+lines_left.gif" width=3D"9"></td>    <td align=3D"right" background=3D"http=
+://www.cisco.com/global/CN/images/vertlines.gif" colspan=3D"2"><img alt=3D"=
+" border=3D"0" height=3D"8" src=3D"http://www.cisco.com/global/CN/images/ve=
+rtlines_rightmask.gif" width=3D"7"></td>  </tr>  <tr>    <td bgcolor=3D"#33=
+6666"><img alt=3D"" border=3D"0" height=3D"35" src=3D"http://www.cisco.com/=
+global/CN/images/spacer.gif" width=3D"1"></td>    <td bgcolor=3D"#336666"><=
+!--LOCATION B3: Global Navigation-->      <table cellpadding=3D"0" cellspac=
+ing=3D"5">                <tbody><tr>          <td><select class=3D"select"=
+ disabled=3D"">               <option selected=3D"" value=3D"#">[=C7=EB=D1=
+=A1=D4=F1]</option>              <option value=3D"/global/CN/about/index.sh=
+tml">=CB=BC=BF=C6=D6=D0=B9=FA</option>              <option value=3D"/globa=
+l/CN/about/news_info/index.shtml">=D0=C2=CE=C5=D3=EB=BF=AF=CE=EF</option>  =
+            <option value=3D"/global/CN/business/index.shtml">=C9=CC=D2=B5=
+=BD=E2=BE=F6=B7=BD=B0=B8</option>              <option value=3D"/global/CN/=
+networking/index.shtml">=CD=F8=C2=E7=BD=E2=BE=F6=B7=BD=B0=B8</option>      =
+        <option value=3D"/global/CN/products/index.shtml">=B2=FA=C6=B7</opt=
+ion>              <option value=3D"http://www.cisco.com/go/marketplace/">=
+=D4=DA=CF=DF=B9=BA=CE=EF</option>              <option value=3D"/global/CN/=
+support/index.shtml">=B7=FE=CE=F1=D3=EB=D6=A7=B3=D6</option>              <=
+option value=3D"/global/CN/learning/academy/index.shtml">=CB=BC=BF=C6=CD=F8=
+=C2=E7=BC=BC=CA=F5=D1=A7=D4=BA</option>              <option value=3D"/glob=
+al/CN/learning/index.shtml">=C5=E0=D1=B5=A1=A2=BB=EE=B6=AF=D3=EB=BB=E1=D2=
+=E9</option>              <option value=3D"/global/CN/partners/index.shtml"=
+>=BA=CF=D7=F7=BB=EF=B0=E9=D3=EB=B4=FA=C0=ED=C9=CC</option>              <op=
+tion value=3D"/global/CN/about/contacts.shtml">=C1=AA=CF=B5=CE=D2=C3=C7</op=
+tion>              </select><img alt=3D"" border=3D"0" height=3D"1" src=3D"=
+http://www.cisco.com/global/CN/images/spacer.gif" width=3D"4"><input align=
+=3D"absmiddle" border=3D"0" cache=3D"" src=3D"http://www.cisco.com/global/C=
+N/images/go.gif" type=3D"image" width=3D"20" height=3D"17" disabled=3D"">  =
+        </td>        </tr>              </tbody></table><!--END LOCATION B3=
+-->    </td>    <td align=3D"right" bgcolor=3D"#336666" colspan=3D"2" valig=
+n=3D"top"><!--LOCATION B4: Country-Language Selector-->      <table bgcolor=
+=3D"#336666" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"192"=
+>        <tbody><tr>          <td valign=3D"top"><img alt=3D"" height=3D"17=
+" src=3D"http://www.cisco.com/global/CN/images/036_corner.gif" width=3D"15"=
+></td>          <td bgcolor=3D"#669999"><img alt=3D"" height=3D"17" src=3D"=
+http://www.cisco.com/global/CN/images/spacer.gif" width=3D"8"></td>        =
+  <td bgcolor=3D"#669999" width=3D"169"><!--LOCATION B4a: Link--><a class=
+=3D"toolslinks" href=3D"http://www.cisco.com/public/countries_languages.sht=
+ml" target=3D"_blank">=D1=A1=D4=F1=B9=FA=BC=D2             / =D3=EF=D1=D4</=
+a> <!--END LOCATION B4a--> </td>        </tr>        <tr>          <td cols=
+pan=3D"2"><img alt=3D"" height=3D"15" src=3D"http://www.cisco.com/global/CN=
+/images/spacer.gif" width=3D"1"></td>          <td class=3D"tools" valign=
+=3D"bottom"><!--LOCATION B4b: Indicator--><img alt=3D"" height=3D"15" src=
+=3D"http://www.cisco.com/global/CN/images/spacer.gif" width=3D"1">=D6=D0=B9=
+=FA=A3=BA=BC=F2=CC=E5=D6=D0=CE=C4<!--END LOCATION B4b--></td>        </tr> =
+     </tbody></table><!--END LOCATION B4--></td>  </tr>  <tr>    <td bgcolo=
+r=3D"#669999" colspan=3D"4"><img alt=3D"" border=3D"0" height=3D"3" src=3D"=
+http://www.cisco.com/global/CN/images/spacer.gif" width=3D"1"></td>  </tr> =
+ <tr>    <td bgcolor=3D"#cccccc" colspan=3D"5" height=3D"19">      <table b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">        <tbo=
+dy><tr>          <td align=3D"left" height=3D"19" nowrap=3D"" valign=3D"cen=
+ter" width=3D"20"><img alt=3D"" border=3D"0" height=3D"19" src=3D"http://ww=
+w.cisco.com/global/CN/images/banner_left.gif" width=3D"20"></td>          <=
+td align=3D"left" nowrap=3D"" valign=3D"center" width=3D"100%"><!--LOCATION=
+ B5: User history path (not in scope)-->&nbsp; <!--END LOCATION B5--></td> =
+       </tr>      </tbody></table>    </td>  </tr>  <tr>    <td align=3D"le=
+ft" bgcolor=3D"#003333" colspan=3D"5" height=3D"1"><img alt=3D"" border=3D"=
+0" height=3D"1" src=3D"http://www.cisco.com/global/CN/images/spacer.gif" wi=
+dth=3D"3"></td>  </tr></tbody></table><!-- END BANNER --><!--End Banner--> =
+<!-- MAiN CONTENT TABLE --> <!--Content should comply with XHTML standards =
+... all tags should be closed, and div's are discouraged.  Failure to meet =
+XHTML standards may cause CSS stylesheets to break in one or more browsers.=
+ --> <table bgcolor=3D"#ffffff" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" width=3D"100%"><!-- Horizontal Spacing Row, Top Green Line --><!-- M=
+inimum width: 770 pixels --><tbody><tr>    <td bgcolor=3D"669996" nowrap=3D=
+""><img src=3D"http://www.cisco.com/global/sitewide_assets/images/spacer.gi=
+f" alt=3D"" border=3D"0" width=3D"177" height=3D"1"></td>    <td bgcolor=3D=
+"669999"><img src=3D"http://www.cisco.com/global/sitewide_assets/images/spa=
+cer.gif" alt=3D"" border=3D"0" width=3D"7" height=3D"1"></td>    <td width=
+=3D"100%" bgcolor=3D"669999" align=3D"right" nowrap=3D""><img src=3D"http:/=
+/www.cisco.com/global/sitewide_assets/images/spacer.gif" alt=3D"" border=3D=
+"0" width=3D"392" height=3D"1"><img src=3D"http://www.cisco.com/global/site=
+wide_assets/images/content_right1.gif" alt=3D"" border=3D"0" width=3D"10" h=
+eight=3D"1"></td>    <td bgcolor=3D"669999"><img src=3D"http://www.cisco.co=
+m/global/sitewide_assets/images/content_right2.gif" alt=3D"" border=3D"0" w=
+idth=3D"7" height=3D"1"></td>    <td bgcolor=3D"669999" nowrap=3D""><img sr=
+c=3D"http://www.cisco.com/global/sitewide_assets/images/spacer.gif" alt=3D"=
+" border=3D"0" width=3D"177" height=3D"1"></td></tr><!-- Begin Main Content=
+ Table Row -->  <tr>    <td valign=3D"top" width=3D"177"><!--LOCATION: L1--=
+><!-- Option to use Include for Nav --><!-- Left navigation panel goes here=
+ --><!-- China TAC Web top -->  <table summary=3D"" cellpadding=3D"0" cells=
+pacing=3D"0" border=3D"0" width=3D"177"><tbody><tr><td nowrap=3D"true" bgco=
+lor=3D"#669999" width=3D"16"><img width=3D"16" height=3D"4" border=3D"0" al=
+t=3D"" src=3D"http://www.cisco.com/global/sitewide_assets/images/spacer.gif=
+"></td><td nowrap=3D"true" bgcolor=3D"#669999" width=3D"8"><img width=3D"8"=
+ height=3D"1" border=3D"0" alt=3D"" src=3D"http://www.cisco.com/global/site=
+wide_assets/images/spacer.gif"></td><td nowrap=3D"true" bgcolor=3D"#669999"=
+ width=3D"140"><img width=3D"140" height=3D"1" border=3D"0" alt=3D"" src=3D=
+"http://www.cisco.com/global/sitewide_assets/images/spacer.gif"></td><td no=
+wrap=3D"true" bgcolor=3D"#669999" width=3D"13"><img width=3D"13" height=3D"=
+1" border=3D"0" alt=3D"" src=3D"http://www.cisco.com/global/sitewide_assets=
+/images/spacer.gif"></td></tr><!-- China TAC Home Page -->  <tr>  <td bgcol=
+or=3D"#336666"><img width=3D"16" height=3D"15" border=3D"0" alt=3D"" src=3D=
+"http://www.cisco.com/global/sitewide_assets/images/spacer.gif"> </td>   <t=
+d bgcolor=3D"#336666" colspan=3D"2"><a href=3D"http://cco-stage/global/CN/s=
+upport/tac/index.shtml" title=3D"" class=3D"hinavparent">=D6=D0=CE=C4TAC=CD=
+=F8=D5=BE</a></td>   <td valign=3D"top" bgcolor=3D"#336666"><a alt=3D"China=
+ TAC Web" href=3D"http://cco-stage/global/CN/support/tac/index.shtml"><img =
+border=3D"0" alt=3D"" width=3D"13" height=3D"15" src=3D"http://www.cisco.co=
+m/global/sitewide_assets/images/hinav_l0plus.gif"></a></td>  </tr> <tr><td =
+bgcolor=3D"#003333" colspan=3D"4"><img border=3D"0" alt=3D"" width=3D"1" he=
+ight=3D"1" src=3D"http://www.cisco.com/swa/i/s.gif"></td></tr>  <!-- Produc=
+ts menu --><tr><td bgcolor=3D"#336666"><img width=3D"16" height=3D"15" bord=
+er=3D"0" alt=3D"" src=3D"http://www.cisco.com/swa/i/s.gif"></td>   <td bgco=
+lor=3D"#336666" colspan=3D"2"><a href=3D"http://www.cisco.com/support/zh/in=
+dex/Products/" title=3D"" class=3D"hinavparent">  =B2=FA=C6=B7  </a></td>  =
+ <td valign=3D"top" bgcolor=3D"#336666"><a alt=3D"=D3=B2=BC=FE" href=3D"htt=
+p://www.cisco.com/support/zh/index/Products/"><img border=3D"0" alt=3D"" wi=
+dth=3D"13" height=3D"7" src=3D"http://www.cisco.com/global/sitewide_assets/=
+images/hinav_plusrev.gif">             </a></td>  </tr><tr><td bgcolor=3D"#=
+003333" colspan=3D"4"><img border=3D"0" alt=3D"" width=3D"1" height=3D"1" s=
+rc=3D"http://www.cisco.com/swa/i/s.gif"></td></tr><!-- Technology menu --><=
+tr><td bgcolor=3D"#336666"><img width=3D"16" height=3D"15" border=3D"0" alt=
+=3D"" src=3D"http://www.cisco.com/swa/i/s.gif"></td>        <td bgcolor=3D"=
+#336666" colspan=3D"2"><a href=3D"http://www.cisco.com/support/zh/index/Tec=
+hnologies/" title=3D"" class=3D"hinavparent"> =BC=BC=CA=F5 </a></td>   <td =
+valign=3D"top" bgcolor=3D"#336666"><a alt=3D"=BC=BC=CA=F5" href=3D"http://w=
+ww.cisco.com/support/zh/index/Technologies/"><img border=3D"0" alt=3D"" wid=
+th=3D"13" height=3D"7" src=3D"http://www.cisco.com/global/sitewide_assets/i=
+mages/hinav_plusrev.gif">             </a></td>  </tr>  <tr><td bgcolor=3D"=
+#003333" colspan=3D"4"><img border=3D"0" alt=3D"" width=3D"1" height=3D"1" =
+src=3D"http://www.cisco.com/swa/i/s.gif"></td></tr><!-- Bottom line --><tr>=
+<td bgcolor=3D"#336666" colspan=3D"3"><img border=3D"0" alt=3D"" width=3D"1=
+" height=3D"1" src=3D"http://www.cisco.com/global/sitewide_assets/images/sp=
+acer.gif"></td><td align=3D"right" valign=3D"bottom" bgcolor=3D"#336666"><i=
+mg border=3D"0" alt=3D"" height=3D"14" width=3D"13" src=3D"http://www.cisco=
+.com/global/sitewide_assets/images/hinav_loright.gif"></td></tr></tbody></t=
+able><!--END LOCATiON L1--><!--LOCATiON: L2--><!--END LOCATiON--><!--------=
+------ Include javascript file for F/B Form --------------------><!-- CDCHe=
+ader2 template starts --><!------------ Include javascript file ends for F/=
+B Form -----------------><br><img alt=3D"" border=3D"0" height=3D"32" src=
+=3D"http://www.cisco.com/global/CN/images/spacer.gif" width=3D"1"></td>    =
+<td valign=3D"top">      <table bgcolor=3D"#669999" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%">        <tbody><tr>          <td><=
+img alt=3D"" border=3D"0" height=3D"20" src=3D"http://www.cisco.com/global/=
+CN/images/spacer.gif" width=3D"1"></td>        </tr>      </tbody></table> =
+   </td>    <!-- Main Content Cell -->    <td valign=3D"top"><!--LOCATION C=
+1: Graphic Title-->    <table border=3D"0" width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0" bgcolor=3D"#ffffff">        <tbody><tr><!--LOCATION C1A:=
+ Linked Image, Section Title-->   		<td valign=3D"middle" bgcolor=3D"#66999=
+9"> <div class=3D"contenttitlerev"> =BC=BC=CA=F5=D6=A7=B3=D6 </div></td> <t=
+d bgcolor=3D"#669999" align=3D"right"><img height=3D"20" alt=3D"" src=3D"ht=
+tp://www.cisco.com/global/sitewide_assets/images/content_right1.gif" width=
+=3D"10" border=3D"0"></td></tr>		<tr>            <td bgcolor=3D"#ffffff"><i=
+mg height=3D"8" alt=3D"" src=3D"http://www.cisco.com/global/sitewide_assets=
+/images/spacer.gif" width=3D"1" border=3D"0"></td>            <td bgcolor=
+=3D"#ffffff" align=3D"right"><img height=3D"8" alt=3D"" src=3D"http://www.c=
+isco.com/global/sitewide_assets/images/content_topright.gif" width=3D"13" b=
+order=3D"0"></td>        </tr>    </tbody></table><!--END LOCATION C1--><!-=
+-LOCATiON C2: page Title--><!-- Page Title: Introduction--><table summary=
+=3D" " bgcolor=3D"ffffff" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%=
+" border=3D"0"><tbody><tr><td bgcolor=3D"#ffcc66"><img height=3D"21" width=
+=3D"6" border=3D"0" alt=3D"" src=3D"http://www.cisco.com/global/sitewide_as=
+sets/images/spacer.gif"></td><td width=3D"100%" valign=3D"center" bgcolor=
+=3D"#ffcc66"><span class=3D"contenttitle"><!--LOCATION C2a: Title Text-->TA=
+C=D6=D0=CE=C4=CE=C4=B5=B5<!--END LOCATION C2a-->       </span> </td>      <=
+td bgcolor=3D"#ffcc66" valign=3D"top" align=3D"right"><img height=3D"21" al=
+t=3D"" src=3D"http://www.cisco.com/global/sitewide_assets/images/contenttit=
+le_right.gif" width=3D"13" border=3D"0"></td>    </tr>    <tr>       <td bg=
+color=3D"#ffffff" colspan=3D"3"><img alt=3D"" src=3D"http://www.cisco.com/g=
+lobal/sitewide_assets/images/spacer.gif" border=3D"0"></td>    </tr>    <tr=
+>       <td bgcolor=3D"#ffcc66" colspan=3D"3"><img alt=3D"" src=3D"http://w=
+ww.cisco.com/global/sitewide_assets/images/spacer.gif" border=3D"0"></td>  =
+  </tr>  </tbody></table>  <!--END LOCATION C2--><!--Bigin the table of lin=
+k to English version--> <table cellspacing=3D"0" cellpadding=3D"0" align=3D=
+"right" summary=3D"" border=3D"0">        <tbody>        <tr>          <td =
+valign=3D"top" align=3D"right"></td></tr>        <tr>          <td valign=
+=3D"top" align=3D"right">            <table cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"200" bgcolor=3D"#003399" summary=3D"" border=3D"0">        =
+      <tbody><tr><td width=3D"5"><img alt=3D"" height=3D"17" width=3D"5" sr=
+c=3D"http://www.cisco.com/swa/i/s.gif"></td><td align=3D"left" valign=3D"mi=
+ddle" width=3D"100%"><span class=3D"moduletitlerev">=D4=AD=CE=C4=BC=FE=B5=
+=C4=C1=B4=BD=D3(=D3=A2=D3=EF)</span></td><td><img alt=3D"" height=3D"1" wid=
+th=3D"3" src=3D"http://www.cisco.com/swa/i/s.gif"></td><td align=3D"right" =
+valign=3D"top"><img alt=3D"" height=3D"7" width=3D"7" src=3D"http://www.cis=
+co.com/swa/i/corner_ur_7.gif"></td></tr></tbody></table>            <table =
+cellspacing=3D"0" cellpadding=3D"0" width=3D"200" bgcolor=3D"#003399" summa=
+ry=3D"" border=3D"0">              <tbody>              <tr>               =
+ <td>                  <table cellspacing=3D"1" cellpadding=3D"4" width=3D"=
+100%" summary=3D"" border=3D"0">                    <tbody>                =
+    <tr>                      <td bgcolor=3D"#ffffff">=B4=CB=CE=C4=B5=B5=CA=
+=C7=D3=C9=C8=CB=B9=A4=D6=C7=C4=DC=D7=D4=B6=AF=B7=AD=D2=EB=CF=B5=CD=B3=B7=AD=
+=D2=EB=B5=C4,=C7=EB=CB=E6=CA=B1=B2=CE=BF=BC<a class=3D"modulecontentlink" t=
+itle=3D"" href=3D"http://www.cisco.com/warp/public/105/5.html" target=3D"_b=
+lank">=D3=A2=CE=C4=D4=AD=CE=C4</a>=A1=A3<br><!-- CDCHeader3 template starts=
+ begining of this line --><a href=3D"http://www.cisco.com/support/zh/105/5.=
+shtml#disclaimer">&gt;&gt;=B2=A2=D4=C4=B6=C1=CF=C2=C1=D0=C9=F9=C3=F7</a><br=
+></td></tr></tbody></table></td></tr></tbody></table></td></tr>        <tr>=
+          <td valign=3D"top" align=3D"right"></td></tr>        <tr>        =
+  <td valign=3D"top" align=3D"right"></td></tr></tbody></table><!--End the =
+table of link to English version--><p></p><div class=3D"contentMargins"><sp=
+an class=3D"content"><!-- Start of the actual text content -->
+
+
+<br>
+
+
+<h1>=B4=FA=C0=ED ARP</h1>=20
+<hr>
+<h2>=C4=BF=C2=BC</h2>=20
+<blockquote>
+ <b><a href=3D"http://www.cisco.com/support/zh/105/5.shtml#intro">=C7=B0=D1=
+=D4</a></b>  <br>  <b><a href=3D"http://www.cisco.com/support/zh/105/5.shtm=
+l#prereq">=C7=B0=CC=E1</a></b> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href=
+=3D"http://www.cisco.com/support/zh/105/5.shtml#reqs">=D2=AA=C7=F3</a> <br>=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href=3D"http://www.cisco.com/support/zh/1=
+05/5.shtml#hw">=CA=B9=D3=C3=B5=C4=D7=E9=BC=FE</a>  <br>&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp; <a href=3D"http://www.cisco.com/support/zh/105/5.shtml#conv">=D4=
+=BC=B6=A8</a>  <br>  <b><a href=3D"http://www.cisco.com/support/zh/105/5.sh=
+tml#howdoesproxyarpwork">=B4=FA=C0=ED ARP =C8=E7=BA=CE=B9=A4=D7=F7=A3=BF</a=
+></b> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href=3D"http://www.cisco.com/su=
+pport/zh/105/5.shtml#networkdiagram">=CD=F8=C2=E7=CD=BC</a> <br>  <b><a hre=
+f=3D"http://www.cisco.com/support/zh/105/5.shtml#advantages">=B4=FA=C0=ED A=
+RP =B5=C4=D3=C5=B5=E3</a></b> <br>  <b><a href=3D"http://www.cisco.com/supp=
+ort/zh/105/5.shtml#disadvantages">=B4=FA=C0=ED ARP =B5=C4=C8=B1=B5=E3</a></=
+b> <br>  <b><a href=3D"http://www.cisco.com/support/zh/105/5.shtml#NetPro">=
+Net Pro=C2=DB=CC=B3-=D7=A8=CC=E2=B6=D4=BB=B0</a></b> <br>  <b><a href=3D"ht=
+tp://www.cisco.com/support/zh/105/5.shtml#related">=CF=E0=B9=D8=D0=C5=CF=A2=
+</a></b>  <br>=20
+</blockquote>
+<hr>  =20
+=20
+=20
+=20
+=20
+<h2>
+<a name=3D"intro">=C7=B0=D1=D4</a>  </h2> =20
+=20
+  <p>=B1=BE=CE=C4=BD=E2=CA=CD=B4=FA=C0=ED=B5=D8=D6=B7=BD=E2=CE=F6=D0=AD=D2=
+=E9(ARP)=B5=C4=B8=C5=C4=EE=A1=A3 =B4=FA=C0=EDARP=CA=C7=D2=BB=D6=D6=BC=BC=CA=
+=F5=A3=AC=BC=B4=D2=BB=CC=A8=D6=F7=BB=FA=A3=A8=CD=A8=B3=A3=CA=C7=C2=B7=D3=C9=
+=C6=F7=A3=A9=BB=D8=B4=F0=B4=F2=CB=E3=B7=A2=B5=BD=C1=ED=D2=BB=CC=A8=BB=FA=C6=
+=F7=B5=C4ARP=C7=EB=C7=F3=A1=A3 =CD=A8=B9=FD"=CE=B1=D4=EC"=C6=E4=C9=ED=B7=DD=
+=A3=AC=C2=B7=D3=C9=C6=F7=B8=BA=D4=F0=BD=AB=D0=C5=CF=A2=B0=FC=C2=B7=D3=C9=B5=
+=BD=C4=BF=B5=C4=B5=D8=A1=A3 =D4=DA=C3=BB=D3=D0=C5=E4=D6=C3=C2=B7=D3=C9=BB=
+=F2=C4=AC=C8=CF=CD=F8=B9=D8=B4=FA=C0=ED=B5=C4=C7=E9=BF=F6=CF=C2=A3=ACARP=BF=
+=C9=D2=D4=B0=EF=D6=FA=D7=D3=CD=F8=C9=CF=B5=C4=BB=FA=C6=F7=B5=BD=B4=EF=D4=B6=
+=B3=CC=D7=D3=CD=F8=A1=A3 =B4=FA=C0=EDARP=D4=DA<a target=3D"_blank" href=3D"=
+http://www.ietf.org/rfc/rfc1027">RFC 1027</a>=B1=BB=B6=A8=D2=E5<img alt=3D"=
+leavingcisco.com" height=3D"18" width=3D"18" src=3D"http://www.cisco.com/im=
+ages/exit.gif"> =A1=A3</p> =20
+  <h2>
+<a name=3D"prereq">=C7=B0=CC=E1</a> </h2> =20
+<h3>
+<a name=3D"reqs">=D2=AA=C7=F3</a> </h3> =20
+  <p>=B1=BE=CE=C4=D2=AA=C7=F3=B6=D4ARP=BA=CD=D2=D4=CC=AB=CD=F8=BB=B7=BE=B3=
+=B5=C4=C1=CB=BD=E2=A1=A3  </p> =20
+=20
+<h3>
+<a name=3D"hw">=CA=B9=D3=C3=B5=C4=D7=E9=BC=FE</a>  </h3> =20
+  <p>=B1=BE=CE=C4=BC=FE=D6=D0=B5=C4=D0=C5=CF=A2=D2=D4=CF=C2=C1=D0=C8=ED=BC=
+=FE=BA=CD=D3=B2=BC=FE=B0=E6=B1=BE=CE=AA=D2=C0=BE=DD=A1=A3</p>  <ul>=20
+  <li>=20
+	 <p>Cisco IOS <sup>=A3=BF</sup> =C8=ED=BC=FE=B0=E6=B1=BE12.2(10b)=20
+		</p>=20
+</li>=20
+  <li>=20
+	 <p>Cisco 2500 =CF=B5=C1=D0=C2=B7=D3=C9=C6=F7   </p>=20
+</li> </ul>=20
+  <p>=B1=BE=CE=C4=CB=F9=B0=FC=BA=AC=D0=C5=CF=A2=BB=F9=D3=DA=CC=D8=B6=A8=CA=
+=B5=D1=E9=CA=D2=BB=B7=BE=B3=CF=C2=B5=C4=C9=E8=B1=B8=A1=A3 =B1=BE=CE=C4=CB=
+=F9=D2=FD=D3=C3=B5=C4=CB=F9=D3=D0=C9=E8=B1=B8=BE=F9=B2=C9=D3=C3=D4=AD=CA=BC=
+ (=C8=B1=CA=A1)=C5=E4=D6=C3=A1=A3 =C8=E7=B9=FB=C4=FA=CA=C7=D4=DA=D5=E6=CA=
+=B5=CD=F8=C2=E7=D6=D0=B9=A4=D7=F7=A3=AC=C7=EB=C8=B7=B1=A3=C4=FA=D4=DA=CA=B9=
+=D3=C3=CB=FC=D2=D4=C7=B0=C1=CB=BD=E2=CB=F9=D3=D0=C3=FC=C1=EE=B5=C4=C7=B1=D4=
+=DA=D3=B0=CF=EC=A1=A3</p> =20
+=20
+<h3>
+<a name=3D"conv">=D4=BC=B6=A8</a>  </h3> =20
+  <p>=D3=D0=B9=D8=CE=C4=BC=FE=B9=E6=D4=F2=B5=C4=B8=FC=CF=EA=BE=A1=D0=C5=CF=
+=A2=C7=EB=B2=CE=D4=C4Cisco=BC=BC=CA=F5=CC=E1=CA=BE=B9=E6=D4=F2=A1=A3</p> =
+=20
+ =20
+<h2>
+<a name=3D"howdoesproxyarpwork">=B4=FA=C0=ED ARP =C8=E7=BA=CE=B9=A4=D7=F7=
+=A3=BF</a> </h2> =20
+=20
+  <p>=CF=C2=C3=E6=CA=BE=C0=FD=B4=FA=C0=EDARP=C8=E7=BA=CE=B9=A4=D7=F7=A3=BA =
+ </p> =20
+=20
+<h3>
+<a name=3D"networkdiagram">=CD=F8=C2=E7=CD=BC</a> </h3>=20
+<p>
+<img alt=3D"5_01.gif" border=3D"0" src=3D"http://www.cisco.com/support/zh/1=
+05/5_01.gif" usemap=3D"http://www.cisco.com/support/zh/105/5.shtml">
+</p>=20
+  <p>=D7=D3=CD=F8A=C9=CF=B5=C4=D6=F7=BB=FAA (172.16.10.100)=D0=E8=D2=AA=CF=
+=F2=D7=D3=CD=F8B=C9=CF=B5=C4=D6=F7=BB=FAD (172.16.20.200)=B7=A2=CB=CD=D0=C5=
+=CF=A2=B0=FC=A1=A3=C8=E7=CF=C2=CD=BC=CB=F9=CA=BE=A3=AC=D6=F7=BB=FAA=D3=D0=
+=D2=BB=B8=F6/16=D7=D3=CD=F8=D1=DA=C2=EB=A1=A3 =D6=F7=BB=FAA=CF=E0=D0=C5=CB=
+=FC=C4=DC=B9=BB=D6=B1=BD=D3=C1=AC=BD=D3=B5=BD=CB=F9=D3=D0=CD=F8=C2=E7172.16=
+.0.0=A3=AC=D5=E2=D2=E2=CE=B6=D7=C5=CA=B2=C3=B4=A3=BF =B5=B1=D6=F7=BB=FAA=D0=
+=E8=D2=AA=D3=EB=CB=FC=CF=E0=D0=C5=C4=DC=B9=BB=D6=B1=BD=D3=C1=AC=BD=D3=B5=C4=
+=CB=F9=D3=D0=C9=E8=B1=B8=BD=F8=D0=D0=CD=A8=D0=C5=CA=B1=A3=AC=CB=FC=BD=AB=CF=
+=F2=C4=BF=B5=C4=B5=D8=B7=A2=CB=CD=D2=BB=B8=F6ARP=C7=EB=C7=F3=A1=A3 =CB=F9=
+=D2=D4=A3=AC=B5=B1=D6=F7=BB=FAA=D0=E8=D2=AA=CF=F2=D6=F7=BB=FAD=B7=A2=CB=CD=
+=D0=C5=CF=A2=B0=FC=CA=B1=A3=AC=D6=F7=BB=FAA=CF=E0=D0=C5=D6=F7=BB=FAD=CA=C7=
+=D6=B1=BD=D3=C1=AC=BD=D3=B5=C4=A3=AC=D2=F2=B4=CB=B7=A2=CB=CD=D2=BB=B8=F6ARP=
+=C7=EB=C7=F3=B5=BD=D6=F7=BB=FAD=A1=A3  </p> =20
+  <p>=D2=AA=B5=BD=B4=EF=D6=F7=BB=FAD (172.16.20.200)=A3=AC=D6=F7=BB=FAA=D0=
+=E8=D2=AA=D6=F7=BB=FAD MAC=B5=D8=D6=B7=A1=A3  </p> =20
+  <p>=CB=F9=D2=D4=A3=AC=D6=F7=BB=FAA=D4=DA=D7=D3=CD=F8A=B2=A5=B7=C5=D2=BB=
+=B8=F6ARP=C7=EB=C7=F3=A3=AC=D7=F7=CE=AA=C8=E7=CF=C2=A3=BA=20
+	 </p> =20
+  <table bgcolor=3D"#FFFFFF" cellpadding=3D"3" cellspacing=3D"1" border=3D"=
+1" width=3D"60%">=20
+		<tbody><tr>
+<th height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>=B7=A2=CB=CD=C6=F7MAC=B5=D8=D6=B7</p>=20
+</th>
+<th height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>=B7=A2=CB=CD=C6=F7IP=B5=D8=D6=B7</p>=20
+</th>
+<th height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>=C4=BF=B1=EAMAC=B5=D8=D6=B7</p>=20
+</th>
+<th height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>=C4=BF=B1=EAIP=B5=D8=D6=B7  </p>=20
+</th>=20
+		</tr>=20
+		<tr>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>00-00-0c-94-36-aa  </p>=20
+</td>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>172.16.10.100  </p>=20
+</td>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>00-00-00-00-00-00  </p>=20
+</td>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>172.16.20.200  </p>=20
+</td>=20
+		</tr>=20
+  </tbody></table>
+<p>=20
+  </p><p>=D4=DA=C9=CF=CA=F6ARP=C7=EB=C7=F3=A3=AC=D6=F7=BB=FAA (172.16.10.10=
+0)=C7=EB=C7=F3=D6=F7=BB=FAD(172.16.20.200)=B7=A2=CB=CD=C6=E4MAC=B5=D8=D6=B7=
+=A1=A3 =C9=CF=CA=F6ARP=C7=EB=C7=F3=D0=C5=CF=A2=B0=FC=B1=BB=B7=E2=D7=B0=D4=
+=DA=D2=BB=B8=F6=D2=D4=CC=AB=CD=F8=D6=A1=D6=D0=A3=AC=D6=F7=BB=FAA=B5=C4MAC=
+=B5=D8=D6=B7=D7=F7=CE=AA=D4=B4=B5=D8=D6=B7=A3=AC=B9=E3=B2=A5=B5=D8=D6=B7(FF=
+FF.FFFF.FFFF)  =D7=F7=CE=AA=C4=BF=B5=C4=B5=D8=B5=D8=D6=B7=A1=A3 =D2=F2=CE=
+=AAARP=C7=EB=C7=F3=CA=C7=D2=BB=D6=D6=B9=E3=B2=A5=A3=AC=D2=F2=B4=CB=CB=FC=C4=
+=DC=B9=BB=B5=BD=B4=EF=D7=D3=CD=F8A=D6=D0=B5=C4=CB=F9=D3=D0=BD=DA=B5=E3=A3=
+=AC=B0=FC=C0=A8=C2=B7=D3=C9=C6=F7=B5=C4e0=BD=D3=BF=DA=A3=AC=B5=AB=B2=BB=C4=
+=DC=B5=BD=B4=EF=D6=F7=BB=FAD=A1=A3 =D4=DA=C4=AC=C8=CF=C7=E9=BF=F6=CF=C2=A3=
+=AC=D2=F2=CE=AA=C2=B7=D3=C9=C6=F7=B2=BB=D7=AA=CB=CD=B9=E3=B2=A5=A3=AC=CB=F9=
+=D2=D4=B9=E3=B2=A5=B2=BB=BB=E1=B5=BD=B4=EF=D6=F7=BB=FAD=A1=A3  </p> =20
+  <p>=D2=F2=CE=AA=C2=B7=D3=C9=C6=F7=D6=AA=B5=C0=C4=BF=B1=EA=B5=D8=D6=B7(172=
+.16.20.200)=D4=DA=C1=ED=D2=BB=B8=F6=D7=D3=CD=F8=C9=CF=A3=AC=B2=A2=C7=D2=C4=
+=DC=B5=BD=B4=EF=D6=F7=BB=FAD=A3=AC=BD=AB=CF=F2=D6=F7=BB=FAA=BB=D8=B8=B4=D7=
+=D4=BC=BA=B5=C4MAC=B5=D8=D6=B7=A1=A3  </p> =20
+  <table bgcolor=3D"#FFFFFF" cellpadding=3D"3" cellspacing=3D"1" border=3D"=
+1" width=3D"60%">=20
+		<tbody><tr>
+<th height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>=B7=A2=CB=CD=C6=F7MAC=B5=D8=D6=B7  </p>=20
+</th>
+<th height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>=B7=A2=CB=CD=C6=F7IP=B5=D8=D6=B7  </p>=20
+</th>
+<th height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>=C4=BF=B1=EAMAC=B5=D8=D6=B7</p>=20
+</th>
+<th height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>=C4=BF=B1=EAIP=B5=D8=D6=B7</p>=20
+</th>=20
+		</tr>=20
+		<tr>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>00-00-0c-94-36-ab  </p>=20
+</td>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>172.16.20.200  </p>=20
+</td>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>00-00-0c-94-36-aa  </p>=20
+</td>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>172.16.10.100  </p>=20
+</td>=20
+		</tr>=20
+  </tbody></table>
+<p>=20
+  </p><p>=C9=CF=CA=F6=C2=B7=D3=C9=C6=F7=BC=C4=B7=A2=B5=BD=D6=F7=BB=FAA=B5=
+=C4=B4=FA=C0=EDARP=BB=D8=B8=B4=A1=A3 =B4=FA=C0=EDARP=BB=D8=B8=B4=D0=C5=CF=
+=A2=B0=FC=B7=E2=D7=B0=D4=DA=D2=BB=B8=F6=D2=D4=CC=AB=CD=F8=D6=A1=D6=D0=A3=AC=
+=C2=B7=D3=C9=C6=F7=B5=C4MAC=B5=D8=D6=B7=D7=F7=CE=AA=D4=B4=B5=D8=D6=B7=A3=AC=
+=D6=F7=BB=FAA=B5=C4MAC=B5=D8=D6=B7=D7=F7=CE=AA=C4=BF=B5=C4=B5=D8=B5=D8=D6=
+=B7=A1=A3 ARP=D3=A6=B4=F0=D7=DC=CA=C7=B5=A5=B2=A5=B6=D4=D4=AD=CA=BC=C7=EB=
+=C7=F3=C8=CB=A1=A3  </p> =20
+  <p>=D4=DA=CA=D5=B5=BD=B4=CBARP=D3=A6=B4=F0=A3=AC=D6=F7=BB=FAA=B8=FC=D0=C2=
+=C6=E4ARP=B1=ED=D7=F7=CE=AA=C8=E7=CF=C2=A3=BA=20
+	 </p> =20
+  <table bgcolor=3D"#FFFFFF" cellpadding=3D"3" cellspacing=3D"1" border=3D"=
+1" width=3D"60%">=20
+		<tbody><tr>
+<th height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>IP =B5=D8=D6=B7</p>=20
+</th>
+<th height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>MAC=B5=D8=D6=B7</p>=20
+</th>=20
+		</tr>=20
+		<tr>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>172.16.20.200</p>=20
+</td>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>00-00-0c-94-36-ab</p>=20
+</td>=20
+		</tr>=20
+  </tbody></table>
+<p>=20
+  </p><p>=D6=F7=BB=FAA=B4=D3=CF=D6=D4=DA=C6=F0=BD=AB=CF=F2MAC=B5=D8=D6=B700=
+-00-0c-94-36-ab  (=C2=B7=D3=C9=C6=F7)=D7=AA=B7=A2=C6=E4=CF=A3=CD=FB=B5=BD=
+=B4=EF172.16.20.200=A3=A8=D6=F7=BB=FAD=A3=A9=B5=C4=CB=F9=D3=D0=D0=C5=CF=A2=
+=B0=FC=A1=A3 =D2=F2=CE=AA=C2=B7=D3=C9=C6=F7=D6=AA=B5=C0=C8=E7=BA=CE=B5=BD=
+=B4=EF=D6=F7=BB=FAD=A3=AC=C2=B7=D3=C9=C6=F7=BD=AB=D0=C5=CF=A2=B0=FC=D7=AA=
+=B7=A2=B5=BD=D6=F7=BB=FAD=A1=A3 =D7=D3=CD=F8B=C9=CF=CB=F9=D3=D0=D6=F7=BB=FA=
+=B5=C4=C2=B7=D3=C9=C6=F7MAC=B5=D8=D6=B7=B6=BC=B4=E6=B7=C5=D4=DA=D7=D3=CD=F8=
+A=D6=D0=D6=F7=BB=FA=B5=C4ARP=B8=DF=CB=D9=BB=BA=B4=E6=D6=D0=A1=A3 =C2=B7=D3=
+=C9=C6=F7=D4=DA=D7=D3=CD=F8B.=D7=AA=B7=A2=C4=C7=D0=A9=D0=C5=CF=A2=B0=FC=B5=
+=BD=D6=F7=BB=FA=A1=A3  </p> =20
+  <p>=C8=E7=CF=C2=B2=FA=C9=FAARP=B8=DF=CB=D9=BB=BA=B4=E6=D6=F7=BB=FAA =A3=
+=BA  </p> =20
+  <table bgcolor=3D"#FFFFFF" cellpadding=3D"3" cellspacing=3D"1" border=3D"=
+1" width=3D"60%">=20
+		<tbody><tr>
+<th height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>IP =B5=D8=D6=B7</p>=20
+</th>
+<th height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>MAC=B5=D8=D6=B7</p>=20
+</th>=20
+		</tr>=20
+		<tr>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>172.16.20.200</p>=20
+</td>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>00-00-0c-94-36-ab</p>=20
+</td>=20
+		</tr>=20
+		<tr>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>172.16.20.100</p>=20
+</td>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>00-00-0c-94-36-ab</p>=20
+</td>=20
+		</tr>=20
+		<tr>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>172.16.10.99</p>=20
+</td>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>00-00-0c-94-36-ab</p>=20
+</td>=20
+		</tr>=20
+		<tr>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>172.16.10.200</p>=20
+</td>
+<td height=3D"" width=3D"" bgcolor=3D"FFFFFF" colspan=3D"1" rowspan=3D"1">=
+=20
+			 <p>00-00-0c-94-36-bb</p>=20
+</td>=20
+		</tr>=20
+  </tbody></table>
+<p>=20
+  =20
+	 </p><p>
+<b>=D7=A2=D2=E2=A3=BA =A3=BF</b>=B6=E0=B8=F6IP=B5=D8=D6=B7=B1=BB=D3=B3=C9=
+=E4=B5=BD=B5=A5=B8=F6MAC=B5=D8=D6=B7(=C2=B7=D3=C9=C6=F7=B5=C4MAC=B5=D8=D6=
+=B7)=A3=AC=B1=ED=CA=BE=B4=FA=C0=EDARP=D5=FD=D4=DA=CA=B9=D3=C3=D6=D0=A1=A3  =
+</p> =20
+  =20
+  <p>=D3=A6=B8=C3=C5=E4=D6=C3Cisco=C2=B7=D3=C9=C6=F7=BD=D3=BF=DA=BD=D3=CA=
+=DC=BA=CD=BB=D8=D3=A6=B4=FA=C0=EDARP=A1=A3 =C4=AC=C8=CF=C7=E9=BF=F6=CF=C2=
+=D5=E2=B1=BB=C6=F4=D3=C3=A1=A3 =C5=E4=D6=C3=C3=FC=C1=EEno ip proxy-arp=A3=
+=AC=BF=C9=D2=D4=D4=DA=B5=A5=CE=BB=BD=D3=BF=DA=C9=CF=BD=FB=D3=C3=B4=FA=C0=ED=
+ARP=A3=AC=C8=E7=CF=C2=CB=F9=CA=BE=A3=BA  </p> =20
+  <blockquote>
+<pre>Router# <b>configure terminal</b>
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#<b> interface ethernet 0</b>
+Router(config-if)#<b> no ip proxy-arp</b>
+Router(config-if)# <b>^Z</b>
+Router#
+
+</pre>
+</blockquote>=20
+  <p>=D2=AA=C6=F4=D3=C3=B4=FA=C0=EDARP=D4=DA=BD=D3=BF=DA=A3=AC=C7=EB=CA=B9=
+=D3=C3<b>ip proxy-arp interface configuration=C3=FC=C1=EE</b>=A1=A3  </p> =
+=20
+  =20
+	 <p>
+<b>=D7=A2=D2=E2=A3=BA =A3=BF</b>=B5=B1=D7=D3=CD=F8A=C9=CF=B5=C4=D6=F7=BB=FA=
+B (172.16.10.200/24)=CA=D4=CD=BC=CF=F2=D4=DA=D7=D3=CD=F8B=C9=CF=B5=C4=C4=BF=
+=B5=C4=B5=D8=D6=F7=BB=FAD (172.16.20.200)=B7=A2=CB=CD=D0=C5=CF=A2=B0=FC=CA=
+=B1=A3=AC=CB=FC=BD=AB=B2=E9=D1=AF=C6=E4IP=C2=B7=D3=C9=B1=ED=B2=A2=C7=D2=CF=
+=E0=D3=A6=B5=D8=C2=B7=D3=C9=D0=C5=CF=A2=B0=FC=A1=A3 =D6=F7=BB=FAB (172.16.1=
+0.200/24)=B2=BB=B6=D4=D6=F7=BB=FAD IP=B5=D8=D6=B7172.16.20.200=BD=F8=D0=D0A=
+RP=A3=AC=D2=F2=CE=AA=CB=FC=D3=EB=D6=F7=BB=FAB=D2=D4=CC=AB=CD=F8=BD=D3=BF=DA=
+172.16.20.200/24=C9=CF=C5=E4=D6=C3=B5=C4=CA=F4=D3=DA=B2=BB=CD=AC=B5=C4=D7=
+=D3=CD=F8=A1=A3=20
+		</p> =20
+  =20
+ <h2>
+<a name=3D"advantages">=B4=FA=C0=ED ARP =B5=C4=D3=C5=B5=E3</a> </h2> =20
+=20
+  <p>=CA=B9=D3=C3=B4=FA=C0=EDARP=D6=F7=D2=AA=B5=C4=D3=C5=B5=E3=CA=C7=CB=FC=
+=BF=C9=D2=D4=CC=ED=BC=D3=B5=BD=CD=F8=C2=E7=C9=CF=B5=C4=B5=A5=B8=F6=C2=B7=D3=
+=C9=C6=F7=A3=AC=B6=F8=B2=BB=BB=E1=B8=C9=C8=C5=C6=E4=CB=FB=C2=B7=D3=C9=C6=F7=
+=B5=C4=C2=B7=D3=C9=B1=ED=A1=A3  </p> =20
+  <p>=C8=E7=B9=FBIP=D6=F7=BB=FA=C3=BB=D3=D0=C5=E4=D6=C3=C4=AC=C8=CF=CD=F8=
+=B9=D8=A3=AC=BB=F2=D5=DF=C3=BB=D3=D0=C8=CE=BA=CE=C2=B7=D3=C9=D6=C7=C4=DC=A1=
+=A3=B4=FA=C0=EDARP=D3=A6=B5=B1=D3=C3=D3=DA=CD=F8=C2=E7=A1=A3=20
+	 </p> =20
+<h2>
+<a name=3D"disadvantages">=B4=FA=C0=ED ARP =B5=C4=C8=B1=B5=E3</a> </h2>=20
+
+=20
+  <p>=D6=F7=BB=FA=B2=BB=D6=AA=B5=C0=C6=E4=CD=F8=C2=E7=B5=C4=CE=EF=C0=ED=CF=
+=EA=C7=E9=A3=AC=BC=D9=B6=A8=CB=FC=CA=C7=D2=BB=B8=F6=B1=E2=C6=BD=CD=F8=C2=E7=
+=A3=AC=CB=FC=C3=C7=C4=DC=CD=A8=B9=FD=B7=A2=CB=CDARP=C7=EB=C7=F3=BE=CD=C4=DC=
+=B5=BD=B4=EF=CB=F9=D3=D0=C4=BF=B5=C4=B5=D8=A1=A3 =B5=AB=C8=CE=BA=CE=B2=D9=
+=D7=F7=D6=D0=CA=B9=D3=C3ARP=B6=BC=BE=DF=D3=D0=C8=B1=CF=DD=A3=AC=B2=BF=B7=D6=
+=C8=B1=CF=DD=C8=E7=CF=C2=CB=F9=CA=BE=A3=BA  </p>=20
+<ul>=20
+  <li>=20
+	 <p>=CB=FC=D4=DA=C4=FA=B5=C4=B7=D6=B6=CE=D4=F6=BC=D3=CF=E0=B5=B1=CA=FD=C1=
+=BFARP=CA=FD=BE=DD=C1=F7=A1=A3=20
+		</p>=20
+</li>=20
+  <li>=20
+	 <p>=D6=F7=BB=FA=D0=E8=D2=AA=B8=FC=B4=F3=B5=C4ARP=B1=ED=B4=A6=C0=EDIP=B6=
+=D4MAC=B5=D8=D6=B7=D3=B3=C9=E4=A1=A3=20
+		</p>=20
+</li>=20
+  <li>=20
+	 <p>=B0=B2=C8=AB=BF=C9=C4=DC=B1=BB=C6=C6=BB=B5=A1=A3 =CE=AA=C1=CB=BD=D8=B6=
+=CF=D0=C5=CF=A2=B0=FC=A3=A8=B3=C6=CE=AA"=CE=B1=D7=B0"=B5=C4=B2=D9=D7=F7=A3=
+=A9=A3=AC=BB=FA=C6=F7=BF=C9=D2=D4=C9=F9=B3=C6=CA=C7=C1=ED=D2=BB=B8=F6=A1=A3=
+  </p>=20
+</li>=20
+  <li>=20
+	 <p>=CB=FC=B2=BB=CE=AA=B2=BB=CA=B9=D3=C3ARP=B5=D8=D6=B7=BD=E2=CE=F6=B5=C4=
+=CD=F8=C2=E7=B9=A4=D7=F7=A1=A3  </p>=20
+</li>=20
+  <li>=20
+	 <p>=CB=FC=C3=BB=D3=D0=B9=E9=C8=EB=CB=F9=D3=D0=CD=F8=C2=E7=CD=D8=C6=CB(=C0=
+=FD=C8=E7=A3=AC=B6=E0=B8=F6=C2=B7=D3=C9=C6=F7=C1=AC=BD=D3=C1=BD=B8=F6=CA=B5=
+=BC=CA=CD=F8=C2=E7)=A1=A3=20
+		</p>=20
+</li>
+</ul>=20
+  <p>=D3=FB=D6=AA=B9=D8=D3=DA=C5=E4=D6=C3=B4=FA=C0=EDARP=B5=C4=B8=FC=B6=E0=
+=D0=C5=CF=A2=A3=AC=C7=EB=B2=CE=BC=FB<a href=3D"http://www.cisco.com/univerc=
+d/cc/td/doc/product/software/ios122/122cgcr/fipr_c/ipcprt1/1cfipadr.htm">=
+=C5=E4=D6=C3IP=B1=E0=D6=B7=B5=C4</a><a href=3D"http://www.cisco.com/univerc=
+d/cc/td/doc/product/software/ios122/122cgcr/fipr_c/ipcprt1/1cfipadr.htm#wp1=
+001233">=C6=F4=D3=C3=B5=C4=B4=FA=C0=EDARP</a>=B2=BF=B7=D6=A1=A3  </p> =20
+
+<h2>
+<a name=3D"NetPro">Net Pro=C2=DB=CC=B3-=D7=A8=CC=E2=B6=D4=BB=B0</a> </h2> =
+=20
+<concept>
+<para>=CD=F8=C2=E7=D7=A8=D2=B5=C8=CB=CA=BF=C1=AC=BD=D3=CA=C7=CD=F8=C2=E7=D7=
+=A8=D2=B5=C8=CB=CA=BF=B5=C4=D2=BB=B8=F6=C2=DB=CC=B3=A3=AC=CB=FC=B9=B2=CF=ED=
+=CD=F8=C2=E7=BD=E2=BE=F6=B7=BD=B0=B8=A1=A2=B2=FA=C6=B7=BA=CD=BC=BC=CA=F5=B5=
+=C4=CF=E0=B9=D8=CE=CA=CC=E2=A1=A2=BD=A8=D2=E9=BA=CD=D0=C5=CF=A2=A1=A3 =B9=
+=A6=C4=DC=C1=B4=C2=B7=CA=C7=B4=CB=BC=BC=CA=F5=BF=C9=D3=C3=B5=C4=D2=BB=D0=A9=
+=D7=EE=BD=FC=B5=C4=BB=E1=BB=B0=A1=A3</para>
+<table border=3D"1">=20
+<tbody><tr>
+<td bgcolor=3D"CCCCFF">=20
+	  			Net Pro=C2=DB=CC=B3-=D7=A8=CC=E2=B6=D4=BB=B0=CE=AARP=20
+  		</td>=20
+</tr>
+<tr>
+<td>=20
+	  			=B7=FE=CE=F1=CC=E1=B9=A9=C9=CC=A3=BA MPLS=20
+  		</td>=20
+</tr>
+<tr>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>=20
+	  			=D0=E9=C4=E2=D7=A8=D3=C3=CD=F8=C2=E7=A3=BA =B7=FE=CE=F1=20
+  		</td>=20
+</tr>
+<tr>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>=20
+	  			=D0=E9=C4=E2=D7=A8=D3=C3=CD=F8=C2=E7=A3=BA =B0=B2=C8=AB=20
+  		</td>=20
+</tr>
+<tr>
+<td>
+
+</td>
+</tr>
+</tbody></table>
+</concept>
+<hr>
+<h2>
+<a name=3D"related">=CF=E0=B9=D8=D0=C5=CF=A2</a>  </h2>=20
+<ul>=20
+  <li>
+ <b><a href=3D"http://www.cisco.com/pcgi-bin/Support/browse/psp_view.pl?p=
+=3DInternetworking:IPv4_IPv6_ICMP_TCP_UDP">IP=C2=B7=D3=C9=B5=C4=D0=AD=D2=E9=
+=D6=A7=B3=D6=D2=B3</a></b> </li> =20
+  <li>
+ <b><a href=3D"http://www.cisco.com/pcgi-bin/Support/browse/index.pl?i=3DTe=
+chnologies&amp;f=3D770">IP=C2=B7=D3=C9=B5=C4=D6=F7=D2=AA=CE=CA=CC=E2</a></b=
+> </li> =20
+  <li>
+ <b><a href=3D"http://www.cisco.com/pcgi-bin/Support/browse/psp_view.pl?p=
+=3DInternetworking:NAT">NAT=D6=A7=B3=D6=D6=F7=D2=B3</a></b> </li> =20
+  <li>
+ <b><a href=3D"http://www.cisco.com/tacpage/support/tac/tools.shtml">=B9=A4=
+=BE=DF&amp;=D7=CA=D4=B4</a></b> </li> =20
+  <li>
+ <b><a href=3D"http://www.cisco.com/en/US/support/index.html">=BC=BC=CA=F5=
+=D6=A7=B3=D6=CB=BC=BF=C6=CF=B5=CD=B3</a></b>  </li> =20
+</ul> <p>
+</p><hr>
+<p>
+
+</p><p>
+ <!-------------- disclaimer template starts -----------></p></span></div><=
+p></p><!-- End of the actual text content --><br> <hr><b><a name=3D"disclai=
+mer"></a>=C9=F9=C3=F7=A3=BA</b>=B4=CB=CE=C4=B5=B5=CA=C7=D3=C9=CE=AA=CB=BC=
+=BF=C6 TAC =CD=F8=D2=B3=C4=DA=C8=DD=B7=AD=D2=EB=CB=F9=BF=AA=B7=A2=B5=C4=D3=
+=A2=BA=BA=BB=FA=C6=F7=D7=D4=B6=AF=B7=AD=D2=EB=CF=B5=CD=B3=B7=AD=D2=EB=B5=C4=
+=A1=A3=D4=DA=D3=D0=D2=C9=CE=CA=BB=F2=D7=F7=B3=F6=D6=D8=D2=AA=B5=C4=BC=BC=CA=
+=F5=D6=A7=B3=D6=BE=F6=B2=DF=CA=B1,=C7=EB=CB=E6=CA=B1=B2=CE=BF=BC=D3=A2=CE=
+=C4=D4=AD=CE=C4=A1=A3<br><!-- PIDLMD --><hr><table width=3D"100%"><tbody><t=
+r><td align=3D"left">Updated:  Sep 15, 2004</td><td align=3D"right">Documen=
+t ID: 13718</td></tr></tbody></table><hr><!-- PIDLMD --><!-------------- Fo=
+oter template starts -----------> </td>    <td valign=3D"top"><img height=
+=3D"36" alt=3D"" src=3D"http://www.cisco.com/global/sitewide_assets/images/=
+content_rightmargin.gif" width=3D"7" border=3D"0"></td><!-- End Main Conten=
+t Cell --><!-- Right-hand modules -->    <td bgcolor=3D"#ffffff" valign=3D"=
+top">    <!--LOCATION R1: Sitewide Search Box-->    <!--If needed, this com=
+ponent_search_guest include is ONLY for visual development purposes only, p=
+lease use the #exec cmd non_migrated_search.pl for production-->    <!--//#=
+include virtual=3D"/global/CN/includes/non_option/component_search_guest.ht=
+ml"-->               <!--Begin Sitewide Search Box-->            <table bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"177">               =
+                 <tbody><tr>                    <td width=3D"7" bgcolor=3D"=
+#669999" align=3D"left"><img src=3D"http://www.cisco.com/global/sitewide_as=
+sets/images/spacer.gif" alt=3D"" border=3D"0" height=3D"12" width=3D"1"></t=
+d>                    <td bgcolor=3D"#669999" colspan=3D"2"><span class=3D"=
+contentheaderrev"><b>=CB=D1=CB=F7=A3=BA</b><br></span><img src=3D"http://ww=
+w.cisco.com/global/sitewide_assets/images/spacer.gif" width=3D"2" height=3D=
+"1" alt=3D"" border=3D"0"><input type=3D"text" name=3D"searchPhrase" size=
+=3D"15" disabled=3D""><img src=3D"http://www.cisco.com/global/sitewide_asse=
+ts/images/spacer.gif" width=3D"4" height=3D"1" alt=3D"" border=3D"0"><input=
+ type=3D"image" src=3D"http://www.cisco.com/global/sitewide_assets/images/g=
+o.gif" align=3D"absmiddle" border=3D"0" disabled=3D""></td>                =
+</tr>                <tr><td colspan=3D"3" bgcolor=3D"#669999"><img src=3D"=
+http://www.cisco.com/global/sitewide_assets/images/spacer.gif" height=3D"4"=
+ alt=3D"" border=3D"0"></td></tr>                <tr>                    <t=
+d bgcolor=3D"#669999" align=3D"left"><img src=3D"http://www.cisco.com/globa=
+l/sitewide_assets/images/spacer.gif" alt=3D"" border=3D"0" height=3D"12" wi=
+dth=3D"1"></td>                    <td bgcolor=3D"669999" colspan=3D"2">   =
+                                                                           =
+                                                                           =
+                                                                           =
+                                                                  <select c=
+lass=3D"secondarynav" name=3D"siteToSearch" size=3D"1" disabled=3D"">      =
+                              <option value=3D"cisco.com">=CB=D1=CB=F7=CB=
+=F9=D3=D0=CB=BC=BF=C6=CD=F8=D5=BE</option>               <option value=3D"c=
+isco.com#CN" selected=3D"">=CB=BC=BF=C6=D6=D0=B9=FA</option>               =
+<option value=3D"cisco.com#MT#CN#TAC">=D6=D0=CE=C4TAC=CD=F8=D5=BE</option> =
+             </select><br>                    <img src=3D"http://www.cisco.=
+com/global/sitewide_assets/images/spacer.gif" width=3D"1" height=3D"6" alt=
+=3D"" border=3D"0"><br></td>                </tr>                <tr><td co=
+lspan=3D"3" bgcolor=3D"#ffffff"><img src=3D"http://www.cisco.com/global/sit=
+ewide_assets/images/spacer.gif" alt=3D"" border=3D"0"></td></tr>           =
+                 </tbody></table><!--End Sitewide Search Box-->    <!--END =
+LOCATION R1-->    <!--LOCATION R2: Sitewide Toolkit-->    [an error occurre=
+d while processing this directive]    <!--END LOCATION R2-->    <img alt=3D=
+"" border=3D"0" height=3D"7" src=3D"http://www.cisco.com/global/CN/images/s=
+pacer.gif" width=3D"1"><br>    <!--LOCATION R3: Related Links-->    <!-- Re=
+moved include -->    <!--END LOCATION R3-->    <!--LOCATION R4: Promotion--=
+>    <!--Removed include "--></td>    </tr>  <tr>    <td bgcolor=3D"#669999=
+"><img alt=3D"" border=3D"0" height=3D"4" src=3D"http://www.cisco.com/globa=
+l/CN/images/footer_left.gif" width=3D"14"></td>    <td bgcolor=3D"#669999">=
+<img alt=3D"" border=3D"0" height=3D"1" src=3D"http://www.cisco.com/global/=
+CN/images/spacer.gif" width=3D"7"></td>    <td align=3D"right" bgcolor=3D"#=
+669999"><img alt=3D"" border=3D"0" height=3D"4" src=3D"http://www.cisco.com=
+/global/CN/images/content_right1.gif" width=3D"10"></td>    <td bgcolor=3D"=
+#669999"><img alt=3D"" border=3D"0" height=3D"4" src=3D"http://www.cisco.co=
+m/global/CN/images/content_right2.gif" width=3D"7"></td>    <td bgcolor=3D"=
+#669999"><img alt=3D"" border=3D"0" height=3D"4" src=3D"http://www.cisco.co=
+m/global/CN/images/spacer.gif" width=3D"177"></td>  </tr></tbody></table><!=
+--END MAIN CONTENT TABLE--><!--Begin Footer--><!--If needed, this framework=
+_footer_public include is ONLY for visual development purposes only, please=
+ use the #exec cmd non_migrated_footer.plfor production--><!--//#include vi=
+rtual=3D"/global/CN/includes/non_option/framework_footer_public.html"--><!-=
+- BEGIN FOOTER TABLE --><table bgcolor=3D"#ffffff" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%">  <tbody><tr>    <td bgcolor=3D"#66=
+9999" height=3D"3" width=3D"14"><img alt=3D"" border=3D"0" height=3D"3" src=
+=3D"http://www.cisco.com/global/CN/images/footer_left.gif" width=3D"14"></t=
+d>    <td bgcolor=3D"#669999" height=3D"3" width=3D"161"><img alt=3D"" bord=
+er=3D"0" height=3D"3" src=3D"http://www.cisco.com/global/CN/images/spacer.g=
+if" width=3D"161"></td>    <td width=3D"100%"><img alt=3D"" border=3D"0" he=
+ight=3D"1" src=3D"http://www.cisco.com/global/CN/images/spacer.gif" width=
+=3D"592"></td>    <td height=3D"3" width=3D"3"><img alt=3D"" border=3D"0" h=
+eight=3D"1" src=3D"http://www.cisco.com/global/CN/images/spacer.gif" width=
+=3D"3"></td>  </tr>  <tr>    <td colspan=3D"2"></td>    <td><span class=3D"=
+footertext"><!--LOCATiON F1: Footer Global Nav--><span class=3D"footertext"=
+><a class=3D"footerareas" href=3D"http://www.cisco.com/">CISCO       HOME</=
+a> | <a class=3D"footerareas" href=3D"http://www.cisco.com/global/CN/about/=
+index.shtml">=CB=BC=BF=C6=D6=D0=B9=FA</a> | <a class=3D"footerareas" href=
+=3D"http://www.cisco.com/global/CN/about/news_info/index.shtml">=D0=C2=CE=
+=C5=D3=EB=BF=AF=CE=EF</a>       | <a class=3D"footerareas" href=3D"http://w=
+ww.cisco.com/global/CN/business/index.shtml">=C9=CC=D2=B5=BD=E2=BE=F6=B7=BD=
+=B0=B8</a> | <a class=3D"footerareas" href=3D"http://www.cisco.com/global/C=
+N/networking/index.shtml">=CD=F8=C2=E7=BD=E2=BE=F6=B7=BD=B0=B8</a>       | =
+<a class=3D"footerareas" href=3D"http://www.cisco.com/global/CN/products/in=
+dex.shtml">=B2=FA=C6=B7</a>      | <a class=3D"footerareas" href=3D"http://=
+www.cisco.com/go/marketplace/" target=3D"_blank">=D4=DA=CF=DF=B6=A8=B9=BA</=
+a> | <a class=3D"footerareas" href=3D"http://www.cisco.com/global/CN/suppor=
+t/index.shtml">=B7=FE=CE=F1=D3=EB=D6=A7=B3=D6</a>       | <a class=3D"foote=
+rareas" href=3D"http://www.cisco.com/global/CN/learning/academy/index.shtml=
+">=CB=BC=BF=C6=CD=F8=C2=E7=BC=BC=CA=F5=D1=A7=D4=BA</a> | <a class=3D"footer=
+areas" href=3D"http://www.cisco.com/global/CN/learning/index.shtml">=C5=E0=
+=D1=B5=A1=A2=BB=EE=B6=AF=D3=EB=BB=E1=D2=E9</a>       | <a class=3D"footerar=
+eas" href=3D"http://www.cisco.com/global/CN/partners/index.shtml">=BA=CF=D7=
+=F7=BB=EF=B0=E9=D3=EB=B4=FA=C0=ED=C9=CC</a> | <a class=3D"footerareas" href=
+=3D"http://www.cisco.com/global/CN/about/contacts.shtml">=C1=AA=CF=B5=CE=D2=
+=C3=C7</a>       | </span><!--END LOCATiON F1--><!--LOCATiON F2: Footer Sec=
+ondary Nav--><span class=3D"footertext"><a class=3D"footerlink" href=3D"htt=
+p://www.cisco.com/">=CA=D7=D2=B3</a>       | <a class=3D"footerlink" href=
+=3D"http://www.cisco.com/login/cisco/" target=3D"_blank">=B5=C7=C2=BC</a> |=
+ <a class=3D"footerlink" href=3D"http://www.cisco.com/register/" target=3D"=
+_blank">=D7=A2=B2=E1</a>       | <a class=3D"footerlink">=BD=BB=C1=F7=B7=B4=
+=C0=A1</a>       | <a class=3D"footerlink">=B0=EF=D6=FA</a></span><br>     =
+ <!--END LOCATiON F2-->      <!--LOCATiON F3: Legal-->      <span class=3D"=
+footertext">=B0=E6=C8=A8=CB=F9=D3=D0 &#169; 1992-2004 =CB=BC=BF=C6=CF=B5=CD=
+=B3 <a title=3D"Open Popup Window" class=3D"footerlink">=D6=D8=D2=AA=C9=F9=
+=C3=F7</a>=A1=A2<a title=3D"Open Popup Window" class=3D"footerlink">=B1=A3=
+=C3=DC=C9=F9=C3=F7</a>=A1=A2<a title=3D"Open Popup Window" class=3D"footerl=
+ink">=D2=FE=CB=BD=C8=A8=D5=FE=B2=DF</a> =BA=CD       <a title=3D"Open Popup=
+ Window" class=3D"footerlink">       =C9=CC=B1=EA</a> =A1=A3 </span>       =
+<!--END LOCATiON F3-->    </span></td>    <td></td>  </tr></tbody></table><=
+!-- END FOOTER TABLE --><!--End Footer-->[an error occurred while processin=
+g this directive]</body></html>
+------MultipartBoundary--PwehY3f3IFMc25UqdIOpwvVIn5m10x5JGXOATRoAk5----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.cisco.com/swa/i/s.gif
+
+R0lGODlhAQABAIAAAJmZmQAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==
+------MultipartBoundary--PwehY3f3IFMc25UqdIOpwvVIn5m10x5JGXOATRoAk5----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.cisco.com/swa/i/corner_ur_7.gif
+
+R0lGODlhBwAHAIABAP///zNmZiH5BAEAAAEALAAAAAAHAAcAAAIMhA+BFortGDywyQoKADs=
+------MultipartBoundary--PwehY3f3IFMc25UqdIOpwvVIn5m10x5JGXOATRoAk5----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.cisco.com/images/exit.gif
+
+R0lGODlhEgASANUAAP////3+/vb7+OPm5eLl5ODx6djO0tbO0dbN0dTLz9TKz9HJzcXj1cTDxMPD
+w8HAwcHAwL6+vr29vbbdy6nWwaXUv6PTvpLLsZHJr47GrXy/oHy9nXu/oHu+oHq+n3m+n3m8nHi7
+nHe8nXe7mnS9nHS5mXK4mGW2kmO1kF2zjEWme0SmejSfbjSebTKdazGYZCiYZCOXYyOXYiKUXx+U
+XxmPVxeRWhWQWBOPVxGOVRGHSg+LUA6NUwZmNwB/PwAAACH5BAEAABIALAAAAAASABIAAAaswIhk
+SCwaJULIIqFoOp+JBUTiIGBAIo+ns91+RCMMwXHI9M7odDpzMJR6gcArsArwArZ4oGcyGEJwJD4t
+ARdwMnA2PSF+gAEpOigBFnAxlYuNcAEue51nATmYf2poOCxpjKNpMycMAhWomWk7FQABiGipgGg1
+EwAUDGq6aDAFARU3KsJ+b2c0BcqkPSUGZdLSGQhVGBsaHFsa4eIbGAMNEkpMT+tRD0hH8EQRQQA7
+------MultipartBoundary--PwehY3f3IFMc25UqdIOpwvVIn5m10x5JGXOATRoAk5----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.cisco.com/support/zh/105/5_01.gif
+
+R0lGODlhDwIdAvcAAAAAAIAAAACAAICAAAAAgIAAgACAgMDAwMDcwKbK8AAAAAAQGAAcKQAkMQAs
+QgA0SgA8WgBFYwBNawBRcwBZewBhjABllABtnABxpQB5rQC2/wgICBAQEBgYGCEgISEkITEwMTk8
+OUJBQkpJMVJRUmNhY3N1c3t5WoSGhJSWlKWipbWytbW2nL2+vc7Ltc7Pzt7b3ufn5/fz9////wAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAP/78KCgpICAgP8AAAD/AP//AAAA//8A/wD//////yH5BAAAAAAALAAAAAAPAh0C
+hwAAAIAAAACAAICAAAAAgIAAgACAgMDAwMDcwKbK8AAAAAAQGAAcKQAkMQAsQgA0SgA8WgBFYwBN
+awBRcwBZewBhjABllABtnABxpQB5rQC2/wgICBAQEBgYGCEgISEkITEwMTk8OUJBQkpJMVJRUmNh
+Y3N1c3t5WoSGhJSWlKWipbWytbW2nL2+vc7Ltc7Pzt7b3ufn5/fz9////wAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/7
+8KCgpICAgP8AAAD/AP//AAAA//8A/wD//////wj+AGcIHEiwoMGDCBMqXMiwocOHECNKnEixosWL
+GDNq3Mixo8ePIEOKHNlxhMmTKFOqXMmypcuXMF+SnElzYcybOHPqjFmzp8+fQC2OcEG0qNGjSJMq
+Xcq0qVOlI06MCEoV5NCnWLNq3bo06tSqYMOKHXmVq9mzaJFGlTq2rUSTaePK1br2q9u7ePMmLDu3
+r9+ja9nqHUyQ79/DcwPbJcy4MVC4iCPLDSzYMV7DkjPTPcG5suXPoD1i1kzaKWXPocGOLs1abWfO
+i1PLng1xdevbRE+jpu3TNm7WumPzHk5coO/fpXXvLk4WuXMXyoUznw56p/Xr2F++fi2duujs4MP+
+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
+------MultipartBoundary--PwehY3f3IFMc25UqdIOpwvVIn5m10x5JGXOATRoAk5------
