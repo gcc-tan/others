@@ -1,0 +1,2757 @@
+From: <Saved by Blink>
+Subject: CS 161 Recitation Notes - Minimax with Alpha Beta Pruning
+Date: Sat, 7 Jul 2017 07:22:58 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----"
+
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: text/html
+Content-ID: <frame-2417-602d4abf-6c5c-41ba-ad65-e500bbbae7fe@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/alphabeta.html
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Dwindows-1252"><title>CS 161 Recitation Notes - Minimax with Alpha Beta P=
+runing</title>
+</head><body bgcolor=3D"0#444488" text=3D"yellow" link=3D"gold" vlink=3D"go=
+ldenrod">
+<center>
+<h1>CS 161 Recitation Notes - Minimax with Alpha Beta Pruning</h1>
+</center>
+<h3>
+The minimax algorithm is a way of finding an optimal move
+in a two player game.  <i>Alpha-beta pruning</i> is a way of finding
+the optimal minimax solution while avoiding searching subtrees
+of moves which won't be selected.  In the search tree for a two-player
+game, there are two kinds of nodes, nodes representing <i>your</i>
+moves and nodes representing <i>your opponent's</i> moves.
+Nodes representing your moves are generally drawn as squares
+(or possibly upward pointing triangles):
+<p>
+<table>
+<tbody><tr>
+<td width=3D"20" valign=3D"center"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/max.gif">
+</td>
+<td>
+<h3>
+These are also called <i>MAX</i> nodes.  The goal at a MAX node
+is to maximize the value of the subtree rooted at that node.  To
+do this, a MAX node chooses the child with the greatest value,
+and that becomes the value of the MAX node.
+</h3>
+</td>
+</tr></tbody></table>
+</p><p>
+Nodes representing your opponent's moves are generally drawn
+as circles (or possibly as downward pointing triangles):
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"20" valign=3D"center"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/min.gif">
+</td>
+<td>
+<h3>
+These are also called <i>MIN</i> nodes.  The goal at a MIN node
+is to minimize the value of the subtree rooted at that node.  To
+do this, a MIN node chooses the child with the least (smallest) value,
+and that becomes the value of the MIN node.
+</h3>
+</td>
+</tr></tbody></table>
+</p><p>
+
+Alpha-beta pruning gets its name from two bounds that are=20
+passed along during the calculation, which restrict the set of
+possible solutions based on the portion of the search tree
+that has already been seen.  Specifically,=20
+<table>
+<tbody><tr>
+<td width=3D"20"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/beta.gif">
+</td>
+<td valign=3D"bottom">
+<h2>
+Beta is the <i>minimum upper bound</i> of possible solutions
+</h2>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/alpha.gif">
+</td>
+<td valign=3D"bottom">
+<h2>
+Alpha is the <i>maximum lower bound</i> of possible solutions
+</h2>
+</td>
+</tr>
+</tbody></table>
+
+Thus, when any new node is being considered as a possible path to
+the solution, it can only work if:
+<table>
+<tbody><tr>
+<td width=3D"20"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/bounds.gif">
+</td>
+</tr>
+</tbody></table>
+where N is the current estimate of the value of the node.
+</p><p>
+To visualize this, we can use a number line.  At any point
+in time, alpha and beta are lower and upper bounds on the
+set of possible solution values, like so:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline1.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+As the problem progresses, we can assume restrictions about
+the range of possible solutions based on min nodes (which may
+place an upper bound) and max nodes (which may place a lower=20
+bound).  As we move through the search tree, these bounds
+typically get closer and closer together:</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline2.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+This convergence is not a problem as long as there is some
+overlap in the ranges of alpha and beta.  At some point in
+evaluating a node, we may find that it has moved one of the
+bounds such that there is no longer any overlap between the
+ranges of alpha and beta:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline3.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+At this point, we know that this node could never result in a=20
+solution path that we will consider, so we may stop processing
+this node.  In other words, we stop generating its children and=20
+move back to its parent node.  For the value of this node, we=20
+should pass to the parent the value we changed which exceeded=20
+the other bound.
+
+</p><p>
+
+To demonstrate minimax with alpha-beta pruning, we use the=20
+following minimax tree as an example:
+<table>
+<tbody><tr>
+<td width=3D"20"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab1.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+For the purposes of this minimax tutorial, this tree is=20
+equivalent to the list representation:
+<table>
+<tbody><tr>
+<td width=3D"20"></td>
+<td>
+<pre>(
+  (((3 17) (2 12)) ((15)  (25 0)))
+  (((2 5) (3)) ((2 14)))
+)
+</pre>
+</td>
+</tr>
+</tbody></table>
+
+</p><p>
+<font color=3D"skyblue">
+As an aside,
+if this were a real-world minimax problem, you wouldn't
+have the tree all pre-generated like that.  If you've=20
+already wasted the space to generate all the states and
+the time to calculate all the evaluation values at the=20
+determined depth, then the time to do minimax is negligible.
+The alpha-beta pruning is meant to <i>avoid</i> having to=20
+generate all the states and calculate all the evaluation=20
+functions.  Check <a href=3D"http://web.cs.ucla.edu/~rosen/161/notes/realab=
+.html">this page</a> out if
+you want some notes on how a real world version of minimax
+with alpha-beta pruning would vary from your version.
+</font>
+</p><p>
+For the rest of this example, I'll show only the part of the tree=20
+that's been evaluated so far or is currently being evaluated. =20
+I'll also describe the behavior as if this were a situation
+where you were generating the child states instead of just
+traversing the tree that's given to you.  In that spirit, we're
+trying to find the best move by looking ahead two full moves
+(i.e. two moves each my me and my opponent).  Thus we will go to
+a depth of 4 in the tree, then evaluate the state.
+</p><p>
+At the start of the problem, you see only the current state
+(i.e. the current position of pieces on the game board).=20
+As for upper and lower bounds, all you know is that it's a=20
+number less than infinity and greater than negative infinity.
+Thus, here's what the initial situation looks like:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab2.gif">
+</td>
+<td>which is equivalent to</td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab2b.gif">
+</td>
+</tr>
+</tbody></table>
+
+</p><p>
+Since the bounds still contain a valid range, we start the
+problem by generating the first child state, and passing along
+the current set of bounds.  At this point our search looks like this:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab3.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+We're still not down to depth 4, so once again we generate the first
+child node and pass along our current alpha and beta values:
+
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab4.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+And one more time:
+</p><p>
+
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab5.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+When we get to the first node at depth 4, we run our evaluation
+function on the state, and get the value 3.  Thus we have
+this:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab6.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+We pass this node back to the min node above.  Since this is a=20
+min node, we now know that the minimax value of this node must
+be less than or equal to 3.  In other words, we change beta to
+3.
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab6b.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+Note that the alpha and beta values at higher levels in the
+tree didn't change.  When processing actually returns to
+those nodes, their values will be updated.  There is no
+real gain in proagating the values up the tree if there is
+a chance they will change again in the future.  The only
+propagation of alpha and beta values is between parent and
+child nodes.
+</p><p>
+If we plot alpha and beta on a number line, they now look like this:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline4.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+Next we generate the next child at depth 4, run our evaluation
+function, and return a value of 17 to the min node above:
+
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab7.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Since this is a min node and 17 is greater than 3, this child
+is ignored.  Now we've seen all of the children of this
+min node, so we return the beta value to the max node
+above.  Since it is a max node, we now know that it's value
+will be greater than or equal to 3, so we change alpha
+to 3:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab7b.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Notice that beta didn't change.  This is because max nodes
+can only make restrictions on the lower bound.  Further note
+that while values passed down the tree are just passed along,
+they aren't passed along on the way up.  Instead, the final value of
+beta in a min node is passed on to possibly change the alpha
+value of its parent.  Likewise the final value of alpha in a
+max node is passed on to possibly change the beta value of its
+parent.
+</p><p>
+At the max node we're currently evaluating, the number line=20
+currently looks like this:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline5.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+We generate the next child and pass the bounds along:
+
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab8.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Since this node is not at the target depth, we generate its
+first child, run the evaluation function on that node, and
+return it's value:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab9.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+Since this is a min node, we now know that the value of this
+node will be less than or equal to 2, so we change beta to 2:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab9b.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+The number line now looks like this:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline6.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+As you can see from the number line, there is no longer
+any overlap between the regions bounded by alpha and beta.
+In essense, we've discovered that the only way we could find
+a solution path at this node is if we found a child node
+with a value that was both greater than 3 and less than 2.
+Since that is impossible, we can stop evaluating the children of
+this node, and return the beta value (2) as the value of the
+node.
+</p><p>
+Admittedly, we don't know the actual value of the node.  There
+could be a 1 or 0 or -100 somewhere in the other children of this
+node.  But even if there was such a value, searching for it
+won't help us find the optimal solution in the search tree.
+The 2 alone is enough to make this subtree fruitless, so we can=20
+prune any other children and return it.
+
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab9c.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+That's all there is to beta pruning!  </p><p>
+Back at the parent max node, our alpha value is already 3,
+which is more restrictive than 2, so we don't change it.  At
+this point we've seen all the children of this max node, so we=20
+can set its value to the final alpha value:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab10.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Now we move on to the parent min node.  With the
+3 for the first child value, we know that the value of
+the min node must be less than or equal to 3, thus we
+set beta to 3:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab11.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Now the graph of alpha and beta on a number line looks like this:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline4.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Since we still have a valid range, we go on to explore the next
+child.  We generate the max node...
+
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab12.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+... it's first child min node ...
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab13.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+... and finally the max node at the target depth.  All along
+this path, we merely pass the alpha and beta bounds along.
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab14.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+At this point, we've seen all of the children of the min node,
+and we haven't changed the beta bound.  Since we haven't exceeded
+the bound, we should return the actual min value for the node.
+Notice that this is different than the case where we pruned, in
+which case you returned the beta value.  The reason for this will
+become apparent shortly.
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab15.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Now we return the value to the parent max node.  Based on this
+value, we know that this max node will have a value of 15 or
+greater, so we set alpha to 15:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab16.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Now the graph of alpha and beta on a number line looks like this:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline7.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Once again the alpha and beta bounds have crossed, so we can prune
+the rest of this node's children and return the value that exceeded
+the bound (i.e. 15).  Notice that if we had returned the beta value
+of the child min node (3) instead of the actual value (15), we wouldn't
+have been able to prune here.
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab17.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Now the parent min node has seen all of it's children, so it
+can select the minimum value of it's children (3) and return.
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab18.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Finally we've finished with the first child of the root max node.
+We now know our solution will be at least 3, so we set the
+alpha value to 3 and go on to the second child.
+
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab19.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Passing the alpha and beta values along as we go, we generate=20
+the second child of the root node...
+
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab20.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+... and its first child ...
+
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab21.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+... and its first child ...
+
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab22.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+... and its first child.  Now we are at the target depth, so we
+call the evaluation function and get 2:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab23.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+The min node parent uses this value to set it's beta value to 2:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab24.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Now the graph of alpha and beta on a number line looks like this:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline6.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Once again we are able to prune the other children of this node
+and return the value that exceeded the bound.  Since this value
+isn't greater than the alpha bound of the parent max node, we
+don't change the bounds.
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab24b.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+From here, we generate the next child of the max node:=20
+
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab25.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Then we generate its child, which is at the target depth.
+We call the evaluation function and get its value of 3.
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab26.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+The parent min node uses this value to set its upper bound
+(beta) to 3:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab27.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+At this point the number line graph of alpha and beta looks like this:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline8.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+In other words, at this point alpha =3D beta.  Should we prune here?
+We haven't actually <i>exceeded</i> the bounds, but since alpha
+and beta are equal, we know we can't really do <i>better</i> in this
+subtree.</p><p>
+The answer is yes, we should prune.  The reason is that even though
+we can't do better, we might be able to do worse.  Remember, the=20
+task of minimax is to find the best move to make at the state
+represented by the top level max node.
+<!--
+Thus, if we can find a=20
+<i>worse</i> value for this subtree,  it may help us decide to
+choose the other sub-tree at the top level.  This will become
+clear later.
+
+At this point we don't prune, but
+-->
+As it happens we've finished with this
+node's children anyway, so we return the min value 3.
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab28.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+The max node above has now seen all of its children, so it
+returns the maximum value of those it has seen,
+which is 3.
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab29.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+This value is returned to its parent min node, which then has a new
+upper bound of 3, so it sets beta to 3:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab30.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Now the graph of alpha and beta on a number line looks like this:
+</p><p>
+<table>
+<tbody><tr>
+<td width=3D"50"></td>
+<td>
+<img src=3D"http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline8.gif">
+</td>
+</tr>
+</tbody></table>
+</p><p>
+
+Once again, we're at a point where alpha and beta are tied, so we
+prune.
+<!--
+but
+it's still possible to get a worse value for this subtree, so we go on.
+We generate the next child and pass along the bounds.
+
+<p>
+<table>
+<tr>
+<td width=3D50></td>
+<td>
+<img src=3Dminimax/ab31.gif>
+</td>
+</tr>
+</table>
+<p>
+
+then we generate its first child...
+<p>
+<table>
+<tr>
+<td width=3D50></td>
+<td>
+<img src=3Dminimax/ab32.gif>
+</td>
+</tr>
+</table>
+<p>
+
+... and generate its first child, which is at the target depth.
+Thus, we evaluate it, and get the value of 2:
+
+<p>
+<table>
+<tr>
+<td width=3D50></td>
+<td>
+<img src=3Dminimax/ab33.gif>
+</td>
+</tr>
+</table>
+<p>
+
+This is a more restrictive upper bound than 3 for the min
+node parent, so we set beta to the new upper bound, 2.
+<p>
+<table>
+<tr>
+<td width=3D50></td>
+<td>
+<img src=3Dminimax/ab34.gif>
+</td>
+</tr>
+</table>
+<p>
+
+Once again, the graph of alpha and beta on a number line looks like this:
+<p>
+<table>
+<tr>
+<td width=3D50></td>
+<td>
+<img src=3Dminimax/numline6.gif>
+</td>
+</tr>
+</table>
+<p>
+
+So once again we prune the rest of this node's children and return the
+new value (2) that exceeded the old bound:
+
+<p>
+<table>
+<tr>
+<td width=3D50></td>
+<td>
+<img src=3Dminimax/ab35.gif>
+</td>
+</tr>
+</table>
+<p>
+
+
+The parent max node has only the one child, so it must return the
+value of its one node, which is 2:
+<p>
+<table>
+<tr>
+<td width=3D50></td>
+<td>
+<img src=3Dminimax/ab36.gif>
+</td>
+</tr>
+</table>
+<p>
+
+The min node parent of that node had an upper bound of 3, but the
+new value of 2 is more restrictive, so we change the beta value to 2:
+<p>
+<table>
+<tr>
+<td width=3D50></td>
+<td>
+<img src=3Dminimax/ab37.gif>
+</td>
+</tr>
+</table>
+<p>
+
+One last time, the graph of alpha and beta on a number line looks like this=
+:
+<p>
+<table>
+<tr>
+<td width=3D50></td>
+<td>
+<img src=3Dminimax/numline6.gif>
+</td>
+</tr>
+</table>
+<p>
+
+As usual, we prune the rest of this node's children and return the value
+which exceeded the bound, namely 2:
+
+<p>
+<table>
+<tr>
+<td width=3D50></td>
+<td>
+<img src=3Dminimax/ab38.gif>
+</td>
+</tr>
+</table>
+<p>
+
+At this point it becomes clear why it's important not to prune in
+the case where alpha =3D beta.  Though we'd have gotten the same
+numeric result for our answer, the real goal of minimax is to decide
+which is the best move.  If we had pruned when alpha and beta
+were tied at this node, then we would have had two nodes at the=20
+top level that were both 3, so we would assume them to be a tie.
+Now we know that this node is actually worse than the other node,
+so we have the knowledge to choose the other node over this one.<p>
+Now the top level node has evaluated all of its children, so it returns
+the maximum value of 3:
+<p>
+<table>
+<tr>
+<td width=3D50></td>
+<td>
+<img src=3Dminimax/ab39.gif>
+</td>
+</tr>
+</table>
+<p>
+
+-->
+
+
+Note that a real solution doesn't just indicate a number, but what
+move led to that number.
+</p><p>
+If you were to run minimax on the list
+version presented at the start of the example, your minimax
+would return a value of 3 and 6 terminal nodes would have been
+examined.
+
+</p></h3>
+</body></html>
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/max.gif
+
+R0lGODlhcgA2AJEBAAAAAAQEBPz8BP///yH5BAEAAAEALAAAAAByADYAQAL6jI+py+0Po5xiWlhv
+FFnb7oUBKBrkcZZIqm4qy8Ce3Da03d6PXie82VP8gsSi8YhMloZBJmaldNakwmeR+lqGsFBlTMOt
+br1flzdMTqvX7Lb7PXajxXNH/XIfiY95Sk/WBySXI9EXaBb30fSGxYV2aIX3pzWoeJXI9gMpaNmm
+s+kDJzpKWmp6ipqaycHa6voKGyvLlwaKc2mrV7nIiZS7kEcC+rtHWHy5m1VmRBw6tcPM+Bw5mYwJ
+zeup7FetLSJV19w18z3tDbZdbl1ofq3mdOco3dmNvo6NLHl/S6t/Tt2P2z87tT7IOogwIYcNChsq
+VAUxosSJFDUUAAA7
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/min.gif
+
+R0lGODlhewA/ALMAAAAAAIAAAACAAICAAAAAgIAAgACAgICAgMDAwP8AAAD/AP//AAAA//8A/wD/
+/////yH5BAEAAAAALAAAAAB7AD8AQAT/EMhJq7046827/2AoLSQpgmWqrmy7ntoCf/Jcz9eNjzuu
+h79T0NfbDYHIYk6ZZAKOPGcHSpTGJlSrdsvter9gVJZj6o2rxbNTvVSyyeHM2zLHautMPOasF/VR
+XkN/eWVThXF0g4iLjI2Oj5CRkiOHGyV5gVuKbTaaVptwnWujjH2boHaOf6tSqDCDda6pj6c0XLKA
+mJZfuLt3e4u9FMIVP8QelX7HV0+TcirO0dLT1NXW19jZ2tvc3drQwymtYMvNr26ZmqjJTZ+e7+e/
+47yipPb08ejzcaa6/oj9zOwrVS+fPloF/QxsxEqIO0iwFD5EaCTXRFVpbMEjeJDZLYYLMOmQCyYP
+2MgwxI6UG3byYzGQG7sYo7VuJcsokgJitAkEHKVLznh6G0q0qNGjSDtEAAA7
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/beta.gif
+
+R0lGODlhJgA1AJECAP//////AAAAAAAAACH5BAEAAAIALAAAAAAmADUAQAJilI+py+0Po5wp2Hqp
+s2FxzXzgSJbmiQoisp7t8ZLcHKf2jef6zrvifIvVRq8hMYPpoIRIn7Jn7Emn1Kr1is1qpbRnsBnV
+ML2mse3TxZlTtbCk3SzBzy33xF6O6/Dbvv9vUgAAOw==
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/alpha.gif
+
+R0lGODlhJgA1AJECAP//////AAAAAAAAACH5BAEAAAIALAAAAAAmADUAQAJclI+py+0PYZgT0diu
+0rj7D4biSJamVSVUamqrsAbnTNf2jec6zcFVHwIaXi2ZisjaKZfMpvMJjUqn1CrOlRKCgL9k0DvU
+frTiMZhYNIZlXbUo5kZb5/S6/Y7PkwoAOw==
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/bounds.gif
+
+R0lGODlhkQAlAJECAP//////AAAAAAAAACH5BAEAAAIALAAAAACRACUAQAL/lI+py+0Po5y02luD
+Dm1zbHmGCCJbognns5bq97YpO5ftWLv3md6uk1P4fsBgjIhMKpPDpfMJjUovzY7HaJxUF8OtNuul
+wb7C6/h7hjTD07Y7wn7L5/S6/Y7P6/e6NJdURpSFgjUYMrMSZ2JIgxPE+Oen9ggpsaYYI2l5RlLp
+qDnph8nQNWoFukgKiBF3iYq242U2y0irGkq7qmrL1ztl6hssPExcbHyMnKz8NBt5JWe2zLrlyZQD
+jKcYHWjjWfpK8XwATM6h+0JVPV4IHrpoXn0e/iGOs6leBi+fnlZf1N5oXY1K2Aj1w7fL2SGAhPLB
+y4DQUaQ+oiIanOfMosR7KRP7OKTHkFtAhT8Iggl56lMmlPw0FWz5TprMjjNrprSJM1/OnTx7RikA
+ADs=
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline1.gif
+
+R0lGODlh9AFNAJEDAP//////AAD//AAAACH5BAEAAAMALAAAAAD0AU0AQAL/nI+py+0Po5y02ouz
+3rz7D4biSJbmiabqyrbuC8eSIBx0Lef6zvf+D4zdhsSi8YhMKpfMpvMJjUqn1Kr1is1qt9zkKQAO
+gye0oPmMTqtzZYo4vD4EyLi4/Y7P6231e/cPGCg4SFhoeIiYaLTH2Oj4CAnZNjAZaXmJmakZUrTp
++QkaKjpKWmp6ipqqusra6voKGyuL0tlYOYubq3mrUZvyBhwsDEwzbHyMnKy8zNzs/AwdLT1NXW19
+jS1dnA1X0rTBqys+vhcuCd5Hrr7O3u7+Tj5pDk9fb3+Pn6+/z9/v/w8woMCBBAsalFUmYbqDDBtm
+anPDocSJFCta1DHPAhM//4o6evwIMqTIkSSpcLyIEldGO8zopHwJa6WCZTqGuYSJc5XMBMJ2LOq1
+MKdQUTsxljyKNKnSpUybFlXzM8PToVSrWr06bgjWrVwxEOkKNuwDeUHFmt069azatWzbun0LN67c
+uXTr2r2LN6/evXz7+v3rQmtawIRdkR1cOHEqsoobqxOM2LFkBxEnW1Z5pJzTzZw7e/4MWivU0KRL
+mz6NWsuayJflslbgJc/r1m9nI6j8Q8xN2oXTdguCbDdvwL6NteD2Zhvy5cybO38OPbr06c6VM2eR
+TPhwv8WNA3mjfTvf7nOCiJZaVjxe22yQoFP/l/2K1PTr278fmiP+/fz7+0c/ZEts6MHHXXqazSYf
+gQqekeCCDj4IIVAGNBhhhSpAZKCFGvrA2IYeMlgHhR+OyAFkJJ7Ig4gorshiiy6+CGOMMs5IYwUF
+AAA7
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline2.gif
+
+R0lGODlh9AFNAJEDAP//////AAD//AAAACH5BAEAAAMALAAAAAD0AU0AQAL/nI+py+0Po5y02ouz
+3rz7D4biSJbmiabqyrbuC8fyLArCYdP6zvf+DwyGbMSi8YhMKpfMpvMJjUqnS6H1Kglot1qsF3f7
+8nLispW7LQfMnGo7zJaR4/S6/a4odub4vv8PGCg4CFZIeIiYqLjI2Oj4CBkpOUlZaXmJmemox6fp
++QkaetnZQiR6ijpBmrq64pb6hyY7S1tre4ubq7vLu2vTCxwsPBz8S3yMnKy8zKwMO0QVLT1NXW1t
+9JytrdMKSta9HS4+vgdHfo6err7O3u7+Dh8vP09fb3+Pn6+//zenxw8w4B1O4AQaPIjwQ8ETShI6
+NHEtosSJFCs2fIhRw8JP/xtLmMrogle7jppIgsSwi0atSv82mMT08mQFWgkt2ryJ85rMna5eaTT3
+LCbPoT6ETvoGlKjSpRH8JWUKNSqYHEalWr2KNavWrVy7ev0KNqzYsWTLmj2LNq3atWzbun0LN65c
+iDeoPp2LdxScj3n7ZkJ616/gwYQLBw2c4ojheFWPIkbhZHG6nJQrW7YpedvlzZw7M8l8rrEk0S6x
+FeYy8rE31WDTBMGVOhzpqLdaNLuNOzcxY7p7+7bF+7fw4cSLw16RK7Zm1l+P+0AzWvEb2cy9oj75
+pBx10PQ8e/8ukXs+8OTLRxYfEIn25egdVncwexPf9lrjL3JKf6t9Rabz+ymPg99/AooR4IAGCiHd
+gQoCsd+CDj4IYYQSTkhhhRZeiGGGGm7IoRAFAAA7
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline3.gif
+
+R0lGODlh9AFNAJEDAP//////AAD//AAAACH5BAEAAAMALAAAAAD0AU0AQAL/nI+py+0Po5y02ouz
+3rz7D4biSJbmiabqyrbuC8fyTNf2IQhGrt/+DwwKh8EcEcdLKpfMpvMJjUqn1Kq1dzwFttxt9ps1
+hrHgMrDLNQfMEyZbJD7G3/S6fay8d+ZDvv4PGCgIljdoeIiYqJjht+j4CBkpOUlZaXmJmam5ydn5
+YQRK5jlKWurRaPq4lMpKifrz2kqx6olme4ubq7vL2+v7CxwsPCycQ3xMbIy8zNzs/AyNLNt2VW19
+jV31FTvd7c2Z9C0+Tv4Sx12err7O3u7+Dh8vP09fb3+Pn6+/z9/v/9/gHDqABAsOGGgwoUIhCGc0
+TCdlocSHMbJZvIgx4zWJ/wspwvDIERCwkCVAujBJMsIvGrlSjkDJAqbLBrj6TdEkU0XOmSk1+vxp
+cZsonkQ/FUVyNCk7gUqbOqWG9KnUqQloUb2KNavWrVy7ev0KNqzYsWTLmj2LNq3atWzbulUabufb
+uZIEyqWLdxHTvHxbxb3bN7AEwFh5CE5FmERiUk4OgxtaBKjkyZSvOHYFGUjlzZw7G75cNzMs0e+e
+gMa0GA5pd5/JdTmbOkRskmmE8IK92sbskLtaRPsNPLjw4byUEWdm/Ljy5cyb11zRC7dQtLfPvFYU
+LtPuU7m5XjdoWnt3GttPQ/KMvvJ080vTu/+5nj08KDjHO7QvH2LrouXz+zgnj99/AorRn4AGokBg
+gAcuOFpUDD5oxl4QTiiHYQVSiOEFF2bIYYcefghiiCKOSGKJJp6IoiQFAAA7
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab1.gif
+
+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
+xpzN6ZzPCZ3RSQcFAAA7
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab2.gif
+
+R0lGODlhXwA9AJECAP//////AAAAAAAAACH5BAEAAAIALAAAAABfAD0AQAL/lI+py+0Po5y02ptC
+OFrqv0UhNWLm2ZQe+nSGi4EwZ6ns7dnojLd8D0y5dMGi8Yg8DksyYvIp+CWdKehH0WRRGVuo8YqV
+emtdr1h0HqvX7Lb7DZ+G0nHlvBzddOivpj9rl8e3U1MHhIeAaAih+CLXN5i1p6fSGPUEkof0xwm2
+eOKZY/k2iFN6OLoWSnL6WbHqGis7S1tre4ub69Oqi9bXa5o5AQjMMQJDrDkpUmi3NNX8lRoTXcxV
+bY2FnZ24ze34iknJmyijHb55zGTusMxjOe0rGN/i/R1mfJ8jrw/7Su7GXzB6qAheEJjOYEFpCscA
+/KWvnI+I/yiysogxY64CADs=
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab2b.gif
+
+R0lGODlhXwA9AJECAP//////AAAAAAAAACH5BAEAAAIALAAAAABfAD0AQALklI+py+0Po5y02ktD
+WFr0Dm2ViJWmQ07piYGHBm+fvHpWzeaRq/P6A/sJJUHb8IhMKpcjHPMZijlHNyjDd5o2tEspt4kr
+Wk3YMaJMRJvX7Lb7DY/L5z/1xYvHx7FeYpXO8qUgCAj092aXcciWeCbFkRfZWLg16UgoZ5mjWYfp
+JgZGOQQqWmp6ipqqusra6vpKyQlbWRnjR4VYM+Mh6GngiwoMfCo8e7Vo/IKcbKSYW7fM+NU3GD02
+uctnzfxCIguLPRz7nUBqat4pjoT+xK7k/kkepd4mz8vtCEQPvv9qjw8wIJsCADs=
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab3.gif
+
+R0lGODlh9ABuAJECAP//////AAAAAAAAACH5BAEAAAIALAAAAAD0AG4AQAL/lI+py+0Po5y02ouz
+3rz7Dx5BYIzIiJLhyrbuC5dqrMyTTef6vqF1iutZgryi8Yg8EX/JpvNJ8UGn1KrEZM1qs9Kt94vE
+gsc0YNTs6pLXbNjy8W7Ly6RUBhgvXfLzvv8swPc3SCgiCFeYqLjI2OioZHiFFjX0aLl2eHK5KRl5
+N7mQKcJJGia2olaqynC66rqT+irr1jprZddWa/uHqxvj67kr/CKaUDxMhoWrk3mM/NwJ5wz9PE1J
+jZ2tvf0pw/3toXxoQl58bA0OVQ6MWpn+XuMOPx8oT88mzm5oVx74dn5vDj903bwFnBerQsKDmxbS
+IsgwicOI3PRR1GbxIrWJ/xqxcewILSNIZCJHhhD35aNJZjPE4IHUrwMeiCvT0NRgribJOzp3WbvZ
+s6A/JctY1TmKyF5QYbpKLl3V9ClJgFI5AQ1WNavWrVw9quwKVYVTsJdAQXipcKbaomRpBUPrLeYN
+pW1b9LrqgGpdYnjnKtxrSS9gRoIHKypsuBDixB/W/TRrjC5jmS1twDU6FNjiyT3Efu28di1nwk3H
+jvbyWUbf03xPrmaN83Uo2bAbmK6NjzZuibd3g0ntO1nv4FuAE085/Pgt3cphMW+eIzn0KdKnOzFu
+nQr27Oqqcz+ynTHKMeFHj1ddPtzztuelZV7t3bfLcZD3EIkP27GRZt8xh0/Z018VzqwXYAQ/FfjE
+gQju8wNbHCiIYD6CvNSPPgMuaNBQnzgYyl8Yoqehc+59qMVMJP4GyYlc5KWiOte0yMNjMLoVzoyu
+pWFjbNERaEkBADs=
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab4.gif
+
+R0lGODlh/gCpAJECAP//////AAAAAAAAACH5BAEAAAIALAAAAAD+AKkAQAL/lI+py+0Po5y02ouz
+3rz7D3pBcIzliCLmSlKtG8byTNe28075zfe+bTIEhaghgyUwJnYR5u8JjUolSktqis1qrdWt9wve
+dMPksllxPavX5TH77Q0ai+4OvQ7Pv/ExJ1UPCJd2UiRy4ReYqBjCt+j4aAUpOamBSHmJqZK5KdLS
+2PPJKcqVNDhjeTSquoi60LoKC1EYehgZe6tn+YrLO7Xb8NsrPHwpF0yMHEULcpyU/KxsCz2t/LJM
+jY1znc2t3f3NYQo+rtNMPi5+Tjn0eVdxbK4OHu8sn8lOX1oo67RtT+7v37l8AtEVPPggIMIvxqiQ
+QCKG4EJuzSROjOMpHRo6/6U6Vql4MaQQTSJDBrNYMuW0fSpLcizHsuXKKwphvJM5UBrObyB37nmo
+scnLVDd9rjFW809Ro90aJWX6KGi4p1C1SK06E+tAlFo5Xe2K7CvYYWLH9qJqFhPatKQ6binL1kdD
+oR4rolobtxJQvESX5o1Fj+vfPbUGS0H6yh0SN78EGz6Ugi9dx48VSa6c6DJmQJQ3Z/b8rDPoXKPD
+liYr+rSKjKtjAkmt+oi1Xe6U2ox9CrYrnbgh9exNQ1xtMbyBf8Cn1/VIv8bv1Wu+qh9057Km+y5s
+Pbt2k6y33+tORLn3PHP51X13J/3w8S5mOxSfsDj7hHt1k7w9n2405vnN/P/uf8Z/ALYh34CyMbFe
+OAUauFp4iXG0GCICMrjRCclJNSGFS0Rmnz7qfahhgF3AFeIPJOpT4mGOaZYiixumGBGM5HUo41Q0
+1pgcjke5qGNEN/bIxY9Atjekf0IW6RCSZPCoZHtHNgkMk1AK9eSUG1VpZWs6woeFlKeV5wuWoA1F
+5YkNVqgkcg7OAZRbOrwJ5D48miNmXl6WgF2WfWRQJ4yB6SnDn4DuuWCJLASU4H22bekeIVdF6E2k
+QyIGRXqD+nJpFn0OuimgnWZ5Z6YviloNqaWa+kSoqKpqKqukuioqrJnKeimtnBbJJaZIgtkllGTy
+kyt/uzbqIZvnlfmhpXFO0qRbhn4K6SyqhfYlbSXTVtvEtdjGJ2yNhwb263L4MWqho3hAuoS2FFIa
+nLrbHpissu8eJ+68p6RrLyPU5mstt/zm6e+/cI4r8L4Ea1gAADs=
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab5.gif
+
+R0lGODlhQAHoAJECAP//////AAAAAAAAACH5BAEAAAIALAAAAABAAegAQAL/lI+py+0Po5y02ouz
+3rz7D4biSJZGEJzpgbarCcfyTNe2gN7JO/H6DwwKOy2FKyfyRZTDpvMJFRaNyKj1is06qtqu94ud
+gsfkso1rTqvXGzH7DbcguUdmDR3P6z94mv3xtyc42INXBxIISLjIWFaX2Bgp+QM5aXkZ04e5yUmi
+2QkaqlEpWto0x3OY9MjqYvra9SlDikALe6vjpuIaYnuCCxxcK0xc7FuMLHmczEy43Ayd9xxNnYFa
+e4TIJFvdzTdNMQ3uTc6gi5M9WjFe3u70wu4uP09fb+8HT6p6cRx//8+hH8B7VbgBSqdo3cCFmfyx
+cMiw2bmIFLVBrIhRRcaN/x4mcsRVUB9Ca9suftwo7mS1kKNGmlOoMqY6mTQxGKyJc4fJnAxv8sy5
+8+cglktc9pAjNCkOpEqBEbVplEqrVk2VBq0K8CpWglu7LvW6VStYPU8P8trCb+zJlGphlZUTFVvc
+tjSViKWLN69eYdf2Al3hM4fgZ1On+lWW4qwfpod7Mm48UCBkRqhuHhqMDoLkyYtc+exYmBXnfx4b
+lB5t7C5qt6pXlzrteh7s2O4+0/Zm+za12bpx5+59o2+s38BPARaZmfjB4nsGK5+5hHm5Za2lk7Vm
+3UzlSpcTe0f7OPsYz9U1bikvnnJ6e+jXU27v3hn8+IKe02d9v539/K/n8/+H499/RZn3joBgCLcc
+ZuFFZyAUzqG3WYOvRCjhawtWCMR2RZGXXCIUYhgEhyH+AiIzAZZIxokojreiRC0mo+KLschoDI01
+2hhMjDjqROAdO16B4HkdMkjkj7l4tx94MBnZGXZMNnnhkzBoqFk2mBnioY47ijhDYlKaksqXoNih
+pZhmnonmZIqlaUmQbDYy1wL7vDlePg8pdiVhUdJZiJtT7snngCMuGWgaHxbKIqGIpgjoolkc6miV
+6Dw3p2mNRkrFQ3LBlqdml2KKzS7lQQrqF2+V6gh3ZaIqVRtJstrSVbzBGiutbMxqK5Cv5nokr2rs
+6usZqwYrKLEHAmtsQ8P/JmsOssyWgOuzGTor7SrVDnetFtRuGa1xxPr5RLeRximVuH1mmxmBc3Ya
+UKXV8rLtckK+G6Avy/JKHbpnOKnvLPz2+6dN0j5I0ppGpPVsWe7yqOBLn7JKZZdHATytnPdmKxjF
+Dl6sb7wak/TxxiGHOzLJJZ9yMsopS7Eyyy1n+DLMMecyM80138Exuh7fbLHO5k6Zc4PgBhe0hOTq
+ZLAEpOb61LrfEbc0rfCO+nCpO3uqKM8Ih6N1G1V3LefXYO8gNqgEQ5U02VkHqzC57Fq6tq8Rw1z0
+u2NLfHfAeUO7t959J/G3J4GPUDfGgwN+OCKJK744H4139DgRkUs+OXSVV299ednMpu1vykOvcvS1
+od+JKzdX09n0SG/DPXHHU8Sbr+udYx45W5Xbfjvtk8fe79n8GEVL4Qa2zblGDfOYachzz545UsIn
+zELzXA8jPdZqV+9w2GkWAAA7
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab6.gif
+
+R0lGODlhJAEkAZECAP//////AAAAAAAAACH5BAEAAAIALAAAAAAkASQBQAL/lI+py+0Po5y02ouz
+3rz7D4biGAWmSZ1nprZuS8byTNf2F1j5zff+f0GpWDDILgVMKpdM3iqFakqnVGW0is1qm8+t9wuO
+XcPkshl6PKvXjejY9Ruz5/Rg2neX5Ov8PqJ7ABeyZ+RneFiVJofI2ChG6BgpiQM5aXlZsYi5yflQ
+2Qlac6W5IKhzGprK+Vmq6mozyupg2ob6emtJKIvLu7bbC1z3G0ysNlyMHHaczKxQpPc88bvcXH1D
+bYBt3SsEmBld+km6TU6lWI6+pZ3OLtr+jrUOPw8iT39v2+qMz4+T3w8woMCBBAsa/DbuoEJPTxKO
+WGZvYTqIEju58TbjhUZw/xXnOex4DyNIgB9HwhNpEh/KlMKOlBRA698slgW1RaSZJZaGmLPE3cSZ
+7CdQZi+HnhRqtFjRpFou/uHojmmkpSIoSj2EkScHq1cF7kDaFRjYsMTGkuV2lqDZtECGLFnL1kpD
+uNmCxEVHje5dGRep+tO712LggIAHrzLcrzBiRlwXI8vjUp/jxzInW76MObPmb9kUb+6js7PbzjBz
++K2b6TMXz5KlqcbV+HWq2LLxuFQE9Wnp3Z4q1wYlcuXvqUhPD5di/Djj5MqxMm/uRzj0S8+n86lu
+fY707MRZq3ba1Dt08EZMm9+6Bzt3aebVu/a9HjSL+I1s0ifRVxacbrxnIv+5/wh/SbwAoGC1FFgf
+ghaJp+CADDYYx4MQ9uDehF5UaGFTGW5AnjkbUkJaCeedtlGJEtbWDYaFpPYhG7S1SMaLMIoomn4w
+8OeQjDOWJ6AoJmq043UJnBikB6wQWSR8Sbq4JCJINmkklIY8KSWHVcp3pTBZ2hHiNelRqVxopY22
+W48rsrhlOBTOlyYXbLbp5n9wOnPbU2SqaWZPuc2pIWp8ggHmnyUIakaghPp3KKCJKrOooo1e+Chy
+SkZaVTi6UHoNon9gCsuknEaJ5qeijkpqqaaeimqqDnapqo+satUqh1/tgiM2OlYpJkN3yvkenCl6
+dyuUKoaqR6wdBGvsoMT/JuvpPoJmtedOzS6Zn4hD1Hpmr77WScSurRX757US5sqskTaWq8Nz27W6
+LgaGKtguuum+u2i88kJx70P01rtvosPKa2++1gpcz7/oBkywngmbuzDDDaP3MMRpepuIwfR1iJzF
+BUZLJ8V2cNymmLRgSwRDhLqlsbPahjyuXRF/y+vLfk6br30yD+kyn792u11e4XJbY44j6rfytjW2
+9eXNXPZ7qCZMs1ye0mpKzSXVNFu9KdbLat0b10V7fSDY2YodNtllmw0z2oE83TTbi3nMRMr3YRy3
+25aBbCfCUUcqcjQkb931nCh7hmyTcp+tLNaFL7x4wo0T/HiSO7sLcuRB1eYK69plinN1kdV2CrjX
+pqnNwDmkZ40z6ZXYjevpiLsOE+wqyz4z7bHbXrvsrD+LeyC934777rz3LrzOvxdv/Kd0+4i34LPm
+raLQjy6P53lfa/os0Lra6/PJ7ell889rumt1+FJ3X37ObUPWPLiJt300jyv83UbSfGs/L8LIZyZu
+W8DTHhkAps51+/PV7/5nuwKG7IAKnBgDH3g8CBJPgsGjoNl+BCStWe5eGwSYytLDNV1cSoPYy53S
+vjRCxXWuZivkYAsBhsHMHXCGNKyhDW+IwzkVAAA7
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab6b.gif
+
+R0lGODlhJAEkAZECAP//////AAAAAAAAACH5BAEAAAIALAAAAAAkASQBQAL/lI+py+0Po5y02ouz
+3rz7D4biGAWmSZ1nprZuS8byTNf2F1j5zff+f0GpWDDILgVMKpdM3iqFakqnVGW0is1qm8+t9wuO
+XcPkshl6PKvXjejY9Ruz5/Rg2neX5Ov8PqJ7ABeyZ+RneFiVJofI2ChG6BgpiQM5aXlZsYi5yflQ
+2Qlac6W5IKhzGprK+Vmq6mozyupg2ob6emtJKIvLu7bbC1z3G0ysNlyMHHaczKxQNAGIpNdMvbUc
+WJ3dljOEQVv6Sao9LqVIfp51jb4uyu5Opf4uDxI/b2/b6ny/37Fczw8woMCBBAve62YwoY4n4kj4
+UwgRW6aIq3YgFPUi40WK/+8acpwX7SM/jyLdhSxp7yRKYUdIGvg2cdpKgfH+zdQSSwPMbZ5s3mTm
+82czl0JNBi2KjChSnBYVPXOyNJLSEQ+jGgq5c0NVqwAtcqX5teDRsMTGkgVm9qwVlQzYelPLqBtR
+IceupYUryS5eNm7cyuC2d9/dwK4GE05l+DCoxIql4mtcVt/LfJCLba2MObPmzZz1NO2sLefLp3QF
+TP3zGHQcxoViqi6c+nWny7LxtHS60Rm33a2l1S6sye/vuGZPD59i/Hgj4cpzJW9+iDl0qayne3lu
+nY/07Ii2czfymel3Gn09m+atdQ/28VDOrw8Cn313FvKj069Pr6lLOKVJ1v/FT9UK76X3FIB5zWLg
+fAleMuCCylTn4BINRngdhBQCMeGF6WjoTXiJcMhBeSXwlpxGJloIHV0ZyuQbiGXQ5iIYMMbY02j7
+wdBfOLHROIuAFp6oEY9z3IGikCKwUqSROinpR5JMOvSkdlFKOeWQVdLh5JUeZMmeiNDUExyX2Ynm
+nkqn6aWlbj3UlCYTbLbppmtwBnLbHwWqWdqId86Jk0R8Xvfni4GSIeag0BgqI6JfFKqoJ41a82ic
+ckb6Fzi6UNpOLZJhWumknB6546eijkpqqaaeimqqOnmo6gxelrliq6/2eF6t8bWoJZk95Xaop1Oq
+mOSMUcYaqqatLunrsbj/lqAsssvmukhWWhXLZF83DpFjb722qetCvG66Lbc+rkVns4PIQqyo3llq
+rm6GMUrhuu16Bi+l8s4LHr5H1msvv5Gm2+69+m7jb6MCD8wuwv0AbC7DDRdsMMSKOjzdt/BQzN2s
+XGDcpcWWHuyux2mSSUu2RNTIp1xF/gcnx8Y+qzBqb8Xc1n00g5vszWi2vBt20voJ87B10imyyY6y
+yLONWYZ586qmNe00zlDTivLUalrdIdYza00t1zV7nTPYX4uNNNlHm60t2i+rPTbb4LjNU8oguyox
+ZxpLWHdnexI899sRl6v0GyTuHC60d4vRtZEut1021sJC/XjTkeucuJLA5xIh8tNhP6nrz7XmuTaz
+c1r7Y+WOaw43uHkPql7qqFOG9uoGu8447ZPZnoDsE+OeO+8y+/6677obOjzrwAPNe/GBKv8n881z
+ejieNr3Q72h2fvucR4t3bH0mk0uddPdfbl77yD0Ps+6bo69ss9Xqn266voQ3H+3eW6ctt9J6jgt6
+3Lk7X5lueS9z4ItY/6ACQG4hz3VEwl0CW3a82x3vgQqMIAVHFsHgJS+DF8wVBz9oQRDCDUgZEdv3
+YnZCheWhJbDTmi4uBbZKtC6GCSsg5OInPxziK4UIIyH1MgjEIApxiEQsIqIKAAA7
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline4.gif
+
+R0lGODlh9AFNAJEDAP//////AAD//AAAACH5BAEAAAMALAAAAAD0AU0AQAL/nI+py+0Po5y02ouz
+3rz7D4biSJbmiabqyrbuC1+CMMw1Hef6zvf+D3zMhkRi8IhMKpfMprMTiEqjz6q1Z7tqe1NpNbAN
+i0/ZsfnsKKrX7Lb7DY/L5/S6/Y7P6/dqtP8PGCgoklU2UYgzqLjI2HhkZEiB6EhZaXmJmam5ydnp
++QkaKjpKyoGYuMCnusra6voKGys7S1trC1uaixmp27vRBRwsPExcbHyMnKy8zNzs/AytPBNNXW19
+jZ3N3GLk653C+y3e8DZufo6ert5UFi4xtB4vP09fb3+Pn6+/z9/v/w8woMCBBAsaPEipz4h27m7c
+eggxosSJFCtavGgLocaN/4+KcPwIMqRINA1HLlJmUlPJlL+Q7RjGcheqmB+E0WS58mYYNzo/5ey5
+BKPQoUSL5gHaqBvSpUybhpq04afTqfoYmppJNWs/qVq7ev0KNqzYsWTLmj2LNq3atWzbun0LN67c
+uXTryuCqARJWu3yZtAnB0J3RwYQLGz6MOPHfDFbJKX4MObLkyZThRIUHr69mdos3e96U+bPo0aRL
+m/aE9/SIKapRpNbqBYmx1mT2mi3WQpvu3bx7+/6texrw4cSLGw/G4hhtE6+zzg7SZXmJ5lRZS39q
++7p2LdS3J1jjfUV36XLCqxhfurL69ZTNS2IPPz5R93kV0r/vF38HpRX46zj/f9kB6KEH4H8eKcCG
+YwUueJeAWCXIAIEM0tdYfRNeKMSBGPiHYYcISOhhiCKOSGKJJp6IIiYFAAA7
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab7.gif
+
+R0lGODlhJAEkAZECAP//////AAAAAAAAACH5BAEAAAIALAAAAAAkASQBQAL/lI+py+0Po5y02ouz
+3rz7D4biGAWmSZ1nprZuS8byTNf2F1j5zff+f0GpWDDILgVMKpdM3iqFakqnVGW0is1qm8+t9wuO
+XcPkshl6PKvXjejY9Ruz5/Rg2neX5Ov8PqJ7ABeyZ+RneFiVJofI2ChG6BgpiQM5aXlZsYi5yflQ
+2Qlac6W5IKhzGprK+Vmq6mozyupg2ob6emtJKIvLu7bbC1z3G0ysNlyMHHaczKxQNAGIpNdMvbUc
+WJ3dljOEQVv6Sao9LqVIfp7Feo3OznG93h5f2AEvb18/b6//N9taknDkmQB8+1Qt23WwoMKFDBs6
+fLiwG8SJGrqJI5GQokZn/7Y2bnITbcaLkQI96rtosmDIlAxRsrzn8mW8lTL7xNJTMhO0mhPhEeRp
+LWC9b7PC/QTa7ChSajGXwnRKsSlULyD/5BQ1dZLUERmzHgpJ1F1Hry0NKCVb7CzaZGrXEmvrFhjc
+uFZoMrDrja4jiwi5HXun9xzgwHNAbgXBjXBZf4rZ/ZrbmBE+yJHZtKVcmUpXT2MzF+ZoljFnfqRL
+e6azuZ/O06xbu37tuSpscjfNChTiN+/q2Vww59vJm1fq4AY7E48j1KrEu7ldDj9uUBNe6JIOG/FN
+XST27GWmc19l/fve8OIlby//hTx6Q97XV1fvfpvtoPFvyL4+MPcG6efr5//PD18QAvq3FwsENuLT
+gRjtsNw2Q+D232jAKbgghEm8QGEnlfSXoRMdasjhh0sEKKIZJJZIxokogqHiilS5uB+DIf4Dowf3
+edLcOyTtWCMRAHL4XI/KGCcki0QWiaNtMcEBIUpBIomjhaLsSBKUwgBkJR/qZHnGjFyK8eVXYfrh
+5ZgilGkmDmlqueaVbWYiI5wV7dFikbX9SMphg73pDJAG8slEgoBysdugVgWiyFWHShllg4a+GNqj
+RmIpqRYbVqrZNJhaUeim9v3pKQ0EodnmWaSGOdepKz5JqTShggZQnpq6+qppsNpaS2h53KGqf6za
+as6ttUZKq2rFDotsssr/Lstss84+K2qc0OIhrZLtTetNtUkyeuxvfN7ZqHq/folbnbNO+C2p42Lb
+rYTsitXpu6CiOyhYiu53pJmGycJkjt7SWG9yRDgq2rmAPogmuPIOwm+vb17r4MJFQeYwihBLnG3F
+tV6MsQ4ab/zxq+Z2HCvJFZrM1cgoc4xyCSqbzHLLScqMWMihvgyzzZkRnAjOB95Yjs8Z3gsOz3YQ
+fbDAeCb6H3xO6uwaXz389ajQ7tJL813zZl1wu1wTm+/Xewb848DejZ0uospN1yS/WKddNnLgfO1O
+YnTH2PXdMxelN999z/l3RYELPrhuhYd9uNaJx7v41Y07/niukf87eZ+V/+9tqNGBQv0a0JvfrHmf
+odsx7J20tD2g1/o+YTWulK/ZuuRv/70u17VnfTvNuWdZrk9ID4Q4qkovva1+shsM9+hqMh653Zcr
+Dvbz2Ahb+aWXcy6y9MZqTz330Xs/Pfiue4+9p+WbL36r6QO/fvjrn48p/JXKP/+ynjMX4Zy/Z65t
+WPnL6TfzaQsnwRtf0tQGBeZBLm3KQxTVDMe/qW2tb4IqHNoCd8GqLcJ/EFwg2eIWLn85h070a43C
+4NRAA4KOW58qYb3cRz71aY9OMYTe9bY3uS1VD3mHG4YL7VRA3aVucBWkHb6MCK+7KeWHQxuE2M5k
+O4wsjEpVchkVOYg+BUvKEGDJqt3uDgYrGnKRh9mbW95Es8EtbgyH37Mh+2D4xi4WzY3HC5Yay6g6
+YLmOiVEr4Be/5ccg8u+K+1saIduHyEQqcpGMbGSbCgAAOw==
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab7b.gif
+
+R0lGODlhJAEkAZECAP//////AAAAAAAAACH5BAEAAAIALAAAAAAkASQBQAL/lI+py+0Po5y02ouz
+3rz7D4biGAWmSZ1nprZuS8byTNf2F1j5zff+f0GpWDDILgVMKpdM3iqFakqnVGW0is1qm8+t9wuO
+XcPkshl6PKvXjejY9Ruz5/Rg2neX5Ov8PqJ7ABeyZ+RneFiVJofI2ChG6BgpiQM5aXlZsYi5yflQ
+2Qlac6W5IKhzGprK+Vmq6mozyqpAWpj5eotJKIvLu7bbC1z3G0ysNlyMHHaczDw7hIbxu9xMffNJ
+Ol0NLASYWdR2na097vRHfr7FKo7OzjG93h5f6y5fvwHvaa8/67C3e3fkmwB8+1It+4eqoMKFDBs6
+fFjwGcSJGp7RInGQosZW/7Y2dnLTbcaLkQI96rtoMiLKlCcJsmQW8qXCmDL7xNJTsmOJmhPFueSZ
+5SYRiUbCAaX482izlUpbNkWa9CkQkH9yipI6iamYhFgNhTSVQCs/nV0b7ohaNhjatMXWst32FqLb
+uEmIFo06l+4Si/9yiDXgz68/veh0YSNMB+RfEH4RM9TlWJ60yNrg5aXsS8RlzFMy7iTLOfHYgRzn
+AQ47OrRo0G24qn4NO7ZsylRnnxM6UCC33NFc27ayOR/r36o8E79l/DjwQIqsVuW9MrnyVzFpTre0
+uOh1YcG3l7HuHRT48Kuyk29k/jyj9Oq9sm9v8z18BrWDdp/PO7/23fcC4/93Iph8vn32H3osFGhg
+bwiOoJgscOwW3XALUsLfVGBNeEkl92HYw4YccuHhh3uFKGJdJJYYx4kodqjiita42B9gLbYGowf1
+eSKYfmiQNFKNROQmoIT9+MiGdETCwp6RR5Zw1nhV+TTgknflyKSOO/J4oZTGoKalMKZ1qQyYh8wo
+5iBl+kHmmTaqyUeabN7zppdxeiMjnT86MydOzDFn155IRDlnkH+CQ1+eXOBYqKGHDqroc3XyOR6E
+fTnXaFCBVBoml5haSuOmUiDkqRVChioDlKReBeepW+GgqpkMtsqoHrKOGmpgkBE4gZv4aViacKTl
+ARCsmuY666XGDiuskr3/Fitss84+C2200k5L7SBNVovHtZAKii2eVhJaIa3LBhrQpE52Sqyi3HCb
+bqxxshsEoN3Km+i89IhrL67MqrtIlh0oy2aDTA4h6Zf6kutnNJSag6+YBLeIW77WVimxHZbBS+q5
+CuarccUK6wprxx7rAHLIJbeK8cgJq8xYyiqLzDJOJ58Kc8x32dwyzjnrbOPMNPvMWZ9Y1HzkjZ+6
+/OHCzgj9MdON4gZWwXcSiilfHTbcJdIHb80zw/F2XS+9OpsK9rhcv7muT0qTJrbD5T4ZaY5MTVZ1
+k1r341/ZPwJd62B656oO32rePTLhHgue8d/3Kn4g4407/jXkbUueGuX7/1puMOZUa65d3YYr3Pej
+nSEu29pwY/w5h1DrJvc7k2f9ROpsu/suxK/jDLDeuZe9u7Ph0u7r0wEek17vZUbs77eXZ167jIsV
+fzvKqM/O+ZDHVm826Xnyij313aP7vdnhXz8+suV7fT766Z+2vvrta+8p/JvKP3/77qdPf6X56/+s
+0eDi84Jm3Sh5xTPKz0QHuOjtjzZvg4KEaLJAxKQNGsBb2f0QVg760CKCKzJg5RTnH01w0EWuy1i/
+TNcu5vHLeQ6CgdTwVooRMtCC3nAa+JK1AtmZQ4YBI1/5goU/8XEOEjxcEve6pw4kLg9ywygiiow3
+tsg5jmwgTNXfCOLE/2T8JIvwwUvX0MJF8rgljKXDUo8GZkYU8q9hUFxjBc2nwsRpym9xDFuyNGhH
+dPULjqo64gUrB8Q/yjEsh9GXIoQ4yBRa73p0FODk2vi0R0bPUGkMIBorqUP7aXKTnOykJz+pngIA
+ADs=
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline5.gif
+
+R0lGODlh9AFNAJEDAP//////AAD//AAAACH5BAEAAAMALAAAAAD0AU0AQAL/nI+py+0Po5y02ouz
+3rz7D4biSJbmiabqegkCC8fyTNf2jef6zrfu3wsKh8SOq4hMLn7AXeAJfSqn1OCxis1FodRA9gtm
+XcPk8oOJRpvX7Lb7XXvB5/S6/aa+6/f8vnLsFyg4SFhoeIiYqLjIqDPWpAHYOElZSZWGmam5ydnp
++QkaKjpKWtppiQonmco6sfUKGys7S1tre4ubq7vL2+v7u+sCPExcbHyMnNu6rCrHzGwaLT1NXW19
+jZ2tvc3d7f3N5BD+TF5ubvLofL7O3u7+Dh8vP09fb3//drWKz9+PdQRQHQVI/goaRKJvX4SEBxs6
+fHjOE8SJA8FZvIgxYx6K/xwbKOwIMuSOjyLpKCtZiCRKDbhuyFpJSCXMC7Fm2hwg8+a/NDp7+vSo
+MajQoUSLGj2KNKkNTD+bFkznNKpUBVCnWo3K86rWrVy7ev0KNqzYsWTLmj2LFsW4tGz75WwLd084
+SZmAxr2b0tlaA3UZvMULuE3VDX8DGyYzt/CBvVsJHn6cShNkVkkrWzY6mdHlzZwvZv4saBPoSYq7
+Oh5NqTTq1c1Yu+TiWoxAsrCD1IotOy0tGMl6+/4NPLjw38KGGz+OPPkWFrZwr1At9XaP5c5TQI8a
+pXql69q7I5ztHQPj8OT/SC6P3krn9ezbu38PX6P1+PTr27+PH74MTun7czFgiM5p/g24kBzcEYgg
+CYMlyOBSeoHXYIQqJCZhhTEcaGGGGm7IYYcefghiiCKO2F0BADs=
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab8.gif
+
+R0lGODlhJAEkAZECAP//////AAAAAAAAACH5BAEAAAIALAAAAAAkASQBQAL/lI+py+0Po5y02ouz
+3rz7D4biGAWmSZ1nprZuS8byTNf2F1j5zff+f0GpWDDILgVMKpdM3iqFakqnVGW0is1qm8+t9wuO
+XcPkshl6PKvXjejY9Ruz5/Rg2neX5Ov8PqJ7ABeyZ+RneFiVJofI2ChG6BgpiQM5aXlZsYi5yflQ
+2Qlac6W5IKhzGprK+Vmq6mozyppAWoL6emtJKIvLu7bb2htM9hskbGyFfKw8+EW8nDiEhvFL7LYr
+lCPn7PwcyarJ7RFuMN4tg01rVNT2mV66E63+vedujqsYVm4P+r3vn1jsn8Ae+v4MPDiioCeEDPU4
+oOfQILl4AhQ2vMXtmq2L/xw7evwIMqRIDhRHmhT3pB6zTCdb1mLpMpU1lZRe2AQUEyTNnB5x8my5
+8+dFn0JHEi16KJaedQFfIo1ZzuLTZkeCKjClzpPUqfa2ct1n9etQr2K7hS27xdofpjfIok3rFgnM
+t418Yg0UdSPdk/D25qTml+PWuIENEWZwuHAzKonRltRKVqHahHcVP0x5Lds2rVdLaD7beZplKeEa
+VwTXdPTaiaBJViS5QiW2CX1V50Nsuyft3AMLmuY9x+1v4ADnLjRO3E+eqsAKSQwUOrlhvW2oS7+O
+Pbv27Z4ncmeolDWg2aAzfsfSWpz186/Msw/m/j3pqorYXtV82rlc+fDBpf/n38d/9wGo3HAEnnHU
+ga4kqKBMAjaYlIEQ5iPhhF4waOEmGGaowWRZPMhhJvBklp+A/oUYx2cVloZiLiy0KEleMJ4zomww
+kNfPfjPSOFsSL+wo00NATlLhkFOAaCSCRSbJBJJMDrPkkz5GKWUcVaLkHXpXiuAhZz2KeNNNW8J2
+mpNO7TYmHfGliUd6a7KpQ42Z6fMmnGDil1VrYYZpp3Kz9DndcYCqUeegWm5ApaHVraQoEL8lCueS
+kD45KTmNqvfhpaldKF+X3RHxjh1ZineWO2b+FF6ZR1kFCVEkjgoZTiwCd6qg7+iSFaPrJdkqnn86
+uumWm0kzi335Nacfcan/qmoqfjT9OA19IkKhKW6W3gZdtdc+p60ZlVTa7ZlChqvFsOQe+eK5S0im
+LrA4tNsWCeBWWSiyEcF771q4issvvota+6t+2US3rb+25jtutgUrbHDCaCaLcMMST0xxxRZfjHHG
+vXiq8ZSwVtYxjbBeVuI49Xa77GWPPczyuegUeXK1teoYcci61mzzu8jlDELMKC8Csms7kzuTLHDg
+CHG/4aZ8p2y7/vxlinjx7ITR8xL934ZUF3vY1fTOvLXKYRME9tihmt2W1xeXjXaxbYvC9ttlyj2D
+1nQToXbFdt8tKt/y5q034BTHzeHK0Ai+HcdNEg6ksewYbofj+KaKFdKg/5JscDSMM6z0z8kM7bfD
+oIduL82k//v06dy2rO7LeG84K7zLBj111Kgf3G7RjtKDeMNCqN4zRMBHm+vwxRtPJvId9D648pg6
+jyj0QkufLvWiWX899qlrDzD3S3lPbeZ7tzmx4lYwf57kt47//drSklpfycEmjbX58m5/6eal0y+9
+z8j7bzwAYsx2puMf1lQVvvnhzmXvg9/ZFCi61skpgfgL2NjY5xD0+W514Ose5zr4QQ6Cz2ggXNgC
++wfBAEYPelLR4JgiMzzCuNBIjZnhjAxkwxCtqG1UyuGBJuVD/swriN9RGxGzI7gjJgd9SsyNZDA4
+OuzYz20mot2nTnUiJP+OSF+rMlk7tgG59aEGZ6qZImIEGMIzTs2BtfPVaypIF6ZxpoDys+Djtjg9
+OirGdbRh1fHSuJqb6TEw+nsj5uwYr+xdaR77E0X1hPW4RsIihbyiJJnGyDre2EV9cAQjAvvIjjlK
+R3fyiI2zGDmgOK2RjW4rJRT9Isc+htGDfZtlK2vRxI2ZElg93AlzXAZIxiAyf8MsoQkNaUxA5hJQ
+30rmMYupPY2AsBodROPpYmc9GVHPN9tcHgt1psKehVOcwJPh2/YkJs+g04rlq6A1ZedOOE4uOsIz
+4O0GqEZJWhBo0GzePZEpujssx2a82xfE8EGwjAlQoCJcphTjGcV2RjQXmLR03zo5iZeL2tKZHO2o
+Rz8K0pBqrwAAOw==
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab9.gif
+
+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
+Ow==
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab9b.gif
+
+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
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline6.gif
+
+R0lGODlh9AFNAJEDAP//////AAD//AAAACH5BAEAAAMALAAAAAD0AU0AQAL/nI+py+0Po5y02ouz
+3rz7D4biSJbmiabqegkCC8fyTNf2jef6zrfu3wsKhztXyEhMKhs/4C4AjUKX1OoHeX1Zt0/ptBrg
+iscQrMdMTqvLzXZzDY/L5/Ri/Y7P6/f8/haLNuAWaEDod4iYqLjI2Oj4CBkpOUnZCGhIgVm5ydlZ
+NQgaKjpKWmp6ipqqusqq6vmao+kDS6vhdYubq7vL2+v7CxwsPExcbKzrcoybrNzs/AwdLQ1cWx2r
+lWWtfdDa7f0NHi4+To66fY6eXnK5Iav+Dl/pljEYb3+Pn6+/z9/v/w9QAhJ3AQsaHGIkIbYKTg46
+fEhkIMEFEiFavIhxW6mM/xwFlvsIMqTIkW064ps4AaXJlSw9HlnY0k+wmFZURrBJcwI1G7pyUsH5
+AKjPB7mG5hPKBKbROPWWqkHqlCnJqVSrWr16Kmqtplq7ev2K540PqGDLnhSbAJQDsmbbomM3y61c
+h2zn2r2LN6/evXz7+v27Dy3gwRDrEj4cFggatQwMI34slVvDQlwVOIaMmQzcdkoze/bzZnJK0XJJ
+fz6tLRTq1Fhbu35NbnUn2LRr2zYl+2nn3AxV844M4nJX07+BZyuOXPfL5DqkML+5m150vVGG9HrO
+ZjlhXjCmef8OPrz48VCYQTNPPr369eyrr/CFPej0uIOv9/ASf+18C8KHOmzPP4dw/QFI4Bn79Vbg
+SwP+tmCC0jHmYCYHRjjCbRZeiCFVFNKQYYceftjNhtf4JmKJYghmYooqrsjiPxUhKMiELc7oUowc
+NEjjhpthgGOOFO4Io49C8qeYjGlh0+OQACapZJNOPglllFJqUwAAOw==
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab9c.gif
+
+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
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab10.gif
+
+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
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab11.gif
+
+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
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab12.gif
+
+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
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab13.gif
+
+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
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab14.gif
+
+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
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab15.gif
+
+R0lGODlhJAEkAZECAP//////AAAAAAAAACH5BAEAAAIALAAAAAAkASQBQAL/lI+py+0Po5y02ouz
+3rz7D4biGAWmSZ1nprZuS8byTNf2F1j5zff+f0GpWDDILgVMKpdM3iqFakqnVGW0is1qm8+t9wuO
+XcPkshl6PKvXjejYxRiH5Oy6XZf25SX7u/+P0HUANxcEeIhYlUaX2OhIwhjU90hZGdkzWamZdVmW
+uQmKE9r2OQp51BlYpMMqdZWqAGtQukBrGtYnGHg728qr8WqryuLLFAy82lsh/Isb1+zADG0mnVAN
+eD3tlT3BDeatTQXOMT6bI2u+UR5u9bUu826aXIIe2w01KNxZHf+MxC7OSC4gmfaNyJVHTj9HQnSh
+cWitVL10FLtJRPiD0USA/8Z2fbNXywlHakawXGw3cpshlM5SKvKwsOSZmC5XQhJD5oXOeTXVRQtZ
+wlo+QcwQTqJJrBcqfz07XNNX7MHTgMuaWr2KNavWrVxPbewKFtOTrz6rhj0r0izapm4gitkJd61c
+dUjnonVrNy8evXyR1e27FS9gUMfwAbs3OPE/m4p/FcZAiJ7Uv40DI66smCxjzDU1O6HM2RjoJaMB
+tlU1RM+2HW94VoSs17PTWpFKC7wxNazDyMNgRxSgUREd3puDhoanjO2g48j5hLPNOR70JNMzp4Up
++Dc55jeneJNdHGtqPuBBEnlN/HW09LHOJXQN3H38oeO1pkbXUG2cPbbKm//fzxQIGM0HFHc/RTUZ
+f64NFx5MDXLUln+GVHcYcN4ZKEqBJq23iG0UrlXUhR9hqN+DM3zoG4lSiTAaimWRmJtMi8l4GRcI
+9sXfcv8dqGOPPq4YoEeuCJXcIpXFCOSMSdYoGlw6qQhllFJOSaUNp1XJ3WO85acZkljeIWFSSn4J
+4o1k6mbmmTOh0mF9tM0Hi5dqgqhRmHPeYieBd0KT557aZOcnV4AGal+fhDrm4qGHGKqoPIw2Gsqg
+kIqlHil6npjopIZ9JWGdmlLj3kSSBuncpz19Z2pnYqYqnDmywMElLfywulp+1LFHq1UFZZqrFqj2
+ygujvALLIoWPEvsWJ8j/mjTsmMvScGxGzd45rZXRsVZtcq1euh63TOZ15W22LuPkk65gu5dxzuoa
+6nRyEtQuGt/SGOiuGo7ybmay2btjpGmyhS1++/5LaXyvwhCrkPOKt8LB3lpULq7wjmtttuAS6VJC
+ucpq2rP5EoZsORbjRGxMI2e4cQ00CSwdsMZix/JstA4LDnzt1ZyysiOmWjO64krzFFE243ryNz5b
+hMyb6Yp6Urdvdto0w/nQV9us+w30M8vBtfdwXQq6+ga7mHBIqrWWlr0d13BqXKW9W7+FdUQQeS13
+wBhjabVkButzSYjQLpzSY3unkjA9Nhsu38+GDcnzj1sYaeOnOaqk4cuT/35iMb/a4gYpVCJSTmje
+LLkT+qpje+KnyBnNRK2AnKtR9DRIURY7jxh+fHep6gK+eomAGYV2v/TarnvkPtZXO5jEb97GcpM7
+3nz0uZM2vYXQ84W7wtYzv/3w3QtPHcFzZX/98tLzrprvz67Pfvvuvw9//PLPT78d4db/59GDJ48/
+Dvp3S7F1ma9/AmITedwkwPMRcA7xOl0CF5i00RUPgoggHwXXYMELsk59GiTHcA5nut110INgQ1zC
+4iS+ESKtUg95VQpVeMDEwWtqMHyEw2rIhlFdDYePexT/8KdDHsIuWkK0AhGLOEMkMuSHSlxcExfF
+xCcKJIpSJFsV/xDEK//66ohaxBQVu6gdMNaBi2I8RRnH+MU5IdCKuCHj/O6nN7idMUEbySId7ahF
+LcGnPIRLY+jGwreHoQ98ZXQjIQc4R4KEMJGKTBEjJfjAR5qNg2dsiGckVj5EilFwmFybIKsXvEoG
+7EOekiQuzmHKnDwvldvSJCvbSK5X6mEcfrygyWTJIkzh8kWT3OUE0+fLUM4ymJnsCC6ZWEs1orGS
+i8ojJZIZGkPeCobSZNyR8KiyzOkQj9DsIQuN6M1PAggy3RTHGklxzgj2MIijitgLwKJH5MmHLBnM
+Jg33N07vLSkr94FOPb34P0vh54UQctE/4eEhglLpa2+Th0KnpDnt+Yv/kmqKaDFt+FA6iXOfvQGl
+Jg5qmgaSZ5FumZYlvzMPkD7HgFQbkImE+Zl74hOAMvyeCPk5SidSFKaw3JtX3IlN3RgKlVchasgk
+CiGPaipuSV0f5kZSTlXpM1hOjaQlqppRbHiMlyA7qsy6WrJCXNWrucRoWJuTiKh2rJdOAVQAF2kq
+d/lPT+nh41l7Rxe68gQ8an2OMZMWp5pmVZnWTNd1WJUt/vVVdo/bWeP8UhRRNXZmed1oGG96RxMW
+TqlFDSiA+NhJDtWxPy59GjcIUcpCoWePp43aSCtCHMLNK7RTPWRBv+k0qyKVNnD8LFNRw1NHDjJ/
+Mo3jL9PBoNuUNZ+7//2qq1i42AL6FGI77VojmctZ4VIEgdHFjgPPlt3uKC246lMI2xaq3PAexLfk
+ddZpFPKlXf22WN7KBt0G2xj7Ii2d421ue19q24IqiL8EBRpLwZZatYEXWq4V23TvOE/B9re4ryXw
+ZdFpYYAGtRmCw0OG1esVJJiUTm+tGOq4d13JXdR4KAbmUkEcvgsbsrsThbGLhdIatiqqIL7K7Yxf
+rMDCKqyaNq1XbfGK3RsbGbMpnuyhgCbkHj8ZvygjXemo7Fwrpw6uKiPJliv03Za0Lm2v8zJhs4xW
+M59pIaX5Io39cMu/YbCi4q3zBmEE1A/n+cP7cydVdHuXF9ZTpSQD9HlZMjhoLIvV0GjC2Hz/W2RI
+j1imj8Zeklt8t+SumHlLCfBht+emN7NYeJ770So5itRJQw9y1rlZcM9bZL8RUtXa0oWo/zrc77Ha
+v9Nb0J9zHejqYpq8hLYzk2Mj6AIr2nXCJvGeY5hniD2bmNSutrWvje1sa3vbpigAADs=
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab16.gif
+
+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
+Lre5z43udN+hAAA7
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline7.gif
+
+R0lGODlh9AFNAJEDAP//////AAD//AAAACH5BAEAAAMALAAAAAD0AU0AQAL/nI+py+0Po5y02ouz
+3rz7D4biSJbmiabqyranAAsDnMS2vNDG7fb+DwwKh8Si8XJL6o7MpvMJjf6W0l7gir1Wt1wntQvO
+4VhZbDcQTqtb33W47XYo5/S6/Y7P6/f8vv8PGCjIF1doeIiYKKQD98A4phgpOUm5ZjMDSfFYydnp
++QkaKjpKWmpquKR0usrampiaadHY6Fprezs5qHuH21tK6/sBDFpWbHyMnKy8zNzs/AwdLT1NXf0M
+Y52tvc3tjN0NzhYTTO4yXK5xnluH3u7+Dh8vCZsxLn+Pn6+/z9/v/w8woMCBBAsaDHJpR6yDDBtW
+gfVlDoNZCx1avIhwnL0K/0kUqtvQEaPIkSV2meRFMqXKBh9JhFwJMyaEljJrLqrIkGalZzZP6fz3
+k4MzIch6mgraD6mGY0ab1sB5UGkhdk5tSdV3lcvJrVy7ev0KNqyfqqISkj2LNu2+TSChqn1Lkl5b
+uHRjZq2LN6/evXz7+v0LOLDgwYQL+5RrOPFFxIob46IB2a2cMWwdWz58YCOSincve36DQ/PmzKEl
+tzX9OXU8OqpbuxG7y7XsJ7BNzr59pDMGqrh750btUrfv4SOEEz+OyDhygsrdNZeUZbk54AGfOzDj
+ZJl0cXGpe1DWApz48eTLmz+P/sq39OzbZ1vvPhoZ7dtXWC93nwH9I2Xq24D3DhSAQmHnny/5BXNg
+gfck2AuDUKiiIBAO3jLhEHlEKKGASWmoVW0efghiiCJyhSEHI56IYooq1laiCBC2COMrMZYk2gRm
+zYgjC4yNlmOPKPCggEQTcehjkTNRFouQYhjJZAg78thklPUAuVuNUl5pI5FYbslll15+CWaYYtZU
+AAA7
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab17.gif
+
+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
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab18.gif
+
+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
+rilqayziup0Ur7jFL47xjGt845AoAAA7
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab19.gif
+
+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
+q8sJ8YhLfOIUr7jFL46HAgAAOw==
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab20.gif
+
+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
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab21.gif
+
+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
+neiJnwiKoSiKowhIiqVoisxQAAA7
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab22.gif
+
+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
+QgkJkREpkRNJkRVpkReJkRmpkUtQAAA7
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab23.gif
+
+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
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab24.gif
+
+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
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab24b.gif
+
+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
+o19byZVd6ZVfCZZhKZZjSZZlaZb9UQAAOw==
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab25.gif
+
+R0lGODlh9AEkAZECAP//////AAAAAAAAACH5BAEAAAIALAAAAAD0ASQBQAL/lI+py+0Po5y02ouz
+3rz7D4biSJbmiaZSwLJU22bwTM/qjef6zvf+D1wELMOg8YhMKpdMiAu2cmmKr6b1is1qt9bYS8oN
+i8fkMhN8pprX7LY76X1P0fK6/Z6l49P7vv+PEAc4KKRHeAhXhEbDYOjhiCgntWjTYQgZmTnno5bg
+2KlJhmkpE2o6B8oYAhrBeiomaKDq6RpYUfuamxeIq+vbwNr7O7wzOmFM/CeczIyDjLLcrBUtXQ3y
+3GWtRK3dXWWK7X0rvgf2PDueHmTOLXBOhDcZ/TSk1+5Ont9Y6Hrf1mmPir9T9wbqS3QgnDuDBY+w
++6LgErw78sJ9mngwo6d9/8P60cqYSqNIWaUizQOJcWQyg63iqXTAUshLTTE31FyIM4rNmTKd8axz
+00TQEkP55HRSj+GtWI9+RmH6AGrLFRBlzcPVrmjPY2/oYau0lSo/RTWzOi2GNKzPRlhHBAMIkGBS
+tbxgrlpUkqdXhmDZRs0qEPDfQsXelotxLjHhtAuR0QNm+CwcW1hC0hX602Ndyb+EaSUF8/M3kctE
+c17jzzTXaShP5wuqmiOX2BRdv8ZMgvaHGrz7AmpoO1fbiGITJoRivDgvzUYE4iN5uU8t5sHBpbSr
+zsn1H8AJda8OPrz48eTLmz+PfrfU9OzbN/eikMN39/TrR4y/Mbv9/Wcrlv+eK0NvAvJHYIGQqbCe
+gQoelGAZ+C0I4TS6KfNghBYeU2F5DV5o3oYcXjPhh/IFttROyon4UCu+5aefiL+FBoyL0OQlI4Ik
+BoicioPVeJRC8dXAI0GrBZlCiEQiVOSR2ylJkZEBHukkkzdkuAt/UdInz3IeinBlVZTk+NEUmWQ5
+o5RP9vAWdZwYqUYc9jTZWFHzmRlaKisetd1jxCHBFDpWHYedVey02RGAe45G52zQNeOcd4hd1VCX
+ico3ZCi9wHVbVJMuMZSkOXjqHaWbroUgiF/dBOqLuI3alENnTnlaqqm+AiZSWsVEpqBQJXbnR3T4
+CaiecW4pClklYtjrWNz/AKslsSDBdxWeUx3IIoyr7HjoNYtdJM2larpFI4oXLBtQrX9WW+m1Sxar
+a1XZpluXuWzFta5G/vFQj6LPrdNfctuw6i+6fNa5WZIvDQcowPjCi2aVrSlcmYk6zIqoNxRDrJ26
+J1xcLzEcY7wow9EFmnHF3HVc233fglwqi8GcSC9l074bMBAxNxqyqiazbPDOI8d44sw2C9gbz0Yf
+jXTSSi8Ncq5MP+1LisO2OdeDc0KNNZeyopx112Zc7XXYa4rZothmj3ujrpewBPbZbs+29ttyb0El
+LR/P/XTdI96NN5POItm32H+zMXjgLhZukt6Gi6c4o3wv7uh+jUNO0+To/yFOOVCWc4j53E7DuLlf
+PH5O1OMoGnvsiIsFSbpfwspWstt7fcE2P0B/ODuX42bes90kQ60U76vGO13ThsIuctf32vooTsaY
+JePyOuloLd5QhI6svDVeDykGOAvfsOjWg8+v94KTj6Zppo+3/tvYY8tq+2a/T7aU8it/P80X5p83
+/xgu6L+kBbBV7Rlgf1A3GU4hcDBWI48BOdM6wrwue0RL1sQWOL3YBc0NTmPWXyrowU3lDlZlK0yc
+aJe822kuYcyTSAnRJzAWyuwQmDrXDLuimrZ5rXPTedk/ArOrMBXsgSd7oQjJwqv6pfBTSKTGoFam
+qcPYSV7c8ln8mpeWCv+BEEgOwSL1nEcuInovbRm02xY7B76YdUSIMyEUDMP1Mxoy5mFxfOMNhSbH
+MlrMijAsSx5jBUfyfUaMG9TLbtLYO/U85ZCAzM3iugSbLaExZ5lpmeyag4okBrKNC9vhGRzmlIsR
+MpSbkJbrlkUEQYTQg6Ok3pekgp+CYJCR4Ykgtca4Oi+RC365JN4jvGUHqc2xeuIT3xMpAUY29lIv
+aWMl9Gynv/ucUEVBlKYLwRWmvrTShrqzpg+VKSoj6oN+P4NlJ4sZw3BuZoLbHJ40kYfN3UXvQNfM
+TT2PU814tqsx6XRQuXa1sjupz43ijNAzGaM9lakwihtbIizI+MU61kz/iK+MWz+jORJhhvBPE4SM
+BZlnSgnu0lX9Wl87yfG9bEz0nJwsmB01uK9PhgWShiTmS++IU5vdMqYkzKgeX3oSkqrUXjc1Hx97
+eoWToqWoXFsoqUApDqVCSZ1Ihao2pEokOVWVNXtkakGNShQHdQOr+2sqT/HoVJhywqxdYSvk0gTP
+uDJUrXPV6QzBRNbfxTCv9kFYTg+VL3Q5Ua9nXStOCTqIb0o0czq8IWJXGle/2vWowXTrI83a2L+m
+NXyUBYplvQra0Ip2tKQtrWlPi9rUqna1rE3sLFvL2g5+FLZFtaWvjtfZi9KWTsKsE+Yyu1sljXCr
+dA2umchZ3M0at4+f/11u4IDrXKN1NLeaja5w/2lRsDrUuttrorvkSV3u4g6iw/wsX8UrHC9+8C4y
+RG9tPYNc90IMjfGV73VzeF77Mqi+4NTvFe82Sf9Kjr97E/DpOEhgA6M0v/xUcIcYzEsHhxLCuJSw
+vRKMYAtbI8CdwbCGt+HhylFYwxwmTYg/7JYTj1XFKE5ld1sMOPuN+KYs1tCMKVfj+pR4h87aMTW7
+i1wfK822y7zLjaXzWq3NVnAJnZeRmzzeHi95FDnmXDN7VTcqHxlONkTHYzBx0PlBSycZCvP+xqyx
+8CJNxXYKaWEhRM7gORcrxVPeJmFLZ+UK8M6tzbNcj+gZ8EYXrn++Yv9dC8njaaINym8+9JkVvV60
+Fhp/MtxoMh2zXQNpVKAj7a/svGvCd7IO1AwcSGBR/AThqdHAb7psi583PlQLZn6ylhjWtjypQeaN
+xBvDddQsHCVfW8fBW4sfsfkkbGWweqhT9W8Ak81BZ/tTXPY9KbT15V6+XpvZ1q0yNLY9MPF6+1MF
+XBqj06dAizRQQ0wj8gWb4G5PRxQR5ybgkOuttkHKb8nLoeAZD8NNRwLvynitWmqaa08WOhPRev4a
+vqe22OryFs2WzPS3451MSRP2hwrXpsEx2vCJG1bNpavqMSGLGopTVeNA9WbEJUFRy6xQ4CRn7E5R
+Lp2Y4wWlCH/rzSn/qbOA9yhTNT/adBF9z2KR17EkMofHIAHd4yZF3YE0ZxchjS0w99wPVbS438jI
+LC1unb3cBFZAXg70DNd7PVH/+j5/6vW0hxrfZ1fZGccNokpzetJov7doTh1MN/mo0Vw+99FjBG7J
+SdxSun1Y4rHUd2Xr7/Emo/zlNk4T7OA9DFAcbWl0Acz2btjRokUl43e6eavy/Y0HHxPcr/pVRCox
+6JIxNVNhE6pG8tnm2sq5a1DFeppX9ve95x1tyGr54ivfcGx6chZxr/tuMp/cv+zRirJM/DJ5jrOb
+OGabZ0/KitO6iN2Hr5sZ7lPqj798aJtY9NWfNb7xL/n2Zmm74R0x/65LGVdC3XMmkVV0iVR4s2ZZ
+GBd7ImQTSYZOpOdRjsEI08Vg/OZSaiZbDxd5JiZ0p7Q3FtgsqWNTGRgsplYJ2TVz1mcup1Jk76QY
+EBgZELRAC9d+H5h1QBQLVMYwlsZyjQc3GHd4hHdRvdWAvxJ3FqOAP5dci4UcDhhS/dB1aTaERqFP
+/XYZw6VdT1gNQBhhpNdR/xGF/ZVDvrOEsGeELVh/6PcaUxdGBZV04idvf7ctfXKFMih3tDR2hQJ/
+C+iDYYWHOFd1NcSHv9GEE6iDtnaAVlJec+hOIbh6S5IlQphe0XF0cmIocnY4HnWB/9NqhaiJiMh5
+aLhIi/iD2EWGrf+3PYJWalQHcpdohoMoIXpHRXWWPNIzb2bWRqK4fJi3OhVFhvIGgimWhSn3dqAT
+ekY4RAQoiLyIgVg3L83TgxkYS6Q2b8soZEshgRuGg1pyfmDoW9P4dKJHO4MDKj2Wh09lSCbFOOrl
+E/6TUiNXU5wIWuvIKazYUJW0V6Unj/YnLQlGf1VIGamHgKlIfsSBTAJIVKi3j+0IkPhYjHdYkKKW
+jegjWZg0U5JykA7lj7l2hO4nh8RFdHi2imwYj6QRXKY3WdzGcyNZhysnU+NkXKSokCt5krtFiQxp
+kmIok4QIkjUZhyipkomYf111k2Woh5wXVS3phEOJbaPHk7fYhVzFpZRBKX3CR5RRc3fceGtVyStV
+6W9bFG4BKAopeTbQFXVtp31WKFab+FyYxVZkOY9eOQYyp1gt5zJIuJZgaW87d4+EQ1gVeTB7GFRC
+t2p6BY8fczM1SG9/xpcqEZHjyFOBOVhpRZj1+IeeZUZxaUeElpCNeVgiA4vsFzKG+UdmuX2xp0aW
+6VQC1ZWi+ZZ2eT6kWZdoiZQf2VawGWu5NZas2ZO42CRY6VVYmZV3t5UgBGPDSZzFaZzHiZzJqZzL
+yZzN6ZwGVgAAOw==
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab26.gif
+
+R0lGODlh9AEkAZECAP//////AAAAAAAAACH5BAEAAAIALAAAAAD0ASQBQAL/lI+py+0Po5y02ouz
+3rz7D4biSJbmiaZSwLJU22bwTM/qjef6zvf+D1wELMOg8YhMKpdMiAu2cmmKr6b1is1qt9bYS8oN
+i8fkMhN8pprX7LY76X1P0fK6/Z6l49P7vv+PEAc4KKRHeAhXhEbDYOjhiCgntWjTYQgZmTnno5bg
+2KlJhmkpE2o6B8oYAhrBeiomaKDq6RpYUfuamxeIq+vbwNr7O7wzOmFM/CeczIyDjLLcrBUtXQ3y
+3GWtRK3dXWWK7X0rvgf2PDueHmTOLXBOhDcZ/TSk1+5Ont9Y6Hrf1mmPir9T9wbqS3QgnDuDBY+w
++6LgErw78sJ9mngwo6d9/8P60cqYSqNIWaUizQOJcWQyg63iqXTAUshLTTE31FyIM4rNmTKd8axz
+00TQEkP55HRSj+GtWI9+RmH6AGrLFRBlzcPVrmjPY2/oYau0lSo/RTWzOi2GNKzPRlhHBAMIkGBS
+tbxgrlpUkqdXhmDZRs0qEPDfQsXelotxLjHhtAuR0QNm+CwcW1hC0hX602PdHlolk4q6bTBnlcs6
+T/G87oLpb7sOrlbxGjXozzdik7BtBzds2bUx355WIziUQw2bCD+uW1/biGITJhxOsjkvzUYE4ovO
+nDgwjme2X+Y9lfVs8eO5OkwJqHh3deDbu38PP778+fQ7Sq2PP38aeTnU6///D2ArCmVHXoAGolZR
+aXPJgFxwBz4I4THJ3RdhhSNRWMaAFm44hob2JcdhiI2JaBWIJOaD4YkieKiiDg9VlZcTLX5k1VMU
++mPijNXBVEuOJCqlY3+BoZLic6IFeZRCA9aA5CvU+BgklE1WN+GUGEhpZWGVYekUl1mewOI0EXpZ
+H3/PQbeWUZSguVmMhJgJ5pcchDknP9z9QKd4cdhDUVJ5UlagnH+l0peRV0a04EZIMIVOjY7eCZ0g
+ZCJ0EXuChqFINda9idhVDU166aHS0VTeUd4IA2qo36mWHm9lqYpWbx+wySNtktmWKoe58tUfgnji
+RyuPWsUEZ2NQJVYoYXT/NGrkYyUG2xVZS32RLGRFnnkjs116oZiSRzrH2DXfAiouoo8q2kwvlfrG
+KpI4UotosHyiV66lZiQII7qB1ghtvPqapxdZf7Kaq4zXpdYluKHB+q/CC7OlxsDhXWhXm7HC+uR5
+lYlUMMByEstDxxWTI7K9Ua6YQskGa6NyuyL6N7LHpU4MBMzK2LkqwvvmZ9nB5Mbsc9BCe/fdruhu
+it0gNi969J0BLp2z00DTjGeDTEZptbYMb811115/DfYSxYZNtmtDPksJTh5CXXbbnHjJtttym0Tv
+3HZjylLcd+9N1NloRybqznwPfhjghB+eW1HXIs64i2Qu3njk8IrSsuQV/0L+j8SWt4g5TZpvTt/n
+xIgOukakX1h56R2eLl/nqivNeoiuv55TtxOmzrK0KeMuu+75bmKulWNDpra6Mku+1+SBT0e0ismj
+XDft0EA89d5ASi/rR5DwHrCpUUvdOL5IQfGYMWZh/ezvxNdKO/lcXv2l+08Fzj3y679ev+XXI54/
+46f3fyvsOQRKsTsQAK0nsgNaQ4FuK6Bb3CVALUmCgW+KYJoqCCAKksZ3TBMbB2u1ttYh8FwgTBS1
+sjY7t3xQQKOimhuKpTVhodCBD3pe9o4XMj9xY3F6y5DfBnWs6FlwZoZqWKvaNC+gvKaHhEvh0EiY
+tHsFJogWe5QGXSREhv+Jb3ynMVkO06cTMBIIh9EilLyoQ0auyS8tLJphvwrjLBbya4c0HGARwxgv
+Nw7RVk90Eo308rM9drF6mUDVFTlBSEGuLI03w6M4dqjIRS6vkb6aZCT76KbcyGYoh/yPbkyDrFlt
+kigCJOAjruVEhyUsZaUDVd7eyLxMAvJihysZ7jr5sF9ZD3iOMaEkBbSm+2gNl34x1TDfNS3viRI+
+wxtXMv9YFYuoa5p+Gdgo6uiMHzpzMfcrZpL6Uj64bPMlLzLWJ86HMyOaC5bYCoay3PkbGoHzhUt8
+52U+h8yZYDOKtEDjBYP3PZdtJo787Aj7AroTS56oR74s6DUkkkd4PnD/OgJTpw/NeCx/og2hRIiY
+QE8mOHmicnuMXKYLpXhHOYJvpVaMWLWS+Ety/jCGc1QmxNgpQ5uuk44dTJjKiNkNpF3BozrTJzR3
+9LWerWeMpjTqQXWpxkQi0puYJCVpHDmarZ1EY9ngWIe06MVetcY1GVLV/sQqJuWsAai5eBUWucDW
+OLEhrqFQ3A23QNeJ/iNLq8FVWVkGlIVmMZAxZWnzajZYTYa1qC30ZDotClnDRpajrCQXmvKaM4mK
+zV+SDV31tooPpVaVsKp0aMiMSFQMQrZlPersfJgYtNSS9p5SfWtIFXvbqeZWhIud7WFrS9np9Ra3
+JYVqcS+J3OQqd7nM/22uc58L3ehKd7rUzcwKq4vdMAZzn9ndXDPtGcLhdleN2rRWCmE7XrPq0LbH
+Ta96jdtY90IXvfK9JH3razeCJnaM+AUbo16at/3292MC46ksiThgjJV3nPEFboIJrF9r3SWlD56u
++bhb4bClEsMZFlQqn9ph/3GYwyGuIYklXGLycu/DKc7gIVncYvecuDYzjvFKMBsuG8sYxwzS8bZ4
+vCIg+/guQoZNjYe8nx0XGcmxBNaRmdy3JcPiyVDuMfqq3AUpcwrLNdOyk7wsPSq7GMxKpmOOYBw6
+NKNYkd/tpgrJrEQovhmn4aPzmYhs595BjqYUPqp3/XbMOVGzSeVER/84HezbJnLrKjptsGvHtGjo
+ifduMyaUTuGMUnYJuLtYaS3/DozfTv92lwrtr6gfDeHCInjAb/F02a75UeSt90rVmmxwDThrLp70
+1nMrpzmpGWGOYnquMwWw+hotazEKiZuELjALQzjsSz1BkHHBMkzbx2U/81d/2e4ziD/dbTpFeyXh
+lnR+s42rcZPK2mhNKrt1C1Yo70rdxNUxaz2M5PrRWxRDVqCYSebjTu67qzGm68B7WuJ/C+Xg8O6w
+wu/q2fyqecLb2HN4eStxOb/NONf9toTqOnFEd63WNxXdw/uppK+48eSn1Hi9RtjSy85FQ/ddeBED
+vetRZ87i8tp0/CL/DXFVC6nN2gNte6d8c3DOXLQ5f29WdwsNEIlzo6aVItEnnejkWhqiiJi6MtnK
+upoPkaG8nusfL4sin1PbzVUvh5/NkXasU7qhaeS61b0dxYfA/UM6F7mHc63Sukll3sb6uMtHu21d
+rOvoBL6jttqodpufi1kBubXBAS+svmtewcrOsdzbns3Of/sSK4+rrx+vUaHzj3T1KNwUx1HkLZYQ
+9hWWrUGzTlbQV1eziqdt7nEf3eX03jssT2viqVua4Xez+EtFtXIhWdenMt84jl5uPruO1VN93oIg
+084oY43coAiZ4U0ZpNZX4Qfylz+h9o0nRVz1cu7LNbCVRL/8d/PQ/wsjG+q/Nze2/7kJ7EAreaJ+
+dSJcqoMlNxFHlNd9niF1rYRYNkF3RWd+qwSA4MZYxzZ/Z5GA4ZNLBMeBETg4P7Ux6cdz7CeCvSaB
+Kgd9m2WCh8ds/Fc7oHRuvGRg1RdRwCQ/dhcPeQaDmxc829WAO/aDNbWCPkhRguF5hxdsOthM02dl
+3zSAT2I462M7NkV6m8RBONdRDOZNAhgLsNZYfNZ0wAccV9cswid0viZDy8J4j9RxHrdqjzYcvYSF
+1FN2ZZiHCOF+/QQ+NgRqfhdUCyaHOhdhCqJXMah7kwR0tuZHbDc0+AR+poN5gzJcPBh0eEeDQcgo
+mlKIuHFWHHNmS/+IeImobaXFRyTkhnKRekx4gJFnIIa0hxWYhs6HQ/yxil9WNBOoOIkSis6zZmZI
+a183iamoh3hViXjIa52GUVmIiqonO8W4U9IUXH4lg0NVbGcEhBYle56HTj8WUXaFg0jkUtpIVYrY
+N15IOaJnT4UIg2xIitdUgFaGU4xwaNtEc85meEAUcktBcihChhS1f3fGj1CYOXjnhGI3KxZRivjn
+U9T3HmuERSv2jLTkVIvYbl4jVBBZkRl5VajVcFEljKd1VNw1jzsTh5loVrO4gRuRNpVFTtLXgRq5
+jRZ5dqMYk8x2ZCe5VzXpkUlDYjw5h0XokPEmiK+IjhcYd3AlktD/qJII1394pVXX2IccqVb8hjGw
+aH8leJVYGSrXZ5NW+UhrtZKlBpNjNZZkKW0o+JQumJZq+THGqGnGF1QvhG/rh5R0uUBdEZfxZ1WY
+on18yVf+V5VSCViSMJimSJiGqXil55V6pkcJmTUSsnJQeYyCSZVtyZIBNGnopZCF6ZSIuX1KeZTt
+AVueqZWgOZT1djC8NxmjCR4945q22JCfmYh4cXxuN2r3BiityDPn2JGWJVoZ0zS5aZFTVG2qxY0g
+qIkQoobBqUrJCZ0dOZtPV1C2R0nttJl/eXxCeYGDNyrYWZssZTTCKZ1HlJlFWSI+yUwCJp3VSRcv
+ZZmhiZlv+JOrQPla7rlptrmY+Cma6XmW44hx7YWasKmapWl1kdl8AhofpecpCjo+ENptE0qhFWqh
+F4qhGaqhG8qhHeqhH0oBBQAAOw==
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab27.gif
+
+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
+F4qhGaqhG8qhF1AAADs=
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/numline8.gif
+
+R0lGODlh9AFNAJEDAP//////AAD//AAAACH5BAEAAAMALAAAAAD0AU0AQAL/nI+py+0Po5y02ouz
+3rz7D4biSJbmiabqegkCC8fyTNf2jef6zrfu3wsKh8SOq4hMLn7AXeAJfSqn1OCxis1FodRA9gtm
+XcPk8oOJTqvX7Lb7DY/L5/S6/Y7P65vmvv8PGCg4SFhoeCj2YjB2sNbAiBgpOUlZaXmJmam5ydnp
+eTjGlwH5WWp6Sranusra6vpahyprSDpra7GVq7vL2+v7CxwsPExcbHyMnFzsotzs/AwdLT0Mo3Z7
+fVKLvX2Wxv0NHi4+rhOqOHpOrr4+642uzR4vP09fb3+Pn69vegW//w8QyZGB6SiICogwoZB+/hww
+VAgxosRvcCZalAAro8aN/xw7Xvz4qCDIkSR3NCwZiBpKTCdXXhB2g5fLSy1nUthl02bNnFPi8PwJ
+dELHoUSLGj3qMWgkkUqbOn06iQkGqVCrRkSzxBqDnVa7rjPHgavXsRSZkj2LNq3atWzbun0LVxPV
+uHQDiq2LFxQQSI62ms0LOOq5uYu0Zg2MmObgvwYZJ34cSOpBjJOtVoaM2RabzNiQev4M+hVnfqFL
+mz5dcbRqxX1Xkw582fVr2bQ73a09IgruGLefchHya3c1x2d9wZiGPLny5cybK2fmPLr06dS3sAAm
+PBHd4D2sZ1fR26nu77LCk6ds/ryG9OoRtGkPXwnq+fTr238fv8L9/fz7f0LOv4EbAA6YBWEEHohg
+ggouyCBuD+mnCHsNMvjgesRNiKECYE0lYYYIbmihhyJ2QxCHhY2Iol8prshiiy6+CGMmBQAAOw==
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab28.gif
+
+R0lGODlh9AEkAZECAP//////AAAAAAAAACH5BAEAAAIALAAAAAD0ASQBQAL/lI+py+0Po5y02ouz
+3rz7D4biSJbmiaZSwLJU22bwTM/qjef6zvf+D1wELMOg8YhMKpdMiAu2cmmKr6b1is1qt9bYS8oN
+i8fkMhN8pprX7LY76X1P0fK6/Z6l49P7vv+PEAc4KKRHeAhXhEbDYOjhiCgntWjTYQgZmTnno5bg
+2KlJhmkpE2o6B8oYAhrBeiomaKDq6RpYUfuamxeIq+vbwNr7O7wzOmFM/CeczIyDjLLcrBUtXQ3y
+3GWtRK3dXWWK7X0rvgf2PDueHmTOLXBOhDcZ/TSk1+5Ont9Y6Hrf1mmPir9T9wbqS3QgnDuDBY+w
++6LgErw78sJ9mngwo6d9/8P60cqYSqNIWaUizQOJcWQyg63iqXTAUshLTTE31FyIM4rNmTKd8axz
+00TQEkP55HRSj+GtWDCRFfVW6ZjChMcgypqHq93TiOrY0MMWleu3iF6cJhVb9WcxpD111MK0FR/Z
+j7bAnUU7F9iqRQ8u/vzKMGyhvloFFiY82G2wuEagnHucGPFCs0fz0lULp+6VkG1TMA7lkRcnzEuE
+fS4J7LQTlctUdyU9OuXaaSjLuIatl5TPMLcluemNmyTR4XlqGIdyqGGT48yBk8vaGebGq4KoLQ7d
+mKpAjoTeci+dG2/w1y3Lj11NPvZ5QMrPyB4PP778+fTr279vDTn+/fx5l/91Ltd6/Q1IYBQxtVdg
+gvFV1NpdGDR3nIISTkhEb0xRiOFfUxWXYYfdAUjRhh6OiAqJCYlo4oIopigDiCy2eOJSO63womWP
+6RcdjTWa1FR4OwqF2o83PNQijpKlJmSMV8m4lGBJZmLdk7tJaZKFVF7g4pXFZGmVlFxqecKKu1D4
+JX/y8GKkCmVKRkmaS04BpSK3rZmgmDPSgt0PdqZFnZKaSZLUnlSlB2ZTqThZGXn05KhnQGkS+Z1+
+1XXk4HQCFrqFItVs9+GirUxVD6a28QlaX5dBhZ6o4D3C3ng10Xmlc0W52chNsJYTpqoj3BpghTnw
+akeZwFZpkaCDwlgZOn7/EoboR3QoG6Onk9H6m5xMGkgtWRem1mCzPCEHmUK92POpCOPm+cFib4pH
+zLnfkeAuoyz6ww1T0CbaK6mrYPkGg11aeumS2aIJsL6syWnsOMNKl6963x6bma4FQxxxrWokbOpL
+0InWw8J/GdzxmLXBIuqBPHj8bjcog/zjVnOKgmq/876Xcqo265gdobhqW7NDNA/IWcNCRwcQuz5O
+LFzOx3Ka9CAIbmMpugU+fbR5N1sNBITGJal1DRJ/DXbYYo9N9jTWlo22SJCis6iIVKcNd9bC/hx3
+3VDSbXfeZsOps95+C2UYmheu+Pbfhvsx+MqHL27TrBgzDnm6a24beeWN/yveo+Wa85zc45ubSPkv
+oX9OoueiY076hxOanjporNc3eus0vT5i7LInFq6FqOd3NjS71967VI+oS+WZ5Urbs7yQA/YFS9dV
+DXqgcdF7u1sWM7y4UtUPORgkv8+EvPLYa+4vUo6dZYxWXCNcL1ZHpn4+J/euHz63D1K8fdZIyv49
++UFmnz+HMKZ/sCHg4WhXq7EZ0G8I5BemFli3Bu5LSBBMmwSHVMHuBJB7iMggUOxmvIohBF8JdJt9
+PAi+4PWofp/q2sCcocJyYW2G1VrXtEDlwhc+UHq/whsMp9U8lo0PUMsy1OB8uEHlSYRHHMMXCi1j
+LiQekHD7Q9oY2HHEJv/66YlTEqLEymc+vgVsS9SxjmH8MsZ/OCpxyYNe2OLHFhTlUIcYZGECBdY+
+LsqQhJnT1hyTyIGireRUGvsTIMXoRib28SAbO2Tf2og44eWjXo7MGCKV4ar/VdJlkcTNUPTYn5eZ
+CyufDM5nQEkfFwWFjra72sM8QzpYOY+VVCzgySLnMdSh0mfr+NssbYgki1SoTZSb3y7pQsxPUI9J
+xcKZfEKoE2QRMprNXGRknLXKeBERmNa8YxW9iUU2XnOc3wpcGZWpsywihpbqFM0Sd5WXsDyRdep6
+pxZ1wzmjaeSCTcunFaHRTfzhk2PhO2a6AtpPeF4Pkh56S6UEeg17nqj/nROcKML+KYo1XkJqNxTf
+JgTKQoN28JEEbWUxvXhQZ6qxiGxJpD7XlUziGXKIKVzW/KL1UG7R0WI57V77kCDS0aAsqMxg2mZm
+esuP3bOXCnyp0gCmyld+02FfpClTrxlV1kRTT2A7CS+zobYrVjWNHMQCUYEEs5Jpsqwie84azqrI
+tQKUC3C9xj/ANCu2ZkocXKwrJhVKHLFqA5R+vStJE+pKhjrVeof1TWOTSlb8PM+jELWqYjHKWIjh
+qLCNROpXJ+rS/XS2slFrmCBpCFKgIu1iI3XqyrxD2fsUTjysXSxSR8vVx/5GiiHT7Xxmi9nYItaS
+V0VpsHgLWeNWcrnM/22uc58L3ehKd7rUra51r6shbmJ3u9S8mLe4u11orrCnqLUseMkGKWa1Urie
+Pa/YmNdD37oXr3OT73wPCdz7Pje/+p0iH1Va3v5+zV6IqmVkBVwoMO7RgQdGsJbSu2DkktbBO7Sj
+Py1hTgqH1zT81DDa1utND1cPxNcSMS47rF0TfxjFzFLxG1n8IBi7GDMy3kthZ/xWopIYx6668TR5
+3ONm1BjI8RhyRomsjx1vyshILg2TnfbkJivGx9uIspRHSeVMWfnKvqJglqe75XJyeR1fdt2Y1VTm
+doU5wSBWcom8jEA3nzjFU8VyrGK4q5tu7rv8sPFOS/dnPbP0x5ZbW/+z7DSKNU8yw2xDH26JW+j/
+6MTAAE4RuDgp4Qh+6VB8TLNtVKM9D2cFtgC8n4hHHdq4hVrDqL4sfU3D4FP32dU7hHSl5/xnPMVu
+mS3jYQtvzV4GZviG7rJwe23b0GHfq5qEJh/7TibTJyk4mAMJ1ZndCcjTXplc2/N0rW1d6GsPGqGG
+8/aDTcY4cxcvigy8NqjVfbcxAwjeTpN3bgfMZV4pupBNfm2C+01XLyEZgvveFJH7amkgG5TeIjRx
+wSMqIYZj6OGBNZPecv3DKher2pIVNp2hvRw8k7ulcbqgxGfXZj5jSXEqx5NU5rhwkdu13IyWp6Nj
+DWzFbPHQXm0wLAL/XeBMF0/Seg0wDMVL7ZzTmq413+zNg4tsNlPV6BjUaziN2i+iD1TpzOW0ROvd
+RG4D5ZRC36BDgy2zsE/KrfYN4Nmj/sGlmmOSZVc1ecv79StCuGAPmTulSK3ckvl6qzTblr4HT3K4
+1F0ZHAV3V5Vd4FVzveo2hFZA0D60lbIz1XCnbxn/Jd9bTbubG4V5kW0a+aVnfnmes3aIsKiwzn0+
+juo7OdCOTRCoJ3nC4cX8X1c7Mt5X99Glyg3Fwdp557ZGF9r8b1EdT11KFj/Ex4ca1buOcw1GOGaB
+z/adwO5JU++XVeAnDbqb+5Sg2p7838cvvHYW/pQmEdQUMSVgu130/8tx2Pk+Z2TF+RdfGHYUlvcq
+9jdX8NNbjTOATiIm6xdI+bc8+qOA6XN31xd8arJnn1ViGGhLyXVA1mdW8Td1eTNUIYg4KXd+EkiC
++vdy/ReA5SBzIeaCSOdTFjhWyMJsNnhOLRQ/eTd2O2ZCVhFT5KR6I0GDNah/ctZyS0WEcFGBRkSD
+1ddlC/goZkSE8XQYdcZ/Rhg8xlRtzbdHVwcQ4wIygmaDenRpk0Z84rN3ARUlNBaDMqiDqyc4H4dT
+8mJ4/zd5HPJ+s2Y08PVruieIUDFs2+d49dMg9wdFwid+fUJCDrh6eYcx9RQM2QV06vM+jMhucqiJ
+lzJ669dqvvdIaP90MC/IiVnydkXoSs+ibSiXPIqXKwgFicinhahYQo3Xfm9SUMxXiUiYfOuEdYvY
+iWRiP78oI2LngslIh/4BRIHoe6N2KG7CF344iBOXfdSWg8NIf8oYcqgnjYCHd88mSdpYQBqVV3sI
+U971jVrIhPAChivVjMCYicJ4GeISbVdYivEIhTdHgfiYOUDHg3I2PEs4WGZYhzdiPhiXZIXYJEAo
+P5Skb+a3jAmoIsYGJL8TjBQJPrjngW80jB4oS2oRNByJVk1FkvdWRB02i0IUh7BkktVoirZACRzI
+b9THJStpWKJ4gJGhkhuJVZPzXuY1gr0CYzgplHbYRboCa6o1ci7/GVa80VXouJPLYYSCpZTcuIm0
+SHdppSr8NZVU6X+j0pXXmJRayX1c+W+NGJNmOVheoVaXRJO0wXZv9UBb95UmeJZmYJRtlYt6yJcG
+t1sPVlGxCJUq41jrNph++ZfPd5jS1oeKuZiuY3pWCWiTmZA59HJ/pIFz6JZtF5dS+Vu85ZXDdZRr
+CX0u4ZlO2X2pJJrINZqfyZl0WVrGCIGlKVto0YuJZZukyXlsNY0wKZs142+agYsWd4U950SCGDS5
+WVwBYiSc9Yps6T3ECD3ImS8jeZrMqYKIVVvaJzja2XCetZewORmXpW3g6UbgiJJE+SythZWq6Yg6
+aYANdp7sFY0+SdiRuoma73mXpylarflYrwmfsamXizeg+vmfjfWaAtqfu5l1lrkq/FmOELqPXZOZ
+mCluGaqhG8qhHeqhHwqiISqiI0qiJXoBBQAAOw==
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab29.gif
+
+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
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://web.cs.ucla.edu/~rosen/161/notes/minimax/ab30.gif
+
+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
+------MultipartBoundary--jY6YHvg5jkPMhh0YSGJO9ZzyckyWr4Lz1u2ud54hha------
