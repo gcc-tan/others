@@ -222,7 +222,10 @@ Program terminated with signal SIGSEGV, Segmentation fault.
 #0  0x00000000004004f5 in test () at 1.c:5
 #1  0x0000000000400508 in main () at 1.c:9
 ```
+###gdb调试正在执行的进程
 
+
+gdb的功能非常强大，能够调试正在执行中的程序。首先你得知道被调试程序的pid，知道pid之后使用gdb命令启动gdb，然后使用`attach pid`命令就能进行调试了，这个时候程序是被中断的，可以使用上面的s，n，p这些命令进行调试。调试完毕之后可以用detach命令让进程正常运行
 
 参考文献:
 [gdb调试多线程](http://www.cnblogs.com/xuxm2007/archive/2011/04/01/2002162.html)

@@ -5,10 +5,10 @@ netstat用于显示网络中网络连接，接口状态，路由表等信息
 
 参数：
 
-+ a (all)显示所有选项，默认不显示LISTEN相关
++ -a (all)显示所有选项，默认不显示LISTEN相关
 + -t (tcp)仅显示tcp相关选项
 + -u (udp)仅显示udp相关选项
-+ -n 拒绝显示别名，能显示数字的全部转化成数字。
++ -n 拒绝显示别名，能显示数字的全部转化成数字。使用这个参数能阻止将ip转换成域名的操作，加快执行速度
 + -l 仅列出有在 Listen (监听) 的服務状态
 
 + -p 显示建立相关链接的程序名和进程号
@@ -90,8 +90,53 @@ iptables -t nat -A PREROUTING -d 10.0.0.1 -j DNAT –-to-destination 172.16.93.1
 
 
 
+###netcat
+今天在看文档的过程中，接触到了这个命令，之前没太用过，然后去google查了一下，我发现非常有必要记录一下。
 
+netcat(nc)能够使用tcp或者udp协议在网络中读取数据，通过和其他工具结合和重定向，nc能够完成很多功能。
 
+常用参数：
++ -l 监听连接请求，作为服务器模式使用
++ -n 不要使用DNS反向查询IP地址的域名
++ -p 指定nc使用的端口，一般和-l参数一起使用
++ -u 使用udp模式
++ -z 连接成功之后立即关闭，不进行数据交换
+
+然后用个简单例子说明一下，首先打开两个terminal，分别运行下面的命令
+```
+Server
+tan@tan:~$ nc -l 8888
+
+Client
+tan@tan:~/Desktop$ nc 127.0.0.1 8888
+```
+然后不管从server输入还是从client输入两边都能显示对方的输出。如果将上面的输入输出重定向，那么就可以在两台主机之间传送文件了。
+```
+Server
+tan@tan:~$ nc -l 8888 < source
+
+Client
+tan@tan:~/Desktop$ nc 127.0.0.1 8888 > dst
+```
+client就能得到server的source文件，这对于一次性的传输时就省去了配置ftp，scp等软件的麻烦过程。
+
+我们已经用过远程shell-使用telnet和ssh，但是如果这两个命令没有安装并且我们没有权限安装他们，我们也可以使用netcat创建远程shell。
+
+```
+On ‘server’ side:
+       $ rm -f /tmp/f; mkfifo /tmp/f #mkfifo创建一个命名管道，用于进程通信
+       #cat将命名管道的内容作为sh的输入，2>&1是将sh的标准错误输出重定向到标准输出，而它的标准输出作为nc命令的输入，而nc命令的输出重定向到fifo文件中
+       $ cat /tmp/f | /bin/sh -i 2>&1 | nc -l 127.0.0.1 1234 > /tmp/f
+       
+On ‘client’ side:
+       $ nc host.example.com 1234
+       $ (shell prompt from host.example.com)
+
+```
+通过上面的设置，客户端能像远程登录一样获取脚本了。
+
+**内容出自**
+[Linux Netcat 命令——网络工具中的瑞士军刀](http://www.oschina.net/translate/linux-netcat-command)
 
 
 
