@@ -144,9 +144,21 @@ tan@tan:~/Documents/code/net$ catch SIGTTIN
 结论是APUE真的是一本神书啊，平时遇到的好多问题都能在上面找到结果。
 
 
+### Linux执行程序报找不到指定的共享库
+在编译libevent的sample代码时，执行编译命令
 
+```
+ gcc -I/usr/local/include -o time-test time-test.c -L/usr/local/lib -levent
+```
 
+在当前目录就会生成一个time-test的二进制文件，然后执行`./time-test`，
+```
+./time-test: error while loading shared libraries: libevent-1.4.so.2: cannot open shared object file: No such file or directory
+```
+但是这个文件是在/usr/local/lib中
+解决方法:
+1. 在~/.bashrc里面加入`export LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib`，然后执行`souce ~/.bashrc`
 
-
+2. 修改/etc/ld.so.conf文件，在文件中加入动态库所在的目录（这块我就有疑问 ，ubuntu系统的这个文件是一个include /etc/ld.so.conf.d/*.conf，它是将这个目录下的所有conf文件都包括了，而打开这个目录的conf，发现libc.conf已经包括了我需要添加的目录------/usr/local/lib），修改之后重新执行ldconfig
 
 
