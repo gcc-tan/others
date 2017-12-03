@@ -124,6 +124,7 @@ int main(int argc,char **argv)
     void *s = (void *)5;
     int p = (intptr_t)s;
     int d = (long)s;
+    s = (void *)(intptr_t)p;
     printf("%d\n",p);
     printf("%d\n",d);
     return 0;

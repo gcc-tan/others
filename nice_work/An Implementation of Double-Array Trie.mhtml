@@ -1,0 +1,1454 @@
+From: <Saved by Blink>
+Subject: An Implementation of Double-Array Trie
+Date: Fri, 9 Nov 2017 20:03:15 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--argG0oaksqe0FcpzZLjHjVtTJvq9JZBbc8nZrI3JhM----"
+
+------MultipartBoundary--argG0oaksqe0FcpzZLjHjVtTJvq9JZBbc8nZrI3JhM----
+Content-Type: text/html
+Content-ID: <frame-91-049925e3-fe9e-4ed5-bcab-3f3265ade394@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://linux.thai.net/~thep/datrie/datrie.html#WhatTake
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w=
+3.org/TR/REC-html40/loose.dtd"><html><head><meta http-equiv=3D"Content-Type=
+" content=3D"text/html; charset=3Dwindows-1252">
+  <title>An Implementation of Double-Array Trie</title>
+  <link rel=3D"stylesheet" href=3D"https://linux.thai.net/~thep/style/paper=
+.css" type=3D"text/css">
+  <meta name=3D"keywords" content=3D"trie, double-array, information retrie=
+val, lexicon">
+  <meta name=3D"editor" content=3D"/bin/vi">
+  <meta http-equiv=3D"Content-type:" content=3D"text/html; charset=3Diso-88=
+59-1">
+</head>
+
+<body>
+
+<h1>An Implementation of Double-Array Trie</h1>
+
+<h2>Contents</h2>
+<ol>
+  <li> <a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#What">Wha=
+t is Trie?</a>
+  </li><li> <a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#What=
+Take">What Does It Take to Implement a Trie?</a>
+  </li><li> <a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#Trip=
+ple">Tripple-Array Trie</a>
+  </li><li> <a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#Doub=
+le">Double-Array Trie</a>
+  </li><li> <a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#Suff=
+ix">Suffix Compression</a>
+  </li><li> <a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#Inse=
+rt">Key Insertion</a>
+  </li><li> <a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#Dele=
+te">Key Deletion</a>
+  </li><li> <a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#Allo=
+c">Double-Array Pool Allocation</a>
+  </li><li> <a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#AnIm=
+p">An Implementation</a>
+  </li><li> <a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#Down=
+load">Download</a>
+  </li><li> <a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#Othe=
+rs">Other Implementations</a>
+  </li><li> <a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#Refe=
+rences">References</a>
+</li></ol>
+
+<a name=3D"What">
+<h2>What is Trie?</h2>
+</a>
+
+<p><strong>Trie</strong> is a kind of digital search tree. (See
+<a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#Ref_Knuth1972">[=
+Knuth1972]</a> for the detail of digital search tree.)
+<a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#Ref_Fredkin1960"=
+>[Fredkin1960]</a> introduced the <cite>trie</cite>
+terminology, which is abbreviated from "Re<i>trie</i>val".</p>
+
+<p><img src=3D"https://linux.thai.net/~thep/datrie/trie1.gif" alt=3D"Trie E=
+xample"></p>
+
+<p>Trie is an efficient indexing method. It is indeed also a kind of
+deterministic finite automaton (DFA) (See <a href=3D"https://linux.thai.net=
+/~thep/datrie/datrie.html#Ref_Cohen">[Cohen1990]</a>,
+for example, for the definition of DFA). Within the tree structure, each no=
+de
+corresponds to a DFA state, each (directed) labeled edge from a parent node=
+ to
+a child node corresponds to a DFA transition. The traversal starts at the r=
+oot
+node. Then, from head to tail, one by one character in the key string is ta=
+ken
+to determine the next state to go. The edge labeled with the same character=
+ is
+chosen to walk. Notice that each step of such walking consumes one characte=
+r
+from the key and descends one step down the tree. If the key is exhausted a=
+nd
+a leaf node is reached, then we arrive at the exit for that key. If we get
+stuck at some node, either because there is no branch labeled with the curr=
+ent
+character we have or because the key is exhausted at an internal node, then
+it simply implies that the key is not recognized by the trie.</p>
+
+<p>Notice that the time needed to traverse from the root to the leaf is not
+dependent on the size of the database, but is proportional to the length of
+the key. Therefore, it is usually much faster than B-tree or any
+comparison-based indexing method in general cases. Its time complexity is
+comparable with hashing techniques.</p>
+
+<p>In addition to the efficiency, trie also provides flexibility in searchi=
+ng
+for the closest path in case that the key is misspelled. For example, by
+skipping a certain character in the key while walking, we can fix the inser=
+tion
+kind of typo. By walking toward all the immediate children of one node with=
+out
+consuming a character from the key, we can fix the deletion typo, or even
+substitution typo if we just drop the key character that has no branch to g=
+o
+and descend to all the immediate children of the current node.</p>
+
+<a name=3D"WhatTake">
+<h2>What Does It Take to Implement a Trie?</h2>
+</a>
+
+<p>In general, a DFA is represented with a <cite>transition table</cite>, i=
+n
+which the rows correspond to the states, and the columns correspond to the
+transition labels. The data kept in each cell is then the next state to go =
+for
+a given state when the input is equal to the label.</p>
+
+<p>This is an efficient method for the traversal, because every transition
+can be calculated by two-dimensional array indexing. However, in term of sp=
+ace
+usage, this is rather extravagant, because, in the case of trie, most nodes
+have only a few branches, leaving the majority of the table cells blanks.</=
+p>
+
+<p>Meanwhile, a more compact scheme is to use a linked list to store the
+transitions out of each state. But this results in slower access, due to
+the linear search.</p>
+
+<p>Hence, table compression techniques which still allows fast access have
+been devised to solve the problem.</p>
+
+<ol>
+  <li> <strong><a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#R=
+ef_Johnson1975">[Johnson1975]</a></strong>
+       (Also explained in <a href=3D"https://linux.thai.net/~thep/datrie/da=
+trie.html#Ref_Aho+1985">[Aho+1985]</a> pp. 144-146)
+       represented DFA with four arrays, which can be simplified to three
+       in case of trie. The transition table rows are allocated in overlapp=
+ing
+       manner, allowing the free cells to be used by other rows.
+  </li><li> <strong><a href=3D"https://linux.thai.net/~thep/datrie/datrie.h=
+tml#Ref_Aoe1989">[Aoe1989]</a></strong>
+       proposed an improvement from the three-array structure by reducing
+       the arrays to two.
+</li></ol>
+
+<a name=3D"Tripple">
+<h2>Tripple-Array Trie</h2>
+</a>
+
+<p>As explained in <a href=3D"https://linux.thai.net/~thep/datrie/datrie.ht=
+ml#Ref_Aho+1985">[Aho+1985]</a> pp. 144-146, a DFA
+compression could be done using four linear arrays, namely <cite>default</c=
+ite>,
+<cite>base</cite>, <cite>next</cite>, and <cite>check</cite>. However, in
+a case simpler than the lexical analyzer, such as the mere trie for informa=
+tion
+retrieval, the <cite>default</cite> array could be omitted. Thus, a trie
+can be implemented using three arrays according to this scheme.</p>
+
+<h3>Structure</h3>
+
+<p>The tripple-array structure is composed of:</p>
+<ol>
+  <li> <b><i>base</i></b>. Each element in <cite>base</cite> corresponds to=
+ a
+       node of the trie. For a trie node <cite>s</cite>,
+       <cite>base</cite>[<cite>s</cite>] is the starting
+       index within the <cite>next</cite> and <cite>check</cite> pool (to b=
+e
+       explained later) for the row of the node <cite>s</cite> in the
+       transition table.
+  </li><li> <b><i>next</i></b>. This array, in coordination with <cite>chec=
+k</cite>,
+       provides a pool for the allocation of the sparse vectors for the row=
+s
+       in the trie transition table. The vector data, that is, the vector o=
+f
+       transitions from every node, would be stored in this array.
+  </li><li> <b><i>check</i></b>. This array works in parallel to <cite>next=
+</cite>.
+       It marks the owner of every cell in <cite>next</cite>. This allows t=
+he
+       cells next to one another to be allocated to different trie nodes.
+       That means the sparse vectors of transitions from more than one=20
+       node are allowed to be overlapped.
+</li></ol>
+
+<div class=3D"definition">
+<p><strong>Definition 1.</strong> For a transition from state <cite>s</cite=
+> to
+<cite>t</cite> which takes character <cite>c</cite> as the input, the condi=
+tion
+maintained in the tripple-array trie is:</p>
+<blockquote>
+  <cite>check</cite>[<cite>base</cite>[<cite>s</cite>] + <cite>c</cite>]
+    =3D <cite>s</cite><br>
+  <cite>next</cite>[<cite>base</cite>[<cite>s</cite>] + <cite>c</cite>]
+    =3D <cite>t</cite>
+</blockquote>
+</div>
+
+<p><img src=3D"https://linux.thai.net/~thep/datrie/tripple.gif" alt=3D"Trip=
+ple-Array Structure"></p>
+
+<h3>Walking</h3>
+
+<p>According to <strong>definition 1</strong>, the walking algorithm for a
+given state <cite>s</cite> and the input character <cite>c</cite> is:</p>
+
+<div class=3D"pseudocode">  <cite>t</cite> :=3D <cite>base</cite>[<cite>s</=
+cite>] + <cite>c</cite>;<br>
+  <b><i>if</i></b> <cite>check</cite>[<cite>t</cite>] =3D <cite>s</cite> <b=
+><i>then</i></b>
+      <cite>next state</cite> :=3D <cite>next</cite>[<cite>t</cite>]
+  <b><i>else</i></b>
+      <cite>fail</cite>
+  <b><i>endif</i></b>
+</div>
+
+<h3>Construction</h3>
+
+<p>To insert a transition that takes character <cite>c</cite> to traverse
+from a state <cite>s</cite> to another state <cite>t</cite>, the cell
+<cite>next</cite>[<cite>base</cite>[<cite>s</cite>] + <cite>c</cite>]]
+must be managed to be available. If it is already vacant, we are lucky.
+Otherwise, either the entire transition vector for the current owner of the
+cell or that of the state <cite>s</cite> itself must be relocated. The
+estimated cost for each case could determine which one to move. After findi=
+ng
+the free slots to place the vector, the transition vector must be
+recalculated as follows. Assuming the new place begins at <cite>b</cite>,
+the procedure for the relocation is:</p>
+
+<div class=3D"pseudocode"><b><i>Procedure</i></b> <cite>Relocate</cite>(<ci=
+te>s</cite> : <b><i>state</i></b>; <cite>b</cite> : <b><i>base_index</i></b=
+>)
+<span class=3D"comment">{ Move base for state <cite>s</cite> to a new place=
+ beginning at <cite>b</cite> }</span>
+<b><i>begin</i></b>
+    <b><i>foreach</i></b> input character <cite>c</cite> for the state <cit=
+e>s</cite>
+    <span class=3D"comment">{ i.e. foreach <cite>c</cite> such that <cite>c=
+heck</cite>[<cite>base</cite>[<cite>s</cite>] + <cite>c</cite>]] =3D <cite>=
+s</cite> }</span>
+    <b><i>begin</i></b>
+        <cite>check</cite>[<cite>b</cite> + <cite>c</cite>] :=3D <cite>s</c=
+ite>;     <span class=3D"comment">{ mark owner }</span>
+        <cite>next</cite>[<cite>b</cite> + <cite>c</cite>] :=3D <cite>next<=
+/cite>[<cite>base</cite>[<cite>s</cite>] + <cite>c</cite>];     <span class=
+=3D"comment">{ copy data }</span>
+        <cite>check</cite>[<cite>base</cite>[<cite>s</cite>] + <cite>c</cit=
+e>] :=3D <b><i>none</i></b>     <span class=3D"comment">{ free the cell }</=
+span>
+    <b><i>end</i></b>;
+    <cite>base</cite>[<cite>s</cite>] :=3D <cite>b</cite>
+<b><i>end</i></b>
+</div>
+
+<p><img src=3D"https://linux.thai.net/~thep/datrie/tripreloc.gif" alt=3D"Tr=
+ipple-Array Relocation"></p>
+
+<a name=3D"Double">
+<h2>Double-Array Trie</h2>
+</a>
+
+<p>The tripple-array structure for implementing trie appears to be well def=
+ined,
+but is still not practical to keep in a single file. The
+<b><i>next/check</i></b>
+pool may be able to keep in a single array of integer couples, but the
+<b><i>base</i></b> array does not grow in parallel to the pool, and is ther=
+efore
+usually split.</p>
+
+<p>To solve this problem, <a href=3D"https://linux.thai.net/~thep/datrie/Re=
+f_Aoe1989">[Aoe1989]</a> reduced the
+structure into two parallel arrays. In the double-array structure, the
+<b><i>base</i></b> and <b><i>next</i></b> are merged, resulting in only two
+parallel arrays, namely, <b><i>base</i></b> and <b><i>check</i></b>.</p>
+
+<h3>Structure</h3>
+
+<p>Instead of indirectly referencing through <cite>state numbers</cite> as
+in tripple-array trie, nodes in double-array trie are linked directly withi=
+n
+the <b><i>base/check</i></b> pool.</p>
+
+<div class=3D"definition">
+<p><strong>Definition 2.</strong> For a transition from state <cite>s</cite=
+> to
+<cite>t</cite> which takes character <cite>c</cite> as the input, the condi=
+tion
+maintained in the double-array trie is:</p>
+<blockquote>
+  <cite>check</cite>[<cite>base</cite>[<cite>s</cite>] + <cite>c</cite>]
+    =3D <cite>s</cite><br>
+  <cite>base</cite>[<cite>s</cite>] + <cite>c</cite>
+    =3D <cite>t</cite>
+</blockquote>
+</div>
+
+<p><img src=3D"https://linux.thai.net/~thep/datrie/double.gif" alt=3D"Doubl=
+e-Array Structure"></p>
+
+<h3>Walking</h3>
+
+<p>According to <strong>definition 2</strong>, the walking algorithm for a
+given state <cite>s</cite> and the input character <cite>c</cite> is:</p>
+
+<div class=3D"pseudocode">  <cite>t</cite> :=3D <cite>base</cite>[<cite>s</=
+cite>] + <cite>c</cite>;<br>
+  <b><i>if</i></b> <cite>check</cite>[<cite>t</cite>] =3D <cite>s</cite> <b=
+><i>then</i></b>
+      <cite>next state</cite> :=3D <cite>t</cite>
+  <b><i>else</i></b>
+      <cite>fail</cite>
+  <b><i>endif</i></b>
+</div>
+
+<h3>Construction</h3>
+
+<p>The construction of double-array trie is in principle the same as that o=
+f
+tripple-array trie. The difference is the base relocation:</p>
+
+<div class=3D"pseudocode"><b><i>Procedure</i></b> <cite>Relocate</cite>(<ci=
+te>s</cite> : <b><i>state</i></b>; <cite>b</cite> : <b><i>base_index</i></b=
+>)
+<span class=3D"comment">{ Move base for state <cite>s</cite> to a new place=
+ beginning at <cite>b</cite> }</span>
+<b><i>begin</i></b>
+    <b><i>foreach</i></b> input character <cite>c</cite> for the state <cit=
+e>s</cite>
+    <span class=3D"comment">{ i.e. foreach <cite>c</cite> such that <cite>c=
+heck</cite>[<cite>base</cite>[<cite>s</cite>] + <cite>c</cite>]] =3D <cite>=
+s</cite> }</span>
+    <b><i>begin</i></b>
+        <cite>check</cite>[<cite>b</cite> + <cite>c</cite>] :=3D <cite>s</c=
+ite>;     <span class=3D"comment">{ mark owner }</span>
+        <cite>base</cite>[<cite>b</cite> + <cite>c</cite>] :=3D <cite>base<=
+/cite>[<cite>base</cite>[<cite>s</cite>] + <cite>c</cite>];     <span class=
+=3D"comment">{ copy data }</span>
+        <span class=3D"comment">{ the node <cite>base</cite>[<cite>s</cite>=
+] + <cite>c</cite> is to be moved to <cite>b</cite> + <cite>c</cite>;
+          Hence, for any <cite>i</cite> for which <cite>check</cite>[<cite>=
+i</cite>] =3D <cite>base</cite>[<cite>s</cite>] + <cite>c</cite>, update <c=
+ite>check</cite>[<cite>i</cite>] to <cite>b</cite> + <cite>c</cite> }</span=
+>
+        <b><i>foreach</i></b> input character <cite>d</cite> for the node <=
+cite>base</cite>[<cite>s</cite>] + <cite>c</cite>
+        <b><i>begin</i></b>
+            <cite>check</cite>[<cite>base</cite>[<cite>base</cite>[<cite>s<=
+/cite>] + <cite>c</cite>] + <cite>d</cite>] :=3D <cite>b</cite> + <cite>c</=
+cite>
+        <b><i>end</i></b>;
+        <cite>check</cite>[<cite>base</cite>[<cite>s</cite>] + <cite>c</cit=
+e>] :=3D <b><i>none</i></b>     <span class=3D"comment">{ free the cell }</=
+span>
+    <b><i>end</i></b>;
+    <cite>base</cite>[<cite>s</cite>] :=3D <cite>b</cite>
+<b><i>end</i></b>
+</div>
+
+<p><img src=3D"https://linux.thai.net/~thep/datrie/doubreloc.gif" alt=3D"Do=
+uble-Array Relocation"></p>
+
+<a name=3D"Suffix">
+<h2>Suffix Compression</h2>
+</a>
+
+<p><a href=3D"https://linux.thai.net/~thep/datrie/Ref_Aoe1989">[Aoe1989]</a=
+> also suggested a storage compression
+strategy, by splitting non-branching suffixes into single string storages,
+called <b><i>tail</i></b>, so that the rest non-branching steps are reduced
+into mere string comparison.</p>
+
+<p>With the two separate data structures, double-array branches and=20
+suffix-spool tail, key insertion and deletion algorithms must be modified
+accordingly.</p>
+
+<a name=3D"Insert">
+<h2>Key Insertion</h2>
+</a>
+
+<p>To insert a new key, the branching position can be found by traversing t=
+he
+trie with the key one by one character until it gets stuck. The state where
+there is no branch to go is the very place to insert a new edge, labeled by
+the failing character. However, with the branch-tail structure, the inserti=
+on
+point can be either in the branch or in the tail.</p>
+
+<h3>1. When the branching point is in the double-array structure</h3>
+
+<p>Suppose that the new key is a string
+a<sub>1</sub>a<sub>2</sub>...a<sub>h-1</sub>a<sub>h</sub>a<sub>h+1</sub>...=
+a<sub>n</sub>,
+where
+a<sub>1</sub>a<sub>2</sub>...a<sub>h-1</sub>
+traverses the trie from the root to a node s<sub>r</sub> in the double-arra=
+y
+structure, and there is no edge labeled a<sub>h</sub> that goes out of
+s<sub>r</sub>. The algorithm called <b><i>A_INSERT</i></b> in
+<a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#Ref_Aoe1989">[Ao=
+e1989]</a> does as follows:
+</p>
+
+<div class=3D"pseudocode">From s<sub>r</sub>, insert edge labeled a<sub>h</=
+sub> to new node s<sub>t</sub>;
+Let s<sub>t</sub> be a separate node poining to a string a<sub>h+1</sub>...=
+a<sub>n</sub> in tail pool.
+</div>
+
+<p><img src=3D"https://linux.thai.net/~thep/datrie/a_insert.gif" alt=3D"A_I=
+NSERT algorithm"></p>
+
+<h3>2. When the branching point is in the tail pool</h3>
+
+<p>Since the path through a tail string has no branch, and therefore corres=
+ponds
+to exactly one key, suppose that the key corresponding to the tail is</p>
+
+<p>
+a<sub>1</sub>a<sub>2</sub>...a<sub>h-1</sub>a<sub>h</sub>...a<sub>h+k-1</su=
+b>b<sub>1</sub>...b<sub>m</sub>,<br>
+<br>
+where
+a<sub>1</sub>a<sub>2</sub>...a<sub>h-1</sub> is in double-array structure, =
+and
+a<sub>h</sub>...a<sub>h+k-1</sub>b<sub>1</sub>...b<sub>m</sub> is in tail.
+Suppose that the substring
+a<sub>1</sub>a<sub>2</sub>...a<sub>h-1</sub> traverses the trie from the ro=
+ot
+to a node s<sub>r</sub>.
+</p>
+
+<p>And suppose that the new key is in the form</p>
+
+<p>
+a<sub>1</sub>a<sub>2</sub>...a<sub>h-1</sub>a<sub>h</sub>...a<sub>h+k-1</su=
+b>a<sub>h+k</sub>...a<sub>n</sub>,<br>
+<br>
+where a<sub>h+k</sub> &lt;&gt; b<sub>1</sub>. The algorithm called
+<b><i>B_INSERT</i></b> in <a href=3D"https://linux.thai.net/~thep/datrie/da=
+trie.html#Ref_Aoe1989">[Aoe1989]</a> does as follows:
+</p>
+
+<div class=3D"pseudocode">From s<sub>r</sub>, insert straight path with a<s=
+ub>h</sub>...a<sub>h+k-1</sub>, ending at a new node s<sub>t</sub>;
+From s<sub>t</sub>, insert edge labeled b<sub>1</sub> to new node s<sub>u</=
+sub>;
+Let s<sub>u</sub> be separate node pointing to a string b<sub>2</sub>...b<s=
+ub>m</sub> in tail pool;
+From s<sub>t</sub>, insert edge labeled a<sub>h+k</sub> to new node s<sub>v=
+</sub>;
+Let s<sub>v</sub> be separate node pointing to a string a<sub>h+k+1</sub>..=
+.a<sub>n</sub> in tail pool.
+</div>
+
+<p><img src=3D"https://linux.thai.net/~thep/datrie/b_insert.gif" alt=3D"B_I=
+NSERT algorithm"></p>
+
+<a name=3D"Delete">
+<h2>Key Deletion</h2>
+</a>
+
+<p>To delete a key from the trie, all we need to do is delete the tail bloc=
+k
+occupied by the key, and all double-array nodes belonging exclusively to th=
+e=20
+key, without touching any node belonging to other keys.</p>
+
+<p>Consider a trie which accepts a language K =3D {pool#, prepare#, preview=
+#,
+prize#, produce#, producer#, progress#} : </p>
+
+<p><img src=3D"https://linux.thai.net/~thep/datrie/trie2.gif" alt=3D"exampl=
+e trie"></p>
+
+<p>The key "pool#" can be deleted by removing the tail string "ol#" from th=
+e
+tail pool, and node 3 from the double-array structure. This is the simplest
+case.</p>
+
+<p>To remove the key "produce#", it is sufficient to delete node 14 from th=
+e
+double-array structure. But the resulting trie will not obay the convention
+that every node in the double-array structure, except the separate nodes wh=
+ich
+point to tail blocks, must belong to more than one key. The path from node =
+10
+on will belong solely to the key "producer#".</p>
+
+<p>But there is no harm violating this rule. The only drawback is the
+uncompactnesss of the trie. Traversal, insertion and deletion algoritms are
+intact. Therefore, this should be relaxed, for the sake of simplicity and
+efficiency of the deletion algorithm. Otherwise, there must be extra steps
+to examine other keys in the same subtree ("producer#" for the deletion of
+"produce#") if any node needs to be moved from the double-array structure t=
+o
+tail pool.</p>
+
+<p>Suppose further that having removed "produce#" as such (by removing only
+node 14), we also need to remove "producer#" from the trie. What we have to=
+ do
+is remove string "#" from tail, and remove nodes 15, 13, 12, 11, 10 (which =
+now
+belong solely to the key "producer#") from the double-array structure.</p>
+
+<p>We can thus summarize the algorithm to delete a key
+k =3D a<sub>1</sub>a<sub>2</sub>...a<sub>h-1</sub>a<sub>h</sub>...a<sub>n</=
+sub>,
+where a<sub>1</sub>a<sub>2</sub>...a<sub>h-1</sub> is in double-array struc=
+ture,
+and a<sub>h</sub>...a<sub>n</sub> is in tail pool, as follows : </p>
+
+<div class=3D"pseudocode">Let <cite>s<sub>r</sub></cite> :=3D the node reac=
+hed by a<sub>1</sub>a<sub>2</sub>...a<sub>h-1</sub>;
+Delete a<sub>h</sub>...a<sub>n</sub> from tail;
+<cite>s</cite> :=3D <cite>s<sub>r</sub></cite>;
+<b><i>repeat</i></b>
+    <cite>p</cite> :=3D parent of <cite>s</cite>;
+    Delete node <cite>s</cite> from double-array structure;
+    <cite>s</cite> :=3D <cite>p</cite>
+<b><i>until</i></b> <cite>s</cite> =3D root <b><i>or</i></b> <cite>outdegre=
+e</cite>(<cite>s</cite>) &gt; 0.
+</div>
+
+<p>Where <cite>outdegree</cite>(<cite>s</cite>) is the number of children n=
+odes
+of <cite>s</cite>.
+
+<a name=3D"Alloc">
+</a></p><h2><a name=3D"Alloc">Double-Array Pool Allocation</a></h2><a name=
+=3D"Alloc">
+</a>
+
+<p>When inserting a new branch for a node, it is possible that the array el=
+ement
+for the new branch has already been allocated to another node. In that case=
+,
+relocation is needed. The efficiency-critical part then turns out to be the
+search for a new place. A brute force algoritm iterates along the
+<cite>check</cite> array to find an empty cell to place the first branch, a=
+nd
+then assure that there are empty cells for all other branches as well.
+The time used is therefore proportional to the size of the double-array poo=
+l
+and the size of the alphabet.</p>
+
+<p>Suppose that there are <cite>n</cite> nodes in the trie, and the alphabe=
+t is
+of size <cite>m</cite>. The size of the double-array structure would be
+<cite>n</cite> + <cite>cm</cite>, where <cite>c</cite> is a coefficient whi=
+ch
+is dependent on the characteristic of the trie. And the time complexity of
+the brute force algorithm would be
+O(<cite>nm</cite> + <cite>cm<sup>2</sup></cite>).</p>
+
+<p><a href=3D"https://linux.thai.net/~thep/datrie/datrie.html#Ref_Aoe1989">=
+[Aoe1989]</a> proposed a free-space list in the
+double-array structure to make the time complexity independent of the size
+of the trie, but dependent on the number of the free cells only. The=20
+<cite>check</cite> array for the free cells are redefined to keep a pointer
+to the next free cell (called G-link) : </p>
+
+<div class=3D"definition">
+<p><strong>Definition 3.</strong> Let r<sub>1</sub>, r<sub>2</sub>, ... ,
+r<sub>cm</sub> be the free cells in the double-array structure, ordered
+by position. G-link is defined as follows :
+</p><blockquote>
+  <cite>check</cite>[0] =3D -r<sub>1</sub><br>
+  <cite>check</cite>[r<sub>i</sub>] =3D -r<sub>i+1</sub>
+    ; 1 &lt;=3D i &lt;=3D cm-1<br>
+  <cite>check</cite>[r<sub>cm</sub>] =3D -1
+</blockquote>
+</div>
+
+<p>By this definition, negative <cite>check</cite> means unoccupied in the =
+same
+sense as that for "none" <cite>check</cite> in the ordinary algorithm. This
+encoding scheme forms a singly-linked list of free cells. When searching fo=
+r an
+empty cell, only <cite>cm</cite> free cells are visited, instead of all
+<cite>n</cite> + <cite>cm</cite> cells as in the brute force algorithm.</p>
+
+<p>This, however, can still be improved. Notice that for those cells with
+negative <cite>check</cite>, the corresponding <cite>base</cite>'s are not
+given any definition. Therefore, in our implementation, Aoe's G-link is
+modified to be doubly-linked list by letting <cite>base</cite> of every fre=
+e
+cell points to a previous free cell. This can speed up the insertion and
+deletion processes. And, for convenience in referencing the list head and t=
+ail,
+we let the list be circular. The zeroth node is dedicated to be the entry p=
+oint
+of the list. And the root node of the trie will begin with cell number one.=
+</p>
+
+<div class=3D"definition">
+<p><strong>Definition 4.</strong> Let r<sub>1</sub>, r<sub>2</sub>, ... ,
+r<sub>cm</sub> be the free cells in the double-array structure, ordered
+by position. G-link is defined as follows :
+</p><blockquote>
+  <cite>check</cite>[0] =3D -r<sub>1</sub><br>
+  <cite>check</cite>[r<sub>i</sub>] =3D -r<sub>i+1</sub>
+    ; 1 &lt;=3D i &lt;=3D cm-1<br>
+  <cite>check</cite>[r<sub>cm</sub>] =3D 0<br>
+  <cite>base</cite>[0] =3D -r<sub>cm</sub><br>
+  <cite>base</cite>[r<sub>1</sub>] =3D 0<br>
+  <cite>base</cite>[r<sub>i+1</sub>] =3D -r<sub>i</sub>
+    ; 1 &lt;=3D i &lt;=3D cm-1
+</blockquote>
+</div>
+
+<p>Then, the searching for the slots for a node with input symbol set
+P =3D {c<sub>1</sub>, c<sub>2</sub>, ..., c<sub>p</sub>} needs to iterate o=
+nly
+the cells with negative <cite>check</cite> : </p>
+
+<div class=3D"pseudocode"><span class=3D"comment">{find least free cell s s=
+uch that s &gt; c<sub>1</sub>}</span>
+s :=3D -<cite>check</cite>[0];
+<b><i>while</i></b> s &lt;&gt; 0 <b><i>and</i></b> s &lt;=3D c<sub>1</sub> =
+<b><i>do</i></b>
+    s :=3D -<cite>check</cite>[s]
+<b><i>end</i></b>;
+<b><i>if</i></b> s =3D 0 <b><i>then</i></b> <b><i>return</i></b> <i>FAIL</i=
+>;  <span class=3D"comment">{or reserve some additional space}</span>
+
+<span class=3D"comment">{continue searching for the row, given that s match=
+es c<sub>1</sub>}</span>
+<b><i>while</i></b> s &lt;&gt; 0 <b><i>do</i></b>
+    i :=3D 2;
+    <b><i>while</i></b> i &lt;=3D p <b><i>and</i></b> <cite>check</cite>[s =
++ c<sub>i</sub> - c<sub>1</sub>] &lt; 0 <b><i>do</i></b>
+        i :=3D i + 1
+    <b><i>end</i></b>;
+    <b><i>if</i></b> i =3D p + 1 <b><i>then</i></b> <b><i>return</i></b> s =
+- c<sub>1</sub>;  <span class=3D"comment">{all cells required are free, so =
+return it}</span>
+    s :=3D -<cite>check</cite>[s]
+<b><i>end</i></b>;
+<b><i>return</i></b> <cite>FAIL</cite>;  <span class=3D"comment">{or reserv=
+e some additional space}</span>
+</div>
+
+<p>The time complexity for free slot searching is reduced to
+O(<cite>cm<sup>2</sup></cite>). The relocation stage takes=20
+O(<cite>m<sup>2</sup></cite>). The total time complexity is therefore
+O(<cite>cm<sup>2</sup></cite> + <cite>m<sup>2</sup></cite>) =3D=20
+O(<cite>cm<sup>2</sup></cite>).</p>
+
+<p>It is useful to keep the free list ordered by position, so that the acce=
+ss
+through the array becomes more sequential. This would be beneficial when th=
+e
+trie is stored in a disk file or virtual memory, because the disk caching o=
+r
+page swapping would be used more efficiently. So, the free cell reusing
+should maintain this strategy :</p>
+
+<div class=3D"pseudocode">t :=3D -<cite>check</cite>[0];
+<b><i>while</i></b> <cite>check</cite>[t] &lt;&gt; 0 <b><i>and</i></b> t &l=
+t; s <b><i>do</i></b>
+    t :=3D -<cite>check</cite>[t]
+<b><i>end</i></b>;
+<span class=3D"comment">{t now points to the cell after s' place}</span>
+<cite>check</cite>[s] :=3D -t;
+<cite>check</cite>[-<cite>base</cite>[t]] :=3D -s;
+<cite>base</cite>[s] :=3D <cite>base</cite>[t];
+<cite>base</cite>[t] :=3D -s;
+</div>
+
+<p>Time complexity of freeing a cell is thus O(<cite>cm</cite>).</p>
+
+<a name=3D"AnImp">
+<h2>An Implementation</h2>
+</a>
+
+<p>In my implementation, I designed the API with persistent data in mind.
+Tries can be saved to disk and loaded for use afterward. And in newer versi=
+ons,
+non-persistent usage is also possible. You can create a trie in memory,=20
+populate data to it, use it, and free it, without any disk I/O. Alternative=
+ly
+you can load a trie from disk and save it to disk whenever you want.</p>
+
+<p>The trie data is portable across platforms. The byte order in the disk i=
+s
+always little-endian, and is read correctly on either little-endian or=20
+big-endian systems.</p>
+
+<p>Trie index is 32-bit signed integer. This allows 2,147,483,646=20
+(2<sup>31</sup> - 2) total nodes in the trie data, which should be sufficie=
+nt
+for most problem domains. And each data entry can store a 32-bit integer va=
+lue
+associated to it. This value can be used for any purpose, up to your needs.
+If you don't need to use it, just store some dummy value.</p>
+
+<p>For sparse data compactness, the trie alphabet set should be continuous,
+but that is usually not the case in general character sets.  Therefore, a m=
+ap
+between the input character and the low-level alphabet set for the trie is
+created in the middle. You will have to define your input character set by
+listing their continuous ranges of character codes in a .abm (alphabet map)
+file when creating a trie. Then, each character will be automatically assig=
+ned
+internal codes of continuous values.</p>
+
+<a name=3D"Download">
+<h2>Download</h2>
+</a>
+
+<p><b>Update:</b> The double-array trie implementation has been simplified=
+=20
+and rewritten from scratch in C, and is now named <tt>libdatrie</tt>. It is=
+ now=20
+available under the terms of
+<a href=3D"http://www.gnu.org/licenses/lgpl.html">GNU Lesser General Public
+License (LGPL)</a>:</p>
+
+<ul>
+<li> <a href=3D"ftp://linux.thai.net/pub/ThaiLinux/software/libthai/libdatr=
+ie-0.2.9.tar.gz">libdatrie-0.2.9</a>=20
+      (3 May 2015) </li>
+<li> <a href=3D"ftp://linux.thai.net/pub/ThaiLinux/software/libthai/libdatr=
+ie-0.2.8.tar.gz">libdatrie-0.2.8</a>=20
+      (10 January 2014) </li>
+<li> <a href=3D"ftp://linux.thai.net/pub/ThaiLinux/software/libthai/libdatr=
+ie-0.2.7.1.tar.gz">libdatrie-0.2.7.1</a>=20
+      (22 October 2013) </li>
+<li> <a href=3D"ftp://linux.thai.net/pub/ThaiLinux/software/libthai/libdatr=
+ie-0.2.6.tar.gz">libdatrie-0.2.6</a>=20
+      (23 January 2013) </li>
+<li> <a href=3D"ftp://linux.thai.net/pub/ThaiLinux/software/libthai/libdatr=
+ie-0.2.5.tar.gz">libdatrie-0.2.5</a>=20
+      (4 November 2011) </li>
+<li> <a href=3D"ftp://linux.thai.net/pub/ThaiLinux/software/libthai/libdatr=
+ie-0.2.4.tar.gz">libdatrie-0.2.4</a>=20
+      (30 June 2010) </li>
+<li> <a href=3D"ftp://linux.thai.net/pub/ThaiLinux/software/libthai/libdatr=
+ie-0.2.3.tar.gz">libdatrie-0.2.3</a>=20
+      (27 February 2010) </li>
+<li> <a href=3D"ftp://linux.thai.net/pub/ThaiLinux/software/libthai/libdatr=
+ie-0.2.2.tar.gz">libdatrie-0.2.2</a>=20
+      (29 April 2009) </li>
+<li> <a href=3D"ftp://linux.thai.net/pub/ThaiLinux/software/libthai/libdatr=
+ie-0.2.1.tar.gz">libdatrie-0.2.1</a>=20
+      (5 April 2009) </li>
+<li> <a href=3D"ftp://linux.thai.net/pub/ThaiLinux/software/libthai/libdatr=
+ie-0.2.0.tar.gz">libdatrie-0.2.0</a>=20
+      (24 March 2009) </li>
+<li> <a href=3D"ftp://linux.thai.net/pub/ThaiLinux/software/libthai/libdatr=
+ie-0.1.3.tar.gz">libdatrie-0.1.3</a>=20
+      (28 January 2008) </li>
+<li> <a href=3D"ftp://linux.thai.net/pub/ThaiLinux/software/libthai/libdatr=
+ie-0.1.2.tar.gz">libdatrie-0.1.2</a>=20
+      (25 August 2007) </li>
+<li> <a href=3D"ftp://linux.thai.net/pub/ThaiLinux/software/libthai/libdatr=
+ie-0.1.1.tar.gz">libdatrie-0.1.1</a>=20
+      (12 October 2006) </li>
+<li> <a href=3D"ftp://linux.thai.net/pub/ThaiLinux/software/libthai/libdatr=
+ie-0.1.0.tar.gz">libdatrie-0.1.0</a>=20
+      (18 September 2006) </li>
+</ul>
+
+<p>SVN: <tt>svn co http://linux.thai.net/svn/software/datrie</tt></p>
+
+<p>The old C++ source code below is under the terms of
+<a href=3D"http://www.gnu.org/licenses/lgpl.html">GNU Lesser General Public
+License (LGPL)</a>:</p>
+
+<ul>
+<li> <a href=3D"https://linux.thai.net/~thep/datrie/download/midatrie-0.3.4=
+.tar.gz">midatrie-0.3.3</a> (2 October 2001)
+     </li>
+<li> <a href=3D"https://linux.thai.net/~thep/datrie/download/midatrie-0.3.3=
+.tar.gz">midatrie-0.3.3</a> (16 July 2001)
+     </li>
+<li> <a href=3D"https://linux.thai.net/~thep/datrie/download/midatrie-0.3.2=
+.tar.gz">midatrie-0.3.2</a> (21 May 2001)
+     </li>
+<li> <a href=3D"https://linux.thai.net/~thep/datrie/download/midatrie-0.3.1=
+.tar.gz">midatrie-0.3.1</a> (8 May 2001)
+     </li>
+<li> <a href=3D"https://linux.thai.net/~thep/datrie/download/midatrie-0.3.0=
+.tar.gz">midatrie-0.3.0</a> (23 Mar 2001)
+     </li>
+</ul>
+
+<a name=3D"Others">
+<h2>Other Implementations</h2>
+</a>
+
+<ul>
+  <li> <a href=3D"http://github.com/digitalstain/DoubleArrayTrie">DoubleArr=
+ayTrie: Java implementation</a> by Christos Gioran (<a href=3D"http://digit=
+alstain.blogspot.com/2010/09/experiences-from-my-first-published.html">More=
+ information</a>) </li>
+</ul>
+
+<a name=3D"References">
+<h2>References</h2>
+</a>
+
+<ol>
+  <li> <a name=3D"Ref_Knuth1972"><strong>[Knuth1972]</strong>
+       Knuth, D. E. <strong>The Art of Computer Programming Vol. 3, Sorting=
+ and
+       Searching.</strong> Addison-Wesley. 1972.</a>
+  </li><li> <a name=3D"Ref_Fredkin1960"><strong>[Fredkin1960]</strong>
+       Fredkin, E. <cite>Trie Memory.</cite> <strong>Communication of the
+       ACM.</strong> Vol. 3:9 (Sep 1960). pp. 490-499.</a>
+  </li><li> <a name=3D"Ref_Cohen1990"><strong>[Cohen1990]</strong>
+       Cohen, D. <strong>Introduction to Theory of Computing.</strong> John
+       Wiley &amp; Sons. 1990.</a>
+  </li><li> <a name=3D"Ref_Johnson1975"><strong>[Johnson1975]</strong>
+       Johnson, S. C. <strong>YACC-Yet another compiler-compiler.</strong>
+       Bell Lab. NJ. Computing Science Technical Report 32. pp.1-34. 1975.<=
+/a>
+  </li><li> <a name=3D"Ref_Aho+1985"><strong>[Aho+1985]</strong>
+       Aho, A. V., Sethi, R., Ullman, J. D. <strong>Compilers : Principles,
+       Techniques, and Tools.</strong> Addison-Wesley. 1985.
+  </a></li><li><a name=3D"Ref_Aho+1985"> </a><a name=3D"Ref_Aoe1989"><stron=
+g>[Aoe1989]</strong>
+       Aoe, J. <cite>An Efficient Digital Search Algorithm by Using a
+       Double-Array Structure.</cite> <strong>IEEE Transactions on Software
+       Engineering.</strong> Vol. 15, 9 (Sep 1989). pp. 1066-1077.
+  </a></li><li><a name=3D"Ref_Aoe1989"> </a><a name=3D"Ref_Virach1993"><str=
+ong>[Virach+1993]</strong>
+       Virach Sornlertlamvanich, Apichit Pittayaratsophon, Kriangchai
+       Chansaenwilai. <cite>Thai Dictionary Data Base Manipulation using
+       Multi-indexed Double Array Trie.</cite> <strong>5th Annual
+       Conference.</strong> National Electronics and Computer
+       Technology Center. Bangkok. 1993. pp 197-206. (in Thai)
+</a></li></ol><a name=3D"Ref_Virach1993">
+
+<hr>
+<table border=3D"0" width=3D"100%">
+<tbody><tr valign=3D"top">
+<td>
+<p class=3D"footer">
+  <i>Theppitak Karoonboonyanan</i><br>
+  Created: 1999-06-13<br>
+  Last Updated 2015-05-06<br>
+  <i><b><a href=3D"https://linux.thai.net/~thep/">Back to Theppitak's Homep=
+age</a></b></i><br>
+<!-- Since 2005-08-22 -->
+<!-- Start of StatCounter Code -->
+
+
+
+<!-- End of StatCounter Code -->
+</p>
+</td>
+<td align=3D"right">
+
+
+</td>
+</tr>
+</tbody></table>
+<p class=3D"copyright">
+  Copyright =A9 1999 by Theppitak Karoonboonyanan,
+  Software and Language Engineering Laboratory,
+  National Electronics and Computer Technology Center. All rights reserved.
+</p>
+<p class=3D"copyright">
+  Copyright =A9 2003-2010 by Theppitak Karoonboonyanan.  All rights reserve=
+d.
+</p>
+
+
+
+</a></body></html>
+------MultipartBoundary--argG0oaksqe0FcpzZLjHjVtTJvq9JZBbc8nZrI3JhM----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://linux.thai.net/~thep/style/paper.css
+
+@charset "windows-1252";
+
+body { background: rgb(255, 251, 240); color: black; }
+
+a:link { color: blue; }
+
+a:visited { color: olive; }
+
+a:active { color: fuchsia; }
+
+h1 { padding-top: 24px; padding-bottom: 24px; text-align: center; font-fami=
+ly: sans-serif; color: rgb(0, 102, 153); }
+
+h2 { text-align: left; font-family: sans-serif; color: maroon; }
+
+h3 { text-align: left; font-family: sans-serif; font-weight: bold; }
+
+h4 { text-align: left; text-indent: 2em; font-family: serif; font-weight: b=
+old; }
+
+h5 { text-align: left; text-indent: 2em; font-family: serif; font-weight: b=
+old; font-style: italic; }
+
+div.abstract { margin-left: 20%; margin-right: 20%; padding-top: 12px; padd=
+ing-bottom: 12px; border-top: medium dashed red; border-bottom: medium dash=
+ed red; text-align: center; }
+
+div.abstract p { font-family: "Times New Roman", Georgia, serif; font-style=
+: italic; color: gray; }
+
+div.illustration { text-align: center; }
+
+dd { padding-bottom: 12px; }
+
+p { text-indent: 2em; font-family: serif; }
+
+li p { text-indent: 0em; }
+
+p.footer { text-align: left; text-indent: 0px; font-family: serif; font-siz=
+e: smaller; }
+
+p.copyright { text-align: left; text-indent: 0px; font-family: serif; font-=
+size: smaller; font-weight: bold; }
+
+tt, pre { font-family: courier, "Courier New", monospace; }
+
+pre { margin-left: 3em; }
+
+img { border: none; vertical-align: middle; }
+
+div.definition { margin: 0px 3em; padding: 1em; background-color: rgb(255, =
+204, 204); }
+
+div.definition p { text-indent: 0px; }
+
+div.pseudocode { white-space: pre; margin: 0px 3em; padding: 1em; backgroun=
+d-color: rgb(204, 238, 238); }
+
+div.sample { margin-left: 3em; font-family: courier, "Courier New", monospa=
+ce; }
+
+div.banner { padding-top: 12px; padding-bottom: 12px; border-top: thin soli=
+d gray; border-bottom: thin solid gray; text-align: center; }
+
+div.banner p { font-family: sans-serif; font-size: smaller; }
+
+div.ads { text-align: center; }
+------MultipartBoundary--argG0oaksqe0FcpzZLjHjVtTJvq9JZBbc8nZrI3JhM----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://linux.thai.net/~thep/datrie/trie1.gif
+
+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
+------MultipartBoundary--argG0oaksqe0FcpzZLjHjVtTJvq9JZBbc8nZrI3JhM----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://linux.thai.net/~thep/datrie/tripple.gif
+
+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
+------MultipartBoundary--argG0oaksqe0FcpzZLjHjVtTJvq9JZBbc8nZrI3JhM----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://linux.thai.net/~thep/datrie/tripreloc.gif
+
+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
+uIzoCI+PAohJcX/3KBQFAAA7
+------MultipartBoundary--argG0oaksqe0FcpzZLjHjVtTJvq9JZBbc8nZrI3JhM----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://linux.thai.net/~thep/datrie/double.gif
+
+R0lGODdhYgGpAIAAAAAAAP///ywAAAAAYgGpAAAC/oyPqcvtD6OctNqLs968+w+G4kiW5omm6sq2
+7gvH8kzX9o3n+s73/g8MlgBEoZFCBGySx2au6IwyoBqq9OqyYqXaS3cLJn3DwjFSSU6Lk2gDU8s+
+xNWheQAKZ8r1d6WdDuiFhjdIRehWGNhx2NdnmNgYqWemWKnwGIm4l4BpidE5CdkIKuppuoDZudfG
+Rnna0GVFOBf793qrqamKwIhrUbuZy9sW7OoLyDh7JylKfOxgKFzkxyqda/tc+fc264ydPcX3yMrn
+SB4Mnq6+zt7u/m7uDD9PnxJdj58vps/fX+cPMOAnYvIEGjzV6puEVnUSGjsI8YTDiTUmOmRhMaPG
+/o0cO2404jGkyJEew4mMQVJFQTArd7TEUvDipYQvZHKiieLlFZ04eEaRxxBC0BVDoSkE4dNJ0oqB
+vJWLcFREVFRPpTYFeXXV0mEPOUw1ufVX1iBhy2jN8HVJ1QlpP40FUpYsoq6w1npoW5duhbhwsSKb
+u0jvXsEm9/01+xevUcJQ7Q5mLPTtD76THX1wXAUyVcrQJPvg3IMaaK4jMG/FjNZz6KaKH7QWavqM
+ZliqeYx2ibot6l+U8O4We1gusthuFs4ul/ux1eB9h/cO+zsvN53QZ0+p7ZK1q+jxSGp0rfwf88rO
+fXblvnk6eNnL6dxWqf1ltcackW8vTr+9mvf2/uIvXopefq4BaB0q2OnAX0+vSddQgWeJ555fEQa4
+WGkOAqZfGglKdBWFeVnIn4eRjfdZhyLedCGKty04YoSIuXgiaWusmKKK3t2IY0cg5chjjxSZo1aN
+Kga5oRwHPjEWi0CaoKSSLe4nIZQPPlZkeoIIycmRPUnWmpNUfsmkljdUSQNQaRVlz5leQiWmDWTO
+EBNONmJJ3zc2hTkenYvUlhIMfeaUFZpjHlhSmToSFZ+P31UhpkW43YnoYYLetUSbB70pg1OGpUZi
+RJdY6lWlnXrKC6iicuoiqdeNWtqpUqpqIKsZApcqrFnKCqFbuHqKKUpsueqFqQH16uevjB5b/qut
+Ru66LKq6JqvsMszi52yw015qKWjaCgsQsTUZWy2tr0ZL7bjrhbsXt/54mwW4z76rIblcKUpvju5a
+i1a9+t4oLzrzSQvwvwI3OzC1BQdc7rnwihtvv9IeDDHBEhs8McIUC/MkvguHwe4z91gMcsQXh1xx
+wQACyzAZHR8zSMkujywyyTCjk3HK6V5r0Mcx7/yyzDKfjOzGLDn8cM88z4y0z+cshPLN0Cqrs9FS
+J3100UwHrXHD/bZM9dRKey0w0OgioW46U0Xdddpfq801m1jbPPSwza5add1gGy220PeqLNB5drN9
+d9p5Zw33FiurbEzbf6/N+M6DF3710/1s/rd45YFb/LjTesPU99yxWg546CFnTvbbHPe9G9qNXw46
+6XtrrrW8irNOO9X7ntR03FuDvrroJr+OUdn8zO577b1nUnMLh8PnsOq8Pz+x68xLDivxx0PPtvT9
+4Yy68dj3rj2g3Mt9vffeh8/h+N1+z/7L6ONJvaq3zx8S8ETRj/+iW2cLp/D6LL89t/lKfeviX6b8
+lw8Aik+AxSLg5Aw4wPiRSoHpY+C3HDg8CDZQgrzS4AU5GBEKwi95wcPg/zw4rzeJcAhEW+GmSPix
+WZ2ueShMGAtNmMAaAqyC5oqWC1sVuZuUCogghMgPZbiq9KgQgfg4Yq4U9sEeQk2HkSoi/rautUIn
+IqWFVJyeFG2lxcvYz4uxI1cYKRXEKJbRh10M4Ber18YFvlF++asjpDqTKTvqMUYnxGL/cNjEOPJw
+jVP04wEBWY8z7imN7UIkPRQZKkYqj4mJFOQICQlGS97QijnT5AsxCUdDRnCOE/QkEUnZQVFuEJUh
+NCUSDcdFVaqRbzSUZSM52TlbTtKR84Bk7mI1SlDKz5VPpOX+dFlCXJLPilmk5COJuUVewsOXpkvi
+KoVZSmRWkZVGhKYYpfmOPYoTNmvKlzjtGEsQTkol7Ste6KgJS2atc3vtLF/20slNPqrFfO60Jzw5
+Ny19HqueBKWZGdsk0Hzx057+xCc20oc4wIL2E2L/RJAkdUfC+y1UopjrpAWN2RyOErSiCkqcM3PC
+PjtIlKRb+ugMhfM8SIiUpYNyKUYngz3nbdSGGbRpPGFqPnHs1GA0ddNFfwqX9gl1otHzKHW45MKn
+WK9uMh1qwIrqJp5g1W3zvB8tcvoGq85nqy/aj6OmtKS5EMQ+ssgIU996PbIKB0blJFIvRDpUuTYn
+WXpizxDxCtelHVOZKAEsQ39XS8I20LApdShIcSrWyOJHr+RR7AUZu1HKlgicQ8BsYHkKxnOiswyi
+rWMBAAA7
+------MultipartBoundary--argG0oaksqe0FcpzZLjHjVtTJvq9JZBbc8nZrI3JhM----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://linux.thai.net/~thep/datrie/doubreloc.gif
+
+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
++rH0Kq/b+pksW7IXm1DUWhDTSrMFUQAAOw==
+------MultipartBoundary--argG0oaksqe0FcpzZLjHjVtTJvq9JZBbc8nZrI3JhM----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://linux.thai.net/~thep/datrie/a_insert.gif
+
+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
+QyWeVDl7WanVhujSrOwyRQUAADs=
+------MultipartBoundary--argG0oaksqe0FcpzZLjHjVtTJvq9JZBbc8nZrI3JhM----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://linux.thai.net/~thep/datrie/b_insert.gif
+
+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
+------MultipartBoundary--argG0oaksqe0FcpzZLjHjVtTJvq9JZBbc8nZrI3JhM----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://linux.thai.net/~thep/datrie/trie2.gif
+
+R0lGODdhcgKuAYAAAAAAAP///ywAAAAAcgKuAQAC/oyPqcvtD6OctNqLs968+w+G4kiW5omm6sq2
+7gvH8kzX9o3n+s73/g8MCofEovGITCqXzKbzCY1Kp9Sq9YrNarc+gBfADYvH5LIUfECb1+y2+71S
+G+Twuv2Oz9Pp+b7/DzglxxdYaHiIuPNFuLHomAgZKTkZ4mi5SJmpubl56YnJGSo6ene5YEqaqrqa
+9QjhmvIpOwvKantLWiuha0Lr+4kbLEzJu/sVy6jhNczcHFg8AV2ZnLHsfI39Jh193EuNYZ0tPh7W
+3RhOgu6hTt7uDrUdEC9vPsLOcf+uv19Ur6CWL03ADgPBfeOHMCEOfwnCfWMIouADMHsOKryIscU8
+/gQPIa6zSO+fvIYgM5o8KcLjqQgq8ZXkQ5Ekypk0I6JrKdAizon51BUbBCtkzaFELVii9/LgTgdH
+OQ7i2DDqSKdFqzb7hTVr0FevdHmt50kg1LFzpFa0ijZYSZeYcDrsuvbf1ptSy+YEGzet3kR5q90s
+CFCpRKY9n6apa/fs3sWj+n7YuRFpCZ/mmk5VzDizJscfBxvzfAG0yKliNZuexLnzY9FGUzNgfTq2
+thlLP3tL6Vq27nK0a/OETQE4z93E/+RmS1A4N9zFm+M5fk75HN8GmTu/PptG5NfUq0/DDp4NdLZ9
+t0fX+iu8ejLjyVcwfx49rfX0ubQnrxN+/f3O/u7jv4cKfwLu499/vgyIoD4FJndggg62s+BqAT5I
+oTgRVoihaRdmyOFeG3YIYlUfhkgiTSOWiGJGJ6bIIkIrtgijOy/GSGM2M9aIIzM35sjjLTv2CGQq
+PwZJJCdDFokkakkuadKRTD75DJRSEjhllRBaiaWNWW55FZdeqvVlmKw4CQOZYkpppgtpnsnkmmy+
+2YSbyMgJZ5B0xlJnnuuMcaeeOPZ5AqB+xijoZIMeapR9WxkoHaIhFhoEVo4WCWkX6E0KZKU8THhX
+d5hmqKkOi56inzLypfepjHx1V6pBp86X6pWHtNpqa9bFOk6oNtSK1IeNkoorObpq5ylJvw73/l2w
+FhpSrFwbHiuTslo+o5JlpELL3a3S9ldIS2s1a4y22+rY7UDfYgtsNaRNN+41w8YQD0US8dqVMusK
+1S65gLiFxrzoRgvOvf/m220pfz1EVgPgSpbudLW4Yu3ABO9rcFuiCZaatfiSBhBVlwE8MS6hvkoy
+pxPBdTBQKT9MiMqg9AtyyLaMHMcj/B72m6m8sLPHtXjJDKYQK+KFMLs5+8WITzjfm1jMQKtCM7z+
+DrYwsg4T3bHA7z6NRNRlVu2UxEaHZldpXK/i9dfjgU2YuGc3NoSTbDt8W7JvCxl3b8fSW6/dd8Mt
+NLHHza2wf2L/3UbaarvGd982IZ5L3oJz/ta446tBDnikuxZbOcolm4w5MZLXoF/nnn8+auiSKK43
+1aarbhXrrUMEOuzYyT47qrbTh/vks+zOX++b1w58eMIXP+jxyOup/PJ1Nu/8m9BHf+b01Idp/fVe
+Zq/9ltx3j+X34Fcp/vhojm7+8+inL/367Ffv/vvYxy//9vTX7/39+Iev//7k9++/8wUugF8qHwF5
+ZMAD/gmAChzQMuaWm2MQDjFIOxxyGNbAVS3NXskJFD48poiEZXBWFCQbQVAQQY3lAGYjhETPGrEn
+D8JQcltrIemyNsMPyjCHkaqhDX+jQnstDBihed3VUveZ+xBRXbgh3g87AyseFrFBuVui/gwk5TtZ
+PHEaWtFZeS61OCy+QD5S6+IWDeSzCXJjVE6cTBDbmI43BhGFckTiGVkSGTvaI49G9Bwe1ejHQNZs
+KXq0CerEiKnSAbJwrOkjI+PiSO40cpGShCQlnXVIKk6KVpcM2xcteJcpjoiToLyaKJGhglJmClyR
+DKWrnsXKTvaqgoGKZSlVubFD8a2Vu7xkLw/3ywgFs5ap9KF62ObLvQFTmcJkphsHB0pc4vJPbvlj
+geLFL4ltBDCLnEc2r1ktO7Yyl27cpLk8001zmU2Se8wPXNp5srKxs4lMEaGz6kZHcyrFNvQs3Aav
+Bc+TYSygr1knQPtZUHnOM44rURdm/pIHmSRy8SVAnChXMKZEbwVHjdvBaDlHE7CH+omQa+RicN5p
+SK4w7aASEqjrMgqSmC4zJVp73sFYUlKkhS0af9TZTuOZn4zdtG3kvKdOc7ILfroqWz/tFAYfGJRp
+lugoJFWqKKEaU6u2xmJFW6lRX4nVeCqUpVeVV1Z7WkHKNFSeD2zax0DYJtThNImZzOMa6+rNf1YS
+r4CxJyb5qpO7usyTnmTZWnslQaGwUKRioirVcgpWs6rUq00tKwb3OtC0Sraeev2qZauK1sg6bV0t
+G4k1ImZM3RBtrqGdYmUPm9mlIjWpKJUt3Yg6NZ/OVqy1dW3DRNgyeeGMsXn6ZlBN/kqYbf6rNpBZ
+7tSOm9LJ9tZvqH0LaRUqVUIRzoim4+52Ofpd52KLl0rEbmpvN15tpheca1Nve9nb0o/m01HhJegF
+kcsg+0ZHv7plKCrpi8x0MpO90HRvgQnMoAtJ87zoLfAz8xtHB0cYwvz1rXyJqU/GJbNR5OXwhjW8
+TA9H80TZrRGvxjnLV9ZSOSg+sSxdfEsSMxg8pBwl52Rpyq3aGDgozvF7cIxYwM4RopOcpiKNzCog
++1iixSyyjIUcllgVErEa4aOSnSrIJr80u1Oe8h0xG1wvT5R2Q/YGG8v8TGjAsZ1qRvOXgYjIKptx
+jGCk85zVVOc3a9aKZYziFXX3/mdN9vl3epaQm+18aDyvWdGJlnOjCy0sBkI6RQmcNIUqbWkHYTrT
+CNo0pwXk6U/vJ9Si5p2kSw2qU6O6QqReNY1V7WpNwzrWnZ41rUFt61uPOte6NvUAe/0oXgPbeMIe
+9u2KbWzntDrZp1k2szXj7GczJtrS9hCyqy2bBIYV24uptHW5nRZvlxDcQxG3X8ltImR/G91FETcg
++czuzAEhgmwmdLxFoe3wZuXeoaB2WcPcY35vwd8/JmTAjwjlgwt8rD1Y05GfnHAxL1yHmrshj4G8
+4Imn8truUTGG56vxHc57cuf5uMlDng6O93fleywmykX+A7l565v4PPnLK6Fy/tumi5sKlvHNDfVr
+tXGW4a/1256I+/MTBp3RRKXsko1+QqQnXYpdCHS9oNtynEt96kys+JyKjsnWbpWprpRMNyAW1RkX
+muCd2qzCDEpWHas1oWMj7WJHy3UO9jDiggap049I2LIH2SEVAYuxXmbevEekYhLsa2eN5cW5sxW4
+aQSK4h9TMbB7LLdHlQtZ6DJuFsL98gHb13PF/ridYpUy1t066Xlq+vU2E+c1fT3V9bDemuve9omi
+1nt371/elz72BwZ+1oVvQt9TOPg2Rz5tfQ9iWLrc+b0vF4txnHHqvwcRNZ4T36+8cLWz4OFa/r74
+33z+QW45/dofPvfrqPD2/sd8dXmWvxnY72h72188nYjy/rPzf5QSgEiCfwP4DgVogLKSgD2CgAu4
+LA6IQBAYgRK4QBRoYhZ4gRhIKBq4gRzYIg3ogSITgiwCgiM4JiaIIiWIgnizgsHWgiCigvT1d1LG
+JzNoJTExMTHod41lg59SfDHXVpsSGEAIfldlKfH3JPT2eLsyejdgGEK4hKQDV6JCdMqihFFIG+fG
+hFiYhULzaGpShcFyhWHYhWRYhj1YJjm3YkXYJhSHhmOkhVLIhX8Wh9pBQyHzg4b0hYXVHvAmWH3o
+f3I3ZvTiXYvWUIYTiEvSJ3EWRlqURX7IaPo3aI54Um8IZ5RIgKJSf+O3/onqx4ieCGj5F4qceGd2
+skLwx4aDV3k7AjqGqIdkJnGGBotIiHAAl4rKthBWxmW6OCNdhoS+WITAuIsMARO0iIvDY0lI5mTq
+V3BDk2TKmIzOSHiBaIzFkSbdR0cXp0rYuIanlI2ftGOBwVWVcYu7YSYwBkvXN2LqmI6U82K21I5P
+F3jVqFok50VpVnIRFn34eI/6mI9sdltHQ4+xQSYB1kwSVmFjN2H3hVAsF12+cXYlZo6tk1wdYWCH
+JY8pZlE7WIWOpGZhB5IbWUJtdpH4kjRDqJEZWEa4ZZH85Q+nFWYuyXrJJZMvVFQC5lkcE5P9BJMn
+uXkSmW16M3R/h5MY/vmEmrdfGBmGRbmD67Zb0dWUOISUPmV4ImF5l0UjRxIvdViISYMYACeSoVeR
+YRmHYKmHdKeUKZlguVRaZzGQ0GZ1QxlbqoGW1xV3DCmWNAmVHHlu4JUMf8lIyKU0ZhEt5aghgzSV
+ijWXChmQTdmX0rFadUmGQzRUadmRkFmZfBlOQqUydcc0omc0hgmX5ed2gbmYzbhtRvmYnNl4gMmX
+iXmJWNmXeila1eJPd7lRXOWZNqkYopkZ5udn0gVmdfV2CXOSUFac48aHeJWcXJlwzfmaEUdOvFmY
+QKldutl0p5mbrQmdRwmbFZmamnk0tRkQMPF4lImdRimV3/lI2zaY/m33kzo4bZm5VlhnYbL5TzC5
+UPdpm6/5lIyJn9i1mivXn0tTGJz5U+8ZlY0phpw3XXgJeIIHeXuJZVS2n8tXoXPkl2kUeLipW9PI
+M3/BoLjSXX75XjB1omTZj4bGomd5fWrZoL/XkEmJXxCKoQ55o52XUjc2ojEaXzVKoxSKozaqcz9K
+pEl5cT1KogaJYB2not74pDoGkE56lkXFktZJJAb5YEfKpZA1o0UqpPcpmKARkfJpjVXTYfvojyva
+RGo6pbS0pgbXL75pJ/DYjR7Hj1C6pnr6plJqZnNanmVqpsp2Y9tYqOHIp3u6nd6XqG9KRW+piM8o
+jdHIjIuqZc1Y/ql3lamYCKlxJafDuH75Z029yIuimmXeF1RYOiWtuIcJNoupyKqxCEWvKpGxaoy2
+Sqdo0omk2Xeg2Ku8GpykuG+N+Ktn84mRiImTCImiuKzCKonEmoiq06zKqqrDeSfTCq3XGq3IM6jp
+pnHdOhPgiofME3LiehLmSjDoqiLlSq7f2q4Tp64YEa/jMq8KUa/Scq8uwq7Fta/q4678+q/+Cq/v
+Gn4EK3D5yg8IS6IGy28KqyD9CicOmyoSqyoBG7EQ2z4Wm7EDC7BUWa2wQ7EKeA6rFrKRpnSoVrK5
+EkMoy7DuJ2op+4CR16ayejcwOy2aWKzS2rJVFKwgu7PKuorc/vqziJaqk7qrEyiw9qipqFqKptix
+FOmnzWc1Avi0fQanxtd0VJu0i/OPzBcuSWKz2FCQzoS1t5mJVct0UfkTnQQbHzuRaCtnOamdl/Nj
+iji0X6ea43l8h/GXYSs6cJupFFSaHeo2OPhbWXq3K9adc3qhqQcVfWu3gGtfBTp5HqpV66Shfqsk
+kjuzg1uWjbudkudWh+u0NgWcy0oNx5kyhOt/gwm5YMutNlOeAHOckfdQmRu5wBOZeWul6El2o+t5
+sKs9r0q4E7q3b0W6mdI9JTpTY/G6Zzu8uXdhXwu911Nf04tHuWu9TFq2v4u44KOl3Zu8DDg+wyS+
+wVu90cuO/iC3HMJbvofKtMOavssrqcA6isrLPsKouYf5PrjqtvYjP2QktPhzrD4bQNiqsy/YIfur
+wPfXwBzCwA9cgxLMahRcwRb8IBGMwVqgwRuMBR3swVYAwiFMBSNMwmdwwriWwru2wvVhwi0cJzDs
+azJMbDRcwzZ8bDicwzp8jDzcHC/sw0TgYP8bxHpAcURcxM/hhkCcxDTFQ0zcxIuXQ0gcxXAwxIOY
+q1UsxLTHKK6oxQ6co3J3v19sxad4ZjRLxhyci59qtKeLxk3scPUbv25MxR54jfDLvniWxs8XaO4Y
+Y3S4x8KJaF17vFUWyIKsaGFMt19zyLw1yJoJIGyrlVBs/mkyV4zmyXCSDMiNLJlxy7uR3HMb53qH
+PMk9oZzF67geNMqBXMrdGaCv7BKijHecbIkEOrs/CbpeClfcaaG9jHZfQcudrI/hKbgDqllOA3rs
+YhhPCJpWSst0vK0Cep5fsbptR3hqO47F28x1TMaO5ZobVLvHPIUCU5+i15M/E8xxqaS1d6BDyjMc
+2Xo4tM2UTHrEK6HsWUSFdXhlURmXNc/pbMYp6rUpV3sA7YTSO9CcaNBrbKRuo9ALjYxrib0PDdEW
+p8gfsckVDbVXm9A1o9ERjacT7dEfbXHgOMd0TNIgvbTfCM1ZTNL6m9JXgYrcHNOtcLQ17SNjjNM6
+Es0KAlQAADs=
+------MultipartBoundary--argG0oaksqe0FcpzZLjHjVtTJvq9JZBbc8nZrI3JhM------
