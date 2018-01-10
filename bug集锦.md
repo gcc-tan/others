@@ -161,4 +161,9 @@ tan@tan:~/Documents/code/net$ catch SIGTTIN
 
 2. 修改/etc/ld.so.conf文件，在文件中加入动态库所在的目录（这块我就有疑问 ，ubuntu系统的这个文件是一个include /etc/ld.so.conf.d/*.conf，它是将这个目录下的所有conf文件都包括了，而打开这个目录的conf，发现libc.conf已经包括了我需要添加的目录------/usr/local/lib），修改之后重新执行ldconfig
 
+###sys/*.h的头文件
+
+之前一直没有注意过，如果按照正常路径的话`#include<sys/sem.h>`这个头文件对应的目录应该是在`/usr/include/sys/sem.h`，我去查看系统的这个路径时没有找到这个文件。这就奇怪了。然后Google之后才发现这个文件是在`/usr/include/x86_64-linux-gnu/sys`下面。然后我就有些疑问了，在`/usr/include/linux/sem.h`有一个同样的文件。不止是这样，两个文件夹下还有很多相同文件。
+
+一个解释是`/usr/include/linux`和`/usr/include/asm*`是和内核一起发布的，`/usr/include/sys/*.h`和`/usr/include/bits/*.h`是和c语言库一起发布的(glibc)。后面的就没则么看懂。[Difference between /usr/include/sys and /usr/include/linux?](https://unix.stackexchange.com/questions/7928/difference-between-usr-include-sys-and-usr-include-linux)
 
