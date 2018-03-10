@@ -228,11 +228,89 @@ W是博弈树的分支因子，d是最大搜索深度。这个值可以近似认
 ####Fail-soft alpha-beta
 一个alpha-beta减枝的搜索算法的函数调用是：alphabeta(alpha, beta, depth)。开始的情况，alpha = −∞, beta = +∞。在递归调用的过程中，alpha和beta不断改变，搜索越深，其范围越小。也就是说落在其范围之外的内容就越多，减枝的效率也越来越高。如果一开始就将alpha，beta限定得小，那么整个搜索过程将会减去更多的枝条。但是这个情况下我们可能会得到三种结果：一种是需要查找的目标落在alpha，beta的范围之内，这样花费了很少的时间就得到了结果；还有两种情况就是不太好的情况，要找的值比alpha小，或者比beta大。这两种情况只能重新搜索。
 
-在上面的过程中，对于搜索失败的两种情况，如果alphabeta对于搜索失败的情况返回的是alpha或者beta值，那么我们无法知道任何信息。因此我们对alpha-beta搜索的返回值稍作改进，返回的是当前的score。这样的alpha-beta搜索叫做Fail-soft alpha-beta。
+在上面的过程中，对于搜索失败的两种情况，如果alphabeta对于搜索失败的情况返回的是alpha或者beta值，那么我们无法知道任何信息。因此我们对alpha-beta搜索的返回值稍作改进，返回的是当前的score。这样的alpha-beta搜索叫做Fail-soft alpha-beta。如果搜索窗口为(-INFINITY, INFINITY)，那么我们姑且将这个窗口搜索得出来的值为真实值。
 
 有了上面的fail-soft的形式。我们就能从搜索失败的情况下得到一些信息。如果alphabeta返回值小于alpha，那么我们知道要找的结果小于alpha；同理，如果alphabeta返回值大于beta，那么我们知道要找的结果大于beta。
 
 **这种改进不能提高算法的效率，但是有很多算法都是基于fail-soft的形式。上面的伪代码中描述的也是fail-soft alpha-beta搜索**
+
+###置换表（Transposition Table）
+回忆一下求斐波那契数列的递归实现的recursion tree。递归程序运行很慢的原因就是在计算过程中重复计算了很多子问题。例如计算f(4)=f(3)+f(2)而f(3)=f(2)+f(1)这个过程至少f(2)是重复计算的，为了提高算法执行效率我们采用了一种备忘录的方式去记录每个子问题的解，遇到相同的问题时直接从备忘录中获取，避免了重复计算，极大提高了效率。置换表的原理和备忘录方法是完全一致的。因为在棋子搜索的过程中同样有重复的地方。例如在五子棋中有A，B，C三个位置，按照先后顺序：
++ A黑，B白，C黑
++ C黑，B白，A黑
+
+是两种不同的搜索情况，但是最后下完三子之后的状态是完全相同的，出现了重复的局面，就可以利用备忘录的方式缓存计算过的局面，提高搜索效率。
+
+下面的伪代码出自wiki的Negmax中，写得很好，关键点都写出来了。
+
+18～26行是普通的负值最大形式的alpha-beta减枝，没有必要重复。
+
+27～37行的代码是将本次搜索的数据存储到置换表中。存储的过程分三种情况。
+
+**为什么要分三种情况呢？**
+这个地方真的想了很久才想明白。结合上面的Fail-soft alpha-beta搜索就很好理解。因为在窗口[alpha, beta]的设定下对一颗博弈树进行搜索，得出的值val会出现三种结果。
+1. val在alpha，beta之间
+2. val小于等于alpha
+3. val大于等于beta
+
+第一种那比较简单，val就是确切值（真实值的情况）。第二种情况我们只能推测真实值是小于等于val，也就是说val是一个上界值。第三种情况同理，可以得出val是一个下界值。
+
+最后看3～15行的查找置换表的代码就比较简单了。第5行能够进行查找的条件有两个：置换表中这个局面已经计算过和计算过的剩余深度要大于等于当前的搜索深度（用深层次的搜索代替浅层次的能够提高搜索精度，但是反过来就不行了）。6～12行的查找也是对应三种情况。如果是确切的情况直接返回。如果置换表中的值是一个下界值，那么只能用来更新最小下界alpha。同样，如果置换表中存储的值是一个上界值，那么只能用来更新最大上界值beta。13～14行的代码就是判断更新之后是否发生减枝，发生减枝放弃本次的搜索过程。
+
+```
+1	function negamax(node, depth, α, β, color)
+2	    alphaOrig := α
+
+3	    // Transposition Table Lookup; node is the lookup key for ttEntry
+4	    ttEntry := TranspositionTableLookup( node )
+5	    if ttEntry is valid and ttEntry.depth ≥ depth
+6	        if ttEntry.Flag = EXACT
+7	            return ttEntry.Value
+8	        else if ttEntry.Flag = LOWERBOUND
+9	            α := max( α, ttEntry.Value)
+10	        else if ttEntry.Flag = UPPERBOUND
+11	            β := min( β, ttEntry.Value)
+12	        endif
+13	        if α ≥ β
+14	            return ttEntry.Value
+15	    endif
+
+16	    if depth = 0 or node is a terminal node
+17	        return color * the heuristic value of node
+
+18	    bestValue := -∞
+19	    childNodes := GenerateMoves(node)
+20	    childNodes := OrderMoves(childNodes)
+21	    foreach child in childNodes
+22	        v := -negamax(child, depth - 1, -β, -α, -color)
+23	        bestValue := max( bestValue, v )
+24	        α := max( α, v )
+25	        if α ≥ β
+26	            break
+
+27	    // Transposition Table Store; node is the lookup key for ttEntry
+28	    ttEntry.Value := bestValue
+29	    if bestValue ≤ alphaOrig
+30	        ttEntry.Flag := UPPERBOUND
+31	    else if bestValue ≥ β
+32	        ttEntry.Flag := LOWERBOUND
+33	    else
+34	        ttEntry.Flag := EXACT
+35	    endif
+36	    ttEntry.depth := depth 
+37	    TranspositionTableStore( node, ttEntry )
+
+38	    return bestValue
+```
+
+###Zobrist哈希
+在前面的置换表技术中省略了两个很重要的技术细节，就是如何快速判断两个局面是否相等，以及利用这个局面快速找到对应的分数。如果我们能快速计算一个局面的id（一个整数），如果两个局面id相同，那么就认为是两个相同的局面。利用id值作为hash表的key，就能快速找到对应的分数。上面两个问题就很容易解决了。因此这两个问题就变成如何快速计算id值——这就是Zobrist哈希解决的问题。
+
+**Zobrist哈希是采用增量的方式进行计算**
+
+具体的计算过程举个例子就很好理解。
+1. 在某个棋类程序中，程序启动时建立一个多维的数组`z[piece_type][board_width][board_height]`。其中piece_type是棋子的种类，五子棋棋子种类为2（黑白），象棋为14（车马相仕帅炮兵*2）。board_width是棋盘的宽度，五子棋为15，象棋为9。board_height为棋盘的高度，五子棋为15，象棋为10。
+2. 将z数组使用随机数填满。如果要计算某个局面的id值，只需要将棋盘上所有棋子在z数组中对应的随机数相加。例如在五子棋中有左上角有个黑色棋子(假设类型是0)，则该棋子对应的随机数就是`z[0][0][0]`，如果右边还有一个白色棋子（类型为1），则白棋对应的随机数为`z[1][1][0]`。将这两个数相加就能得到当前棋盘的id值。这样的计算方式肯定是很慢。我们可以将每次的操作分摊到每次移动棋子上来。如果每次移动棋子，那么将移动前对应位置的z值前去，加上移动之后的z值。如果有吃子，那么减去被吃的棋子。由于加法减法速度慢，而且存在溢出问题。实际的使用中采用异或（XOR）代替。
 
 ###主要变例搜索（Principal Variation Search）
 

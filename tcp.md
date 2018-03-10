@@ -76,21 +76,21 @@ capacity = bandwidth(bits/sec) * round-trip time(sec)
 
 发送端发送的速率其实是min（rwnd，cwnd）rwnd就是由对方确定的用于流量控制的通告窗口，cwnd是拥塞窗口的大小。
 
+
+
 **慢启动**
 
 慢启动的算法如下(cwnd全称Congestion Window)：
 
 1. 连接建好的开始先初始化cwnd = 1，表明可以传一个MSS大小的数据。
 2. 每当收到一个ACK，cwnd++; 呈线性上升
-3. 每当过了一个RTT，cwnd = cwnd*2; 呈指数让升
-4. 还有一个ssthresh（slow start threshold），是一个上限，当cwnd >= ssthresh时，就会进入“拥塞避免算法”（后面会说这个算法）
+3. 还有一个ssthresh（slow start threshold），是一个上限，当cwnd >= ssthresh时，就会进入“拥塞避免算法”（后面会说这个算法）
 
 **拥塞避免**
 
 前面说过，还有一个ssthresh（slow start threshold），是一个上限，当cwnd >= ssthresh时，就会进入“拥塞避免算法”。一般来说ssthresh的值是65535，单位是字节，当cwnd达到这个值时后，算法如下：
 
-1. 收到一个ACK时，cwnd = cwnd + 1/cwnd
-2. 当每过一个RTT时，cwnd = cwnd + 1
+1. 当每过一个RTT时，cwnd = cwnd + 1（这个只是原理性的设计，实际上是以字节为单位，可以设计为每次收到一个新的确认，就使拥塞窗口cwnd增加MSS * MSS / cwnd）
 
 
 这样就可以避免增长过快导致网络拥塞，慢慢的增加调整到网络的最佳值。很明显，是一个线性上升的算法
@@ -98,7 +98,7 @@ capacity = bandwidth(bits/sec) * round-trip time(sec)
 
 上面的慢启动和拥塞避免都没有说丢包，丢包cwnd会怎么调整呢？
 
-丢包的表现在TCP看来有两种：一种是RTO（retransmission timeout）超时，重传数据包；另一种是收到3个duplicate ACK（假设本次TCP发送了1,2,3,4,5一共5个数据包，接收方正确接收了1，然后3到达了接收方，接收方发送下一个要接收的数据包是2，3,不是按序到达的数据，因此发送ack 2；4到达发送ack 2；5到达发送ack 2。接收方接受到三个冗余的ack，那么很有可能2已经丢失了）
+如果发生拥塞，就把ssthresh设置成当前拥塞窗口的一半，并且重新开始慢启动算法。丢包的表现在TCP看来有两种：一种是RTO（retransmission timeout）超时，重传数据包；另一种是收到3个duplicate ACK（假设本次TCP发送了1,2,3,4,5一共5个数据包，接收方正确接收了1，然后3到达了接收方，接收方发送下一个要接收的数据包是2，3,不是按序到达的数据，因此发送ack 2；4到达发送ack 2；5到达发送ack 2。接收方接受到三个冗余的ack，那么很有可能2已经丢失了）
 
 
 
@@ -123,12 +123,10 @@ TCP引入了一种叫Fast Retransmit 的算法，不以时间驱动，而以数�
 
 **快速恢复**
 
-+ cwnd = sshthresh  + 3 * MSS （3的意思是确认有3个数据包被收到了）
 + 重传Duplicated ACKs指定的数据包
-+ 如果再收到 duplicated Acks，那么cwnd = cwnd +1（有数据包被接收方收到，保持数据包守恒，增加利用率）
-+ 如果收到了新的Ack，那么，cwnd = sshthresh ，然后就进入了拥塞避免的算法了。
++ 进入拥塞避免
 
-如果你仔细思考一下上面的这个算法，你就会知道，上面这个算法也有问题，那就是——它依赖于3个重复的Acks。注意，3个重复的Acks并不代表只丢了一个数据包，很有可能是丢了好多包。但这个算法只会重传一个，而剩下的那些包只能等到RTO超时，于是，进入了恶梦模式——超时一个窗口就减半一下，多个超时会超成TCP的传输速度呈级数下降，而且也不会触发Fast Recovery算法了。
+如果你仔细思考一下上面的这个算法，你就会知道，上面这个算法也有问题，那就是——它依赖于3个面这个算法也有重复的Acks。注意，3个重复的Acks并不代表只丢了一个数据包，很有可能是丢了好多包。但这个算法只会重传一个，而剩下的那些包只能等到RTO超时，于是，进入了恶梦模式——超时一个窗口就减半一下，多个超时会超成TCP的传输速度呈级数下降，而且也不会触发Fast Recovery算法了。
 
 因此针对上面问题1995年提出的TCP New Reno在没有SACK的支持下进行改进，在收到3个duplicate ACK之后，发送端肯定知道已经发送数据的最大序号recover，这个时候正常重传ack指示的数据，如果接收方的ack没有确认这个最大的序号，表示之后的数据已经丢失，需要发送方重传ack之后，recover之前的数据包。
 
