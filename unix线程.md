@@ -10,6 +10,7 @@
 
 ###常用的API
 + 比较两个线程的id是否相同(因为不是所有的实现表示线程id的pthread_t都是用整数表示)
+
 ```
 /*
 * 相等返回非0,不相等返回0
@@ -18,11 +19,13 @@
 int pthread_equal(pthread_t tid1,pthread_t tid2);
 ```
 + 获得调用线程的线程id
+
 ```
 #include<pthread.h>
 pthread_t pthread_self(void);
 ```
 + 创建线程
+
 ```
 /*
 * 成功返回0,错误返回错误编号
@@ -37,6 +40,7 @@ int pthread_create(pthread_t *restrict tidp,
 				void *(* start_rtn)(void *), void *restrict arg);
 ```
 + 线程退出（线程退出的方式有很多种可以从启动函数中return;线程可以被同一进程中的其他线程取消;或者线程调用pthread_exit退出）
+
 ```
 #include<pthread.h>
 /*
@@ -46,6 +50,7 @@ void pthread_exit(void *rval_ptr);
 
 ```
 + 等待线程退出
+
 ```
 /*
 * 成功返回0,否则返回错误编号
@@ -55,6 +60,7 @@ void pthread_exit(void *rval_ptr);
 int pthread_join(pthread_t thread, void **rval_ptr);
 ```
 + 取消同一进程中的其他进程
+
 ```
 #include<pthread.h>
 /*
@@ -64,11 +70,13 @@ int pthread_join(pthread_t thread, void **rval_ptr);
 int pthread_cancel(pthread_t tid);//只是发送请求，并不是等待终止
 ```
 + 分离线程,在线程终止之后线程的资源被立即释放
+
 ```
 #include<pthread.h>
 int pthread_detach(pthread_t tid);
 ```
 + 注册线程清理函数
+
 ```
 #include<pthread.h>
 void pthread_cleanup_push(void (*rtn)(void *),void *arg)

@@ -108,3 +108,37 @@ tan@tan:~/Desktop/code$ valgrind ./sample
 内容来自
 
 [应用 Valgrind 发现 Linux 程序的内存问题](https://www.ibm.com/developerworks/cn/linux/l-cn-valgrind/)
+
+###free命令
+
+free命令用于查看系统的内存使用情况。
+
+常用参数：
++ -b 以B为单位
++ -k 以KB为单位
++ -m 以MB为单位
++ -g 以GB为单位
++ -s 后面接时间间隔，表示以该间隔持续观察
++ -h 比较友好的方式自动选择单位
+
+
+样例输出：
+
+![](img/free_example.png)
+
+第一行的Mem是站在操作系统的角度：
+
++ total，表示物理内存15G
++ used，已经使用8.6G
++ free，空闲7.0G
++ shared，进程的共享内存总数
++ buffers，缓存
++ cached，缓存
+
+因为在Linux中为了为了加速对磁盘等的操作速度，有一部分内存被操作系统当成缓冲区使用。所以free的内存可能会很小，但是这些缓冲区buffers和cache都是能够直接使用的
+
+第二行是站在应用程序的角度，4.1G表示used - buffers - cached = 8.6G - 625M - 3.9G = 4.1G。11G表示free + buffers + cached = 11G。所以说4.1G表示的是真正被应用程序使用的内存。11G是可以使用的内存
+
+内容来自：
+
+[ Linux查看应用可用内存-free命令详解](https://blog.csdn.net/loongshawn/article/details/51758116)
