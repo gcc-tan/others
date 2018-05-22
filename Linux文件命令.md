@@ -7,6 +7,20 @@ eg：
 tan@ttt:~/Documents/git_dir/others$ which passwd
 /usr/bin/passwd
 ```
+### help
+对于Linux中的命令，分为两种。一种是shell内置的命令，像cd，trap，type，help等。还有一种是外部命令，这个就有很多了gcc，ls，mv等等。一般来谁shell内置的命令是没有man文档的，如果需要查看文档那么怎么办呢？
+
+help命令能够解决这个问题，它给shell内置命令提供了一个文档。
+
+```
+help [-dms] [pattern ...]
+```
+
+e.g.
+```
+help 查看所有内置命令
+help help查看help命令的帮助文档
+```
 
 ### man
 关于man这个命令大家肯定不陌生，经常看man文档的人就知道，为什么man文档是xxx(1)的形式呢？这个数字是什么意思，反正我是用到现在才知道，真是惭愧

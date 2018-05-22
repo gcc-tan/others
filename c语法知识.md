@@ -684,3 +684,59 @@ register int number;
 内容来自：
 
 [Storage classes in C](https://www.studytonight.com/c/storage-classes-in-c.php)
+
+###计算结构体成员的偏移量
+如何利用一个宏计算一个结构体成员距离结构体开始地址的偏移？
+
+最直接的想法是定义一个该类型的变量，然后利用成员的地址和改变量的起始地址做差。TYPE是结构体类型，MEMBER是结构体成员名字。
+
+```
+#define my_offsetof(TYPE, MEMBER, OFF) { \
+    TYPE tmp; \
+    OFF = (size_t)((unsigned long)&tmp.MEMBER - (unsigned long)&tmp); \
+}
+```
+
+但是内核的代码往往是很优美的，内核的实现是：
+```
+#define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *)0)->MEMBER)
+```
+
+仔细看看好像有那么点道理。这里相当与假设tmp变量的地址是0，那么(unsigned long)&tmp就为0。但是&tmp.MEMBER这块如果直接写成0.MEMBER肯定是非法地址访问，通过指针(TYPE *)0转换成对应的指针类型然后访问MEMBER成员，好像还是不行，但是外面的取地址不会直接访问0单元的地址，而是会计算想对于0地址单元的MEMBER成员的地址。
+
+测试代码：
+
+```
+#include<stdio.h>
+struct test
+{
+    char a;
+    int b;
+    int c[2];
+    double d;
+};
+#define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *)0)->MEMBER)
+#define my_offsetof(TYPE, MEMBER, OFF) { \
+    TYPE tmp; \
+    OFF = (size_t)((unsigned long)&tmp.MEMBER - (unsigned long)&tmp); \
+}
+int main()
+{
+    printf("offsetof a:%zu\n", offsetof(struct test, a));
+    printf("offsetof b:%zu\n", offsetof(struct test, b));
+    printf("offsetof c:%zu\n", offsetof(struct test, c));
+    printf("offsetof d:%zu\n", offsetof(struct test, d));
+    return 0;
+}
+```
+
+输出结果：
+```
+offsetof a:0
+offsetof b:4
+offsetof c:8
+offsetof d:16
+```
+
+内容参考：
+[计算结构体成员偏移量](https://blog.csdn.net/encourage2011/article/details/52463857)

@@ -167,3 +167,41 @@ tan@tan:~/Documents/code/net$ catch SIGTTIN
 
 一个解释是`/usr/include/linux`和`/usr/include/asm*`是和内核一起发布的，`/usr/include/sys/*.h`和`/usr/include/bits/*.h`是和c语言库一起发布的(glibc)。后面的就没则么看懂。[Difference between /usr/include/sys and /usr/include/linux?](https://unix.stackexchange.com/questions/7928/difference-between-usr-include-sys-and-usr-include-linux)
 
+###shell中echo和缺少大括号造成的bug
+最近看了好几天的shell，今天想自己动手写一些，结果写脚本没有花太多的时间，倒是改bug花了很久。
+
+这个shell的功能是有7个文件，想将文件中的每行拼接在一起，去成一个新的文件。
+
+![](img/echo_value_shell.png)
+
+其实使用sh -x的命令将shell执行过程中的变量替换输出很快能够定位bug。主要的bug有两个：
+
++ 12行的`$ip`，这块没有使用大括号，将i分割出来，导致访问的是ip这个变量，所以sh -x显示sed的脚本块为空。其实要注意单引号和双引号的区别，单引号不会进行变量替换，所以sed这里不能使用单引号。
++ 14行的echo。因为echo这个命令在很多shell里面都是内置的命令，有不同的标准。Linux的bash是能够识别echo -e参数的，也就是说对line变量的赋值在命令行执行是没有问题的（因为默认登录的shell是bash，使用echo $SHELL就能看到）。但是执行这个脚本时，使用的解释器是/bin/sh，调用的echo是没有-e参数的（可以在命令行启动Bourne sh，命令是sh，然后执行echo -e "test\ttab"就会发现输出有问题）。为了可移植性应该使用printf命令
+
+改正之后的shell
+```
+#!/bin/sh
+# 将文件的每行拼接在一起，组成一个datafile的文件，分隔符号是tab
+rm datafile
+# 定义每个文件的行数
+line_num=9
+#定义文件的个数
+col_num=7
+i=1
+while [ $i -le $line_num ]
+do
+	file=1
+	line=
+	while [ $file -le $col_num ]
+	do
+		str=`sed -n "${i}p" $file`
+		[ "$line" != "" ] && line=`printf "$line\t$str"`
+		[ "$line" = "" ] && line=$str
+		file=`expr $file + 1`
+	done
+	printf "$line\n"
+	i=`expr $i + 1`
+done > datafile
+
+```
