@@ -5,6 +5,8 @@ eg：
 ```
 tan@ttt:~/Documents/git_dir/others$ which passwd
 /usr/bin/passwd
+
+类似的命令还有whereis，不过which比较常见，而且which能够搜索一些目录whereis搜索不到的，例如将一些搜索目录添加到PATH变量中。
 ```
 ### help
 对于Linux中的命令，分为两种。一种是shell内置的命令，像cd，trap，type，help等。还有一种是外部命令，这个就有很多了gcc，ls，mv等等。一般来谁shell内置的命令是没有man文档的，如果需要查看文档那么怎么办呢？
