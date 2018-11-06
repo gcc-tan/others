@@ -1,4 +1,7 @@
 # Vim操作
+
+经常用vim打开文件进行编辑之后发现没有写权限，这时已经修改了很多文件内容，不得不退出vim，然后使用sudo vi重新编辑。面对这种情况，可以使用这条ex命令`w !sudo tee %`保存所以写的内容。命令解释：w !cmd作用是将当前缓冲区的内容作为外部cmd的标准输入，然后tee是从标准输入读入，写入标准输出和文件的工具，%是vim的一个只读寄存器，里面保存的是vim被编辑文件的名字。
+
 ## 配色
 ubuntu首先的配色好像能看清，然后不记得装了什么之后配色注释成蓝色了完全看不清楚，然胡其实在/usr/share/vim/vim74/colors/目录下面有多种配色方案，首先是default，在.vimrc里面加入你的选择`colorscheme desert`就行
 ## 对齐文本
@@ -185,6 +188,9 @@ Vim支持系统剪贴板，需要打开clipboard功能。使用下面的命令�
 $ vim --version
 ```
 
+如果支持，会出现clipboard字样，并且前面有一个+号。
+
+
 如果不支持的话，需要安装图形化界面的vim（即gvim），或者重新编译vim。
 
 ```bash
@@ -209,7 +215,7 @@ $ sudo apt-get install vim-gnome
 $ sudo apt-get install vim-gui-common
 ```
 
-安装以后，可以用命令行界面，启动gvim，这时可用系统剪贴板。
+安装以后，可以用命令行界面，启动gvim，这时可用系统剪贴板.
 
 ```bash
 $ gvim -v

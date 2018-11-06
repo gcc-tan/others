@@ -292,3 +292,4 @@ done > datafile
 解决办法很简单，就是将B类的定义放到A类前面（或者将声明放入.h文件），因为虽然有B的向前声明（可以用来引用或者指向B类对象），但是没有说明B类有什么成员，所以在完全声明前都是incomplete type
 
 参考[I'm getting an error "invalid use of incomplete type 'class map'](https://stackoverflow.com/questions/20013901/im-getting-an-error-invalid-use-of-incomplete-type-class-map)
+

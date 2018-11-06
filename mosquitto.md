@@ -179,6 +179,9 @@ auth_plugin /home/tan/Documents/code/java/platform/secure/auth/auth-plug.so
 #配置的认证后端，可以有多个
 auth_opt_backends mysql
 
+#表示关闭acl cache，防止在测试时更新db的acl权限表后mqtt连接没有响应
+acl_cacheseconds 0
+
 #mysql服务器的地址
 auth_opt_host localhost
 
@@ -206,6 +209,8 @@ auth_opt_aclquery SELECT topic FROM acls WHERE (username = '%s') AND (rw & %d)
 #匿名mqtt连接使用的用户名
 auth_opt_anonusername AnonymouS
 ```
+
+
 
 最后在mysql新建数据库platform，然后使用下面的建表语句建立相关的数据表
 
@@ -268,6 +273,8 @@ INSERT INTO acls (username, topic, rw) VALUES ('m1', 'loc/#', 1);
 INSERT INTO acls (username, topic, rw) VALUES ('ps1', 'x', 1);
 INSERT INTO acls (username, topic, rw) VALUES ('ps1', 'blabla/%c/priv/#', 1);
 ```
+
+
 
 内容来自：
 
