@@ -37,3 +37,29 @@ int main(int argc,char **argv)
 	return 0;
 }
 ```
+
+### 注意
+
+Linux系统处于安全考虑，对于脚本文件(以`#!`开头的文本文件)suid和sgid是不生效的。如果非要在脚本中使用只能采用如下的方式
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+int main()
+{
+    setuid( 0 );   // 将uid和euid都设置成0，即root用户
+    system( "/home/pubuntu/setuid-test2.sh" );
+    return 0;
+ }
+```
+
+对脚本文件进行包装，然后编译成二进制文件，然后给二进制文件设置suid标记来执行。
+
+那么可能会有疑问上面代码中的setuid能否换成seteuid呢？首先如果换成seteuid是没有必要的，因为设置了suid标记，本来euid就会变成文件所有者的id。
+一般我们直接二进制的文件所有者就行。system里面执行的是脚本文件，这种方式是不生效的。（setuid，连进程的ruid是一起改了的，因此操作系统认为执行脚本的就是root）
+
+非要用seteuid，只能将脚本的内容换成c语言的代码了
+
